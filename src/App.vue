@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <R64Cart />
+    <R64Checkout />
   </div>
 </template>
 
 <script>
-import R64Cart from './components/R64Cart'
+import R64Checkout from './components/R64Checkout'
 
 export default {
   name: 'app',
   components: {
-    R64Cart
+    R64Checkout
   }
 }
 </script>

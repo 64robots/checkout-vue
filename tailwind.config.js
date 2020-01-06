@@ -2,6 +2,9 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
     theme: {
+        rotate: {
+            '1/2': '180deg',
+        },
         extend: {
             backgroundColor: theme => ({
                 ...theme('colors'),
@@ -21,9 +24,25 @@ module.exports = {
             }),
             opacity: {
                 '40': '0.4'
-            },
+            }
         },
     },
     variants: {},
-    plugins: [],
+    plugins: [
+        function ({addUtilities, config, e}) {
+            const rotateUtilities = Object.keys(config('theme.rotate')).map((key) => {
+                const value = config('theme.rotate')[key]
+                return {
+                    [`.${e(`rotate-${key}`)}`]: {
+                        transform: `rotate(${value})`
+                    },
+                    [`.${e(`-rotate-${key}`)}`]: {
+                        transform: `rotate(-${value})`
+                    },
+                }
+            })
+
+            addUtilities(rotateUtilities)
+        }
+    ],
 }

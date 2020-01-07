@@ -1,5 +1,5 @@
 <template>
-    <div class="font-sans antialiased z-50 text-c-black">
+    <div class="font-sans antialiased z-50 text-c-black" style="box-sizing: border-box;">
         <div class="fixed inset-0 bg-c-black opacity-40">
         </div>
         <div class="absolute top-0 left-0 right-0 flex min-h-screen md:justify-end">

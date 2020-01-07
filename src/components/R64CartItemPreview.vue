@@ -1,6 +1,6 @@
 <template>
     <div class="flex pb-4" :class="{ 'border-b border-c-gray': border }">
-        <div class="w-16 h-16 bg-c-gray flex-shrink-0">
+        <div class="w-16 h-16 bg-c-light-gray flex-shrink-0">
         </div>
         <div class="ml-4 w-full flex flex-col items-end">
             <div class="w-full flex justify-between">

@@ -7,6 +7,7 @@
 <script>
 import R64Checkout from './components/R64Checkout'
 
+
 export default {
   name: 'app',
   components: {

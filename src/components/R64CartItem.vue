@@ -1,6 +1,6 @@
 <template>
     <div class="flex mt-10 pb-10 border-b border-c-gray">
-        <div class="w-40 h-40 bg-c-gray flex-shrink-0">
+        <div class="w-40 h-40 bg-c-light-gray flex-shrink-0">
         </div>
         <div class="ml-6 w-full flex flex-col">
             <div class="flex justify-between">

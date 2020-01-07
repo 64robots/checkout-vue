@@ -1,6 +1,6 @@
 <template>
     <div class="font-sans antialiased text-c-black" style="box-sizing: border-box;">
-        <div class="p-5" style="box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.13);">
+        <div class="fixed top-0 left-0 right-0 p-5 z-10 bg-white" style="box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.13);">
             <div class="flex items-center justify-between">
                 <span class="text-xl">Total to pay (2 items)</span>
                 <span class="text-xl font-bold">$352.50</span>
@@ -20,7 +20,7 @@
             </button>
         </div>
 
-        <form class="p-6">
+        <form class="mt-24 p-6">
             <h2 class="text-3xl">Check Out</h2>
             <div class="mt-6 pb-8">
                 <span class="block text-xl font-bold">Contact</span>
@@ -82,6 +82,29 @@
                 </div>
             </div>
             <R64HorizontalLine class="-mx-6"/>
+            <div class="mt-6 pb-8">
+                <span class="block text-xl font-bold">Payment</span>
+                <span class="block mt-4 text-xl">Payment method</span>
+                <div class="mt-6">
+                    <label class="block" for="card_holder_name">Name on Card</label>
+                    <R64Input id="card_holder_name" class="w-full mt-2"/>
+                </div>
+                <div class="mt-6">
+                    <label class="block" for="card_number">Card Number</label>
+                    <R64CardNumberInput class="mt-2"/>
+                </div>
+                <div class="mt-6 flex">
+                    <div>
+                        <label class="block" for="card_expiration_date">Expiration Date</label>
+                        <R64Input id="card_expiration_date" class="w-full mt-2" placeholder="MM/YY"/>
+                    </div>
+                    <div class="ml-4">
+                        <label class="block" for="card_cvv">Security Code</label>
+                        <R64Input id="card_cvv" class="w-full mt-2" placeholder="CVV"/>
+                    </div>
+                </div>
+            </div>
+            <R64HorizontalLine class="-mx-6"/>
         </form>
     </div>
 </template>
@@ -89,12 +112,14 @@
 <script>
 import R64CartItemPreview from './R64CartItemPreview'
 import R64Input from './R64Input'
+import R64CardNumberInput from "./R64CardNumberInput";
 import R64HorizontalLine from './R64HorizontalLine'
 
 export default {
     components: {
         R64CartItemPreview,
         R64Input,
+        R64CardNumberInput,
         R64HorizontalLine
     },
 
@@ -112,4 +137,4 @@ export default {
 }
 </script>
 
-<style src="../assets/tailwind.css" scoped>
+<style src="../assets/tailwind.css">

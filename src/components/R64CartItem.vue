@@ -1,8 +1,8 @@
 <template>
-    <div class="flex mt-10 pb-10 border-b border-c-gray">
-        <div class="w-40 h-40 bg-c-mid-gray flex-shrink-0">
+    <div class="flex flex-col md:flex-row mt-10 pb-10 border-b border-c-gray">
+        <div class="w-full h-40 md:w-40 md:h-40 bg-c-mid-gray flex-shrink-0">
         </div>
-        <div class="ml-6 w-full flex flex-col">
+        <div class="mt-4 md:ml-6 md:mt-0 w-full flex flex-col">
             <div class="flex justify-between">
                 <span class="text-xl">Soft Edge 12 side chair</span>
                 <span class="text-xl font-bold">$320.00</span>
@@ -10,7 +10,7 @@
 
             <R64Input class="mt-4 max-w-lg" placeholder="Custom note (Optional)" />
 
-            <div class="mt-auto flex items-center">
+            <div class="mt-4 md:mt-auto flex items-center">
                 <span>Qty</span>
                 <input type="text" class="w-10 h-8 ml-5 rounded border border-c-gray focus:outline-none focus:border-c-grayer text-center">
                 <span class="w-px h-6 ml-5 border-l border-c-gray"></span>

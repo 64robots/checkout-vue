@@ -3,7 +3,7 @@
         <div class="fixed inset-0 bg-c-black opacity-40">
         </div>
         <div class="absolute top-0 left-0 right-0 flex min-h-screen md:justify-end">
-            <div class="bg-white w-full max-w-4xl p-12">
+            <div class="bg-white w-full max-w-4xl p-5 md:p-12">
                 <div class="flex justify-between items-center">
                     <span class="text-4xl">Your Cart (2)</span>
                     <R64CloseButton @click.native="$emit('close')"/>
@@ -20,11 +20,11 @@
                 </div>
                 <div class="mt-10 flex flex-col items-end">
                     <span>Shipping and taxes will be calculated at check out</span>
-                    <div class="mt-6 flex items-center">
+                    <div class="mt-6 w-full justify-between flex items-center md:w-auto">
                         <span class="text-xl">Subtotal</span>
                         <span class="ml-10 text-4xl">$342.50</span>
                     </div>
-                    <div class="mt-6 flex flex-col">
+                    <div class="mt-6 w-full flex flex-col md:w-auto">
                         <R64Button @click.native="$emit('checkout')">Checkout</R64Button>
                         <span class="mt-4 text-sm">Have a promo code? Apply it at check out.</span>
                     </div>

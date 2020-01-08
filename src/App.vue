@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <R64Button v-if="section === null" @click.native="section = 'cart'">Cart</R64Button>
+    <div v-if="section === null" class="mt-20 max-w-xs mx-auto">
+      <R64Button @click.native="section = 'cart'">Cart</R64Button>
+    </div>
     <R64Cart v-if="section === 'cart'" @close="section = null" @checkout="section = 'checkout'"/>
     <R64Checkout v-if="section === 'checkout'" @cart="section = 'cart'" @order="section = 'order'"/>
     <R64Order v-if="section === 'order'" />

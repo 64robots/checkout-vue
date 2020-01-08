@@ -73,6 +73,10 @@ export default {
         R64CartItemPreview,
         R64OrderSection,
         R64HorizontalLine
+    },
+
+    mounted () {
+        window.scrollTo(0, 0)
     }
 }
 </script>

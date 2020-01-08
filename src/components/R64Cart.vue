@@ -52,6 +52,10 @@ export default {
         return {
             orderNoteVisible: false
         }
+    },
+
+    mounted () {
+        window.scrollTo(0, 0)
     }
 }
 </script>

@@ -34,32 +34,7 @@
             <div class="mt-6 pb-8">
                 <span class="block text-xl font-bold">Shipping</span>
                 <span class="mt-6 block text-xl">Shipping Address</span>
-                <div class="mt-6">
-                    <label class="block" for="shipping_address_line1">Street</label>
-                    <R64Input id="shipping_address_line1" class="w-full mt-2"/>
-                </div>
-                <div class="mt-6">
-                    <label class="block" for="shipping_address_line2">Apartment, suite, etc... (Optional)</label>
-                    <R64Input id="shipping_address_line2" class="w-full mt-2"/>
-                </div>
-                <div class="mt-6 flex">
-                    <div>
-                        <label class="block" for="shipping_adddress_zipcode">Zipcode</label>
-                        <R64Input id="shipping_adddress_zipcode" class="w-full mt-2"/>
-                    </div>
-                    <div class="ml-2">
-                        <label class="block" for="shipping_address_city">City</label>
-                        <R64Input id="shipping_address_city" class="w-full mt-2"/>
-                    </div>
-                    <div class="ml-2">
-                        <label class="block" for="shipping_address_region">State</label>
-                        <R64Input id="shipping_address_region" class="w-full mt-2"/>
-                    </div>
-                </div>
-                <div class="mt-6">
-                    <label class="block" for="shipping_address_phone">Phone (Optional)</label>
-                    <R64Input id="shipping_address_phone" class="w-full mt-2"/>
-                </div>
+                <R64Address v-model="shippingAddress" prefix="shipping" />
                 <div class="mt-6">
                     <span class="block text-xl">Shipping method</span>
                     <div class="mt-5 w-full flex">
@@ -103,8 +78,31 @@
                         <R64Input id="card_cvv" class="w-full mt-2" placeholder="CVV"/>
                     </div>
                 </div>
+                <div class="mt-6">
+                    <span class="block text-xl">Billing Address</span>
+                    <div class="mt-5 w-full flex">
+                        <input v-model="billingAddressDifferent" name="shipping" type="radio" class="form-radio" id="billing_address_same" :value="false">
+                        <label class="ml-3" for="billing_address_same">Same as shipping address</label>
+                    </div>
+                    <div class="mt-5 w-full flex">
+                        <input v-model="billingAddressDifferent" name="shipping" type="radio" class="form-radio" id="billing_address_different" :value="true">
+                        <label class="ml-3" for="billing_address_different">Use a different billing address</label>
+                    </div>
+                </div>
+                <R64Address v-model="billingAddress" v-if="billingAddressDifferent" />
+
+                <div class="mt-6">
+                    <span class="block text-xl">Have a promo code ?</span>
+                    <R64PromoCode class="mt-5" />
+                </div>
             </div>
             <R64HorizontalLine class="-mx-6"/>
+            <div class="mt-6">
+                <div class="flex items-start">
+                    <input type="checkbox" class="form-checkbox">
+                    <span class="ml-3 align-top">I have read and understood, and accept our Terms and Conditions, Return Policy, and Privacy Policy.</span>
+                </div>
+            </div>
         </form>
     </div>
 </template>
@@ -114,13 +112,17 @@ import R64CartItemPreview from './R64CartItemPreview'
 import R64Input from './R64Input'
 import R64CardNumberInput from "./R64CardNumberInput";
 import R64HorizontalLine from './R64HorizontalLine'
+import R64Address from './R64Address'
+import R64PromoCode from "./R64PromoCode";
 
 export default {
     components: {
         R64CartItemPreview,
         R64Input,
         R64CardNumberInput,
-        R64HorizontalLine
+        R64HorizontalLine,
+        R64Address,
+        R64PromoCode
     },
 
     computed: {
@@ -131,7 +133,10 @@ export default {
 
     data () {
         return {
-            itemSummaryVisible: false
+            itemSummaryVisible: false,
+            billingAddressDifferent: false,
+            shippingAddress: {},
+            billingAddress: {}
         }
     }
 }

@@ -25,7 +25,7 @@
                         <span class="ml-10 text-4xl">$342.50</span>
                     </div>
                     <div class="mt-6">
-                        <R64Button @click.native="$emit('cart:checkout')" class="px-24 py-3">Checkout</R64Button>
+                        <R64Button @click.native="$emit('cart:checkout')">Checkout</R64Button>
                     </div>
                     <span class="mt-4 text-sm">Have a promo code? Apply it at check out.</span>
                 </div>

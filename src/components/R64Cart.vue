@@ -6,7 +6,7 @@
             <div class="bg-white w-full max-w-4xl p-12">
                 <div class="flex justify-between items-center">
                     <span class="text-4xl">Your Cart (2)</span>
-                    <R64CloseButton @click.native="$emit('cart:close')"/>
+                    <R64CloseButton @click.native="$emit('close')"/>
                 </div>
                 <R64CartItem v-for="index in 3" :key="index" />
                 <div class="mt-10 pb-10 border-b border-c-gray">
@@ -24,10 +24,10 @@
                         <span class="text-xl">Subtotal</span>
                         <span class="ml-10 text-4xl">$342.50</span>
                     </div>
-                    <div class="mt-6">
-                        <R64Button @click.native="$emit('cart:checkout')">Checkout</R64Button>
+                    <div class="mt-6 flex flex-col">
+                        <R64Button @click.native="$emit('checkout')">Checkout</R64Button>
+                        <span class="mt-4 text-sm">Have a promo code? Apply it at check out.</span>
                     </div>
-                    <span class="mt-4 text-sm">Have a promo code? Apply it at check out.</span>
                 </div>
             </div>
         </div>

@@ -23,7 +23,11 @@
         <div class="lg:flex lg:mx-auto lg:max-w-7xl">
             <form class="checkout-form w-full mt-24 bg-white lg:flex-shrink-0 lg:max-w-2xl lg:mt-0 xl:max-w-4xl">
                 <R64CheckoutSection>
-                    <h2 class="text-3xl">Check Out</h2>
+                    <button type="button" @click="$emit('cart')" class="text-c-blue flex items-center">
+                        <span><svg class="w-3 h-3" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.41 10.59L2.83 6l4.58-4.59L6 0 0 6l6 6 1.41-1.41z" fill="#006ED4"/></svg></span>
+                        <span class="ml-3">Back to cart</span>
+                    </button>
+                    <h2 class="mt-3 text-3xl">Check Out</h2>
                     <div class="xl:flex mt-6">
                         <span class="block text-xl font-bold xl:w-1/3">Contact</span>
                         <div class="w-full mt-6 lg:max-w-sm xl:mt-0">
@@ -112,7 +116,7 @@
                     <R64Button type="submit" class="mt-6 w-full">Place Order</R64Button>
                 </div>
             </form>
-            <div class="hidden w-full lg:block lg:px-8 lg:pt-12">
+            <div class="hidden w-full lg:block lg:px-8 lg:pt-12 xl:px-16">
                 <div class="lg:max-w-sm">
                     <R64CartItemPreview class="mt-4" v-for="i in 3" :key="i"/>
                     <R64InlinePromoCode class="py-6"/>
@@ -144,7 +148,7 @@
                         <span class="text-xl font-bold">Total to Pay</span>
                         <span class="text-4xl">$352.50</span>
                     </div>
-                    <R64Button>Place Order</R64Button>
+                    <R64Button @click.native="$emit('order')">Place Order</R64Button>
                 </div>
             </div>
         </div>

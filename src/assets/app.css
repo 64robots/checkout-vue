@@ -13,9 +13,15 @@
     }
 }
 
-@media (min-width: 1024px) and (max-width: 1200px) {
+@media (min-width: 1024px) and (max-width: 1120px) {
     .checkout-form {
-        max-width: 36rem !important;
+        max-width: 38rem !important;
+    }
+}
+
+@media (min-width: 1280px) and (max-width: 1400px) {
+    .checkout-form {
+        max-width: 50rem !important;
     }
 }
 

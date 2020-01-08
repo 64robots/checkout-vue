@@ -26,11 +26,15 @@ module.exports = {
             '1/2': '180deg',
         },
         extend: {
+            maxWidth: {
+                '7xl': '90rem'
+            },
             backgroundColor: theme => ({
                 ...theme('colors'),
                 'c-black': '#202020',
                 'c-light-gray': '#ECECEC',
                 'c-gray': '#CCCCCC',
+                'c-grayest': '#F5F5F5',
                 'c-blue': '#006ED4'
             }),
             textColor: theme => ({

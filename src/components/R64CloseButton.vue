@@ -6,4 +6,4 @@
     </button>
 </template>
 
-<style src="../assets/tailwind.css" scoped>
+<style src="../assets/app.css" scoped>

@@ -9,15 +9,15 @@
             <R64Input v-model="address.line_2" :id="makeId('address_line_2')" class="w-full mt-2"/>
         </div>
         <div class="mt-6 flex">
-            <div>
+            <div class="w-full">
                 <label class="block" :for="makeId('adddress_zipcode')">Zipcode</label>
                 <R64Input v-model="address.zipcode" :id="makeId('adddress_zipcode')" class="w-full mt-2"/>
             </div>
-            <div class="ml-2">
+            <div class="w-full ml-2">
                 <label class="block" :for="makeId('address_city')">City</label>
                 <R64Input v-model="address.city" :id="makeId('address_city')" class="w-full mt-2"/>
             </div>
-            <div class="ml-2">
+            <div class="w-full ml-2">
                 <label class="block" :for="makeId('address_region')">State</label>
                 <R64Input v-model="address.region" :id="makeId('address_region')" class="w-full mt-2"/>
             </div>

@@ -21,7 +21,7 @@
         </div>
 
         <div class="lg:flex lg:mx-auto lg:max-w-7xl">
-            <form class="checkout-form w-full mt-24 bg-white lg:flex-shrink-0 lg:max-w-2xl lg:mt-0 xl:max-w-4xl">
+            <div class="checkout-form w-full mt-24 bg-white lg:flex-shrink-0 lg:max-w-2xl lg:mt-0 xl:max-w-4xl">
                 <R64CheckoutSection>
                     <button type="button" @click="$emit('cart')" class="text-c-blue flex items-center">
                         <span><svg class="w-3 h-3" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.41 10.59L2.83 6l4.58-4.59L6 0 0 6l6 6 1.41-1.41z" fill="#006ED4"/></svg></span>
@@ -113,9 +113,9 @@
                         <input type="checkbox" class="form-checkbox">
                         <span class="ml-3 -mt-1 align-top">I have read and understood, and accept our <a href="" class="text-c-blue hover:underline">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
                     </div>
-                    <R64Button type="submit" class="mt-6 w-full">Place Order</R64Button>
+                    <R64Button @click.native="$emit('order')" class="mt-6 w-full">Place Order</R64Button>
                 </div>
-            </form>
+            </div>
             <div class="hidden w-full lg:block lg:px-8 lg:pt-12 xl:px-16">
                 <div class="lg:max-w-sm">
                     <R64CartItemPreview class="mt-4" v-for="i in 3" :key="i"/>

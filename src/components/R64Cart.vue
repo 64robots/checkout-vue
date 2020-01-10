@@ -8,7 +8,7 @@
           <span class="text-4xl">Your Cart ({{ cart.cart_items.length }})</span>
           <R64CloseButton @click.native="$emit('close')"/>
         </div>
-        <R64CartItem :cart-item="cart_item" @cart-item:update="fetchCart" v-for="(cart_item, index) in cart.cart_items" :key="index" />
+        <R64CartItem :cart-item="cart_item" @cart-item:update="fetchCart" @cart-item:delete="fetchCart" v-for="(cart_item, index) in cart.cart_items" :key="index" />
         <div class="mt-10 pb-10 border-b border-c-gray">
           <button @click="orderNoteVisible = !orderNoteVisible" class="flex items-center">
             <svg class="w-5 h-5 text-c-blue fill-current" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,7 +25,7 @@
             <span class="ml-10 text-4xl">${{ cart.items_subtotal }}</span>
           </div>
           <div class="mt-6 w-full flex flex-col md:w-auto">
-            <R64Button @click.native="$emit('checkout')">Checkout</R64Button>
+            <R64Button :disabled="cart.cart_items.length === 0" @click.native="$emit('checkout')">Checkout</R64Button>
             <span class="mt-4 text-sm">Have a promo code? Apply it at check out.</span>
           </div>
         </div>

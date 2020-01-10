@@ -2,13 +2,13 @@
   <div class="font-sans antialiased z-50 text-c-black" style="box-sizing: border-box;">
     <div class="fixed inset-0 bg-c-black opacity-40">
     </div>
-    <div class="absolute top-0 left-0 right-0 flex min-h-screen md:justify-end">
-      <div v-if="cart" class="bg-white w-full max-w-4xl p-5 md:p-12">
+    <div v-if="cart" class="absolute top-0 left-0 right-0 flex min-h-screen md:justify-end">
+      <div class="bg-white w-full max-w-4xl p-5 md:p-12">
         <div class="flex justify-between items-center">
-          <span class="text-4xl">Your Cart ({{ cart.cart_items.length }})</span>
+          <span class="text-4xl">Your Cart ({{ cartItems.length }})</span>
           <R64CloseButton @click.native="$emit('close')"/>
         </div>
-        <R64CartItem :cart-item="cart_item" @cart-item:update="fetchCart" @cart-item:delete="fetchCart" v-for="(cart_item, index) in cart.cart_items" :key="index" />
+        <R64CartItem :cart-item="cartItem" @cart-item:update="fetchCart" @cart-item:delete="fetchCart" v-for="(cartItem, index) in cartItems" :key="index" />
         <div class="mt-10 pb-10 border-b border-c-gray">
           <button @click="orderNoteVisible = !orderNoteVisible" class="flex items-center">
             <svg class="w-5 h-5 text-c-blue fill-current" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,7 +22,7 @@
           <span>Shipping and taxes will be calculated at check out</span>
           <div class="mt-6 w-full justify-between flex items-center md:w-auto">
             <span class="text-xl">Subtotal</span>
-            <span class="ml-10 text-4xl">${{ cart.items_subtotal }}</span>
+            <span class="ml-10 text-4xl">{{ money(cart.items_subtotal) }}</span>
           </div>
           <div class="mt-6 w-full flex flex-col md:w-auto">
             <R64Button :disabled="cart.cart_items.length === 0" @click.native="$emit('checkout')">Checkout</R64Button>
@@ -39,16 +39,11 @@ import R64CartItem from './R64CartItem'
 import R64CloseButton from './R64CloseButton'
 import R64TextArea from './R64TextArea'
 import R64Button from './R64Button'
-import cart from '../api/cart'
-
+import cart from '../mixins/cart'
+import money from '../mixins/money'
 
 export default {
-  props: {
-    cartToken: {
-      type: String,
-      default: null
-    }
-  },
+  mixins: [cart, money],
 
   components: {
     R64CartItem,
@@ -59,32 +54,13 @@ export default {
 
   data () {
     return {
-      orderNoteVisible: false,
-      cart: null
+      orderNoteVisible: false
     }
   },
 
   async mounted () {
     window.scrollTo(0, 0)
     await this.fetchCart()
-  },
-
-  methods: {
-    async fetchCart () {
-      try {
-        if (!this.cartToken) {
-          const { data } = await cart.create()
-          this.cart = data
-        } else {
-          const { data } = await cart.get(this.cartToken)
-          this.cart = data
-        }
-      } catch (e) {
-        //
-      }
-
-      this.$emit('cart:update', this.cart)
-    }
   }
 }
 </script>

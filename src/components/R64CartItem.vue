@@ -5,7 +5,7 @@
     <div class="mt-4 md:ml-6 md:mt-0 w-full flex flex-col">
       <div class="flex justify-between">
         <span class="text-xl">{{ cartItem.product.name }}</span>
-        <span class="text-xl font-bold">${{ cartItem.price }}</span>
+        <span class="text-xl font-bold">{{ money(cartItem.price) }}</span>
       </div>
 
       <R64Input @change="updateCustomerNote" :value="cartItem.customer_note" class="mt-4 max-w-lg" placeholder="Custom note (Optional)" />
@@ -27,23 +27,17 @@
 <script>
 import R64Input from './R64Input'
 import cartItem from '../api/cartItem'
+import cartItemMixin from '../mixins/cartItem'
+import money from '../mixins/money'
 
 export default {
-  props: {
-    cartItem: {
-      type: Object,
-      default: null
-    }
-  },
+  mixins: [cartItemMixin, money],
 
   components: {
     R64Input
   },
 
   computed: {
-    hasImage () {
-      return this.cartItem.product.image
-    },  
     classes () {
       return this.hasImage ? 'mt-4 md:mt-auto' : 'mt-4 md:mt-10'
     }

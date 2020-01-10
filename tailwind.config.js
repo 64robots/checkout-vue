@@ -34,13 +34,15 @@ module.exports = {
                 'c-black': '#202020',
                 'c-light-gray': '#F5F5F5',
                 'c-mid-gray': '#ECECEC',
+                'c-mid-grayer': '#DCDCDC',
                 'c-gray': '#CCCCCC',
                 'c-blue': '#006ED4'
             }),
             textColor: theme => ({
                 ...theme('colors'),
                 'c-black': '#202020',
-                'c-blue': '#006ED4'
+                'c-blue': '#006ED4',
+                'c-grayer': '#AFAFAF'
             }),
             borderColor: theme => ({
                 ...theme('colors'),

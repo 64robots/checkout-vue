@@ -11,10 +11,8 @@ export default {
         })
     },
 
-    update (cartItemToken, quantity) {
-        return http.put(this.url + `/${cartItemToken}`, {
-            quantity: quantity
-        })
+    update (cartItemToken, data) {
+        return http.put(this.url + `/${cartItemToken}`, data)
     },
 
     delete (cartItemToken) {

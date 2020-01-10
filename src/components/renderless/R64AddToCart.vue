@@ -24,7 +24,7 @@ export default {
                 this.loading = true
                 this.hasError = false
 
-                if (this.cartToken === null) {
+                if (!this.cartToken) {
                     const { data } = await cart.create(productId)
                     this.cart = data
                 } else {

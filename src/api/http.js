@@ -6,5 +6,11 @@ export default {
     },
     post (...params) {
         return axios.post(...params).then(response => response.data)
+    },
+    put (...params) {
+        return axios.put(...params).then(response => response.data)
+    },
+    delete (...params) {
+        return axios.delete(...params).then(response => response.data)
     }
 }

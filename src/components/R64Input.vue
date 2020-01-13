@@ -4,22 +4,22 @@
 
 <script>
 export default {
-    props: {
-      value: {
-        type: String,
-        default: null
-      },
-      error: {
-        type: Boolean,
-        default: false
-      }
+  props: {
+    value: {
+      type: String,
+      default: null
     },
-
-    computed: {
-      classes () {
-        return this.error ? 'border-red-400 focus:border-red-600' : 'border-c-gray focus:border-c-grayer'
-      }
+    error: {
+      type: Boolean,
+      default: false
     }
+  },
+
+  computed: {
+    classes () {
+      return this.error ? 'border-red-400 focus:border-red-600' : 'border-c-gray focus:border-c-grayer'
+    }
+  }
 }
 </script>
 

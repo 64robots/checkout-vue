@@ -1,9 +1,9 @@
 import http from './http'
 
 export default {
-    url: '/api/checkout',
+  url: '/api/checkout',
 
-    settings () {
-        return http.get(this.url + '/settings')
-    }
+  settings () {
+    return http.get(this.url + '/settings')
+  }
 }

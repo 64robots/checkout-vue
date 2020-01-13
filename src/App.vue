@@ -6,7 +6,7 @@
       <R64Button class="mt-20" @click.native="section = 'cart'">Cart</R64Button>
     </div>
     <R64Cart :cart-token="cartToken" @cart:update="cartUpdate" v-if="section === 'cart'" @close="section = null" @checkout="section = 'checkout'"/>
-    <R64Checkout :cart-token="cartToken" @cart:update="cartUpdate" v-if="section === 'checkout'" @cart="section = 'cart'" @order="section = 'order'"/>
+    <R64Checkout :cart-token="cartToken" :customer-id="1" customer-notes="Customer Notes" @cart:update="cartUpdate" v-if="section === 'checkout'" @cart="section = 'cart'" @order:create="section = 'order'"/>
     <R64Order v-if="section === 'order'"/>
   </div>
 </template>

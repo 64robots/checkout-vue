@@ -26,7 +26,7 @@
       </button>
     </div>
 
-    <div class="lg:flex lg:mx-auto lg:max-w-7xl">
+    <div v-if="settings" class="lg:flex lg:mx-auto lg:max-w-7xl">
       <div class="checkout-form w-full mt-24 bg-white lg:flex-shrink-0 lg:max-w-2xl lg:mt-0 xl:max-w-4xl">
         <R64CheckoutSection>
           <button type="button" @click="$emit('cart')" class="text-c-blue flex items-center">
@@ -37,8 +37,12 @@
           <div class="xl:flex mt-6">
             <span class="block text-xl font-bold xl:w-1/3">Contact</span>
             <div class="w-full mt-6 lg:max-w-sm xl:mt-0">
-              <label class="block" for="customer_email">Email Address</label>
-              <R64Input id="customer_email" class="w-full mt-2"/>
+              <R64FormInput
+                v-model="form.customer_email"
+                label="Email address"
+                name="customer_email"
+                :required="settings.required.customer_email"
+              />
             </div>
           </div>
         </R64CheckoutSection>
@@ -47,10 +51,61 @@
             <span class="block text-xl font-bold xl:w-1/3">Shipping</span>
             <div class="w-full lg:max-w-sm">
               <span class="mt-6 block text-xl xl:mt-0">Shipping Address</span>
-              <R64Address v-model="shippingAddress" prefix="shipping" />
+              <div>
+                <div class="mt-6">
+                  <R64FormInput
+                    v-model="form.shipping_address_line1"
+                    label="Street"
+                    name="shipping_address_line1"
+                    :required="settings.required.shipping_address_line1"
+                  />
+                </div>
+                <div class="mt-6">
+                  <R64FormInput
+                    v-model="form.shipping_address_line2"
+                    label="Apartment, suite, etc ..."
+                    name="shipping_address_line2"
+                    :required="settings.required.shipping_address_line2"
+                  />
+                </div>
+                <div class="mt-6 flex">
+                  <div class="w-full">
+                    <R64FormInput
+                      v-model="form.shipping_address_zipcode"
+                      label="Zipcode"
+                      name="shipping_address_zipcode"
+                      :required="settings.required.shipping_address_zipcode"
+                    />
+                  </div>
+                  <div class="w-full ml-2">
+                    <R64FormInput
+                      v-model="form.shipping_address_city"
+                      label="City"
+                      name="shipping_address_city"
+                      :required="settings.required.shipping_address_city"
+                    />
+                  </div>
+                  <div class="w-full ml-2">
+                    <R64FormInput
+                      v-model="form.shipping_address_region"
+                      label="State"
+                      name="shipping_address_region"
+                      :required="settings.required.shipping_address_region"
+                    />
+                  </div>
+                </div>
+                <div class="mt-6">
+                  <R64FormInput
+                    v-model="form.shipping_address_phone"
+                    label="Phone"
+                    name="shipping_address_phone"
+                    :required="settings.required.shipping_address_phone"
+                  />
+                </div>
+              </div>
               <div class="mt-6">
                 <span class="block text-xl">Shipping method</span>
-                <R64ShippingMethods :methods="shippingMethods" @change="(method) => selectedShippingMethod = method" />
+                <R64ShippingMethods :methods="shippingMethods" @change="selectShippingMethod" />
               </div>
             </div>
           </div>
@@ -89,11 +144,61 @@
                   <label class="ml-3" for="billing_address_different">Use a different billing address</label>
                 </div>
               </div>
-              <R64Address v-model="billingAddress" v-if="billingAddressDifferent" />
-
+              <div v-if="billingAddressDifferent">
+                <div class="mt-6">
+                  <R64FormInput
+                    v-model="form.billing_address_line1"
+                    label="Street"
+                    name="billing_address_line1"
+                    :required="settings.required.billing_address_line1"
+                  />
+                </div>
+                <div class="mt-6">
+                  <R64FormInput
+                    v-model="form.billing_address_line2"
+                    label="Apartment, suite, etc ..."
+                    name="billing_address_line2"
+                    :required="settings.required.billing_address_line2"
+                  />
+                </div>
+                <div class="mt-6 flex">
+                  <div class="w-full">
+                    <R64FormInput
+                      v-model="form.billing_address_zipcode"
+                      label="Zipcode"
+                      name="billing_address_zipcode"
+                      :required="settings.required.billing_address_zipcode"
+                    />
+                  </div>
+                  <div class="w-full ml-2">
+                    <R64FormInput
+                      v-model="form.billing_address_city"
+                      label="City"
+                      name="billing_address_city"
+                      :required="settings.required.billing_address_city"
+                    />
+                  </div>
+                  <div class="w-full ml-2">
+                    <R64FormInput
+                      v-model="form.billing_address_region"
+                      label="State"
+                      name="billing_address_region"
+                      :required="settings.required.billing_address_region"
+                    />
+                  </div>
+                </div>
+                <div class="mt-6">
+                  <R64FormInput
+                    v-model="form.billing_address_phone"
+                    label="Phone"
+                    name="billing_address_phone"
+                    :required="settings.required.billing_address_phone"
+                  />
+                </div>
+              </div>
               <div class="mt-6 lg:hidden">
                 <span class="block text-xl">Have a promo code ?</span>
-                <R64PromoCode class="mt-5" />
+                <R64PromoCode @apply="applyPromoCode" class="mt-5" />
               </div>
             </div>
           </div>
@@ -103,7 +208,7 @@
             <input type="checkbox" class="form-checkbox">
             <span class="ml-3 -mt-1 align-top">I have read and understood, and accept our <a :href="tocUrl" class="text-c-blue hover:underline">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
-          <R64Button @click.native="$emit('order')" class="mt-6 w-full">Place Order</R64Button>
+          <R64Button @click.native="createOrder" class="mt-6 w-full">Place Order</R64Button>
         </div>
       </div>
       <div class="hidden w-full lg:block lg:px-8 lg:pt-12 xl:px-16">
@@ -114,7 +219,7 @@
             :cart-item="cartItem" 
             class="mt-4"
           />
-          <R64InlinePromoCode class="py-6"/>
+          <R64InlinePromoCode @apply="applyPromoCode" class="py-6"/>
           <R64HorizontalLine />
           <div class="my-6">
             <div class="flex justify-between">
@@ -144,10 +249,10 @@
             <span class="text-4xl">{{ money(total) }}</span>
           </div>
           <div class="flex items-start">
-            <input type="checkbox" class="form-checkbox">
+            <input v-model="consent" type="checkbox" class="form-checkbox">
             <span class="ml-3 -mt-1 align-top">I have read and understood, and accept our <a :href="tocUrl" class="text-c-blue hover:underline">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
-          <R64Button @click.native="$emit('order')" class="mt-6">Place Order</R64Button>
+          <R64Button @click.native="createOrder" class="mt-6" :disabled="!consent">Place Order</R64Button>
         </div>
       </div>
     </div>
@@ -157,10 +262,10 @@
 <script>
 import R64CartItemPreview from './R64CartItemPreview'
 import R64Input from './R64Input'
+import R64FormInput from './R64FormInput'
 import R64CardNumberInput from "./R64CardNumberInput"
 import R64CheckoutSection from './R64CheckoutSection'
 import R64ShippingMethods from './R64ShippingMethods'
-import R64Address from './R64Address'
 import R64PromoCode from "./R64PromoCode"
 import R64Button from "./R64Button"
 import R64InlinePromoCode from './R64InlinePromoCode'
@@ -169,19 +274,31 @@ import cartMixin from '../mixins/cart'
 import money from '../mixins/money'
 import cart from '../api/cart'
 import checkout from '../api/checkout'
+import order from '../api/order'
 
 export default {
   mixins: [cartMixin, money],
+
+  props: {
+    customerId: {
+      type: Number,
+      default: null
+    },
+    customerNotes: {
+      type: String,
+      default: null
+    }
+  },
 
   components: {
     R64Button,
     R64CartItemPreview,
     R64Input,
+    R64FormInput,
     R64CardNumberInput,
     R64ShippingMethods,
     R64CheckoutSection,
     R64InlinePromoCode,
-    R64Address,
     R64PromoCode,
     R64HorizontalLine
   },
@@ -197,10 +314,27 @@ export default {
     return {
       itemSummaryVisible: false,
       billingAddressDifferent: false,
+      form: {
+        customer_email: null,
+        shipping_id: null,
+        shipping_first_name: null,
+        shipping_last_name: null,
+        shipping_address_line1: null,
+        shipping_address_line2: null,
+        shipping_address_city: null,
+        shipping_address_region: null,
+        shipping_address_zipcode: null,
+        shipping_address_phone: null,
+        billing_address_line1: null,
+        billing_address_line2: null,
+        billing_address_city: null,
+        billing_address_region: null,
+        billing_address_zipcode: null,
+        billing_address_phone: null,
+      },
       settings: null,
-      shippingAddress: {},
-      billingAddress: {},
       selectedShippingMethod: null,
+      consent: false,
       total: '0.00'
     }
   },
@@ -232,6 +366,31 @@ export default {
 
       const { data } = await cart.getTotal(this.cartToken, shippingMethodId)
       this.total = data.total
+    },
+
+    async applyPromoCode (promoCode) {
+      /* eslint-disable no-console */
+      console.log(promoCode)
+      /* eslint-disable no-console */
+    },
+
+    async createOrder () {
+      try {
+        const { data } = await order.create({
+          cart_token: this.cartToken,
+          customer_id: this.customerId,
+          customer_notes: this.customerNotes,
+          ...this.form
+        })
+        this.$emit('order:create', data)
+      } catch (e) {
+        //
+      }
+    },
+
+    selectShippingMethod (method) {
+      this.selectedShippingMethod = method
+      this.form.shipping_id = method.id
     }
   },
 

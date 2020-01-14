@@ -72,7 +72,10 @@ export default {
     const stripeElements = this.stripe.elements()
     const style = {
       base: {
-        fontSize: '16px'
+        fontSize: '16px',
+        '::placeholder': {
+          color: '#737373'
+        }
       }
     }
 

@@ -119,20 +119,7 @@
                 <label class="block" for="card_holder_name">Name on Card</label>
                 <R64Input id="card_holder_name" class="w-full mt-2"/>
               </div>
-              <div class="mt-6">
-                <label class="block" for="card_number">Card Number</label>
-                <R64CardNumberInput class="mt-2"/>
-              </div>
-              <div class="mt-6 flex">
-                <div class="w-full">
-                  <label class="block" for="card_expiration_date">Expiration Date</label>
-                  <R64Input id="card_expiration_date" class="w-full mt-2" placeholder="MM/YY"/>
-                </div>
-                <div class="w-full ml-4">
-                  <label class="block" for="card_cvv">Security Code</label>
-                  <R64Input id="card_cvv" class="w-full mt-2" placeholder="CVV"/>
-                </div>
-              </div>
+              <R64StripePayment ref="stripe" :stripe-key="stripeKey" />              
               <div class="mt-6">
                 <span class="block text-xl">Billing Address</span>
                 <div class="mt-5 w-full flex">
@@ -263,18 +250,19 @@
 import R64CartItemPreview from './R64CartItemPreview'
 import R64Input from './R64Input'
 import R64FormInput from './R64FormInput'
-import R64CardNumberInput from "./R64CardNumberInput"
+// import R64CardNumberInput from "./R64CardNumberInput"
 import R64CheckoutSection from './R64CheckoutSection'
 import R64ShippingMethods from './R64ShippingMethods'
 import R64PromoCode from "./R64PromoCode"
 import R64Button from "./R64Button"
 import R64InlinePromoCode from './R64InlinePromoCode'
 import R64HorizontalLine from './R64HorizontalLine'
+import R64StripePayment from './R64StripePayment'
 import cartMixin from '../mixins/cart'
 import money from '../mixins/money'
 import cart from '../api/cart'
 import checkout from '../api/checkout'
-import order from '../api/order'
+// import order from '../api/order'
 
 export default {
   mixins: [cartMixin, money],
@@ -287,6 +275,10 @@ export default {
     customerNotes: {
       type: String,
       default: null
+    },
+    stripeKey: {
+      type: String,
+      default: null
     }
   },
 
@@ -295,19 +287,13 @@ export default {
     R64CartItemPreview,
     R64Input,
     R64FormInput,
-    R64CardNumberInput,
+    // R64CardNumberInput,
     R64ShippingMethods,
     R64CheckoutSection,
     R64InlinePromoCode,
     R64PromoCode,
-    R64HorizontalLine
-  },
-
-  async mounted () {
-    window.scrollTo(0, 0)
-    await this.fetchSettings()
-    await this.fetchCart()
-    await this.fetchTotal()
+    R64HorizontalLine,
+    R64StripePayment
   },
 
   data () {
@@ -337,6 +323,14 @@ export default {
       consent: false,
       total: '0.00'
     }
+  },
+
+  async mounted () {
+    window.scrollTo(0, 0)
+    
+    await this.fetchSettings()
+    await this.fetchCart()
+    await this.fetchTotal()
   },
 
   computed: {
@@ -375,23 +369,28 @@ export default {
     },
 
     async createOrder () {
-      try {
-        const { data } = await order.create({
-          cart_token: this.cartToken,
-          customer_id: this.customerId,
-          customer_notes: this.customerNotes,
-          ...this.form
-        })
-        this.$emit('order:create', data)
-      } catch (e) {
-        //
-      }
+      this.$refs.stripe.createToken().then(result => {
+        /* eslint-disable no-console */
+        console.log(result)
+        /* eslint-disable no-console */
+      })
+      // try {
+      //   const { data } = await order.create({
+      //     cart_token: this.cartToken,
+      //     customer_id: this.customerId,
+      //     customer_notes: this.customerNotes,
+      //     ...this.form
+      //   })
+      //   this.$emit('order:create', data)
+      // } catch (e) {
+      //   //
+      // }
     },
 
     selectShippingMethod (method) {
       this.selectedShippingMethod = method
       this.form.shipping_id = method.id
-    }
+    },
   },
 
   watch: {

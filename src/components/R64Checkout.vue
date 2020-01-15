@@ -115,10 +115,6 @@
             <span class="block text-xl font-bold xl:w-1/3">Payment</span>
             <div class="w-full lg:max-w-sm">
               <span class="mt-6 block text-xl xl:mt-0">Payment method</span>
-              <div class="mt-6">
-                <label class="block" for="card_holder_name">Name on Card</label>
-                <R64Input id="card_holder_name" class="w-full mt-2"/>
-              </div>
               <R64StripePayment ref="stripe" :stripe-key="stripeKey" />              
               <div class="mt-6">
                 <span class="block text-xl">Billing Address</span>
@@ -248,7 +244,6 @@
 
 <script>
 import R64CartItemPreview from './R64CartItemPreview'
-import R64Input from './R64Input'
 import R64FormInput from './R64FormInput'
 // import R64CardNumberInput from "./R64CardNumberInput"
 import R64CheckoutSection from './R64CheckoutSection'
@@ -262,7 +257,7 @@ import cartMixin from '../mixins/cart'
 import money from '../mixins/money'
 import cart from '../api/cart'
 import checkout from '../api/checkout'
-// import order from '../api/order'
+import order from '../api/order'
 
 export default {
   mixins: [cartMixin, money],
@@ -279,13 +274,16 @@ export default {
     stripeKey: {
       type: String,
       default: null
+    },
+    authToken: {
+      type: String,
+      default: null
     }
   },
 
   components: {
     R64Button,
     R64CartItemPreview,
-    R64Input,
     R64FormInput,
     // R64CardNumberInput,
     R64ShippingMethods,
@@ -369,22 +367,23 @@ export default {
     },
 
     async createOrder () {
-      this.$refs.stripe.createToken().then(result => {
-        /* eslint-disable no-console */
-        console.log(result)
-        /* eslint-disable no-console */
-      })
-      // try {
-      //   const { data } = await order.create({
-      //     cart_token: this.cartToken,
-      //     customer_id: this.customerId,
-      //     customer_notes: this.customerNotes,
-      //     ...this.form
-      //   })
-      //   this.$emit('order:create', data)
-      // } catch (e) {
-      //   //
-      // }
+      try {
+        const { token } = await this.$refs.stripe.createToken()
+        await order.create({
+          stripe: {
+            token: token.id
+          },
+          order: {
+            cart_token: this.cartToken,
+            customer_notes: this.customerNotes,
+            ...this.form
+          },
+          auth_token: this.authToken
+        })
+        // this.$emit('order:create', data)
+      } catch (e) {
+        //
+      }
     },
 
     selectShippingMethod (method) {

@@ -5,8 +5,24 @@
       <R64AddtoCart :cart-token="cartToken" @cart:update="cartUpdate" :product-id="2" class="mt-20 max-w-xs mx-auto"/>
       <R64Button class="mt-20" @click.native="section = 'cart'">Cart</R64Button>
     </div>
-    <R64Cart :cart-token="cartToken" @cart:update="cartUpdate" v-if="section === 'cart'" @close="section = null" @checkout="section = 'checkout'"/>
-    <R64Checkout :cart-token="cartToken" stripe-key="pk_test_t9zUIgcNA0SwHCPuan3rYsew" :customer-id="1" customer-notes="Customer Notes" @cart:update="cartUpdate" v-if="section === 'checkout'" @cart="section = 'cart'" @order:create="orderCreate"/>
+    <R64Cart 
+      v-if="section === 'cart'"
+      :cart-token="cartToken"
+      @cart:update="cartUpdate"  
+      @close="section = null" 
+      @checkout="section = 'checkout'"
+    />
+    <R64Checkout
+      v-if="section === 'checkout'"
+      :cart-token="cartToken"
+      :auth-token="authToken"
+      :customer-id="1"
+      stripe-key="pk_test_t9zUIgcNA0SwHCPuan3rYsew" 
+      customer-notes="Customer Notes" 
+      @cart:update="cartUpdate" 
+      @cart="section = 'cart'" 
+      @order:create="orderCreate"
+    />
     <R64Order v-if="section === 'order' && order" :order-id="order.id"/>
   </div>
 </template>
@@ -32,6 +48,7 @@ export default {
   data() {
     return {
       section: 'checkout',
+      authToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6IkpUVmt1VkZtSlA0MkltZmgifQ.eyJpc3MiOiJodHRwOlwvXC9kcXMtYmFja2VuZC50ZXN0Iiwic3ViIjoiNTk3NyIsImp0aSI6IkpUVmt1VkZtSlA0MkltZmgiLCJpYXQiOjE1NzkwOTczMzAsIm5iZiI6MTU3OTA5NzMzMCwiZXhwIjoxNTc5NTI5MzMwLCJybGkiOjE1Nzk5NjEzMzB9.HWiqbdansw7gxCSCqI3S7fto3tBUhRJnvUEyNAsocx8',
       cart: null,
       order: null
     }
@@ -39,7 +56,7 @@ export default {
 
   computed: {
     cartToken () {
-      return 'zkOQuIQkpe1NNclvyz4wYGw8iPNUHX'
+      return '3BrjI93pv4TCwI8lJ0bUny6uuG0RNo'
       // return this.cart && this.cart.cart_token
     }
   },

@@ -6,7 +6,7 @@
         <span class="block mt-10 text-4xl font-bold">Thank you for your order!</span>
         <span class="block mt-4">Order Number: {{ order.id }}</span>
         <span class="block mt-2">Order Date: {{ order.created_at }}</span>
-        <span class="block mt-2">Payment Method: Visa Credit ending in 1234</span>
+        <span class="block mt-2">Payment Method: {{ order.order_purchase.card_type }} ending in {{ order.order_purchase.card_last4 }}</span>
         <span class="block mt-2 text-c-blue">Delivery Date: Dec, 26 ,2019</span>
       </R64OrderSection>
       <R64OrderSection class="mt-2">
@@ -77,6 +77,10 @@ export default {
     orderId: {
       type: Number,
       default: null
+    },
+    authToken: {
+      type: String,
+      default: null
     }
   },
 
@@ -100,7 +104,7 @@ export default {
   methods: {
     async fetchOrder () {
       try {
-        const { data } = await order.get(this.orderId)
+        const { data } = await order.get(this.orderId, this.authToken)
         this.order = data
       } catch (e) {
         //

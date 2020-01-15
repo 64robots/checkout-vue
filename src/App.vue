@@ -23,7 +23,11 @@
       @cart="section = 'cart'" 
       @order:create="orderCreate"
     />
-    <R64Order v-if="section === 'order' && order" :order-id="order.id"/>
+    <R64Order 
+      v-if="section === 'order' && order" 
+      :order-id="order.id"
+      :auth-token="authToken"
+    />
   </div>
 </template>
 
@@ -47,10 +51,12 @@ export default {
 
   data() {
     return {
-      section: 'checkout',
-      authToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6IkpUVmt1VkZtSlA0MkltZmgifQ.eyJpc3MiOiJodHRwOlwvXC9kcXMtYmFja2VuZC50ZXN0Iiwic3ViIjoiNTk3NyIsImp0aSI6IkpUVmt1VkZtSlA0MkltZmgiLCJpYXQiOjE1NzkwOTczMzAsIm5iZiI6MTU3OTA5NzMzMCwiZXhwIjoxNTc5NTI5MzMwLCJybGkiOjE1Nzk5NjEzMzB9.HWiqbdansw7gxCSCqI3S7fto3tBUhRJnvUEyNAsocx8',
+      section: 'order',
+      authToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6Ik1LZlNxNFU1dmM3bkxLYUYifQ.eyJpc3MiOiJodHRwOlwvXC9kcXMtYmFja2VuZC50ZXN0Iiwic3ViIjoiNTk3NyIsImp0aSI6Ik1LZlNxNFU1dmM3bkxLYUYiLCJpYXQiOjE1NzkxMTMwNTUsIm5iZiI6MTU3OTExMzA1NSwiZXhwIjoxNTc5NTQ1MDU1LCJybGkiOjE1Nzk5NzcwNTV9.rBcTgk8MDTyCLX2B4wmpIW-78u9f05BhHEaujlUkrK4',
       cart: null,
-      order: null
+      order: {
+        id: 16
+      }
     }
   },
 

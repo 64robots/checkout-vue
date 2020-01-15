@@ -369,7 +369,7 @@ export default {
     async createOrder () {
       try {
         const { token } = await this.$refs.stripe.createToken()
-        await order.create({
+        const { data } = await order.create({
           stripe: {
             token: token.id
           },
@@ -380,7 +380,7 @@ export default {
           },
           auth_token: this.authToken
         })
-        // this.$emit('order:create', data)
+        this.$emit('order:create', data)
       } catch (e) {
         //
       }

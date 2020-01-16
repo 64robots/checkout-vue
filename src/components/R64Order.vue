@@ -54,8 +54,8 @@
           </div>
           <div class="w-1/2">
             <span class="block font-bold">Shipping method</span>
-            <span class="block mt-2">5 business days</span>
-            <span class="block mt-1">Get it Saturday Dec 21</span>
+            <span class="block mt-2">{{ order.delivery_days }} business days</span>
+            <span class="block mt-1">Get it {{ order.delivery_date }}</span>
           </div>
         </div>
       </R64OrderSection>

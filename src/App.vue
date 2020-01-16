@@ -52,17 +52,17 @@ export default {
   data() {
     return {
       section: 'order',
-      authToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6Ik1LZlNxNFU1dmM3bkxLYUYifQ.eyJpc3MiOiJodHRwOlwvXC9kcXMtYmFja2VuZC50ZXN0Iiwic3ViIjoiNTk3NyIsImp0aSI6Ik1LZlNxNFU1dmM3bkxLYUYiLCJpYXQiOjE1NzkxMTMwNTUsIm5iZiI6MTU3OTExMzA1NSwiZXhwIjoxNTc5NTQ1MDU1LCJybGkiOjE1Nzk5NzcwNTV9.rBcTgk8MDTyCLX2B4wmpIW-78u9f05BhHEaujlUkrK4',
+      authToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6IlNqY1NyMXR6SUZjUXlMSmkifQ.eyJpc3MiOiJodHRwOlwvXC9kcXMtYmFja2VuZC50ZXN0Iiwic3ViIjoiNTk3NyIsImp0aSI6IlNqY1NyMXR6SUZjUXlMSmkiLCJpYXQiOjE1NzkxNjYxODYsIm5iZiI6MTU3OTE2NjE4NiwiZXhwIjoxNTc5NTk4MTg2LCJybGkiOjE1ODAwMzAxODZ9.XEvpRvjPlwtAgS1pAZo-xnp818-EhZg7Qc36f0xoEok',
       cart: null,
       order: {
-        id: 16
+        id: 1
       }
     }
   },
 
   computed: {
     cartToken () {
-      return '3BrjI93pv4TCwI8lJ0bUny6uuG0RNo'
+      return 'f3oMyoJg9gdrezhmygBUOKFeVinWxd'
       // return this.cart && this.cart.cart_token
     }
   },

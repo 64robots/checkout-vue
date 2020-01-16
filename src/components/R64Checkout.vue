@@ -42,7 +42,7 @@
                 label="Email address"
                 :validator="$v.form.customer_email"
                 :show-error="$v.form.customer_email.$error"
-                error-message="Email address is required"
+                error-message="Valid email address is required"
               />
             </div>
           </div>
@@ -94,6 +94,7 @@
                     <R64FormInput
                       v-model="form.shipping_address_zipcode"
                       label="Zipcode"
+                      alert-class="whitespace-no-wrap"
                       :validator="$v.form.shipping_address_zipcode"
                       :show-error="$v.form.shipping_address_zipcode.$error"
                       error-message="Zipcode is required"
@@ -130,7 +131,15 @@
               </div>
               <div class="mt-6">
                 <span class="block text-xl">Shipping method</span>
-                <R64ShippingMethods :methods="shippingMethods" @change="selectShippingMethod" />
+                <R64ShippingMethods 
+                  :methods="shippingMethods" 
+                  @change="selectShippingMethod" 
+                />
+                <R64Alert
+                  class="mt-2"
+                  :visible="$v.form.shipping_id.$error"
+                  message="Select a shipping method"
+                />
               </div>
             </div>
           </div>
@@ -140,7 +149,25 @@
             <span class="block text-xl font-bold xl:w-1/3">Payment</span>
             <div class="w-full lg:max-w-sm">
               <span class="mt-6 block text-xl xl:mt-0">Payment method</span>
-              <R64StripePayment ref="stripe" :stripe-key="stripeKey" />              
+              <R64StripePayment 
+                ref="stripe" 
+                :stripe-key="stripeKey"
+                :show-card-error="stripeValidated.number"
+                :show-expiry-error="stripeValidated.expiry"
+                :show-cvc-error="stripeValidated.cvc"
+                @complete:number="stripeValidated.number = true"
+                @error:number="stripeValidated.number = false"
+                @complete:expiry="stripeValidated.expiry = true"
+                @error:expiry="stripeValidated.expiry = false"
+                @complete:cvc="stripeValidated.cvc = true"
+                @error:cvc="stripeValidated.cvc = false"
+                @change="showStripeError = false"
+              />
+              <R64Alert
+                class="mt-2"
+                :visible="showStripeError"
+                message="Correct payments details are required"
+              />
               <div class="mt-6">
                 <span class="block text-xl">Billing Address</span>
                 <div class="mt-5 w-full flex">
@@ -270,9 +297,9 @@
 <script>
 import R64CartItemPreview from './R64CartItemPreview'
 import R64FormInput from './R64FormInput2'
-// import R64CardNumberInput from "./R64CardNumberInput"
 import R64CheckoutSection from './R64CheckoutSection'
 import R64ShippingMethods from './R64ShippingMethods'
+import R64Alert from './R64Alert'
 import R64PromoCode from "./R64PromoCode"
 import R64Button from "./R64Button"
 import R64InlinePromoCode from './R64InlinePromoCode'
@@ -284,7 +311,7 @@ import cart from '../api/cart'
 import checkout from '../api/checkout'
 import order from '../api/order'
 import { validationMixin } from 'vuelidate'
-import { required } from 'vuelidate/lib/validators'
+import { required, email, alpha } from 'vuelidate/lib/validators'
 
 export default {
   mixins: [cartMixin, money, validationMixin],
@@ -312,13 +339,13 @@ export default {
     R64Button,
     R64CartItemPreview,
     R64FormInput,
-    // R64CardNumberInput,
     R64ShippingMethods,
     R64CheckoutSection,
     R64InlinePromoCode,
     R64PromoCode,
     R64HorizontalLine,
-    R64StripePayment
+    R64StripePayment,
+    R64Alert
   },
 
   data () {
@@ -343,6 +370,12 @@ export default {
         billing_address_zipcode: null,
         billing_address_phone: null,
       },
+      stripeValidated: {
+        number: false,
+        expiry: false,
+        cvc: false
+      },
+      showStripeError: false,
       settings: null,
       selectedShippingMethod: null,
       consent: false,
@@ -352,10 +385,10 @@ export default {
 
   validations () {
     const requiredFields = {
-      customer_email: {},
-      shipping_id: {},
-      shipping_first_name: {},
-      shipping_last_name: {},
+      customer_email: { email },
+      shipping_id: { required },
+      shipping_first_name: { alpha },
+      shipping_last_name: { alpha },
       shipping_address_line1: {},
       shipping_address_line2: {},
       shipping_address_city: {},
@@ -367,13 +400,15 @@ export default {
       billing_address_city: {},
       billing_address_region: {},
       billing_address_zipcode: {},
-      billing_address_phone: {},
+      billing_address_phone: {}
     }
 
     Object.keys(this.settings.required)
       .forEach((field) => {
         if (this.settings.required[field]) {
-          requiredFields[field] = { required }
+          requiredFields[field] = { ...requiredFields[field], required }
+        } else {
+          requiredFields[field] = { }
         }
       })
 
@@ -403,6 +438,9 @@ export default {
     },
     tocUrl () {
       return this.settings ? this.settings.toc_url : '#'
+    },
+    stripeAllValidated () {
+      return this.stripeValidated.number && this.stripeValidated.expiry && this.stripeValidated.cvc
     }
   },
 
@@ -432,9 +470,15 @@ export default {
     async createOrder () {
       this.$v.$touch()
 
-      if (this.$v.$invalid) {
+      if (!this.stripeAllValidated) {
+        this.showStripeError = true
+      }
+
+      if (this.$v.$invalid || !this.stripeAllValidated) {
         return
       }
+
+      this.showStripeError = false
 
       try {
         const { token } = await this.$refs.stripe.createToken()

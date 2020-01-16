@@ -10,6 +10,11 @@
           <div ref="card_number" class="mt-2 w-full h-10 px-10 rounded border border-c-gray text-base focus:outline-none focus:border-c-grayer" style="padding-top: 10px"></div>
         </div>
       </label>
+      <R64Alert
+        class="mt-2"
+        :visible="cardNumberError !== null"
+        :message="cardNumberError"
+      />
       <div class="mt-2 flex items-center">
           <span class="text-sm">We accept</span>
           <span class="ml-2 w-8 h-5 flex items-center justify-center border border-c-gray rounded-sm">
@@ -30,16 +35,26 @@
       </div>
     </div>
     <div class="mt-6 flex">
-      <div class="w-full">
+      <div class="w-1/2">
         <label class="block">
           <span>Expiration Date</span>
           <div ref="card_expiry" class="mt-2 h-10 px-3 rounded border border-c-gray text-base focus:outline-none focus:border-c-grayer" style="padding-top: 10px"></div>
+          <R64Alert
+            class="mt-2"
+            :visible="cardExpiryError !== null"
+            :message="cardExpiryError"
+          />
         </label>
       </div>
-      <div class="w-full ml-4">
+      <div class="w-1/2 ml-4">
         <label class="block">
           <span>Security Code</span>
           <div ref="card_cvc" class="mt-2 h-10 px-3 rounded border border-c-gray text-base focus:outline-none focus:border-c-grayer" style="padding-top: 10px"></div>
+          <R64Alert
+            class="mt-2"
+            :visible="cardCvcError !== null"
+            :message="cardCvcError"
+          />
         </label>
       </div>
     </div>
@@ -47,6 +62,7 @@
 </template>
 
 <script>
+import R64Alert from './R64Alert'
 import { injectStripe, createStripe } from '../helpers/stripe'
 
 export default {
@@ -57,12 +73,19 @@ export default {
     }
   },
 
+  components: {
+    R64Alert
+  },
+
   data () {
     return {
       stripe: null,
       cardNumber: null,
       cardExpiry: null,
-      cardCvc: null
+      cardCvc: null,
+      cardNumberError: null,
+      cardExpiryError: null,
+      cardCvcError: null
     }
   },
 
@@ -86,6 +109,39 @@ export default {
     this.cardNumber.mount(this.$refs.card_number)
     this.cardExpiry.mount(this.$refs.card_expiry)
     this.cardCvc.mount(this.$refs.card_cvc)
+
+    this.cardNumber.on('change', event => {
+      if (!event.complete && event.error) {
+        this.cardNumberError = event.error.message
+        this.$emit('error:number', event)
+      } else {
+        this.cardNumberError = null
+        this.$emit('complete:number', event)
+      }
+      this.$emit('change')
+    })
+
+    this.cardExpiry.on('change', event => {
+      if (!event.complete && event.error) {
+        this.cardExpiryError = event.error.message
+        this.$emit('error:expiry', event)
+      } else {
+        this.cardExpiryError = null
+        this.$emit('complete:expiry', event)
+      }
+      this.$emit('change')
+    })
+
+    this.cardCvc.on('change', event => {
+      if (!event.complete && event.error) {
+        this.cardCvcError = event.error.message
+        this.$emit('error:cvc', event)
+      } else {
+        this.cardCvcError = null
+        this.$emit('complete:cvc', event)
+      }
+      this.$emit('change')
+    })
   },
 
   methods: {

@@ -3,7 +3,7 @@
     v-show="visible"
     class="flex w-full text-sm text-white mt-1"
   >
-    <span :class="classes" class="whitespace-no-wrap">
+    <span :class="classes">
       {{ message }}
     </span>
 

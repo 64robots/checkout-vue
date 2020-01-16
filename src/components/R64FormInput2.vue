@@ -53,7 +53,8 @@ export default {
     },
 
     alertClass: {
-      type: String
+      type: String,
+      default: null
     },
 
     errorMessage: {

@@ -8,11 +8,25 @@
         <span class="text-xl font-bold">{{ money(cartItem.price) }}</span>
       </div>
 
-      <R64Input @change="updateCustomerNote" :value="cartItem.customer_note" class="mt-4 max-w-lg" placeholder="Custom note (Optional)" />
+      <R64FormInput
+        v-model="cartItem.customer_note"
+        :id="`customer_note_${cartItem.cart_item_token}`"
+        input-class="h-10 w-full max-w-lg mt-4 px-3 rounded border border-c-gray focus:border-c-grayer text-base focus:outline-none focus:border-c-grayer"
+        placeholder="Custom note (Optional)"
+        @blur="updateCustomerNote"
+      />
 
       <div class="flex items-center" :class="classes">
-        <span>Qty</span>
-        <input :value="cartItem.quantity" @change="updateQuantity" type="text" class="w-10 h-8 ml-5 rounded border border-c-gray focus:outline-none focus:border-c-grayer text-center">
+        <label :for="`quantity_${cartItem.cart_item_token}`">Qty</label>
+        <R64FormInput
+          v-model="cartItem.quantity"
+          :id="`quantity_${cartItem.cart_item_token}`"
+          :validator="$v.cartItem.quantity"
+          error-message="Quantity must be a positive number"
+          input-class="w-10 h-8 ml-5 rounded border border-c-gray focus:outline-none focus:border-c-grayer text-center"
+          alert-class="ml-4"
+          @blur="updateQuantity"
+        />
         <span class="w-px h-6 ml-5 border-l border-c-gray"></span>
         <button @click="remove" class="ml-5">
           <svg class="w-5 h-5" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,16 +39,18 @@
 </template>
 
 <script>
-import R64Input from './R64Input'
+import R64FormInput from './R64FormInput2'
 import cartItem from '../api/cartItem'
 import cartItemMixin from '../mixins/cartItem'
 import money from '../mixins/money'
+import { validationMixin } from 'vuelidate'
+import { numeric } from 'vuelidate/lib/validators'
 
 export default {
-  mixins: [cartItemMixin, money],
+  mixins: [cartItemMixin, money, validationMixin],
 
   components: {
-    R64Input
+    R64FormInput
   },
 
   computed: {
@@ -43,22 +59,35 @@ export default {
     }
   },
 
+  validations: {
+    cartItem: {
+      quantity: {
+        numeric,
+      }
+    }
+  },
+
   methods: {
-    async updateQuantity (e) {
+    async updateQuantity () {
+      if (this.$v.cartItem.quantity.$invalid) {
+        return
+      }
+
       try {
         await cartItem.update(this.cartItem.cart_item_token, {
-          quantity: e.target.value
+          quantity: this.cartItem.quantity
         })
       } catch (e) {
         //
       }
+
       this.$emit('cart-item:update')
     },
 
-    async updateCustomerNote (customerNote) {
+    async updateCustomerNote () {
       try {
         await cartItem.update(this.cartItem.cart_item_token, {
-            customer_note: customerNote
+            customer_note: this.cartItem.customer_note
           })
       } catch (e) {
         //

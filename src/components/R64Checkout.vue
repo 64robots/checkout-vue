@@ -40,8 +40,9 @@
               <R64FormInput
                 v-model="form.customer_email"
                 label="Email address"
-                name="customer_email"
-                :required="settings.required.customer_email"
+                :validator="$v.form.customer_email"
+                :show-error="$v.form.customer_email.$error"
+                error-message="Email address is required"
               />
             </div>
           </div>
@@ -54,18 +55,38 @@
               <div>
                 <div class="mt-6">
                   <R64FormInput
+                    v-model="form.shipping_first_name"
+                    label="First name"
+                    :validator="$v.form.shipping_first_name"
+                    :show-error="$v.form.shipping_first_name.$error"
+                    error-message="First name is required"
+                  />
+                </div>
+                <div class="mt-6">
+                  <R64FormInput
+                    v-model="form.shipping_last_name"
+                    label="Last name"
+                    :validator="$v.form.shipping_last_name"
+                    :show-error="$v.form.shipping_last_name.$error"
+                    error-message="Last name is required"
+                  />
+                </div>
+                <div class="mt-6">
+                  <R64FormInput
                     v-model="form.shipping_address_line1"
                     label="Street"
-                    name="shipping_address_line1"
-                    :required="settings.required.shipping_address_line1"
+                    :validator="$v.form.shipping_address_line1"
+                    :show-error="$v.form.shipping_address_line1.$error"
+                    error-message="Street address is required"
                   />
                 </div>
                 <div class="mt-6">
                   <R64FormInput
                     v-model="form.shipping_address_line2"
                     label="Apartment, suite, etc ..."
-                    name="shipping_address_line2"
-                    :required="settings.required.shipping_address_line2"
+                    :validator="$v.form.shipping_address_line2"
+                    :show-error="$v.form.shipping_address_line2.$error"
+                    error-message="Appartment or suite is required"
                   />
                 </div>
                 <div class="mt-6 flex">
@@ -73,24 +94,27 @@
                     <R64FormInput
                       v-model="form.shipping_address_zipcode"
                       label="Zipcode"
-                      name="shipping_address_zipcode"
-                      :required="settings.required.shipping_address_zipcode"
+                      :validator="$v.form.shipping_address_zipcode"
+                      :show-error="$v.form.shipping_address_zipcode.$error"
+                      error-message="Zipcode is required"
                     />
                   </div>
                   <div class="w-full ml-2">
                     <R64FormInput
                       v-model="form.shipping_address_city"
                       label="City"
-                      name="shipping_address_city"
-                      :required="settings.required.shipping_address_city"
+                      :validator="$v.form.shipping_address_city"
+                      :show-error="$v.form.shipping_address_city.$error"
+                      error-message="City is required"
                     />
                   </div>
                   <div class="w-full ml-2">
                     <R64FormInput
                       v-model="form.shipping_address_region"
                       label="State"
-                      name="shipping_address_region"
-                      :required="settings.required.shipping_address_region"
+                      :validator="$v.form.shipping_address_region"
+                      :show-error="$v.form.shipping_address_region.$error"
+                      error-message="State is required"
                     />
                   </div>
                 </div>
@@ -98,8 +122,9 @@
                   <R64FormInput
                     v-model="form.shipping_address_phone"
                     label="Phone"
-                    name="shipping_address_phone"
-                    :required="settings.required.shipping_address_phone"
+                    :validator="$v.form.shipping_address_phone"
+                    :show-error="$v.form.shipping_address_phone.$error"
+                    error-message="Phone is required"
                   />
                 </div>
               </div>
@@ -244,7 +269,7 @@
 
 <script>
 import R64CartItemPreview from './R64CartItemPreview'
-import R64FormInput from './R64FormInput'
+import R64FormInput from './R64FormInput2'
 // import R64CardNumberInput from "./R64CardNumberInput"
 import R64CheckoutSection from './R64CheckoutSection'
 import R64ShippingMethods from './R64ShippingMethods'
@@ -258,13 +283,15 @@ import money from '../mixins/money'
 import cart from '../api/cart'
 import checkout from '../api/checkout'
 import order from '../api/order'
+import { validationMixin } from 'vuelidate'
+import { required } from 'vuelidate/lib/validators'
 
 export default {
-  mixins: [cartMixin, money],
+  mixins: [cartMixin, money, validationMixin],
 
   props: {
-    customerId: {
-      type: Number,
+    customerEmail: {
+      type: String,
       default: null
     },
     customerNotes: {
@@ -323,12 +350,48 @@ export default {
     }
   },
 
+  validations () {
+    const requiredFields = {
+      customer_email: {},
+      shipping_id: {},
+      shipping_first_name: {},
+      shipping_last_name: {},
+      shipping_address_line1: {},
+      shipping_address_line2: {},
+      shipping_address_city: {},
+      shipping_address_region: {},
+      shipping_address_zipcode: {},
+      shipping_address_phone: {},
+      billing_address_line1: {},
+      billing_address_line2: {},
+      billing_address_city: {},
+      billing_address_region: {},
+      billing_address_zipcode: {},
+      billing_address_phone: {},
+    }
+
+    Object.keys(this.settings.required)
+      .forEach((field) => {
+        if (this.settings.required[field]) {
+          requiredFields[field] = { required }
+        }
+      })
+
+    return {
+      form: {
+        ...requiredFields
+      }
+    }
+  },
+
   async mounted () {
     window.scrollTo(0, 0)
     
     await this.fetchSettings()
     await this.fetchCart()
     await this.fetchTotal()
+
+    this.form.customer_email = this.customerEmail
   },
 
   computed: {
@@ -367,6 +430,12 @@ export default {
     },
 
     async createOrder () {
+      this.$v.$touch()
+
+      if (this.$v.$invalid) {
+        return
+      }
+
       try {
         const { token } = await this.$refs.stripe.createToken()
         const { data } = await order.create({

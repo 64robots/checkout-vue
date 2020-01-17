@@ -51,8 +51,8 @@ export default {
 
   data() {
     return {
-      section: 'checkout',
-      authToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6IlNqY1NyMXR6SUZjUXlMSmkifQ.eyJpc3MiOiJodHRwOlwvXC9kcXMtYmFja2VuZC50ZXN0Iiwic3ViIjoiNTk3NyIsImp0aSI6IlNqY1NyMXR6SUZjUXlMSmkiLCJpYXQiOjE1NzkxNjYxODYsIm5iZiI6MTU3OTE2NjE4NiwiZXhwIjoxNTc5NTk4MTg2LCJybGkiOjE1ODAwMzAxODZ9.XEvpRvjPlwtAgS1pAZo-xnp818-EhZg7Qc36f0xoEok',
+      section: null,
+      authToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6InNaNjJYa1BlWEVucDdIbjIifQ.eyJpc3MiOiJodHRwOlwvXC9kcXMtYmFja2VuZC50ZXN0Iiwic3ViIjoiNTk3NyIsImp0aSI6InNaNjJYa1BlWEVucDdIbjIiLCJpYXQiOjE1NzkyNzU3NDEsIm5iZiI6MTU3OTI3NTc0MSwiZXhwIjoxNTc5NzA3NzQxLCJybGkiOjE1ODAxMzk3NDF9.rET4AggscIEAGDIoO0r5IxyCIfkcLm4q51Rk_NI7rTQ',
       cart: null,
       order: {
         id: 1
@@ -62,8 +62,8 @@ export default {
 
   computed: {
     cartToken () {
-      return 'f3oMyoJg9gdrezhmygBUOKFeVinWxd'
-      // return this.cart && this.cart.cart_token
+      // return 'JsDq00H4HTRv1XNLkkoZiWNFPOt5bt'
+      return this.cart && this.cart.cart_token
     }
   },
 

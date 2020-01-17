@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="(method, index) in methods" :key="index" class="flex w-full mt-5">
-      <input @change="() => $emit('change', method)" name="shipping" type="radio" class="form-radio" :id="`shipping_option_${index}`" :value="method">
+      <input @change="() => $emit('change', method)" name="shipping_method" type="radio" class="form-radio" :id="`shipping_option_${index}`" :value="method">
       <label class="ml-3" :for="`shipping_option_${index}`">
         <span class="block">{{ method.delivery_days }} business days</span>
         <span class="block text-sm">Get it {{ method.delivery_date }}</span>

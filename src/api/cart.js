@@ -23,9 +23,9 @@ export default {
     return http.get(url)
   },
 
-  update (cartToken, discountCode) {
+  update (cartToken, couponCode) {
     return http.put(this.url + `/${cartToken}`, {
-      discount_code: discountCode
+      coupon_code: couponCode
     })
   },
 

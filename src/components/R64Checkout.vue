@@ -144,12 +144,12 @@
             </div>
           </div>
         </R64CheckoutSection>
-        <R64CheckoutSection :border="false">
+        <R64CheckoutSection v-if="!isFree" :border="false">
           <div class="xl:flex mt-6">
             <span class="block text-xl font-bold xl:w-1/3">Payment</span>
             <div class="w-full lg:max-w-sm">
               <span class="mt-6 block text-xl xl:mt-0">Payment method</span>
-              <R64StripePayment 
+              <R64StripePayment
                 ref="stripe" 
                 :stripe-key="stripeKey"
                 :show-card-error="stripeValidated.number"
@@ -171,11 +171,11 @@
               <div class="mt-6">
                 <span class="block text-xl">Billing Address</span>
                 <div class="mt-5 w-full flex">
-                  <input v-model="billingAddressVisible" name="shipping" type="radio" class="form-radio" id="billing_address_same" :value="false">
+                  <input v-model="billingAddressVisible" type="radio" class="form-radio" id="billing_address_same" :value="false">
                   <label class="ml-3" for="billing_address_same">Same as shipping address</label>
                 </div>
                 <div class="mt-5 w-full flex">
-                  <input v-model="billingAddressVisible" name="shipping" type="radio" class="form-radio" id="billing_address_different" :value="true">
+                  <input v-model="billingAddressVisible" name="billing" type="radio" class="form-radio" id="billing_address_different" :value="true">
                   <label class="ml-3" for="billing_address_different">Use a different billing address</label>
                 </div>
               </div>
@@ -256,7 +256,7 @@
                   />
                 </div>
               </div>
-              <div class="mt-6 lg:hidden">
+              <div v-if="!hasCouponCode" class="mt-6 lg:hidden">
                 <span class="block text-xl">Have a promo code ?</span>
                 <R64PromoCode @apply="applyPromoCode" class="mt-5" />
               </div>
@@ -279,20 +279,18 @@
             :cart-item="cartItem" 
             class="mt-4"
           />
-          <R64InlinePromoCode @apply="applyPromoCode" class="py-6"/>
-          <R64HorizontalLine />
+          <div v-if="!hasCouponCode">
+            <R64InlinePromoCode @apply="applyPromoCode" class="py-6"/>
+            <R64HorizontalLine />
+          </div>
           <div class="my-6">
             <div class="flex justify-between">
               <span>Subtotal</span>
               <span>{{ money(cart.items_subtotal) }}</span>
             </div>
-            <div class="flex justify-between mt-4">
+            <div v-if="hasCouponCode" class="flex justify-between mt-4">
               <span>Discount</span>
-              <span>-$30</span>
-            </div>
-            <div class="flex justify-between mt-4">
-              <span>Promo</span>
-              <span>-$20</span>
+              <span>- {{ money(cart.discount) }}</span>
             </div>
             <div class="flex justify-between mt-4">
               <span>Taxes</span>
@@ -437,7 +435,7 @@ export default {
         if (this.settings.required[field]) {
           requiredFields[field] = { ...requiredFields[field], required }
         } else {
-          requiredFields[field] = { }
+          requiredFields[field] = { ...requiredFields[field] }
         }
       })
 
@@ -472,6 +470,10 @@ export default {
     },
     
     stripeAllValidated () {
+      if (this.isFree) {
+        return true
+      }
+
       return this.stripeValidated.number && this.stripeValidated.expiry && this.stripeValidated.cvc
     },
 
@@ -484,6 +486,14 @@ export default {
         && !this.$v.form.billing_address_city.$invalid
         && !this.$v.form.billing_address_region.$invalid
         && !this.$v.form.billing_address_phone.$invalid
+    },
+
+    hasCouponCode () {
+      return this.cart ? this.cart.has_coupon_code : false
+    },
+
+    isFree () {
+      return parseFloat(this.total) === 0
     }
   },
 
@@ -504,10 +514,14 @@ export default {
       this.total = data.total
     },
 
-    async applyPromoCode (promoCode) {
-      /* eslint-disable no-console */
-      console.log(promoCode)
-      /* eslint-disable no-console */
+    async applyPromoCode (couponCode) {
+      try {
+        await cart.update(this.cartToken, couponCode)
+        this.fetchCart()
+        this.fetchTotal()
+      } catch (e) {
+        //
+      }
     },
 
     formValid () {
@@ -521,10 +535,10 @@ export default {
         this.billingAddressVisible = true
       }
 
-      if (!this.$v.invalid && this.stripeAllValidated) {
+      if (!this.$v.$invalid && this.stripeAllValidated) {
         this.paymentErrorVisible = false
 
-        return true        
+        return true
       }
 
       return false
@@ -532,6 +546,20 @@ export default {
 
     async createOrder () {
       if (!this.formValid()) {
+        return
+      }
+
+      if (this.isFree) {
+        const { data } = await order.create({
+          order: {
+            cart_token: this.cartToken,
+            customer_notes: this.customerNotes,
+            ...this.form
+          },
+          auth_token: this.authToken
+        })
+        this.$emit('order:create', data)
+
         return
       }
 

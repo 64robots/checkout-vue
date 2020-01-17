@@ -21,11 +21,7 @@
           </div>
           <div class="flex justify-between mt-4">
             <span>Discount</span>
-            <span>-$30</span>
-          </div>
-          <div class="flex justify-between mt-4">
-            <span>Promo</span>
-            <span>-$20</span>
+            <span>-{{ money(order.discount) }}</span>
           </div>
           <div class="flex justify-between mt-4">
             <span>Taxes</span>

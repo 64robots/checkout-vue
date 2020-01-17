@@ -161,39 +161,59 @@
                 @error:expiry="stripeValidated.expiry = false"
                 @complete:cvc="stripeValidated.cvc = true"
                 @error:cvc="stripeValidated.cvc = false"
-                @change="showStripeError = false"
+                @change="paymentErrorVisible = false"
               />
               <R64Alert
                 class="mt-2"
-                :visible="showStripeError"
+                :visible="paymentErrorVisible"
                 message="Correct payments details are required"
               />
               <div class="mt-6">
                 <span class="block text-xl">Billing Address</span>
                 <div class="mt-5 w-full flex">
-                  <input v-model="billingAddressDifferent" name="shipping" type="radio" class="form-radio" id="billing_address_same" :value="false">
+                  <input v-model="billingAddressVisible" name="shipping" type="radio" class="form-radio" id="billing_address_same" :value="false">
                   <label class="ml-3" for="billing_address_same">Same as shipping address</label>
                 </div>
                 <div class="mt-5 w-full flex">
-                  <input v-model="billingAddressDifferent" name="shipping" type="radio" class="form-radio" id="billing_address_different" :value="true">
+                  <input v-model="billingAddressVisible" name="shipping" type="radio" class="form-radio" id="billing_address_different" :value="true">
                   <label class="ml-3" for="billing_address_different">Use a different billing address</label>
                 </div>
               </div>
-              <div v-if="billingAddressDifferent">
+              <div v-if="billingAddressVisible">
+                <div class="mt-6">
+                  <R64FormInput
+                    v-model="form.billing_first_name"
+                    label="First name"
+                    :validator="$v.form.billing_first_name"
+                    :show-error="$v.form.billing_first_name.$error"
+                    error-message="First name is required"
+                  />
+                </div>
+                <div class="mt-6">
+                  <R64FormInput
+                    v-model="form.billing_last_name"
+                    label="Last name"
+                    :validator="$v.form.billing_last_name"
+                    :show-error="$v.form.billing_last_name.$error"
+                    error-message="Last name is required"
+                  />
+                </div>
                 <div class="mt-6">
                   <R64FormInput
                     v-model="form.billing_address_line1"
                     label="Street"
-                    name="billing_address_line1"
-                    :required="settings.required.billing_address_line1"
+                    :validator="$v.form.billing_address_line1"
+                    :show-error="$v.form.billing_address_line1.$error"
+                    error-message="Street address is required"
                   />
                 </div>
                 <div class="mt-6">
                   <R64FormInput
                     v-model="form.billing_address_line2"
-                    label="Apartment, suite, etc ..."
-                    name="billing_address_line2"
-                    :required="settings.required.billing_address_line2"
+                    label="Street"
+                    :validator="$v.form.billing_address_line2"
+                    :show-error="$v.form.billing_address_line2.$error"
+                    error-message="Appartment or suite is required"
                   />
                 </div>
                 <div class="mt-6 flex">
@@ -201,24 +221,28 @@
                     <R64FormInput
                       v-model="form.billing_address_zipcode"
                       label="Zipcode"
-                      name="billing_address_zipcode"
-                      :required="settings.required.billing_address_zipcode"
+                      alert-class="whitespace-no-wrap"
+                      :validator="$v.form.billing_address_zipcode"
+                      :show-error="$v.form.billing_address_zipcode.$error"
+                      error-message="Zipcode is required"
                     />
                   </div>
                   <div class="w-full ml-2">
                     <R64FormInput
                       v-model="form.billing_address_city"
                       label="City"
-                      name="billing_address_city"
-                      :required="settings.required.billing_address_city"
+                      :validator="$v.form.billing_address_city"
+                      :show-error="$v.form.billing_address_city.$error"
+                      error-message="City is required"
                     />
                   </div>
                   <div class="w-full ml-2">
                     <R64FormInput
                       v-model="form.billing_address_region"
                       label="State"
-                      name="billing_address_region"
-                      :required="settings.required.billing_address_region"
+                      :validator="$v.form.billing_address_region"
+                      :show-error="$v.form.billing_address_region.$error"
+                      error-message="State is required"
                     />
                   </div>
                 </div>
@@ -226,8 +250,9 @@
                   <R64FormInput
                     v-model="form.billing_address_phone"
                     label="Phone"
-                    name="billing_address_phone"
-                    :required="settings.required.billing_address_phone"
+                    :validator="$v.form.billing_address_phone"
+                    :show-error="$v.form.billing_address_phone.$error"
+                    error-message="Phone is required"
                   />
                 </div>
               </div>
@@ -351,7 +376,7 @@ export default {
   data () {
     return {
       itemSummaryVisible: false,
-      billingAddressDifferent: false,
+      billingAddressVisible: false,
       form: {
         customer_email: null,
         shipping_id: null,
@@ -363,11 +388,13 @@ export default {
         shipping_address_region: null,
         shipping_address_zipcode: null,
         shipping_address_phone: null,
+        billing_first_name: null,
+        billing_last_name: null,
         billing_address_line1: null,
         billing_address_line2: null,
+        billing_address_zipcode: null,
         billing_address_city: null,
         billing_address_region: null,
-        billing_address_zipcode: null,
         billing_address_phone: null,
       },
       stripeValidated: {
@@ -375,7 +402,7 @@ export default {
         expiry: false,
         cvc: false
       },
-      showStripeError: false,
+      paymentErrorVisible: false,
       settings: null,
       selectedShippingMethod: null,
       consent: false,
@@ -387,19 +414,21 @@ export default {
     const requiredFields = {
       customer_email: { email },
       shipping_id: { required },
-      shipping_first_name: { alpha },
-      shipping_last_name: { alpha },
+      shipping_first_name: {},
+      shipping_last_name: {},
       shipping_address_line1: {},
       shipping_address_line2: {},
       shipping_address_city: {},
       shipping_address_region: {},
       shipping_address_zipcode: {},
       shipping_address_phone: {},
+      billing_first_name: {},
+      billing_last_name: {},
       billing_address_line1: {},
       billing_address_line2: {},
+      billing_address_zipcode: {},
       billing_address_city: {},
       billing_address_region: {},
-      billing_address_zipcode: {},
       billing_address_phone: {}
     }
 
@@ -433,14 +462,28 @@ export default {
     itemSummaryText () {
       return this.itemSummaryVisible ? 'Hide item summary' : 'Show item summary'
     },
+    
     shippingMethods () {
       return this.settings ? this.settings.shipping_methods : []
     },
+    
     tocUrl () {
       return this.settings ? this.settings.toc_url : '#'
     },
+    
     stripeAllValidated () {
       return this.stripeValidated.number && this.stripeValidated.expiry && this.stripeValidated.cvc
+    },
+
+    billingAllValidated () {
+      return !this.$v.form.billing_first_name.$invalid
+        && !this.$v.form.billing_last_name.$invalid
+        && !this.$v.form.billing_address_line1.$invalid
+        && !this.$v.form.billing_address_line2.$invalid
+        && !this.$v.form.billing_address_zipcode.$invalid
+        && !this.$v.form.billing_address_city.$invalid
+        && !this.$v.form.billing_address_region.$invalid
+        && !this.$v.form.billing_address_phone.$invalid
     }
   },
 
@@ -467,18 +510,30 @@ export default {
       /* eslint-disable no-console */
     },
 
-    async createOrder () {
+    formValid () {
       this.$v.$touch()
 
       if (!this.stripeAllValidated) {
-        this.showStripeError = true
+        this.paymentErrorVisible = true
       }
 
-      if (this.$v.$invalid || !this.stripeAllValidated) {
+      if (!this.billingAllValidated) {
+        this.billingAddressVisible = true
+      }
+
+      if (!this.$v.invalid && this.stripeAllValidated) {
+        this.paymentErrorVisible = false
+
+        return true        
+      }
+
+      return false
+    },
+
+    async createOrder () {
+      if (!this.formValid()) {
         return
       }
-
-      this.showStripeError = false
 
       try {
         const { token } = await this.$refs.stripe.createToken()
@@ -508,6 +563,76 @@ export default {
   watch: {
     selectedShippingMethod () {
       this.fetchTotal()
+    },
+
+    billingAddressVisible (newIsVisible) {
+      if (newIsVisible) {
+        this.form.billing_first_name = null
+        this.form.billing_last_name = null
+        this.form.billing_address_line1 = null
+        this.form.billing_address_line2 = null
+        this.form.billing_address_zipcode = null
+        this.form.billing_address_city = null
+        this.form.billing_address_region = null
+        this.form.billing_address_phone = null
+      } else {
+        this.form.billing_first_name = this.form.shipping_first_name
+        this.form.billing_last_name = this.form.shipping_last_name
+        this.form.billing_address_line1 = this.form.shipping_address_line1
+        this.form.billing_address_line2 = this.form.shipping_address_line2
+        this.form.billing_address_zipcode = this.form.shipping_address_zipcode
+        this.form.billing_address_city = this.form.shipping_address_city
+        this.form.billing_address_region = this.form.shipping_address_region
+        this.form.billing_address_phone = this.form.shipping_address_phone
+      }
+    },
+
+    'form.shipping_first_name': function (newValue) {
+      if (!this.billingAddressVisible) {
+        this.form.billing_first_name = newValue
+      }
+    },
+
+    'form.shipping_last_name': function (newValue) {
+      if (!this.billingAddressVisible) {
+        this.form.billing_last_name = newValue
+      }
+    },
+
+    'form.shipping_address_line1': function (newValue) {
+      if (!this.billingAddressVisible) {
+        this.form.billing_address_line1 = newValue
+      }
+    },
+
+    'form.shipping_address_line2': function (newValue) {
+      if (!this.billingAddressVisible) {
+        this.form.billing_address_line2 = newValue
+      }
+    },
+
+    'form.shipping_address_zipcode': function (newValue) {
+      if (!this.billingAddressVisible) {
+        this.form.billing_address_zipcode = newValue
+      }
+    },
+
+    'form.shipping_address_city': function (newValue) {
+      if (!this.billingAddressVisible) {
+        this.form.billing_address_city = newValue
+      }
+    },
+
+    'form.shipping_address_region': function (newValue) {
+      if (!this.billingAddressVisible) {
+        this.form.billing_address_region = newValue
+      }
+    },
+
+    'form.shipping_address_phone': function (newValue) {
+      if (!this.billingAddressVisible) {
+        this.form.billing_address_phone = newValue
+      }
     }
   }
 }

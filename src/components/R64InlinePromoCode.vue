@@ -5,7 +5,7 @@
   </div>
   <div v-else>
     <label class="block" for="promo_code">Promo code</label>
-    <R64Input v-model="promoCode" id="promo_code" class="w-full mt-2"/>
+    <R64Input ref="promo_code" v-model="promoCode" id="promo_code" class="w-full mt-2"/>
     <R64Button @click.native="applyPromoCode" variant="transparent" class="mt-4">Apply</R64Button>
   </div>
 </template>

@@ -259,6 +259,11 @@
               <div v-if="!hasCouponCode" class="mt-6 lg:hidden">
                 <span class="block text-xl">Have a promo code ?</span>
                 <R64PromoCode @apply="applyPromoCode" class="mt-5" />
+                <R64Alert 
+                  :visible="promoCodeErrorVisible"
+                  class="mt-2"
+                  message="Promo code is not valid"
+                />
               </div>
             </div>
           </div>
@@ -280,7 +285,12 @@
             class="mt-4"
           />
           <div v-if="!hasCouponCode">
-            <R64InlinePromoCode @apply="applyPromoCode" class="py-6"/>
+            <R64InlinePromoCode @apply="applyPromoCode" class="pt-6"/>
+            <R64Alert 
+              :visible="promoCodeErrorVisible"
+              class="mt-2 mb-4"
+              message="Promo code is not valid"
+            />
             <R64HorizontalLine />
           </div>
           <div class="my-6">
@@ -401,6 +411,7 @@ export default {
         cvc: false
       },
       paymentErrorVisible: false,
+      promoCodeErrorVisible: false,
       settings: null,
       selectedShippingMethod: null,
       consent: false,
@@ -520,7 +531,7 @@ export default {
         this.fetchCart()
         this.fetchTotal()
       } catch (e) {
-        //
+        this.promoCodeErrorVisible = true
       }
     },
 

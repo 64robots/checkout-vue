@@ -1,6 +1,12 @@
 const injectStripe = (url) => {
 	return new Promise((resolve) => {
+		if (document.getElementById('stripe_script')) {
+			resolve()
+			return 
+		}
+
 		const object = document.createElement('script')
+		object.id = 'stripe_script'
 		const scriptTag = document.getElementsByTagName('script')[0]
 		object.src = `//${url}`
 		object.addEventListener('load', () => {

@@ -144,6 +144,12 @@ export default {
     })
   },
 
+  beforeDestroy() {
+    this.cardNumber.unmount()
+    this.cardExpiry.unmount()
+    this.cardCvc.unmount()
+  },
+
   methods: {
     createToken () {
       return this.stripe.createToken(this.cardNumber)

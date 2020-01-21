@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import R64FormInput from './R64FormInput2'
+import R64FormInput from './R64FormInput'
 import cartItem from '../api/cartItem'
 import cartItemMixin from '../mixins/cartItem'
 import money from '../mixins/money'

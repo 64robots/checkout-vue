@@ -25,11 +25,11 @@
           </div>
           <div class="flex justify-between mt-4">
             <span>Taxes</span>
-            <span>{{ money(order.tax_total) }}</span>
+            <span>{{ money(order.tax) }}</span>
           </div>
           <div class="flex justify-between mt-4">
             <span>Shipping</span>
-            <span>{{ money(order.shipping_total) }}</span>
+            <span>{{ money(order.shipping) }}</span>
           </div>
         </div>
         <R64HorizontalLine />

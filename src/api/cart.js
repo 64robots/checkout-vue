@@ -23,10 +23,8 @@ export default {
     return http.get(url)
   },
 
-  update (cartToken, couponCode) {
-    return http.put(this.url + `/${cartToken}`, {
-      coupon_code: couponCode
-    })
+  update (cartToken, params) {
+    return http.put(this.url + `/${cartToken}`, params)
   },
 
   delete (cartToken) {

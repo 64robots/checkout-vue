@@ -1,9 +1,9 @@
 <template>
-  <div class="font-sans antialiased text-c-black bg-c-light-gray" style="box-sizing: border-box;">
+  <div v-if="cart" class="font-sans antialiased text-c-black bg-c-light-gray" style="box-sizing: border-box;">
     <div class="checkout-cart-items fixed p-5 top-0 left-0 right-0 z-10 bg-white lg:hidden">
       <div class="flex items-center justify-between">
         <span class="text-xl">Total to pay ({{ cartItems.length }} items)</span>
-        <span class="text-xl font-bold">{{ money(total) }}</span>
+        <span class="text-xl font-bold">{{ money(cart.total) }}</span>
       </div>
 
       <div v-show="itemSummaryVisible" class="mt-10">
@@ -43,6 +43,7 @@
                 :validator="$v.form.customer_email"
                 :show-error="$v.form.customer_email.$error"
                 error-message="Valid email address is required"
+                @blur="updateCart"
               />
             </div>
           </div>
@@ -60,6 +61,7 @@
                     :validator="$v.form.shipping_first_name"
                     :show-error="$v.form.shipping_first_name.$error"
                     error-message="First name is required"
+                    @blur="updateCart"
                   />
                 </div>
                 <div class="mt-6">
@@ -69,6 +71,7 @@
                     :validator="$v.form.shipping_last_name"
                     :show-error="$v.form.shipping_last_name.$error"
                     error-message="Last name is required"
+                    @blur="updateCart"
                   />
                 </div>
                 <div class="mt-6">
@@ -78,6 +81,7 @@
                     :validator="$v.form.shipping_address_line1"
                     :show-error="$v.form.shipping_address_line1.$error"
                     error-message="Street address is required"
+                    @blur="updateCart"
                   />
                 </div>
                 <div class="mt-6">
@@ -87,6 +91,7 @@
                     :validator="$v.form.shipping_address_line2"
                     :show-error="$v.form.shipping_address_line2.$error"
                     error-message="Appartment or suite is required"
+                    @blur="updateCart"
                   />
                 </div>
                 <div class="mt-6 flex">
@@ -98,6 +103,7 @@
                       :validator="$v.form.shipping_address_zipcode"
                       :show-error="$v.form.shipping_address_zipcode.$error"
                       error-message="Zipcode is required"
+                      @blur="updateCart"
                     />
                   </div>
                   <div class="w-full ml-2">
@@ -107,15 +113,19 @@
                       :validator="$v.form.shipping_address_city"
                       :show-error="$v.form.shipping_address_city.$error"
                       error-message="City is required"
+                      @blur="updateCart"
                     />
                   </div>
                   <div class="w-full ml-2">
-                    <R64FormInput
+                    <R64FormSelect
                       v-model="form.shipping_address_region"
                       label="State"
+                      placeholder="Select state"
+                      :options="settings.states"
                       :validator="$v.form.shipping_address_region"
                       :show-error="$v.form.shipping_address_region.$error"
                       error-message="State is required"
+                      @change="updateCart"
                     />
                   </div>
                 </div>
@@ -126,21 +136,14 @@
                     :validator="$v.form.shipping_address_phone"
                     :show-error="$v.form.shipping_address_phone.$error"
                     error-message="Phone is required"
+                    @blur="updateCart"
                   />
                 </div>
               </div>
-              <div class="mt-6">
-                <span class="block text-xl">Shipping method</span>
-                <R64ShippingMethods 
-                  :methods="shippingMethods" 
-                  @change="selectShippingMethod" 
-                />
-                <R64Alert
-                  class="mt-2"
-                  :visible="$v.form.shipping_id.$error"
-                  message="Select a shipping method"
-                />
-              </div>
+
+              <slot name="shipping">
+              </slot>
+
             </div>
           </div>
         </R64CheckoutSection>
@@ -171,15 +174,15 @@
               <div class="mt-6">
                 <span class="block text-xl">Billing Address</span>
                 <div class="mt-5 w-full flex">
-                  <input v-model="billingAddressVisible" type="radio" class="form-radio" id="billing_address_same" :value="false">
+                  <input v-model="form.billing_same" type="radio" class="form-radio" id="billing_address_same" :value="true" @change="updateCart">
                   <label class="ml-3" for="billing_address_same">Same as shipping address</label>
                 </div>
                 <div class="mt-5 w-full flex">
-                  <input v-model="billingAddressVisible" name="billing" type="radio" class="form-radio" id="billing_address_different" :value="true">
+                  <input v-model="form.billing_same" name="billing" type="radio" class="form-radio" id="billing_address_different" :value="false" @change="updateCart">
                   <label class="ml-3" for="billing_address_different">Use a different billing address</label>
                 </div>
               </div>
-              <div v-if="billingAddressVisible">
+              <div v-if="!form.billing_same">
                 <div class="mt-6">
                   <R64FormInput
                     v-model="form.billing_first_name"
@@ -187,6 +190,7 @@
                     :validator="$v.form.billing_first_name"
                     :show-error="$v.form.billing_first_name.$error"
                     error-message="First name is required"
+                    @blur="updateCart"
                   />
                 </div>
                 <div class="mt-6">
@@ -196,6 +200,7 @@
                     :validator="$v.form.billing_last_name"
                     :show-error="$v.form.billing_last_name.$error"
                     error-message="Last name is required"
+                    @blur="updateCart"
                   />
                 </div>
                 <div class="mt-6">
@@ -205,15 +210,17 @@
                     :validator="$v.form.billing_address_line1"
                     :show-error="$v.form.billing_address_line1.$error"
                     error-message="Street address is required"
+                    @blur="updateCart"
                   />
                 </div>
                 <div class="mt-6">
                   <R64FormInput
                     v-model="form.billing_address_line2"
-                    label="Street"
+                    label="Apartment, suite, etc ..."
                     :validator="$v.form.billing_address_line2"
                     :show-error="$v.form.billing_address_line2.$error"
                     error-message="Appartment or suite is required"
+                    @blur="updateCart"
                   />
                 </div>
                 <div class="mt-6 flex">
@@ -225,6 +232,7 @@
                       :validator="$v.form.billing_address_zipcode"
                       :show-error="$v.form.billing_address_zipcode.$error"
                       error-message="Zipcode is required"
+                      @blur="updateCart"
                     />
                   </div>
                   <div class="w-full ml-2">
@@ -234,15 +242,19 @@
                       :validator="$v.form.billing_address_city"
                       :show-error="$v.form.billing_address_city.$error"
                       error-message="City is required"
+                      @blur="updateCart"
                     />
                   </div>
                   <div class="w-full ml-2">
-                    <R64FormInput
+                    <R64FormSelect
                       v-model="form.billing_address_region"
                       label="State"
+                      placeholder="Select state"
+                      :options="settings.states"
                       :validator="$v.form.billing_address_region"
                       :show-error="$v.form.billing_address_region.$error"
                       error-message="State is required"
+                      @change="updateCart"
                     />
                   </div>
                 </div>
@@ -253,6 +265,7 @@
                     :validator="$v.form.billing_address_phone"
                     :show-error="$v.form.billing_address_phone.$error"
                     error-message="Phone is required"
+                    @blur="updateCart"
                   />
                 </div>
               </div>
@@ -285,7 +298,7 @@
             class="mt-4"
           />
           <div v-if="!hasCouponCode">
-            <R64InlinePromoCode @apply="applyPromoCode" class="pt-6"/>
+            <R64InlinePromoCode @apply="applyPromoCode" class="pt-6" :class="{ 'pb-6': !promoCodeErrorVisible }"/>
             <R64Alert 
               :visible="promoCodeErrorVisible"
               class="mt-2 mb-4"
@@ -302,19 +315,19 @@
               <span>Discount</span>
               <span>- {{ money(cart.discount) }}</span>
             </div>
-            <div class="flex justify-between mt-4">
+            <div v-if="cart.tax > 0" class="flex justify-between mt-4">
               <span>Taxes</span>
               <span>{{ money(cart.tax) }}</span>
             </div>
-            <div v-if="selectedShippingMethod" class="flex justify-between mt-4">
+            <div v-if="cart.shipping > 0" class="flex justify-between mt-4">
               <span>Shipping</span>
-              <span>{{ money(selectedShippingMethod.price) }}</span>
+              <span>{{ money(cart.shipping) }}</span>
             </div>
           </div>
           <R64HorizontalLine />
           <div class="flex items-center justify-between my-6">
             <span class="text-xl font-bold">Total to Pay</span>
-            <span class="text-4xl">{{ money(total) }}</span>
+            <span class="text-4xl">{{ money(cart.total) }}</span>
           </div>
           <div class="flex items-start">
             <input v-model="consent" type="checkbox" class="form-checkbox">
@@ -329,7 +342,8 @@
 
 <script>
 import R64CartItemPreview from './R64CartItemPreview'
-import R64FormInput from './R64FormInput2'
+import R64FormInput from './R64FormInput'
+import R64FormSelect from './R64FormSelect'
 import R64CheckoutSection from './R64CheckoutSection'
 import R64ShippingMethods from './R64ShippingMethods'
 import R64Alert from './R64Alert'
@@ -372,6 +386,7 @@ export default {
     R64Button,
     R64CartItemPreview,
     R64FormInput,
+    R64FormSelect,
     R64ShippingMethods,
     R64CheckoutSection,
     R64InlinePromoCode,
@@ -384,10 +399,8 @@ export default {
   data () {
     return {
       itemSummaryVisible: false,
-      billingAddressVisible: false,
       form: {
         customer_email: null,
-        shipping_id: null,
         shipping_first_name: null,
         shipping_last_name: null,
         shipping_address_line1: null,
@@ -396,6 +409,7 @@ export default {
         shipping_address_region: null,
         shipping_address_zipcode: null,
         shipping_address_phone: null,
+        billing_same: false,
         billing_first_name: null,
         billing_last_name: null,
         billing_address_line1: null,
@@ -413,16 +427,13 @@ export default {
       paymentErrorVisible: false,
       promoCodeErrorVisible: false,
       settings: null,
-      selectedShippingMethod: null,
-      consent: false,
-      total: '0.00'
+      consent: false
     }
   },
 
   validations () {
     const requiredFields = {
       customer_email: { email },
-      shipping_id: { required },
       shipping_first_name: {},
       shipping_last_name: {},
       shipping_address_line1: {},
@@ -462,18 +473,32 @@ export default {
     
     await this.fetchSettings()
     await this.fetchCart()
-    await this.fetchTotal()
 
     this.form.customer_email = this.customerEmail
+
+    this.form.customer_email = this.cart.customer_email
+    this.form.shipping_first_name = this.cart.shipping_first_name
+    this.form.shipping_last_name = this.cart.shipping_last_name
+    this.form.shipping_address_line1 = this.cart.shipping_address_line1
+    this.form.shipping_address_line2 = this.cart.shipping_address_line2
+    this.form.shipping_address_city = this.cart.shipping_address_city
+    this.form.shipping_address_region = this.cart.shipping_address_region
+    this.form.shipping_address_zipcode = this.cart.shipping_address_zipcode
+    this.form.shipping_address_phone = this.cart.shipping_address_phone
+    this.form.billing_same = this.cart.billing_same
+    this.form.billing_first_name = this.cart.billing_first_name
+    this.form.billing_last_name = this.cart.billing_last_name
+    this.form.billing_address_line1 = this.cart.billing_address_line1
+    this.form.billing_address_line2 = this.cart.billing_address_line2
+    this.form.billing_address_zipcode = this.cart.billing_address_zipcode
+    this.form.billing_address_city = this.cart.billing_address_city
+    this.form.billing_address_region = this.cart.billing_address_region
+    this.form.billing_address_phone = this.cart.billing_address_phone
   },
 
   computed: {
     itemSummaryText () {
       return this.itemSummaryVisible ? 'Hide item summary' : 'Show item summary'
-    },
-    
-    shippingMethods () {
-      return this.settings ? this.settings.shipping_methods : []
     },
     
     tocUrl () {
@@ -500,11 +525,11 @@ export default {
     },
 
     hasCouponCode () {
-      return this.cart ? this.cart.has_coupon_code : false
+      return parseFloat(this.cart.discount) !== 0
     },
 
     isFree () {
-      return parseFloat(this.total) === 0
+      return parseFloat(this.cart.total) === 0
     }
   },
 
@@ -518,18 +543,12 @@ export default {
       }
     },
 
-    async fetchTotal () {
-      const shippingMethodId = this.selectedShippingMethod ? this.selectedShippingMethod.id : null
-
-      const { data } = await cart.getTotal(this.cartToken, shippingMethodId)
-      this.total = data.total
-    },
-
     async applyPromoCode (couponCode) {
       try {
-        await cart.update(this.cartToken, couponCode)
+        await cart.update(this.cartToken, {
+          coupon_code: couponCode
+        })
         this.fetchCart()
-        this.fetchTotal()
       } catch (e) {
         this.promoCodeErrorVisible = true
       }
@@ -543,7 +562,7 @@ export default {
       }
 
       if (!this.billingAllValidated) {
-        this.billingAddressVisible = true
+        this.form.billing_same = true
       }
 
       if (!this.$v.$invalid && this.stripeAllValidated) {
@@ -560,52 +579,39 @@ export default {
         return
       }
 
-      if (this.isFree) {
-        const { data } = await order.create({
-          order: {
-            cart_token: this.cartToken,
-            customer_notes: this.customerNotes,
-            ...this.form
-          },
-          auth_token: this.authToken
-        })
-        this.$emit('order:create', data)
-
-        return
+      let orderParams = {
+        order: {
+          cart_token: this.cartToken,
+          customer_notes: this.customerNotes,
+          ...this.form
+        },
+        auth_token: this.authToken
       }
 
       try {
-        const { token } = await this.$refs.stripe.createToken()
-        const { data } = await order.create({
-          stripe: {
-            token: token.id
-          },
-          order: {
-            cart_token: this.cartToken,
-            customer_notes: this.customerNotes,
-            ...this.form
-          },
-          auth_token: this.authToken
-        })
+        if (!this.isFree) {
+          const { token } = await this.$refs.stripe.createToken()
+          
+          orderParams = {
+            ...orderParams,
+            stripe: {
+              token: token.id
+            }
+          }
+        }
+
+        const { data } = await order.create(orderParams)
+
         this.$emit('order:create', data)
       } catch (e) {
         //
       }
-    },
-
-    selectShippingMethod (method) {
-      this.selectedShippingMethod = method
-      this.form.shipping_id = method.id
-    },
+    }
   },
 
   watch: {
-    selectedShippingMethod () {
-      this.fetchTotal()
-    },
-
-    billingAddressVisible (newIsVisible) {
-      if (newIsVisible) {
+    'form.billing_same' (newBillingSame) {
+      if (!newBillingSame) {
         this.form.billing_first_name = null
         this.form.billing_last_name = null
         this.form.billing_address_line1 = null
@@ -627,49 +633,49 @@ export default {
     },
 
     'form.shipping_first_name': function (newValue) {
-      if (!this.billingAddressVisible) {
+      if (this.form.billing_same) {
         this.form.billing_first_name = newValue
       }
     },
 
     'form.shipping_last_name': function (newValue) {
-      if (!this.billingAddressVisible) {
+      if (this.form.billing_same) {
         this.form.billing_last_name = newValue
       }
     },
 
     'form.shipping_address_line1': function (newValue) {
-      if (!this.billingAddressVisible) {
+      if (this.form.billing_same) {
         this.form.billing_address_line1 = newValue
       }
     },
 
     'form.shipping_address_line2': function (newValue) {
-      if (!this.billingAddressVisible) {
+      if (this.form.billing_same) {
         this.form.billing_address_line2 = newValue
       }
     },
 
     'form.shipping_address_zipcode': function (newValue) {
-      if (!this.billingAddressVisible) {
+      if (this.form.billing_same) {
         this.form.billing_address_zipcode = newValue
       }
     },
 
     'form.shipping_address_city': function (newValue) {
-      if (!this.billingAddressVisible) {
+      if (this.form.billing_same) {
         this.form.billing_address_city = newValue
       }
     },
 
     'form.shipping_address_region': function (newValue) {
-      if (!this.billingAddressVisible) {
+      if (this.form.billing_same) {
         this.form.billing_address_region = newValue
       }
     },
 
     'form.shipping_address_phone': function (newValue) {
-      if (!this.billingAddressVisible) {
+      if (this.form.billing_same) {
         this.form.billing_address_phone = newValue
       }
     }

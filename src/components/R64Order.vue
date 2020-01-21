@@ -2,12 +2,12 @@
   <div v-if="order" class="font-sans antialiased text-c-black bg-c-light-gray">
     <div class="max-w-2xl mx-auto py-20">
       <R64OrderSection>
-        <span class="block text-center text-4xl font-bold text-c-blue">Logo</span>
+        <span class="block text-center text-4xl font-bold text-c-blue"><slot name="logo">Logo</slot></span>
         <span class="block mt-10 text-4xl font-bold">Thank you for your order!</span>
         <span class="block mt-4">Order Number: {{ order.id }}</span>
         <span class="block mt-2">Order Date: {{ order.created_at }}</span>
         <span class="block mt-2">Payment Method: {{ order.order_purchase.card_type }} ending in {{ order.order_purchase.card_last4 }}</span>
-        <span class="block mt-2 text-c-blue">Delivery Date: Dec, 26 ,2019</span>
+        <slot name="delivery-date"></slot>
       </R64OrderSection>
       <R64OrderSection class="mt-2">
         <span class="font-bold text-xl">{{ order.order_items.length }} items</span>
@@ -49,9 +49,7 @@
             <span class="block mt-1">{{ order.shipping_address_zipcode }}</span>
           </div>
           <div class="w-1/2">
-            <span class="block font-bold">Shipping method</span>
-            <span class="block mt-2">{{ order.delivery_days }} business days</span>
-            <span class="block mt-1">Get it {{ order.delivery_date }}</span>
+            <slot name="shipping-method"></slot>
           </div>
         </div>
       </R64OrderSection>

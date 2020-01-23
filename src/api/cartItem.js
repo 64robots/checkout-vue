@@ -2,7 +2,7 @@ import http from './http'
 import cart from './cart'
 
 export default {
-    url: 'api/cart-items',
+    url: '/api/cart-items',
 
     create (cartToken, cartItem) {
         return http.post(cart.url + `/${cartToken}/cart-items`, {

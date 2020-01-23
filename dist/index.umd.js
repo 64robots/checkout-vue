@@ -8316,7 +8316,7 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
 
 
 /* harmony default export */ var api_cartItem = ({
-    url: 'api/cart-items',
+    url: '/api/cart-items',
 
     create (cartToken, cartItem) {
         return http.post(cart.url + `/${cartToken}/cart-items`, {

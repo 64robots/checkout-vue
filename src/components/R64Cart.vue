@@ -81,4 +81,4 @@ export default {
 }
 </script>
 
-<style src="../assets/app.css" scoped>
+<style scoped src="../assets/app.css">

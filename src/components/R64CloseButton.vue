@@ -5,5 +5,3 @@
         </svg>
     </button>
 </template>
-
-<style src="../assets/app.css" scoped>

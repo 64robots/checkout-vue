@@ -2,14 +2,13 @@
   "name": "vue-checkout",
   "version": "0.1.0",
   "private": true,
-  "main": "src/index.js",
+  "main": "dist/index.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build src/index.js --target lib --name index --dest dist/",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "autoprefixer": "^9.7.3",
     "axios": "^0.19.1",
     "core-js": "^3.4.4",
     "tailwindcss": "^1.1.4",
@@ -25,7 +24,8 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "autoprefixer": "^9.7.3"
   },
   "eslintConfig": {
     "root": true,

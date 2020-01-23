@@ -345,7 +345,6 @@ import R64CartItemPreview from './R64CartItemPreview'
 import R64FormInput from './R64FormInput'
 import R64FormSelect from './R64FormSelect'
 import R64CheckoutSection from './R64CheckoutSection'
-import R64ShippingMethods from './R64ShippingMethods'
 import R64Alert from './R64Alert'
 import R64PromoCode from "./R64PromoCode"
 import R64Button from "./R64Button"
@@ -358,7 +357,7 @@ import cart from '../api/cart'
 import checkout from '../api/checkout'
 import order from '../api/order'
 import { validationMixin } from 'vuelidate'
-import { required, email, alpha } from 'vuelidate/lib/validators'
+import { required, email } from 'vuelidate/lib/validators'
 
 export default {
   mixins: [cartMixin, money, validationMixin],
@@ -387,7 +386,6 @@ export default {
     R64CartItemPreview,
     R64FormInput,
     R64FormSelect,
-    R64ShippingMethods,
     R64CheckoutSection,
     R64InlinePromoCode,
     R64PromoCode,

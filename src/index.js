@@ -8,4 +8,5 @@ function install(Vue) {
     Vue.component('R64Order', R64Order)
 }
 
+export { R64Cart, R64Checkout, R64Order }
 export default { install:install }

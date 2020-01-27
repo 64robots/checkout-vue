@@ -1,5 +1,11 @@
 <template>
-    <textarea :value="value" @input="(e) => $emit('input', e.target.value)" class="p-3 rounded border border-c-gray text-base focus:outline-none focus:border-c-grayer"></textarea>
+    <textarea 
+      :value="value"
+      class="p-3 rounded border border-c-gray text-base focus:outline-none focus:border-c-grayer"
+      @blur="(e) => $emit('blur', e.target.value)"
+      @input="(e) => $emit('input', e.target.value)"
+    >
+    </textarea>
 </template>
 
 <script>

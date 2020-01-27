@@ -16,7 +16,6 @@
       v-if="section === 'checkout'"
       :cart-token="cartToken"
       :auth-token="authToken"
-      :customer-id="1"
       stripe-key="pk_test_t9zUIgcNA0SwHCPuan3rYsew" 
       customer-notes="Customer Notes"
       @cart:update="cartUpdate" 

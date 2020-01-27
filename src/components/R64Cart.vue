@@ -16,7 +16,13 @@
             </svg>
             <span class="ml-2 text-c-blue">Add a note about your order (Optional)</span>
           </button>
-          <R64TextArea v-model="customerNote" class="mt-10 w-full h-32" v-if="orderNoteVisible" placeholder="Your order note ..." />
+          <R64TextArea
+            v-if="orderNoteVisible"
+            :value="cart.customer_notes"
+            @blur="setCustomerNote"
+            class="mt-10 w-full h-32"
+            placeholder="Your order note ..." 
+          />
         </div>
         <div class="mt-10 flex flex-col items-end">
           <span>Shipping and taxes will be calculated at check out</span>
@@ -39,11 +45,12 @@ import R64CartItem from './R64CartItem'
 import R64CloseButton from './R64CloseButton'
 import R64TextArea from './R64TextArea'
 import R64Button from './R64Button'
-import cart from '../mixins/cart'
+import cart from '../api/cart'
+import cartMixin from '../mixins/cart'
 import money from '../mixins/money'
 
 export default {
-  mixins: [cart, money],
+  mixins: [cartMixin, money],
 
   components: {
     R64CartItem,
@@ -55,7 +62,6 @@ export default {
   data () {
     return {
       orderNoteVisible: false,
-      customerNote: null
     }
   },
 
@@ -65,17 +71,35 @@ export default {
   },
 
   methods: {
-    checkout () {
-      this.$emit('checkout', {
-        customer_note: this.customerNote
-      })
+    async setCustomerNote (customerNote) {
+      try {
+        const { data } = await cart.update(this.cartToken, {
+          customer_notes: customerNote
+        })
+        this.cart = data
+      } catch (e) {
+        //
+      }
+
+      this.$emit('cart:update', this.cart)
     },
+
     toggleNote () {
       this.orderNoteVisible = !this.orderNoteVisible
 
       if (!this.orderNoteVisible) {
-        this.customerNote = null
+        this.setCustomerNote(null)
       }
+    },
+
+    checkout () {
+      this.$emit('checkout')
+    }
+  },
+
+  watch: {
+    'cart.customer_notes' (newCustomerNotes) {
+      this.orderNoteVisible = !!newCustomerNotes
     }
   }
 }

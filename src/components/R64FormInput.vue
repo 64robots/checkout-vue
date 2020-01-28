@@ -22,7 +22,7 @@
       >
       <R64Alert
         :class="alertClass"
-        class="absolute bottom-2 left-0"
+        class="absolute left-0"
         :visible="errorVisible"
         :message="errorMessage"
       />

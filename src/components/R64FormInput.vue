@@ -160,7 +160,7 @@ export default {
       if (this.validator && this.hasInput) {
         this.validator.$touch()
       }
-      this.$emit('blur')
+      this.$emit('blur', this.localValue)
     },
 
     onInput() {

@@ -9,8 +9,8 @@
       </div>
 
       <R64FormInput
-        v-model="cartItem.customer_note"
-        :id="`customer_note_${cartItem.cart_item_token}`"
+        v-model="localCartItem.customer_note"
+        :id="`customer_note_${localCartItem.cart_item_token}`"
         input-class="h-10 w-full max-w-lg mt-4 px-3 rounded border border-c-gray focus:border-c-grayer text-base focus:outline-none focus:border-c-grayer"
         placeholder="Custom note (Optional)"
         @blur="updateCustomerNote"
@@ -19,12 +19,13 @@
       <div class="flex items-center" :class="classes">
         <label :for="`quantity_${cartItem.cart_item_token}`">Qty</label>
         <R64FormInput
-          v-model="cartItem.quantity"
-          :id="`quantity_${cartItem.cart_item_token}`"
+          v-model="localCartItem.quantity"
           :validator="$v.cartItem.quantity"
+          :show-error="$v.cartItem.quantity.$error"
+          :id="`quantity_${localCartItem.cart_item_token}`"
           error-message="Quantity must be a positive number"
           input-class="w-10 h-8 ml-5 rounded border border-c-gray focus:outline-none focus:border-c-grayer text-center"
-          alert-class="ml-4"
+          alert-class="ml-5 whitespace-no-wrap"
           @blur="updateQuantity"
         />
         <span class="w-px h-6 ml-5 border-l border-c-gray"></span>
@@ -49,6 +50,12 @@ import { numeric } from 'vuelidate/lib/validators'
 export default {
   mixins: [cartItemMixin, money, validationMixin],
 
+  data () {
+    return {
+      localCartItem: this.cartItem
+    }
+  },
+
   components: {
     R64FormInput
   },
@@ -56,6 +63,12 @@ export default {
   computed: {
     classes () {
       return this.hasImage ? 'mt-4 md:mt-auto' : 'mt-4 md:mt-10'
+    }
+  },
+
+  watch: {
+    cartItem (newCartItem) {
+      this.localCartItem = newCartItem
     }
   },
 
@@ -68,14 +81,14 @@ export default {
   },
 
   methods: {
-    async updateQuantity () {
+    async updateQuantity (newQuantity) {
       if (this.$v.cartItem.quantity.$invalid) {
         return
       }
 
       try {
         await cartItem.update(this.cartItem.cart_item_token, {
-          quantity: this.cartItem.quantity
+          quantity: newQuantity
         })
       } catch (e) {
         //
@@ -84,10 +97,10 @@ export default {
       this.$emit('cart-item:update')
     },
 
-    async updateCustomerNote () {
+    async updateCustomerNote (newCustomerNote) {
       try {
         await cartItem.update(this.cartItem.cart_item_token, {
-            customer_note: this.cartItem.customer_note
+            customer_note: newCustomerNote
           })
       } catch (e) {
         //

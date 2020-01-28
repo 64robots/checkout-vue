@@ -9137,15 +9137,15 @@ var R64CartItemPreview_component = normalizeComponent(
 )
 
 /* harmony default export */ var R64CartItemPreview = (R64CartItemPreview_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96b75d02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64FormSelect.vue?vue&type=template&id=3acc87c8&
-var R64FormSelectvue_type_template_id_3acc87c8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"relative"},[(_vm.label)?_c('div',{staticClass:"mb-2"},[_vm._v(" "+_vm._s(_vm.label)+" ")]):_vm._e(),_c('div',{staticClass:"relative"},[_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.localValue),expression:"localValue"}],ref:"input",staticClass:"bg-white",class:[ _vm.inputClass, {
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96b75d02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64FormSelect.vue?vue&type=template&id=63bbb894&
+var R64FormSelectvue_type_template_id_63bbb894_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"relative"},[(_vm.label)?_c('div',{staticClass:"mb-2"},[_vm._v(" "+_vm._s(_vm.label)+" ")]):_vm._e(),_c('div',{staticClass:"relative"},[_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.localValue),expression:"localValue"}],ref:"input",staticClass:"bg-white",class:[ _vm.inputClass, {
         'border-red-500 focus:border-red-600': _vm.error,
         'border-c-gray focus:border-c-grayer': !_vm.error
-      } ],on:{"change":[function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.localValue=$event.target.multiple ? $$selectedVal : $$selectedVal[0]},_vm.onChange]}},[_c('option',{domProps:{"value":null}},[_vm._v(_vm._s(_vm.placeholder))]),_vm._l((_vm.options),function(option,index){return _c('option',{key:index,domProps:{"value":option.value}},[_vm._v(_vm._s(option.value))])})],2),_c('R64Alert',{staticClass:"absolute bottom-2 left-0",class:_vm.alertClass,attrs:{"visible":_vm.errorVisible,"message":_vm.errorMessage}})],1)])}
-var R64FormSelectvue_type_template_id_3acc87c8_staticRenderFns = []
+      } ],on:{"change":[function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.localValue=$event.target.multiple ? $$selectedVal : $$selectedVal[0]},_vm.onChange]}},[_c('option',{domProps:{"value":null}},[_vm._v(_vm._s(_vm.placeholder))]),_vm._l((_vm.options),function(option,index){return _c('option',{key:index,domProps:{"value":option.value}},[_vm._v(_vm._s(option.value))])})],2),_c('R64Alert',{staticClass:"absolute left-0",class:_vm.alertClass,attrs:{"visible":_vm.errorVisible,"message":_vm.errorMessage}})],1)])}
+var R64FormSelectvue_type_template_id_63bbb894_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/R64FormSelect.vue?vue&type=template&id=3acc87c8&
+// CONCATENATED MODULE: ./src/components/R64FormSelect.vue?vue&type=template&id=63bbb894&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64FormSelect.vue?vue&type=script&lang=js&
 //
@@ -9218,8 +9218,8 @@ var R64FormSelectvue_type_template_id_3acc87c8_staticRenderFns = []
 
 var R64FormSelect_component = normalizeComponent(
   components_R64FormSelectvue_type_script_lang_js_,
-  R64FormSelectvue_type_template_id_3acc87c8_render,
-  R64FormSelectvue_type_template_id_3acc87c8_staticRenderFns,
+  R64FormSelectvue_type_template_id_63bbb894_render,
+  R64FormSelectvue_type_template_id_63bbb894_staticRenderFns,
   false,
   null,
   null,

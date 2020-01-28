@@ -8,7 +8,13 @@
           <span class="text-4xl">Your Cart ({{ cartItems.length }})</span>
           <R64CloseButton @click.native="$emit('close')"/>
         </div>
-        <R64CartItem :cart-item="cartItem" @cart-item:update="fetchCart" @cart-item:delete="fetchCart" v-for="(cartItem, index) in cartItems" :key="index" />
+        <R64CartItem 
+          v-for="(cartItem, index) in cartItems" 
+          :key="index"
+          :cart-item="cartItem" 
+          @cart-item:update="fetchCart" 
+          @cart-item:delete="fetchCart" 
+        />
         <div class="mt-10 pb-10 border-b border-c-gray">
           <button @click="toggleNote" class="flex items-center">
             <svg class="w-5 h-5 text-c-blue fill-current" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,9 +25,9 @@
           <R64TextArea
             v-if="orderNoteVisible"
             :value="cart.customer_notes"
-            @blur="setCustomerNote"
             class="mt-10 w-full h-32"
-            placeholder="Your order note ..." 
+            placeholder="Your order note ..."
+            @blur="setCustomerNote"
           />
         </div>
         <div class="mt-10 flex flex-col items-end">

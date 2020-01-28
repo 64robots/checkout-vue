@@ -52,7 +52,7 @@ export default {
 
   data () {
     return {
-      localCartItem: this.cartItem
+      localCartItem: Object.assign({}, this.cartItem)
     }
   },
 
@@ -68,7 +68,7 @@ export default {
 
   watch: {
     cartItem (newCartItem) {
-      this.localCartItem = newCartItem
+      this.localCartItem = Object.assign({}, newCartItem)
     }
   },
 

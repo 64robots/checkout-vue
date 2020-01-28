@@ -17,11 +17,11 @@
       />
 
       <div class="flex items-center" :class="classes">
-        <label :for="`quantity_${cartItem.cart_item_token}`">Qty</label>
+        <label :for="`quantity_${localCartItem.cart_item_token}`">Qty</label>
         <R64FormInput
           v-model="localCartItem.quantity"
-          :validator="$v.cartItem.quantity"
-          :show-error="$v.cartItem.quantity.$error"
+          :validator="$v.localCartItem.quantity"
+          :show-error="$v.localCartItem.quantity.$error"
           :id="`quantity_${localCartItem.cart_item_token}`"
           error-message="Quantity must be a positive number"
           input-class="w-10 h-8 ml-5 rounded border border-c-gray focus:outline-none focus:border-c-grayer text-center"
@@ -73,7 +73,7 @@ export default {
   },
 
   validations: {
-    cartItem: {
+    localCartItem: {
       quantity: {
         numeric,
       }
@@ -82,7 +82,7 @@ export default {
 
   methods: {
     async updateQuantity (newQuantity) {
-      if (this.$v.cartItem.quantity.$invalid) {
+      if (this.$v.localCartItem.quantity.$invalid) {
         return
       }
 

@@ -7942,12 +7942,12 @@ function _asyncToGenerator(fn) {
     });
   };
 }
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96b75d02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64CartItem.vue?vue&type=template&id=136cdf68&
-var R64CartItemvue_type_template_id_136cdf68_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"flex flex-col md:flex-row mt-10 pb-10 border-b border-c-gray"},[(_vm.hasImage)?_c('div',{staticClass:"w-full h-40 md:w-40 md:h-40 bg-c-mid-gray flex-shrink-0"}):_vm._e(),_c('div',{staticClass:"mt-4 md:ml-6 md:mt-0 w-full flex flex-col"},[_c('div',{staticClass:"flex justify-between"},[_c('span',{staticClass:"text-xl"},[_vm._v(_vm._s(_vm.cartItem.product.name))]),_c('span',{staticClass:"text-xl font-bold"},[_vm._v(_vm._s(_vm.money(_vm.cartItem.price)))])]),_c('R64FormInput',{attrs:{"id":("customer_note_" + (_vm.localCartItem.cart_item_token)),"input-class":"h-10 w-full max-w-lg mt-4 px-3 rounded border border-c-gray focus:border-c-grayer text-base focus:outline-none focus:border-c-grayer","placeholder":"Custom note (Optional)"},on:{"blur":_vm.updateCustomerNote},model:{value:(_vm.localCartItem.customer_note),callback:function ($$v) {_vm.$set(_vm.localCartItem, "customer_note", $$v)},expression:"localCartItem.customer_note"}}),_c('div',{staticClass:"flex items-center",class:_vm.classes},[_c('label',{attrs:{"for":("quantity_" + (_vm.cartItem.cart_item_token))}},[_vm._v("Qty")]),_c('R64FormInput',{attrs:{"validator":_vm.$v.cartItem.quantity,"show-error":_vm.$v.cartItem.quantity.$error,"id":("quantity_" + (_vm.localCartItem.cart_item_token)),"error-message":"Quantity must be a positive number","input-class":"w-10 h-8 ml-5 rounded border border-c-gray focus:outline-none focus:border-c-grayer text-center","alert-class":"ml-5 whitespace-no-wrap"},on:{"blur":_vm.updateQuantity},model:{value:(_vm.localCartItem.quantity),callback:function ($$v) {_vm.$set(_vm.localCartItem, "quantity", $$v)},expression:"localCartItem.quantity"}}),_c('span',{staticClass:"w-px h-6 ml-5 border-l border-c-gray"}),_c('button',{staticClass:"ml-5",on:{"click":_vm.remove}},[_c('svg',{staticClass:"w-5 h-5",attrs:{"viewBox":"0 0 14 18","fill":"none","xmlns":"http://www.w3.org/2000/svg"}},[_c('path',{attrs:{"d":"M1 15.9999C1 17.0999 1.9 17.9999 3 17.9999H11C12.1 17.9999 13 17.0999 13 15.9999V3.99994H1V15.9999ZM14 0.999939H10.5L9.5 -6.10352e-05H4.5L3.5 0.999939H0V2.99994H14V0.999939Z","fill":"#737373"}})])])],1)],1)])}
-var R64CartItemvue_type_template_id_136cdf68_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96b75d02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64CartItem.vue?vue&type=template&id=64c2f91f&
+var R64CartItemvue_type_template_id_64c2f91f_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"flex flex-col md:flex-row mt-10 pb-10 border-b border-c-gray"},[(_vm.hasImage)?_c('div',{staticClass:"w-full h-40 md:w-40 md:h-40 bg-c-mid-gray flex-shrink-0"}):_vm._e(),_c('div',{staticClass:"mt-4 md:ml-6 md:mt-0 w-full flex flex-col"},[_c('div',{staticClass:"flex justify-between"},[_c('span',{staticClass:"text-xl"},[_vm._v(_vm._s(_vm.cartItem.product.name))]),_c('span',{staticClass:"text-xl font-bold"},[_vm._v(_vm._s(_vm.money(_vm.cartItem.price)))])]),_c('R64FormInput',{attrs:{"id":("customer_note_" + (_vm.localCartItem.cart_item_token)),"input-class":"h-10 w-full max-w-lg mt-4 px-3 rounded border border-c-gray focus:border-c-grayer text-base focus:outline-none focus:border-c-grayer","placeholder":"Custom note (Optional)"},on:{"blur":_vm.updateCustomerNote},model:{value:(_vm.localCartItem.customer_note),callback:function ($$v) {_vm.$set(_vm.localCartItem, "customer_note", $$v)},expression:"localCartItem.customer_note"}}),_c('div',{staticClass:"flex items-center",class:_vm.classes},[_c('label',{attrs:{"for":("quantity_" + (_vm.localCartItem.cart_item_token))}},[_vm._v("Qty")]),_c('R64FormInput',{attrs:{"validator":_vm.$v.localCartItem.quantity,"show-error":_vm.$v.localCartItem.quantity.$error,"id":("quantity_" + (_vm.localCartItem.cart_item_token)),"error-message":"Quantity must be a positive number","input-class":"w-10 h-8 ml-5 rounded border border-c-gray focus:outline-none focus:border-c-grayer text-center","alert-class":"ml-5 whitespace-no-wrap"},on:{"blur":_vm.updateQuantity},model:{value:(_vm.localCartItem.quantity),callback:function ($$v) {_vm.$set(_vm.localCartItem, "quantity", $$v)},expression:"localCartItem.quantity"}}),_c('span',{staticClass:"w-px h-6 ml-5 border-l border-c-gray"}),_c('button',{staticClass:"ml-5",on:{"click":_vm.remove}},[_c('svg',{staticClass:"w-5 h-5",attrs:{"viewBox":"0 0 14 18","fill":"none","xmlns":"http://www.w3.org/2000/svg"}},[_c('path',{attrs:{"d":"M1 15.9999C1 17.0999 1.9 17.9999 3 17.9999H11C12.1 17.9999 13 17.0999 13 15.9999V3.99994H1V15.9999ZM14 0.999939H10.5L9.5 -6.10352e-05H4.5L3.5 0.999939H0V2.99994H14V0.999939Z","fill":"#737373"}})])])],1)],1)])}
+var R64CartItemvue_type_template_id_64c2f91f_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/R64CartItem.vue?vue&type=template&id=136cdf68&
+// CONCATENATED MODULE: ./src/components/R64CartItem.vue?vue&type=template&id=64c2f91f&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.assign.js
 var es_object_assign = __webpack_require__("cca6");
@@ -8504,7 +8504,7 @@ var validators = __webpack_require__("b5ae");
     }
   },
   validations: {
-    cartItem: {
+    localCartItem: {
       quantity: {
         numeric: validators["numeric"]
       }
@@ -8519,7 +8519,7 @@ var validators = __webpack_require__("b5ae");
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (!this.$v.cartItem.quantity.$invalid) {
+                if (!this.$v.localCartItem.quantity.$invalid) {
                   _context.next = 2;
                   break;
                 }
@@ -8648,8 +8648,8 @@ var validators = __webpack_require__("b5ae");
 
 var R64CartItem_component = normalizeComponent(
   components_R64CartItemvue_type_script_lang_js_,
-  R64CartItemvue_type_template_id_136cdf68_render,
-  R64CartItemvue_type_template_id_136cdf68_staticRenderFns,
+  R64CartItemvue_type_template_id_64c2f91f_render,
+  R64CartItemvue_type_template_id_64c2f91f_staticRenderFns,
   false,
   null,
   null,

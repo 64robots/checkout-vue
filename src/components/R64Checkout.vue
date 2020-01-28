@@ -43,7 +43,7 @@
                 :validator="$v.form.customer_email"
                 :show-error="$v.form.customer_email.$error"
                 error-message="Valid email address is required"
-                @blur="updateCart"
+                @blur="updateCart('customer_email')"
               />
             </div>
           </div>
@@ -61,7 +61,7 @@
                     :validator="$v.form.shipping_first_name"
                     :show-error="$v.form.shipping_first_name.$error"
                     error-message="First name is required"
-                    @blur="updateCart"
+                    @blur="updateCart('shipping_first_name')"
                   />
                 </div>
                 <div class="mt-6">
@@ -71,7 +71,7 @@
                     :validator="$v.form.shipping_last_name"
                     :show-error="$v.form.shipping_last_name.$error"
                     error-message="Last name is required"
-                    @blur="updateCart"
+                    @blur="updateCart('shipping_last_name')"
                   />
                 </div>
                 <div class="mt-6">
@@ -81,7 +81,7 @@
                     :validator="$v.form.shipping_address_line1"
                     :show-error="$v.form.shipping_address_line1.$error"
                     error-message="Street address is required"
-                    @blur="updateCart"
+                    @blur="updateCart('shipping_address_line1')"
                   />
                 </div>
                 <div class="mt-6">
@@ -91,7 +91,7 @@
                     :validator="$v.form.shipping_address_line2"
                     :show-error="$v.form.shipping_address_line2.$error"
                     error-message="Appartment or suite is required"
-                    @blur="updateCart"
+                    @blur="updateCart('shipping_address_line2')"
                   />
                 </div>
                 <div class="mt-6 flex">
@@ -103,7 +103,7 @@
                       :validator="$v.form.shipping_address_zipcode"
                       :show-error="$v.form.shipping_address_zipcode.$error"
                       error-message="Zipcode is required"
-                      @blur="updateCart"
+                      @blur="updateCart('shipping_address_zipcode')"
                     />
                   </div>
                   <div class="w-full ml-2">
@@ -113,7 +113,7 @@
                       :validator="$v.form.shipping_address_city"
                       :show-error="$v.form.shipping_address_city.$error"
                       error-message="City is required"
-                      @blur="updateCart"
+                      @blur="updateCart('shipping_address_city')"
                     />
                   </div>
                   <div class="w-full ml-2">
@@ -125,7 +125,7 @@
                       :validator="$v.form.shipping_address_region"
                       :show-error="$v.form.shipping_address_region.$error"
                       error-message="State is required"
-                      @change="updateCart"
+                      @change="updateCart('shipping_address_region')"
                     />
                   </div>
                 </div>
@@ -136,7 +136,7 @@
                     :validator="$v.form.shipping_address_phone"
                     :show-error="$v.form.shipping_address_phone.$error"
                     error-message="Phone is required"
-                    @blur="updateCart"
+                    @blur="updateCart('shipping_address_phone')"
                   />
                 </div>
               </div>
@@ -190,7 +190,7 @@
                     :validator="$v.form.billing_first_name"
                     :show-error="$v.form.billing_first_name.$error"
                     error-message="First name is required"
-                    @blur="updateCart"
+                    @blur="updateCart('billing_first_name')"
                   />
                 </div>
                 <div class="mt-6">
@@ -200,7 +200,7 @@
                     :validator="$v.form.billing_last_name"
                     :show-error="$v.form.billing_last_name.$error"
                     error-message="Last name is required"
-                    @blur="updateCart"
+                    @blur="updateCart('billing_last_name')"
                   />
                 </div>
                 <div class="mt-6">
@@ -210,7 +210,7 @@
                     :validator="$v.form.billing_address_line1"
                     :show-error="$v.form.billing_address_line1.$error"
                     error-message="Street address is required"
-                    @blur="updateCart"
+                    @blur="updateCart('billing_address_line1')"
                   />
                 </div>
                 <div class="mt-6">
@@ -220,7 +220,7 @@
                     :validator="$v.form.billing_address_line2"
                     :show-error="$v.form.billing_address_line2.$error"
                     error-message="Appartment or suite is required"
-                    @blur="updateCart"
+                    @blur="updateCart('billing_address_line2')"
                   />
                 </div>
                 <div class="mt-6 flex">
@@ -232,7 +232,7 @@
                       :validator="$v.form.billing_address_zipcode"
                       :show-error="$v.form.billing_address_zipcode.$error"
                       error-message="Zipcode is required"
-                      @blur="updateCart"
+                      @blur="updateCart('billing_address_zipcode')"
                     />
                   </div>
                   <div class="w-full ml-2">
@@ -242,7 +242,7 @@
                       :validator="$v.form.billing_address_city"
                       :show-error="$v.form.billing_address_city.$error"
                       error-message="City is required"
-                      @blur="updateCart"
+                      @blur="updateCart('billing_address_city')"
                     />
                   </div>
                   <div class="w-full ml-2">
@@ -254,7 +254,7 @@
                       :validator="$v.form.billing_address_region"
                       :show-error="$v.form.billing_address_region.$error"
                       error-message="State is required"
-                      @change="updateCart"
+                      @change="updateCart('billing_address_region')"
                     />
                   </div>
                 </div>
@@ -265,7 +265,7 @@
                     :validator="$v.form.billing_address_phone"
                     :show-error="$v.form.billing_address_phone.$error"
                     error-message="Phone is required"
-                    @blur="updateCart"
+                    @blur="updateCart('billing_address_phone')"
                   />
                 </div>
               </div>
@@ -520,27 +520,6 @@ export default {
         && !this.$v.form.billing_address_phone.$invalid
     },
 
-    cartDiff () {
-      return this.form.customer_email !== this.cart.customer_email ||
-        this.form.shipping_first_name !== this.cart.shipping_first_name ||
-        this.form.shipping_last_name !== this.cart.shipping_last_name ||
-        this.form.shipping_address_line1 !== this.cart.shipping_address_line1 ||
-        this.form.shipping_address_line2 !== this.cart.shipping_address_line2 ||
-        this.form.shipping_address_city !== this.cart.shipping_address_city ||
-        this.form.shipping_address_region !== this.cart.shipping_address_region ||
-        this.form.shipping_address_zipcode !== this.cart.shipping_address_zipcode ||
-        this.form.shipping_address_phone !== this.cart.shipping_address_phone ||
-        this.form.billing_same !== this.cart.billing_same ||
-        this.form.billing_first_name !== this.cart.billing_first_name ||
-        this.form.billing_last_name !== this.cart.billing_last_name ||
-        this.form.billing_address_line1 !== this.cart.billing_address_line1 ||
-        this.form.billing_address_line2 !== this.cart.billing_address_line2 ||
-        this.form.billing_address_zipcode !== this.cart.billing_address_zipcode ||
-        this.form.billing_address_city !== this.cart.billing_address_city ||
-        this.form.billing_address_region !== this.cart.billing_address_region ||
-        this.form.billing_address_phone !== this.cart.billing_address_phone
-    },
-
     hasCouponCode () {
       return parseFloat(this.cart.discount) !== 0
     },
@@ -624,19 +603,32 @@ export default {
       }
     },
 
-    async updateCart () {
-      if (this.$v.$invalid || !this.cartDiff) {
+    async updateCart (property) {
+      console.log(this.cart[property], this.form[property])
+      if (this.$v.form[property].$invalid || !this.propertyDiff(property)) {
         return
       }
 
       try {
-        const { data } = await cart.update(this.cartToken, this.form)
+        const { data } = await cart.update(this.cartToken, {
+          [property]: this.form[property]
+        })
         this.cart = data
       } catch (e) {
         //
       }
-
       this.$emit('cart:update', this.cart)
+    },
+
+    propertyDiff (property) {
+      const cartProperty = this.cart[property]
+      const formProperty = this.form[property]
+
+      if (cartProperty === null && formProperty === "") {
+        return false
+      }
+
+      return cartProperty !== formProperty
     },
   },
 

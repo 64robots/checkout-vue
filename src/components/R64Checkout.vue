@@ -604,7 +604,6 @@ export default {
     },
 
     async updateCart (property) {
-      console.log(this.cart[property], this.form[property])
       if (this.$v.form[property].$invalid || !this.propertyDiff(property)) {
         return
       }

@@ -174,11 +174,11 @@
               <div class="mt-6">
                 <span class="block text-xl">Billing Address</span>
                 <div class="mt-5 w-full flex">
-                  <input v-model="form.billing_same" type="radio" class="form-radio" id="billing_address_same" :value="true" @change="updateCart">
+                  <input v-model="form.billing_same" type="radio" class="form-radio" id="billing_address_same" :value="true" @change="updateCart('billing_same')">
                   <label class="ml-3" for="billing_address_same">Same as shipping address</label>
                 </div>
                 <div class="mt-5 w-full flex">
-                  <input v-model="form.billing_same" name="billing" type="radio" class="form-radio" id="billing_address_different" :value="false" @change="updateCart">
+                  <input v-model="form.billing_same" name="billing" type="radio" class="form-radio" id="billing_address_different" :value="false" @change="updateCart('billing_same')">
                   <label class="ml-3" for="billing_address_different">Use a different billing address</label>
                 </div>
               </div>
@@ -437,6 +437,7 @@ export default {
       shipping_address_region: {},
       shipping_address_zipcode: {},
       shipping_address_phone: {},
+      billing_same: { required },
       billing_first_name: {},
       billing_last_name: {},
       billing_address_line1: {},
@@ -653,54 +654,6 @@ export default {
         this.form.billing_address_phone = this.form.shipping_address_phone
       }
     },
-
-    'form.shipping_first_name': function (newValue) {
-      if (this.form.billing_same) {
-        this.form.billing_first_name = newValue
-      }
-    },
-
-    'form.shipping_last_name': function (newValue) {
-      if (this.form.billing_same) {
-        this.form.billing_last_name = newValue
-      }
-    },
-
-    'form.shipping_address_line1': function (newValue) {
-      if (this.form.billing_same) {
-        this.form.billing_address_line1 = newValue
-      }
-    },
-
-    'form.shipping_address_line2': function (newValue) {
-      if (this.form.billing_same) {
-        this.form.billing_address_line2 = newValue
-      }
-    },
-
-    'form.shipping_address_zipcode': function (newValue) {
-      if (this.form.billing_same) {
-        this.form.billing_address_zipcode = newValue
-      }
-    },
-
-    'form.shipping_address_city': function (newValue) {
-      if (this.form.billing_same) {
-        this.form.billing_address_city = newValue
-      }
-    },
-
-    'form.shipping_address_region': function (newValue) {
-      if (this.form.billing_same) {
-        this.form.billing_address_region = newValue
-      }
-    },
-
-    'form.shipping_address_phone': function (newValue) {
-      if (this.form.billing_same) {
-        this.form.billing_address_phone = newValue
-      }
-    }
   }
 }
 </script>

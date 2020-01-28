@@ -51,7 +51,7 @@ export default {
   data() {
     return {
       section: null,
-      authToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6InNaNjJYa1BlWEVucDdIbjIifQ.eyJpc3MiOiJodHRwOlwvXC9kcXMtYmFja2VuZC50ZXN0Iiwic3ViIjoiNTk3NyIsImp0aSI6InNaNjJYa1BlWEVucDdIbjIiLCJpYXQiOjE1NzkyNzU3NDEsIm5iZiI6MTU3OTI3NTc0MSwiZXhwIjoxNTc5NzA3NzQxLCJybGkiOjE1ODAxMzk3NDF9.rET4AggscIEAGDIoO0r5IxyCIfkcLm4q51Rk_NI7rTQ',
+      authToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6ImhGTnBKRFRhYWpBSXJHbEEifQ.eyJpc3MiOiJodHRwOlwvXC9kcXMtYmFja2VuZC50ZXN0Iiwic3ViIjoiNTk3NyIsImp0aSI6ImhGTnBKRFRhYWpBSXJHbEEiLCJpYXQiOjE1ODAyMjUwMzMsIm5iZiI6MTU4MDIyNTAzMywiZXhwIjoxNTgwNjU3MDMzLCJybGkiOjE1ODEwODkwMzN9.65r7UuulmD2ZZOG3JoAqkyZtokSdkPBenuUJmvNfnhs',
       cart: null,
       order: {
         id: 1

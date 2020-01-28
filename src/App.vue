@@ -17,8 +17,7 @@
       :cart-token="cartToken"
       :auth-token="authToken"
       stripe-key="pk_test_t9zUIgcNA0SwHCPuan3rYsew" 
-      customer-notes="Customer Notes"
-      @cart:update="cartUpdate" 
+      @cart:update="cartUpdate"
       @cart="section = 'cart'" 
       @order:create="orderCreate"
     />

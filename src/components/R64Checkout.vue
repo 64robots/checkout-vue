@@ -363,10 +363,6 @@ export default {
   mixins: [cartMixin, money, validationMixin],
 
   props: {
-    customerEmail: {
-      type: String,
-      default: null
-    },
     stripeKey: {
       type: String,
       default: null
@@ -469,28 +465,6 @@ export default {
     
     await this.fetchSettings()
     await this.fetchCart()
-
-    this.form.customer_email = this.customerEmail
-
-    this.form.customer_email = this.cart.customer_email
-    this.form.customer_notes = this.cart.customer_notes
-    this.form.shipping_first_name = this.cart.shipping_first_name
-    this.form.shipping_last_name = this.cart.shipping_last_name
-    this.form.shipping_address_line1 = this.cart.shipping_address_line1
-    this.form.shipping_address_line2 = this.cart.shipping_address_line2
-    this.form.shipping_address_city = this.cart.shipping_address_city
-    this.form.shipping_address_region = this.cart.shipping_address_region
-    this.form.shipping_address_zipcode = this.cart.shipping_address_zipcode
-    this.form.shipping_address_phone = this.cart.shipping_address_phone
-    this.form.billing_same = this.cart.billing_same
-    this.form.billing_first_name = this.cart.billing_first_name
-    this.form.billing_last_name = this.cart.billing_last_name
-    this.form.billing_address_line1 = this.cart.billing_address_line1
-    this.form.billing_address_line2 = this.cart.billing_address_line2
-    this.form.billing_address_zipcode = this.cart.billing_address_zipcode
-    this.form.billing_address_city = this.cart.billing_address_city
-    this.form.billing_address_region = this.cart.billing_address_region
-    this.form.billing_address_phone = this.cart.billing_address_phone
   },
 
   computed: {
@@ -633,26 +607,26 @@ export default {
   },
 
   watch: {
-    'form.billing_same' (newBillingSame) {
-      if (!newBillingSame) {
-        this.form.billing_first_name = null
-        this.form.billing_last_name = null
-        this.form.billing_address_line1 = null
-        this.form.billing_address_line2 = null
-        this.form.billing_address_zipcode = null
-        this.form.billing_address_city = null
-        this.form.billing_address_region = null
-        this.form.billing_address_phone = null
-      } else {
-        this.form.billing_first_name = this.form.shipping_first_name
-        this.form.billing_last_name = this.form.shipping_last_name
-        this.form.billing_address_line1 = this.form.shipping_address_line1
-        this.form.billing_address_line2 = this.form.shipping_address_line2
-        this.form.billing_address_zipcode = this.form.shipping_address_zipcode
-        this.form.billing_address_city = this.form.shipping_address_city
-        this.form.billing_address_region = this.form.shipping_address_region
-        this.form.billing_address_phone = this.form.shipping_address_phone
-      }
+    cart (newCart) {
+      this.form.customer_email = this.cart.customer_email
+      this.form.customer_notes = this.cart.customer_notes
+      this.form.shipping_first_name = this.cart.shipping_first_name
+      this.form.shipping_last_name = this.cart.shipping_last_name
+      this.form.shipping_address_line1 = this.cart.shipping_address_line1
+      this.form.shipping_address_line2 = this.cart.shipping_address_line2
+      this.form.shipping_address_city = this.cart.shipping_address_city
+      this.form.shipping_address_region = this.cart.shipping_address_region
+      this.form.shipping_address_zipcode = this.cart.shipping_address_zipcode
+      this.form.shipping_address_phone = this.cart.shipping_address_phone
+      this.form.billing_same = this.cart.billing_same
+      this.form.billing_first_name = this.cart.billing_first_name
+      this.form.billing_last_name = this.cart.billing_last_name
+      this.form.billing_address_line1 = this.cart.billing_address_line1
+      this.form.billing_address_line2 = this.cart.billing_address_line2
+      this.form.billing_address_zipcode = this.cart.billing_address_zipcode
+      this.form.billing_address_city = this.cart.billing_address_city
+      this.form.billing_address_region = this.cart.billing_address_region
+      this.form.billing_address_phone = this.cart.billing_address_phone
     },
   }
 }

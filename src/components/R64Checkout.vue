@@ -631,5 +631,3 @@ export default {
   }
 }
 </script>
-
-<style scoped src="../assets/app.css">

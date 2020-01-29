@@ -1,3 +1,4 @@
+import './assets/app.css'
 import R64Cart from './components/R64Cart'
 import R64Checkout from './components/R64Checkout'
 import R64Order from './components/R64Order'

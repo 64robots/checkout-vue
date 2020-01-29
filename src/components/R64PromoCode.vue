@@ -1,10 +1,10 @@
 <template>
   <div>
-    <R64Button type="button" @click.native="hasPromoCode = true" class="w-full px-0" variant="white" v-if="!hasPromoCode">Add promo code</R64Button>
+    <R64Button type="button" @click.native="hasPromoCode = true" class="c-w-full c-px-0" variant="white" v-if="!hasPromoCode">Add promo code</R64Button>
     <div v-show="hasPromoCode">
       <label class="block" for="promo_code">Promo code</label>
-      <R64Input ref="promo_code" v-model="promoCode" id="promo_code" class="w-full mt-2"/>
-      <R64Button @click.native="applyPromoCode" class="mt-4">Apply</R64Button>
+      <R64Input ref="promo_code" v-model="promoCode" id="promo_code" class="c-w-full c-mt-2"/>
+      <R64Button @click.native="applyPromoCode" class="c-mt-4">Apply</R64Button>
     </div>
   </div>
 </template>

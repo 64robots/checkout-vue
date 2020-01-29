@@ -1,19 +1,19 @@
 <template>
-  <label class="relative">
+  <label class="c-relative">
     <div
       v-if="label"
-      class="mb-2"
+      class="c-mb-2"
     >
       {{ label }}
     </div>
-    <div class="relative">
+    <div class="c-relative">
       <input
         :id="id"
         ref="input"
         v-model="localValue"
         :class="[ inputClass, {
-          'border-red-500 focus:border-red-600': error,
-          'border-c-gray focus:border-c-grayer': !error
+          'c-border-red-500 c-focus:border-red-600': error,
+          'c-border-c-gray c-focus:border-c-grayer': !error
         } ]"
         :type="internalType"
         :placeholder="placeholder"
@@ -22,7 +22,7 @@
       >
       <R64Alert
         :class="alertClass"
-        class="absolute left-0"
+        class="c-absolute c-left-0"
         :visible="errorVisible"
         :message="errorMessage"
       />
@@ -49,7 +49,7 @@ export default {
     inputClass: {
       type: String,
       default:
-        'h-10 w-full px-3 rounded border text-base focus:outline-none',
+        'c-h-10 c-w-full c-px-3 c-rounded c-border c-text-base c-focus:outline-none',
     },
 
     alertClass: {

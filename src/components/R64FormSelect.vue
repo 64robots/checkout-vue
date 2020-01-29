@@ -1,19 +1,19 @@
 <template>
-  <label class="relative">
+  <label class="c-relative">
     <div
       v-if="label"
-      class="mb-2"
+      class="c-mb-2"
     >
       {{ label }}
     </div>
-    <div class="relative">
+    <div class="c-relative">
       <select 
         ref="input" 
         v-model="localValue"
-        class="bg-white"
+        class="c-bg-white"
         :class="[ inputClass, {
-          'border-red-500 focus:border-red-600': error,
-          'border-c-gray focus:border-c-grayer': !error
+          'c-border-red-500 c-focus:border-red-600': error,
+          'c-border-c-gray c-focus:border-c-grayer': !error
         } ]"
         @change="onChange"
       >
@@ -22,7 +22,7 @@
       </select>
       <R64Alert
         :class="alertClass"
-        class="absolute left-0"
+        class="c-absolute c-left-0"
         :visible="errorVisible"
         :message="errorMessage"
       />

@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <div v-if="section === null" class="mt-20 max-w-xs mx-auto">
-      <R64AddtoCart :cart-token="cartToken" @cart:update="cartUpdate" :product-id="1" class="mt-20 max-w-xs mx-auto"/>
-      <R64AddtoCart :cart-token="cartToken" @cart:update="cartUpdate" :product-id="2" class="mt-20 max-w-xs mx-auto"/>
-      <R64Button class="mt-20" @click.native="section = 'cart'">Cart</R64Button>
+    <div v-if="section === null" class="c-mt-20 c-max-w-xs c-mx-auto">
+      <R64AddtoCart :cart-token="cartToken" @cart:update="cartUpdate" :product-id="1" class="c-mt-20 c-max-w-xs c-mx-auto"/>
+      <R64AddtoCart :cart-token="cartToken" @cart:update="cartUpdate" :product-id="2" class="c-mt-20 c-max-w-xs c-mx-auto"/>
+      <R64Button class="c-mt-20" @click.native="section = 'cart'">Cart</R64Button>
     </div>
     <R64Cart 
       v-if="section === 'cart'"
@@ -77,5 +77,3 @@ export default {
   }
 }
 </script>
-
-<style src="./assets/app.css">

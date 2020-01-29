@@ -25,7 +25,6 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "postcss-prefixer": "^2.1.2",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {

@@ -1,54 +1,54 @@
 <template>
-  <div v-if="order" class="font-sans antialiased text-c-black bg-c-light-gray">
-    <div class="max-w-2xl mx-auto py-20">
+  <div v-if="order" class="c-font-sans c-antialiased c-text-c-black c-bg-c-light-gray">
+    <div class="c-max-w-2xl c-mx-auto c-py-20">
       <R64OrderSection>
-        <span class="block text-center text-4xl font-bold text-c-blue"><slot name="logo">Logo</slot></span>
-        <span class="block mt-10 text-4xl font-bold">Thank you for your order!</span>
-        <span class="block mt-4">Order Number: {{ order.id }}</span>
-        <span class="block mt-2">Order Date: {{ order.created_at }}</span>
-        <span class="block mt-2">Payment Method: {{ order.order_purchase.card_type }} ending in {{ order.order_purchase.card_last4 }}</span>
+        <span class="c-block c-text-center c-text-4xl c-font-bold c-text-c-blue"><slot name="logo">Logo</slot></span>
+        <span class="c-block c-mt-10 c-text-4xl c-font-bold">Thank you for your order!</span>
+        <span class="c-block c-mt-4">Order Number: {{ order.id }}</span>
+        <span class="c-block c-mt-2">Order Date: {{ order.created_at }}</span>
+        <span class="c-block c-mt-2">Payment Method: {{ order.order_purchase.card_type }} ending in {{ order.order_purchase.card_last4 }}</span>
         <slot name="delivery-date"></slot>
       </R64OrderSection>
-      <R64OrderSection class="mt-2">
-        <span class="font-bold text-xl">{{ order.order_items.length }} items</span>
-        <div class="mt-8">
-          <R64CartItemPreview :cart-item="orderItem" class="mt-4" v-for="(orderItem, index) in order.order_items" :key="index"/>
+      <R64OrderSection class="c-mt-2">
+        <span class="c-font-bold c-text-xl">{{ order.order_items.length }} items</span>
+        <div class="c-mt-8">
+          <R64CartItemPreview :cart-item="orderItem" class="c-mt-4" v-for="(orderItem, index) in order.order_items" :key="index"/>
         </div>
-        <div class="my-6">
-          <div class="flex justify-between">
+        <div class="c-my-6">
+          <div class="c-flex c-justify-between">
             <span>Subtotal</span>
             <span>{{ money(order.items_total) }}</span>
           </div>
-          <div class="flex justify-between mt-4">
+          <div class="c-flex c-justify-between c-mt-4">
             <span>Discount</span>
             <span>-{{ money(order.discount) }}</span>
           </div>
-          <div class="flex justify-between mt-4">
+          <div class="c-flex c-justify-between c-mt-4">
             <span>Taxes</span>
             <span>{{ money(order.tax) }}</span>
           </div>
-          <div class="flex justify-between mt-4">
+          <div class="c-flex c-justify-between c-mt-4">
             <span>Shipping</span>
             <span>{{ money(order.shipping) }}</span>
           </div>
         </div>
         <R64HorizontalLine />
-        <div class="flex items-center justify-between mt-6">
-          <span class="text-xl font-bold">Total</span>
-          <span class="text-xl font-bold">{{ money(order.total) }}</span>
+        <div class="c-flex c-items-center c-justify-between c-mt-6">
+          <span class="c-text-xl c-font-bold">Total</span>
+          <span class="c-text-xl c-font-bold">{{ money(order.total) }}</span>
         </div>
       </R64OrderSection>
-      <R64OrderSection class="mt-2">
-        <span class="font-bold text-xl">Shipping Details</span>
-        <div class="flex mt-4">
-          <div class="w-1/2">
-            <span class="block font-bold">Shipping address</span>
-            <span class="block mt-2">{{ order.shipping_address_line1 }}</span>
-            <span class="block mt-1">{{ order.shipping_address_line2 }}</span>
-            <span class="block mt-1">{{ order.shipping_address_city }}, {{ order.shipping_address_region }}</span>
-            <span class="block mt-1">{{ order.shipping_address_zipcode }}</span>
+      <R64OrderSection class="c-mt-2">
+        <span class="c-font-bold c-text-xl">Shipping Details</span>
+        <div class="c-flex c-mt-4">
+          <div class="c-w-1/2">
+            <span class="c-block c-font-bold">Shipping address</span>
+            <span class="c-block c-mt-2">{{ order.shipping_address_line1 }}</span>
+            <span class="c-block c-mt-1">{{ order.shipping_address_line2 }}</span>
+            <span class="c-block c-mt-1">{{ order.shipping_address_city }}, {{ order.shipping_address_region }}</span>
+            <span class="c-block c-mt-1">{{ order.shipping_address_zipcode }}</span>
           </div>
-          <div class="w-1/2">
+          <div class="c-w-1/2">
             <slot name="shipping-method"></slot>
           </div>
         </div>

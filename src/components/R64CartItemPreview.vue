@@ -1,13 +1,13 @@
 <template>
-  <div class="flex pb-4" :class="{ 'border-b border-c-gray': border }">
-    <div v-if="hasImage" class="w-16 h-16 bg-c-mid-gray flex-shrink-0">
+  <div class="c-flex c-pb-4" :class="{ 'border-b border-c-gray': border }">
+    <div v-if="hasImage" class="c-w-16 c-h-16 c-bg-c-mid-gray c-flex-shrink-0">
     </div>
-    <div :class="classes" class="w-full flex flex-col items-end">
-      <div class="w-full flex justify-between">
-        <span class="font-bold">{{ cartItem.product.name }}</span>
-        <span class="text-sm">Qty {{ cartItem.quantity }}</span>
+    <div :class="classes" class="c-w-full c-flex c-flex-col c-items-end">
+      <div class="c-w-full c-flex c-justify-between">
+        <span class="c-font-bold">{{ cartItem.product.name }}</span>
+        <span class="c-text-sm">Qty {{ cartItem.quantity }}</span>
       </div>
-      <span class="mt-auto font-bold text-xl">{{ money(cartItem.price) }}</span>
+      <span class="c-mt-auto c-font-bold c-text-xl">{{ money(cartItem.price) }}</span>
     </div>
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
 
   computed: {
     classes () {
-      return this.hasImage ? 'ml-4' : ''
+      return this.hasImage ? 'c-ml-4' : ''
     }
   },
 }

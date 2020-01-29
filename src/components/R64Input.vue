@@ -1,5 +1,5 @@
 <template>
-    <input :value="value" @input="(e) => $emit('input', e.target.value)" @change="(e) => $emit('change', e.target.value)" type="text" class="h-10 px-3 rounded border text-base focus:outline-none" :class="classes">
+    <input :value="value" @input="(e) => $emit('input', e.target.value)" @change="(e) => $emit('change', e.target.value)" type="text" class="c-h-10 c-px-3 c-rounded c-border c-text-base c-focus:outline-none" :class="classes">
 </template>
 
 <script>
@@ -17,7 +17,7 @@ export default {
 
   computed: {
     classes () {
-      return this.error ? 'border-red-400 focus:border-red-600' : 'border-c-gray focus:border-c-grayer'
+      return this.error ? 'c-border-red-400 c-focus:border-red-600' : 'c-border-c-gray c-focus:border-c-grayer'
     }
   }
 }

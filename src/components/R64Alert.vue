@@ -1,7 +1,7 @@
 <template>
   <div
     v-show="visible"
-    class="flex w-full text-sm text-white mt-1"
+    class="c-flex c-w-full c-text-sm c-text-white c-mt-1"
   >
     <span :class="classes">
       {{ message }}
@@ -9,7 +9,7 @@
 
     <span
       v-if="closable"
-      class="px-4 text-lg cursor-pointer"
+      class="c-px-4 c-text-lg c-cursor-pointer"
       @click="$emit('close')"
     >x</span>
   </div>
@@ -44,8 +44,8 @@ export default {
   computed: {
     classes() {
       return {
-        'text-red-600': this.isError,
-        'text-green-500': this.isSuccess,
+        'c-text-red-600': this.isError,
+        'c-text-green-500': this.isSuccess,
       }
     },
 

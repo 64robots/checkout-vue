@@ -1,5 +1,5 @@
 <template>
-    <button :class="classes" class="w-full py-3 rounded" :disabled="disabled"><slot></slot></button>
+    <button :class="classes" class="c-w-full c-py-3 c-rounded" :disabled="disabled"><slot></slot></button>
 </template>
 
 <script>
@@ -17,18 +17,18 @@ export default {
     computed: {
         classes () {
             if (this.disabled) {
-                return 'bg-c-mid-grayer text-c-grayer'
+                return 'c-bg-c-mid-grayer c-text-c-grayer'
             }
 
             if (this.variant === 'blue') {
-                return 'bg-c-blue text-white font-bold'
+                return 'c-bg-c-blue c-text-white c-font-bold'
             } else if (this.variant === 'white') {
-                return 'bg-white text-c-blue border border-c-blue'
+                return 'c-bg-white c-text-c-blue c-border c-border-c-blue'
             } else if (this.variant === 'transparent') {
-                return 'bg-transparent text-c-blue border border-c-blue'
+                return 'c-bg-transparent c-text-c-blue c-border c-border-c-blue'
             }
 
-            return 'bg-c-blue text-white font-bold'
+            return 'c-bg-c-blue c-text-white c-font-bold'
         }
     }
 }

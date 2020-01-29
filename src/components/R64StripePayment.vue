@@ -1,57 +1,57 @@
 <template>
   <div>
-    <div class="mt-6">
-      <label class="block">
+    <div class="c-mt-6">
+      <label class="c-block">
         <span>Card Number</span>
-        <div class="relative">
-          <span class="absolute top-0 bottom-0 left-0 px-3 flex items-center">
-              <svg class="w-5 h-5" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 0H2C.89 0 .01.89.01 2L0 14c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V2c0-1.11-.89-2-2-2zm0 14H2V8h16v6zm0-10H2V2h16v2z" fill="#737373"/></svg>
+        <div class="c-relative">
+          <span class="c-absolute c-top-0 c-bottom-0 c-left-0 c-px-3 c-flex c-items-center">
+              <svg class="c-w-5 c-h-5" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 0H2C.89 0 .01.89.01 2L0 14c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V2c0-1.11-.89-2-2-2zm0 14H2V8h16v6zm0-10H2V2h16v2z" fill="#737373"/></svg>
           </span>
-          <div ref="card_number" class="mt-2 w-full h-10 px-10 rounded border border-c-gray text-base focus:outline-none focus:border-c-grayer" style="padding-top: 10px"></div>
+          <div ref="card_number" class="c-mt-2 c-w-full c-h-10 c-px-10 c-rounded c-border c-border-c-gray c-text-base c-focus:outline-none c-focus:border-c-grayer" style="padding-top: 10px"></div>
         </div>
       </label>
       <R64Alert
-        class="mt-2"
+        class="c-mt-2"
         :visible="cardNumberError !== null"
         :message="cardNumberError"
       />
-      <div class="mt-2 flex items-center">
-          <span class="text-sm">We accept</span>
-          <span class="ml-2 w-8 h-5 flex items-center justify-center border border-c-gray rounded-sm">
+      <div class="c-mt-2 c-flex c-items-center">
+          <span class="c-text-sm">We accept</span>
+          <span class="c-ml-2 c-w-8 c-h-5 c-flex c-items-center c-justify-center c-border c-border-c-gray c-rounded-sm">
               <img src="../assets/american_express.png">
           </span>
-          <span class="ml-2 w-8 h-5 flex items-center justify-center border border-c-gray rounded-sm">
+          <span class="c-ml-2 c-w-8 c-h-5 c-flex c-items-center c-justify-center c-border c-border-c-gray c-rounded-sm">
               <img src="../assets/discover.png">
           </span>
-          <span class="ml-2 w-8 h-5 flex items-center justify-center border border-c-gray rounded-sm">
+          <span class="c-ml-2 c-w-8 c-h-5 c-flex c-items-center c-justify-center c-border c-border-c-gray c-rounded-sm">
               <img src="../assets/jcb.png">
           </span>
-          <span class="ml-2 w-8 h-5 flex items-center justify-center border border-c-gray rounded-sm">
+          <span class="c-ml-2 c-w-8 c-h-5 c-flex c-items-center c-justify-center c-border c-border-c-gray c-rounded-sm">
               <img src="../assets/master_card.png">
           </span>
-          <span class="ml-2 w-8 h-5 flex items-center justify-center border border-c-gray rounded-sm">
+          <span class="c-ml-2 c-w-8 c-h-5 c-flex c-items-center c-justify-center c-border c-border-c-gray c-rounded-sm">
               <img src="../assets/visa.png">
           </span>
       </div>
     </div>
-    <div class="mt-6 flex">
-      <div class="w-1/2">
-        <label class="block">
+    <div class="c-mt-6 c-flex">
+      <div class="c-w-1/2">
+        <label class="c-block">
           <span>Expiration Date</span>
-          <div ref="card_expiry" class="mt-2 h-10 px-3 rounded border border-c-gray text-base focus:outline-none focus:border-c-grayer" style="padding-top: 10px"></div>
+          <div ref="card_expiry" class="c-mt-2 c-h-10 c-px-3 c-rounded c-border c-border-c-gray c-text-base c-focus:outline-none c-focus:border-c-grayer" style="padding-top: 10px"></div>
           <R64Alert
-            class="mt-2"
+            class="c-mt-2"
             :visible="cardExpiryError !== null"
             :message="cardExpiryError"
           />
         </label>
       </div>
-      <div class="w-1/2 ml-4">
-        <label class="block">
+      <div class="c-w-1/2 c-ml-4">
+        <label class="c-block">
           <span>Security Code</span>
-          <div ref="card_cvc" class="mt-2 h-10 px-3 rounded border border-c-gray text-base focus:outline-none focus:border-c-grayer" style="padding-top: 10px"></div>
+          <div ref="card_cvc" class="c-mt-2 c-h-10 c-px-3 c-rounded c-border c-border-c-gray c-text-base c-focus:outline-none c-focus:border-c-grayer" style="padding-top: 10px"></div>
           <R64Alert
-            class="mt-2"
+            class="c-mt-2"
             :visible="cardCvcError !== null"
             :message="cardCvcError"
           />

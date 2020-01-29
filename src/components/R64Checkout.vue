@@ -1,42 +1,42 @@
 <template>
-  <div v-if="cart" class="font-sans antialiased text-c-black bg-c-light-gray" style="box-sizing: border-box;">
-    <div class="checkout-cart-items fixed p-5 top-0 left-0 right-0 z-10 bg-white lg:hidden">
-      <div class="flex items-center justify-between">
-        <span class="text-xl">Total to pay ({{ cartItems.length }} items)</span>
-        <span class="text-xl font-bold">{{ money(cart.total) }}</span>
+  <div v-if="cart" class="c-font-sans c-antialiased c-text-c-black c-bg-c-light-gray" style="box-sizing: border-box;">
+    <div class="checkout-cart-items c-fixed c-p-5 c-top-0 c-left-0 c-right-0 c-z-10 c-bg-white lg:c-hidden">
+      <div class="c-flex c-items-center c-justify-between">
+        <span class="c-text-xl">Total to pay ({{ cartItems.length }} items)</span>
+        <span class="c-text-xl c-font-bold">{{ money(cart.total) }}</span>
       </div>
 
-      <div v-show="itemSummaryVisible" class="mt-10">
-        <R64CartItemPreview 
-          v-for="(cartItem, index) in cartItems" 
-          :key="index" 
-          :cart-item="cartItem" 
-          :border="index !== cartItems.length - 1" 
-          class="mt-4"
+      <div v-show="itemSummaryVisible" class="c-mt-10">
+        <R64CartItemPreview
+          v-for="(cartItem, index) in cartItems"
+          :key="index"
+          :cart-item="cartItem"
+          :border="index !== cartItems.length - 1"
+          class="c-mt-4"
         />
       </div>
 
-      <button @click="itemSummaryVisible = !itemSummaryVisible" class="flex items-center justify-between w-full mt-2">
-        <span class="text-c-blue">{{ itemSummaryText }}</span>
-        <span :class="{ 'rotate-1/2': itemSummaryVisible }">
-          <svg class="w-3 h-3 fill-current" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <button @click="itemSummaryVisible = !itemSummaryVisible" class="c-flex c-items-center c-justify-between c-w-full c-mt-2">
+        <span class="c-text-c-blue">{{ itemSummaryText }}</span>
+        <span :class="{ 'c-rotate-1/2': itemSummaryVisible }">
+          <svg class="c-w-3 c-h-3 c-fill-current" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.41 0.0380859L6 3.86986L10.59 0.0380859L12 1.21774L6 6.23753L0 1.21774L1.41 0.0380859Z" fill="#006ED4"/>
           </svg>
         </span>
       </button>
     </div>
 
-    <div v-if="settings" class="lg:flex lg:mx-auto lg:max-w-7xl">
-      <div class="checkout-form w-full mt-24 bg-white lg:flex-shrink-0 lg:max-w-2xl lg:mt-0 xl:max-w-4xl">
+    <div v-if="settings" class="lg:c-flex lg:c-mx-auto lg:c-max-w-7xl">
+      <div class="checkout-form c-w-full c-mt-24 c-bg-white lg:c-flex-shrink-0 lg:c-max-w-2xl lg:c-mt-0 xl:c-max-w-4xl">
         <R64CheckoutSection>
-          <button type="button" @click="$emit('cart')" class="text-c-blue flex items-center">
-            <span><svg class="w-3 h-3" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.41 10.59L2.83 6l4.58-4.59L6 0 0 6l6 6 1.41-1.41z" fill="#006ED4"/></svg></span>
-            <span class="ml-3">Back to cart</span>
+          <button type="button" @click="$emit('cart')" class="c-text-c-blue c-flex c-items-center">
+            <span><svg class="c-w-3 c-h-3" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.41 10.59L2.83 6l4.58-4.59L6 0 0 6l6 6 1.41-1.41z" fill="#006ED4"/></svg></span>
+            <span class="c-ml-3">Back to cart</span>
           </button>
-          <h2 class="mt-3 text-3xl">Check Out</h2>
-          <div class="xl:flex mt-6">
-            <span class="block text-xl font-bold xl:w-1/3">Contact</span>
-            <div class="w-full mt-6 lg:max-w-sm xl:mt-0">
+          <h2 class="c-mt-3 c-text-3xl">Check Out</h2>
+          <div class="xl:c-flex c-mt-6">
+            <span class="c-block c-text-xl c-font-bold xl:c-w-1/3">Contact</span>
+            <div class="c-w-full c-mt-6 lg:c-max-w-sm xl:c-mt-0">
               <R64FormInput
                 v-model="form.customer_email"
                 label="Email address"
@@ -49,12 +49,12 @@
           </div>
         </R64CheckoutSection>
         <R64CheckoutSection>
-          <div class="xl:flex mt-6">
-            <span class="block text-xl font-bold xl:w-1/3">Shipping</span>
-            <div class="w-full lg:max-w-sm">
-              <span class="mt-6 block text-xl xl:mt-0">Shipping Address</span>
+          <div class="xl:c-flex c-mt-6">
+            <span class="c-block c-text-xl c-font-bold xl:c-w-1/3">Shipping</span>
+            <div class="c-w-full lg:c-max-w-sm">
+              <span class="c-mt-6 c-block c-text-xl xl:c-mt-0">Shipping Address</span>
               <div>
-                <div class="mt-6">
+                <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.shipping_first_name"
                     label="First name"
@@ -64,7 +64,7 @@
                     @blur="updateCart('shipping_first_name')"
                   />
                 </div>
-                <div class="mt-6">
+                <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.shipping_last_name"
                     label="Last name"
@@ -74,7 +74,7 @@
                     @blur="updateCart('shipping_last_name')"
                   />
                 </div>
-                <div class="mt-6">
+                <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.shipping_address_line1"
                     label="Street"
@@ -84,7 +84,7 @@
                     @blur="updateCart('shipping_address_line1')"
                   />
                 </div>
-                <div class="mt-6">
+                <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.shipping_address_line2"
                     label="Apartment, suite, etc ..."
@@ -94,8 +94,8 @@
                     @blur="updateCart('shipping_address_line2')"
                   />
                 </div>
-                <div class="mt-6 flex">
-                  <div class="w-full">
+                <div class="c-mt-6 c-flex">
+                  <div class="c-w-full">
                     <R64FormInput
                       v-model="form.shipping_address_zipcode"
                       label="Zipcode"
@@ -106,7 +106,7 @@
                       @blur="updateCart('shipping_address_zipcode')"
                     />
                   </div>
-                  <div class="w-full ml-2">
+                  <div class="c-w-full c-ml-2">
                     <R64FormInput
                       v-model="form.shipping_address_city"
                       label="City"
@@ -116,7 +116,7 @@
                       @blur="updateCart('shipping_address_city')"
                     />
                   </div>
-                  <div class="w-full ml-2">
+                  <div class="c-w-full c-ml-2">
                     <R64FormSelect
                       v-model="form.shipping_address_region"
                       label="State"
@@ -129,7 +129,7 @@
                     />
                   </div>
                 </div>
-                <div class="mt-6">
+                <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.shipping_address_phone"
                     label="Phone"
@@ -148,12 +148,12 @@
           </div>
         </R64CheckoutSection>
         <R64CheckoutSection v-if="!isFree" :border="false">
-          <div class="xl:flex mt-6">
-            <span class="block text-xl font-bold xl:w-1/3">Payment</span>
-            <div class="w-full lg:max-w-sm">
-              <span class="mt-6 block text-xl xl:mt-0">Payment method</span>
+          <div class="xl:c-flex c-mt-6">
+            <span class="c-block c-text-xl c-font-bold xl:c-w-1/3">Payment</span>
+            <div class="c-w-full lg:c-max-w-sm">
+              <span class="c-mt-6 c-block c-text-xl xl:c-mt-0">Payment method</span>
               <R64StripePayment
-                ref="stripe" 
+                ref="stripe"
                 :stripe-key="stripeKey"
                 :show-card-error="stripeValidated.number"
                 :show-expiry-error="stripeValidated.expiry"
@@ -167,23 +167,23 @@
                 @change="paymentErrorVisible = false"
               />
               <R64Alert
-                class="mt-2"
+                class="c-mt-2"
                 :visible="paymentErrorVisible"
                 message="Correct payments details are required"
               />
-              <div class="mt-6">
-                <span class="block text-xl">Billing Address</span>
-                <div class="mt-5 w-full flex">
-                  <input v-model="form.billing_same" type="radio" class="form-radio" id="billing_address_same" :value="true" @change="updateCart('billing_same')">
-                  <label class="ml-3" for="billing_address_same">Same as shipping address</label>
+              <div class="c-mt-6">
+                <span class="c-block c-text-xl">Billing Address</span>
+                <div class="c-mt-5 c-w-full c-flex">
+                  <input v-model="form.billing_same" type="radio" class="c-form-radio" id="billing_address_same" :value="true" @change="updateCart('billing_same')">
+                  <label class="c-ml-3" for="billing_address_same">Same as shipping address</label>
                 </div>
-                <div class="mt-5 w-full flex">
-                  <input v-model="form.billing_same" name="billing" type="radio" class="form-radio" id="billing_address_different" :value="false" @change="updateCart('billing_same')">
-                  <label class="ml-3" for="billing_address_different">Use a different billing address</label>
+                <div class="c-mt-5 c-w-full c-flex">
+                  <input v-model="form.billing_same" name="billing" type="radio" class="c-form-radio" id="billing_address_different" :value="false" @change="updateCart('billing_same')">
+                  <label class="c-ml-3" for="billing_address_different">Use a different billing address</label>
                 </div>
               </div>
               <div v-if="!form.billing_same">
-                <div class="mt-6">
+                <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.billing_first_name"
                     label="First name"
@@ -193,7 +193,7 @@
                     @blur="updateCart('billing_first_name')"
                   />
                 </div>
-                <div class="mt-6">
+                <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.billing_last_name"
                     label="Last name"
@@ -203,7 +203,7 @@
                     @blur="updateCart('billing_last_name')"
                   />
                 </div>
-                <div class="mt-6">
+                <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.billing_address_line1"
                     label="Street"
@@ -213,7 +213,7 @@
                     @blur="updateCart('billing_address_line1')"
                   />
                 </div>
-                <div class="mt-6">
+                <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.billing_address_line2"
                     label="Apartment, suite, etc ..."
@@ -223,8 +223,8 @@
                     @blur="updateCart('billing_address_line2')"
                   />
                 </div>
-                <div class="mt-6 flex">
-                  <div class="w-full">
+                <div class="c-mt-6 c-flex">
+                  <div class="c-w-full">
                     <R64FormInput
                       v-model="form.billing_address_zipcode"
                       label="Zipcode"
@@ -235,7 +235,7 @@
                       @blur="updateCart('billing_address_zipcode')"
                     />
                   </div>
-                  <div class="w-full ml-2">
+                  <div class="c-w-full c-ml-2">
                     <R64FormInput
                       v-model="form.billing_address_city"
                       label="City"
@@ -245,7 +245,7 @@
                       @blur="updateCart('billing_address_city')"
                     />
                   </div>
-                  <div class="w-full ml-2">
+                  <div class="c-w-full c-ml-2">
                     <R64FormSelect
                       v-model="form.billing_address_region"
                       label="State"
@@ -258,7 +258,7 @@
                     />
                   </div>
                 </div>
-                <div class="mt-6">
+                <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.billing_address_phone"
                     label="Phone"
@@ -269,71 +269,71 @@
                   />
                 </div>
               </div>
-              <div v-if="!hasCouponCode" class="mt-6 lg:hidden">
-                <span class="block text-xl">Have a promo code ?</span>
-                <R64PromoCode @apply="applyPromoCode" class="mt-5" />
-                <R64Alert 
+              <div v-if="!hasCouponCode" class="c-mt-6 lg:c-hidden">
+                <span class="c-block c-text-xl">Have a promo code ?</span>
+                <R64PromoCode @apply="applyPromoCode" class="c-mt-5" />
+                <R64Alert
                   :visible="promoCodeErrorVisible"
-                  class="mt-2"
+                  class="c-mt-2"
                   message="Promo code is not valid"
                 />
               </div>
             </div>
           </div>
         </R64CheckoutSection>
-        <div class="pt-12 pl-5 pr-6 pb-8 lg:hidden border-t border-c-gray">
-          <div class="flex items-start">
-            <input type="checkbox" class="form-checkbox">
-            <span class="ml-3 -mt-1 align-top">I have read and understood, and accept our <a :href="tocUrl" class="text-c-blue hover:underline">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
+        <div class="c-pt-12 c-pl-5 c-pr-6 c-pb-8 lg:c-hidden c-border-t c-border-c-gray">
+          <div class="c-flex c-items-start">
+            <input type="checkbox" class="c-form-checkbox">
+            <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" class="c-text-c-blue c-hover:underline">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
-          <R64Button @click.native="createOrder" class="mt-6 w-full">Place Order</R64Button>
+          <R64Button @click.native="createOrder" class="c-mt-6 c-w-full">Place Order</R64Button>
         </div>
       </div>
-      <div class="hidden w-full lg:block lg:px-8 lg:pt-12 xl:px-16">
-        <div v-if="cart" class="lg:max-w-sm">
-          <R64CartItemPreview 
-            v-for="(cartItem, index) in cartItems" 
-            :key="index" 
-            :cart-item="cartItem" 
-            class="mt-4"
+      <div class="c-hidden c-w-full lg:c-block lg:c-px-8 lg:c-pt-12 xl:c-px-16">
+        <div v-if="cart" class="lg:c-max-w-sm">
+          <R64CartItemPreview
+            v-for="(cartItem, index) in cartItems"
+            :key="index"
+            :cart-item="cartItem"
+            class="c-mt-4"
           />
           <div v-if="!hasCouponCode">
-            <R64InlinePromoCode @apply="applyPromoCode" class="pt-6" :class="{ 'pb-6': !promoCodeErrorVisible }"/>
-            <R64Alert 
+            <R64InlinePromoCode @apply="applyPromoCode" class="c-pt-6" :class="{ 'c-pb-6': !promoCodeErrorVisible }"/>
+            <R64Alert
               :visible="promoCodeErrorVisible"
-              class="mt-2 mb-4"
+              class="c-mt-2 c-mb-4"
               message="Promo code is not valid"
             />
             <R64HorizontalLine />
           </div>
-          <div class="my-6">
-            <div class="flex justify-between">
+          <div class="c-my-6">
+            <div class="c-flex c-justify-between">
               <span>Subtotal</span>
               <span>{{ money(cart.items_subtotal) }}</span>
             </div>
-            <div v-if="hasCouponCode" class="flex justify-between mt-4">
+            <div v-if="hasCouponCode" class="c-flex c-justify-between c-mt-4">
               <span>Discount</span>
               <span>- {{ money(cart.discount) }}</span>
             </div>
-            <div v-if="cart.tax > 0" class="flex justify-between mt-4">
+            <div v-if="cart.tax > 0" class="c-flex c-justify-between c-mt-4">
               <span>Taxes</span>
               <span>{{ money(cart.tax) }}</span>
             </div>
-            <div v-if="cart.shipping > 0" class="flex justify-between mt-4">
+            <div v-if="cart.shipping > 0" class="c-flex c-justify-between c-mt-4">
               <span>Shipping</span>
               <span>{{ money(cart.shipping) }}</span>
             </div>
           </div>
           <R64HorizontalLine />
-          <div class="flex items-center justify-between my-6">
-            <span class="text-xl font-bold">Total to Pay</span>
-            <span class="text-4xl">{{ money(cart.total) }}</span>
+          <div class="c-flex c-items-center c-justify-between c-my-6">
+            <span class="c-text-xl c-font-bold">Total to Pay</span>
+            <span class="c-text-4xl">{{ money(cart.total) }}</span>
           </div>
-          <div class="flex items-start">
-            <input v-model="consent" type="checkbox" class="form-checkbox">
-            <span class="ml-3 -mt-1 align-top">I have read and understood, and accept our <a :href="tocUrl" class="text-c-blue hover:underline">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
+          <div class="c-flex c-items-start">
+            <input v-model="consent" type="checkbox" class="c-form-checkbox">
+            <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" class="c-text-c-blue c-hover:underline">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
-          <R64Button @click.native="createOrder" class="mt-6" :disabled="!consent">Place Order</R64Button>
+          <R64Button @click.native="createOrder" class="c-mt-6" :disabled="!consent">Place Order</R64Button>
         </div>
       </div>
     </div>
@@ -462,7 +462,7 @@ export default {
 
   async mounted () {
     window.scrollTo(0, 0)
-    
+
     await this.fetchSettings()
     await this.fetchCart()
   },
@@ -471,11 +471,11 @@ export default {
     itemSummaryText () {
       return this.itemSummaryVisible ? 'Hide item summary' : 'Show item summary'
     },
-    
+
     tocUrl () {
       return this.settings ? this.settings.toc_url : '#'
     },
-    
+
     stripeAllValidated () {
       if (this.isFree) {
         return true
@@ -561,7 +561,7 @@ export default {
       try {
         if (!this.isFree) {
           const { token } = await this.$refs.stripe.createToken()
-          
+
           orderParams = {
             ...orderParams,
             stripe: {

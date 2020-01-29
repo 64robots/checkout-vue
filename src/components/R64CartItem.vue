@@ -1,22 +1,22 @@
 <template>
-  <div class="flex flex-col md:flex-row mt-10 pb-10 border-b border-c-gray">
-    <div v-if="hasImage" class="w-full h-40 md:w-40 md:h-40 bg-c-mid-gray flex-shrink-0">
+  <div class="c-flex c-flex-col md:c-flex-row c-mt-10 c-pb-10 c-border-b c-border-c-gray">
+    <div v-if="hasImage" class="c-w-full c-h-40 md:c-w-40 md:c-h-40 c-bg-c-mid-gray c-flex-shrink-0">
     </div>
-    <div class="mt-4 md:ml-6 md:mt-0 w-full flex flex-col">
-      <div class="flex justify-between">
-        <span class="text-xl">{{ cartItem.product.name }}</span>
-        <span class="text-xl font-bold">{{ money(cartItem.price) }}</span>
+    <div class="c-mt-4 md:c-ml-6 md:c-mt-0 c-w-full c-flex c-flex-col">
+      <div class="c-flex c-justify-between">
+        <span class="c-text-xl">{{ cartItem.product.name }}</span>
+        <span class="c-text-xl c-font-bold">{{ money(cartItem.price) }}</span>
       </div>
 
       <R64FormInput
         v-model="localCartItem.customer_note"
         :id="`customer_note_${localCartItem.cart_item_token}`"
-        input-class="h-10 w-full max-w-lg mt-4 px-3 rounded border border-c-gray focus:border-c-grayer text-base focus:outline-none focus:border-c-grayer"
+        input-class="c-h-10 c-w-full c-max-w-lg c-mt-4 c-px-3 c-rounded c-border c-border-c-gray c-focus:border-c-grayer c-text-base c-focus:outline-none c-focus:border-c-grayer"
         placeholder="Custom note (Optional)"
         @blur="updateCustomerNote"
       />
 
-      <div class="flex items-center" :class="classes">
+      <div class="c-flex c-items-center" :class="classes">
         <label :for="`quantity_${localCartItem.cart_item_token}`">Qty</label>
         <R64FormInput
           v-model="localCartItem.quantity"
@@ -24,13 +24,13 @@
           :show-error="$v.localCartItem.quantity.$error"
           :id="`quantity_${localCartItem.cart_item_token}`"
           error-message="Quantity must be a positive number"
-          input-class="w-10 h-8 ml-5 rounded border border-c-gray focus:outline-none focus:border-c-grayer text-center"
-          alert-class="ml-5 whitespace-no-wrap"
+          input-class="c-w-10 c-h-8 c-ml-5 c-rounded c-border c-border-c-gray c-focus:outline-none c-focus:border-c-grayer c-text-center"
+          alert-class="c-ml-5 c-whitespace-no-wrap"
           @blur="updateQuantity"
         />
-        <span class="w-px h-6 ml-5 border-l border-c-gray"></span>
-        <button @click="remove" class="ml-5">
-          <svg class="w-5 h-5" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <span class="c-w-px c-h-6 c-ml-5 c-border-l c-border-c-gray"></span>
+        <button @click="remove" class="c-ml-5">
+          <svg class="c-w-5 c-h-5" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1 15.9999C1 17.0999 1.9 17.9999 3 17.9999H11C12.1 17.9999 13 17.0999 13 15.9999V3.99994H1V15.9999ZM14 0.999939H10.5L9.5 -6.10352e-05H4.5L3.5 0.999939H0V2.99994H14V0.999939Z" fill="#737373"/>
           </svg>
         </button>
@@ -62,7 +62,7 @@ export default {
 
   computed: {
     classes () {
-      return this.hasImage ? 'mt-4 md:mt-auto' : 'mt-4 md:mt-10'
+      return this.hasImage ? 'c-mt-4 md:c-mt-auto' : 'c-mt-4 md:c-mt-10'
     }
   },
 

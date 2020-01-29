@@ -1,5 +1,5 @@
 <template>
-    <div class="pt-5 pl-5 pr-5 pb-8 lg:pt-16 lg:pb-8 lg:pl-24" :class="classes">
+    <div class="c-pt-5 c-pl-5 c-pr-5 c-pb-8 lg:c-pt-16 lg:c-pb-8 lg:c-pl-24" :class="classes">
         <slot></slot>
     </div>
 </template>
@@ -15,7 +15,7 @@ export default {
 
     computed: {
         classes () {
-            return this.border ? 'border-b border-c-gray' : ''
+            return this.border ? 'c-border-b c-border-c-gray' : ''
         }
     }
 }

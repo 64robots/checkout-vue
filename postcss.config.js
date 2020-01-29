@@ -10,15 +10,10 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
     defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
 })
 
-const prefixer = require('postcss-prefixer')
-
 module.exports = {
     plugins: [
         require('tailwindcss'),
         require('autoprefixer'),
-        prefixer({
-            prefix: 'checkout-'
-        }),
         ...process.env.NODE_ENV === 'production'
             ? [purgecss]
             : [],

@@ -11,7 +11,8 @@
         <R64CartItem 
           v-for="(cartItem, index) in cartItems" 
           :key="index"
-          :cart-item="cartItem" 
+          :cart-item="cartItem"
+          :currency-symbol="currencySymbol"
           @cart-item:update="fetchCart" 
           @cart-item:delete="fetchCart" 
         />

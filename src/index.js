@@ -5,6 +5,7 @@ import R64Order from './components/R64Order'
 import R64AddToCart from './components/renderless/R64AddToCart'
 import cartApi from './api/cart'
 import orderApi from './api/order'
+import checkoutApi from './api/checkout'
 
 function install(Vue) {
     Vue.component('R64Cart', R64Cart)
@@ -13,5 +14,5 @@ function install(Vue) {
     Vue.component('R64AddToCart', R64AddtoCart)
 }
 
-export { R64Cart, R64Checkout, R64Order, R64AddToCart, cartApi, orderApi }
+export { R64Cart, R64Checkout, R64Order, R64AddToCart, cartApi, orderApi, checkoutApi }
 export default { install:install }

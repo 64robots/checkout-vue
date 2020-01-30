@@ -11,6 +11,7 @@
           v-for="(cartItem, index) in cartItems"
           :key="index"
           :cart-item="cartItem"
+          :currency-symbol="currencySymbol"
           :border="index !== cartItems.length - 1"
           class="c-mt-4"
         />
@@ -295,6 +296,7 @@
             v-for="(cartItem, index) in cartItems"
             :key="index"
             :cart-item="cartItem"
+            :currency-symbol="currencySymbol"
             class="c-mt-4"
           />
           <div v-if="!hasCouponCode">
@@ -354,7 +356,6 @@ import R64StripePayment from './R64StripePayment'
 import cartMixin from '../mixins/cart'
 import money from '../mixins/money'
 import cart from '../api/cart'
-import checkout from '../api/checkout'
 import order from '../api/order'
 import { validationMixin } from 'vuelidate'
 import { required, email } from 'vuelidate/lib/validators'
@@ -369,6 +370,10 @@ export default {
     },
     authToken: {
       type: String,
+      default: null
+    },
+    settings: {
+      type: Object,
       default: null
     }
   },
@@ -417,7 +422,6 @@ export default {
       },
       paymentErrorVisible: false,
       promoCodeErrorVisible: false,
-      settings: null,
       consent: false
     }
   },
@@ -463,7 +467,6 @@ export default {
   async mounted () {
     window.scrollTo(0, 0)
 
-    await this.fetchSettings()
     await this.fetchCart()
   },
 
@@ -505,15 +508,6 @@ export default {
   },
 
   methods: {
-    async fetchSettings () {
-      try {
-        const { data } = await checkout.settings()
-        this.settings = data
-      } catch (e) {
-        //
-      }
-    },
-
     async applyPromoCode (couponCode) {
       try {
         await cart.update(this.cartToken, {

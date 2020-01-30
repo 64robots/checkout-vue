@@ -8,6 +8,7 @@
     <R64Cart 
       v-if="section === 'cart'"
       :cart-token="cartToken"
+      :currency-symbol="settings.currency_symbol"
       @cart:update="cartUpdate"  
       @close="section = null" 
       @checkout="section = 'checkout'"
@@ -15,7 +16,8 @@
     <R64Checkout
       v-if="section === 'checkout'"
       :cart-token="cartToken"
-      :auth-token="authToken"
+      :settings="settings"
+      :currency-symbol="settings.currency_symbol"
       stripe-key="pk_test_t9zUIgcNA0SwHCPuan3rYsew" 
       @cart:update="cartUpdate"
       @cart="section = 'cart'" 
@@ -23,8 +25,8 @@
     />
     <R64Order 
       v-if="section === 'order' && order" 
-      :order-id="order.id"
-      :auth-token="authToken"
+      :order-id="order.token"
+      :currency-symbol="settings.currency_symbol"
     />
   </div>
 </template>
@@ -33,8 +35,9 @@
 import R64Cart from './components/R64Cart'
 import R64Checkout from './components/R64Checkout'
 import R64Order from './components/R64Order'
-import R64Button from "./components/R64Button";
-import R64AddtoCart from "./components/R64AddtoCart";
+import R64Button from "./components/R64Button"
+import R64AddtoCart from "./components/R64AddtoCart"
+import checkout from './api/checkout'
 
 export default {
   name: 'app',
@@ -50,6 +53,7 @@ export default {
   data() {
     return {
       section: null,
+      settings: null,
       authToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6ImhGTnBKRFRhYWpBSXJHbEEifQ.eyJpc3MiOiJodHRwOlwvXC9kcXMtYmFja2VuZC50ZXN0Iiwic3ViIjoiNTk3NyIsImp0aSI6ImhGTnBKRFRhYWpBSXJHbEEiLCJpYXQiOjE1ODAyMjUwMzMsIm5iZiI6MTU4MDIyNTAzMywiZXhwIjoxNTgwNjU3MDMzLCJybGkiOjE1ODEwODkwMzN9.65r7UuulmD2ZZOG3JoAqkyZtokSdkPBenuUJmvNfnhs',
       cart: null,
       order: {
@@ -65,6 +69,10 @@ export default {
     }
   },
 
+  mounted () {
+    this.fetchSettings();
+  },
+
   methods: {
     cartUpdate (cart) {
       this.cart = cart
@@ -73,6 +81,15 @@ export default {
     orderCreate (order) {
       this.order = order
       this.section = 'order'
+    },
+
+    async fetchSettings () {
+      try {
+        const { data } = await checkout.settings()
+        this.settings = data
+      } catch (e) {
+        //
+      }
     }
   }
 }

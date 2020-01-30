@@ -4,7 +4,7 @@
       <R64OrderSection>
         <span class="c-block c-text-center c-text-4xl c-font-bold c-text-c-blue"><slot name="logo">Logo</slot></span>
         <span class="c-block c-mt-10 c-text-4xl c-font-bold">Thank you for your order!</span>
-        <span class="c-block c-mt-4">Order Number: {{ order.id }}</span>
+        <span class="c-block c-mt-4">Order Number: {{ order.order_number }}</span>
         <span class="c-block c-mt-2">Order Date: {{ order.created_at }}</span>
         <span class="c-block c-mt-2">Payment Method: {{ order.order_purchase.card_type }} ending in {{ order.order_purchase.card_last4 }}</span>
         <slot name="delivery-date"></slot>
@@ -12,14 +12,20 @@
       <R64OrderSection class="c-mt-2">
         <span class="c-font-bold c-text-xl">{{ order.order_items.length }} items</span>
         <div class="c-mt-8">
-          <R64CartItemPreview :cart-item="orderItem" class="c-mt-4" v-for="(orderItem, index) in order.order_items" :key="index"/>
+          <R64CartItemPreview 
+            v-for="(orderItem, index) in order.order_items" 
+            :key="index"
+            :currency-symbol="currencySymbol"
+            :cart-item="orderItem" 
+            class="c-mt-4" 
+          />
         </div>
         <div class="c-my-6">
           <div class="c-flex c-justify-between">
             <span>Subtotal</span>
             <span>{{ money(order.items_total) }}</span>
           </div>
-          <div class="c-flex c-justify-between c-mt-4">
+          <div v-if="hasCouponCode" class="c-flex c-justify-between c-mt-4">
             <span>Discount</span>
             <span>-{{ money(order.discount) }}</span>
           </div>
@@ -88,6 +94,12 @@ export default {
     return {
       order: null
     }
+  },
+
+  computed: {
+    hasCouponCode () {
+      return parseFloat(this.order.discount) !== 0
+    },
   },
 
   mounted () {

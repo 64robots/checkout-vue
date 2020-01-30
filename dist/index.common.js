@@ -7843,12 +7843,12 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./src/assets/app.css
 var app = __webpack_require__("1f68");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96b75d02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64Cart.vue?vue&type=template&id=266d631c&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"c-font-sans c-antialiased c-z-50 c-text-c-black",staticStyle:{"box-sizing":"border-box"}},[_c('div',{staticClass:"c-fixed c-inset-0 c-bg-c-black c-opacity-40"}),(_vm.cart)?_c('div',{staticClass:"c-absolute c-top-0 c-left-0 c-right-0 c-flex c-min-h-screen md:c-justify-end"},[_c('div',{staticClass:"c-bg-white c-w-full c-max-w-4xl c-p-5 md:c-p-12"},[_c('div',{staticClass:"c-flex c-justify-between c-items-center"},[_c('span',{staticClass:"c-text-4xl"},[_vm._v("Your Cart ("+_vm._s(_vm.cartItems.length)+")")]),_c('R64CloseButton',{nativeOn:{"click":function($event){return _vm.$emit('close')}}})],1),_vm._l((_vm.cartItems),function(cartItem,index){return _c('R64CartItem',{key:index,attrs:{"cart-item":cartItem},on:{"cart-item:update":_vm.fetchCart,"cart-item:delete":_vm.fetchCart}})}),_c('div',{staticClass:"c-mt-10 c-pb-10 c-border-b c-border-c-gray"},[_c('button',{staticClass:"c-flex c-items-center",on:{"click":_vm.toggleNote}},[_c('svg',{staticClass:"c-w-5 c-h-5 c-text-c-blue c-fill-current",attrs:{"viewBox":"0 0 19 19","fill":"none","xmlns":"http://www.w3.org/2000/svg"}},[_c('path',{attrs:{"d":"M0 15.2501V19.0001H3.75L14.81 7.94006L11.06 4.19006L0 15.2501ZM17.71 5.04006C18.1 4.65006 18.1 4.02006 17.71 3.63006L15.37 1.29006C14.98 0.900059 14.35 0.900059 13.96 1.29006L12.13 3.12006L15.88 6.87006L17.71 5.04006Z","fill":"#006ED4"}})]),_c('span',{staticClass:"c-ml-2 c-text-c-blue"},[_vm._v("Add a note about your order (Optional)")])]),(_vm.orderNoteVisible)?_c('R64TextArea',{staticClass:"c-mt-10 c-w-full c-h-32",attrs:{"value":_vm.cart.customer_notes,"placeholder":"Your order note ..."},on:{"blur":_vm.setCustomerNote}}):_vm._e()],1),_c('div',{staticClass:"c-mt-10 c-flex c-flex-col c-items-end"},[_c('span',[_vm._v("Shipping and taxes will be calculated at check out")]),_c('div',{staticClass:"c-mt-6 c-w-full c-justify-between c-flex c-items-center md:c-w-auto"},[_c('span',{staticClass:"c-text-xl"},[_vm._v("Subtotal")]),_c('span',{staticClass:"c-ml-10 c-text-4xl"},[_vm._v(_vm._s(_vm.money(_vm.cart.items_subtotal)))])]),_c('div',{staticClass:"c-mt-6 c-w-full c-flex c-flex-col md:c-w-auto"},[_c('R64Button',{attrs:{"disabled":_vm.cart.cart_items.length === 0},nativeOn:{"click":function($event){return _vm.checkout($event)}}},[_vm._v("Checkout")]),_c('span',{staticClass:"c-mt-4 c-text-sm"},[_vm._v("Have a promo code? Apply it at check out.")])],1)])],2)]):_vm._e()])}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96b75d02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64Cart.vue?vue&type=template&id=229b4e28&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"c-font-sans c-antialiased c-z-50 c-text-c-black",staticStyle:{"box-sizing":"border-box"}},[_c('div',{staticClass:"c-fixed c-inset-0 c-bg-c-black c-opacity-40"}),(_vm.cart)?_c('div',{staticClass:"c-absolute c-top-0 c-left-0 c-right-0 c-flex c-min-h-screen md:c-justify-end"},[_c('div',{staticClass:"c-bg-white c-w-full c-max-w-4xl c-p-5 md:c-p-12"},[_c('div',{staticClass:"c-flex c-justify-between c-items-center"},[_c('span',{staticClass:"c-text-4xl"},[_vm._v("Your Cart ("+_vm._s(_vm.cartItems.length)+")")]),_c('R64CloseButton',{nativeOn:{"click":function($event){return _vm.$emit('close')}}})],1),_vm._l((_vm.cartItems),function(cartItem,index){return _c('R64CartItem',{key:index,attrs:{"cart-item":cartItem,"currency-symbol":_vm.currencySymbol},on:{"cart-item:update":_vm.fetchCart,"cart-item:delete":_vm.fetchCart}})}),_c('div',{staticClass:"c-mt-10 c-pb-10 c-border-b c-border-c-gray"},[_c('button',{staticClass:"c-flex c-items-center",on:{"click":_vm.toggleNote}},[_c('svg',{staticClass:"c-w-5 c-h-5 c-text-c-blue c-fill-current",attrs:{"viewBox":"0 0 19 19","fill":"none","xmlns":"http://www.w3.org/2000/svg"}},[_c('path',{attrs:{"d":"M0 15.2501V19.0001H3.75L14.81 7.94006L11.06 4.19006L0 15.2501ZM17.71 5.04006C18.1 4.65006 18.1 4.02006 17.71 3.63006L15.37 1.29006C14.98 0.900059 14.35 0.900059 13.96 1.29006L12.13 3.12006L15.88 6.87006L17.71 5.04006Z","fill":"#006ED4"}})]),_c('span',{staticClass:"c-ml-2 c-text-c-blue"},[_vm._v("Add a note about your order (Optional)")])]),(_vm.orderNoteVisible)?_c('R64TextArea',{staticClass:"c-mt-10 c-w-full c-h-32",attrs:{"value":_vm.cart.customer_notes,"placeholder":"Your order note ..."},on:{"blur":_vm.setCustomerNote}}):_vm._e()],1),_c('div',{staticClass:"c-mt-10 c-flex c-flex-col c-items-end"},[_c('span',[_vm._v("Shipping and taxes will be calculated at check out")]),_c('div',{staticClass:"c-mt-6 c-w-full c-justify-between c-flex c-items-center md:c-w-auto"},[_c('span',{staticClass:"c-text-xl"},[_vm._v("Subtotal")]),_c('span',{staticClass:"c-ml-10 c-text-4xl"},[_vm._v(_vm._s(_vm.money(_vm.cart.items_subtotal)))])]),_c('div',{staticClass:"c-mt-6 c-w-full c-flex c-flex-col md:c-w-auto"},[_c('R64Button',{attrs:{"disabled":_vm.cart.cart_items.length === 0},nativeOn:{"click":function($event){return _vm.checkout($event)}}},[_vm._v("Checkout")]),_c('span',{staticClass:"c-mt-4 c-text-sm"},[_vm._v("Have a promo code? Apply it at check out.")])],1)])],2)]):_vm._e()])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/R64Cart.vue?vue&type=template&id=266d631c&
+// CONCATENATED MODULE: ./src/components/R64Cart.vue?vue&type=template&id=229b4e28&
 
 // EXTERNAL MODULE: ./node_modules/regenerator-runtime/runtime.js
 var runtime = __webpack_require__("96cf");
@@ -8847,6 +8847,7 @@ var R64Button_component = normalizeComponent(
 //
 //
 //
+//
 
 
 
@@ -8977,12 +8978,12 @@ var R64Cart_component = normalizeComponent(
 )
 
 /* harmony default export */ var R64Cart = (R64Cart_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96b75d02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64Checkout.vue?vue&type=template&id=64aee572&
-var R64Checkoutvue_type_template_id_64aee572_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.cart)?_c('div',{staticClass:"c-font-sans c-antialiased c-text-c-black c-bg-c-light-gray",staticStyle:{"box-sizing":"border-box"}},[_c('div',{staticClass:"checkout-cart-items c-fixed c-p-5 c-top-0 c-left-0 c-right-0 c-z-10 c-bg-white lg:c-hidden"},[_c('div',{staticClass:"c-flex c-items-center c-justify-between"},[_c('span',{staticClass:"c-text-xl"},[_vm._v("Total to pay ("+_vm._s(_vm.cartItems.length)+" items)")]),_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v(_vm._s(_vm.money(_vm.cart.total)))])]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.itemSummaryVisible),expression:"itemSummaryVisible"}],staticClass:"c-mt-10"},_vm._l((_vm.cartItems),function(cartItem,index){return _c('R64CartItemPreview',{key:index,staticClass:"c-mt-4",attrs:{"cart-item":cartItem,"border":index !== _vm.cartItems.length - 1}})}),1),_c('button',{staticClass:"c-flex c-items-center c-justify-between c-w-full c-mt-2",on:{"click":function($event){_vm.itemSummaryVisible = !_vm.itemSummaryVisible}}},[_c('span',{staticClass:"c-text-c-blue"},[_vm._v(_vm._s(_vm.itemSummaryText))]),_c('span',{class:{ 'c-rotate-1/2': _vm.itemSummaryVisible }},[_c('svg',{staticClass:"c-w-3 c-h-3 c-fill-current",attrs:{"viewBox":"0 0 12 7","fill":"none","xmlns":"http://www.w3.org/2000/svg"}},[_c('path',{attrs:{"d":"M1.41 0.0380859L6 3.86986L10.59 0.0380859L12 1.21774L6 6.23753L0 1.21774L1.41 0.0380859Z","fill":"#006ED4"}})])])])]),(_vm.settings)?_c('div',{staticClass:"lg:c-flex lg:c-mx-auto lg:c-max-w-7xl"},[_c('div',{staticClass:"checkout-form c-w-full c-mt-24 c-bg-white lg:c-flex-shrink-0 lg:c-max-w-2xl lg:c-mt-0 xl:c-max-w-4xl"},[_c('R64CheckoutSection',[_c('button',{staticClass:"c-text-c-blue c-flex c-items-center",attrs:{"type":"button"},on:{"click":function($event){return _vm.$emit('cart')}}},[_c('span',[_c('svg',{staticClass:"c-w-3 c-h-3",attrs:{"viewBox":"0 0 8 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}},[_c('path',{attrs:{"d":"M7.41 10.59L2.83 6l4.58-4.59L6 0 0 6l6 6 1.41-1.41z","fill":"#006ED4"}})])]),_c('span',{staticClass:"c-ml-3"},[_vm._v("Back to cart")])]),_c('h2',{staticClass:"c-mt-3 c-text-3xl"},[_vm._v("Check Out")]),_c('div',{staticClass:"xl:c-flex c-mt-6"},[_c('span',{staticClass:"c-block c-text-xl c-font-bold xl:c-w-1/3"},[_vm._v("Contact")]),_c('div',{staticClass:"c-w-full c-mt-6 lg:c-max-w-sm xl:c-mt-0"},[_c('R64FormInput',{attrs:{"label":"Email address","validator":_vm.$v.form.customer_email,"show-error":_vm.$v.form.customer_email.$error,"error-message":"Valid email address is required"},on:{"blur":function($event){return _vm.updateCart('customer_email')}},model:{value:(_vm.form.customer_email),callback:function ($$v) {_vm.$set(_vm.form, "customer_email", $$v)},expression:"form.customer_email"}})],1)])]),_c('R64CheckoutSection',[_c('div',{staticClass:"xl:c-flex c-mt-6"},[_c('span',{staticClass:"c-block c-text-xl c-font-bold xl:c-w-1/3"},[_vm._v("Shipping")]),_c('div',{staticClass:"c-w-full lg:c-max-w-sm"},[_c('span',{staticClass:"c-mt-6 c-block c-text-xl xl:c-mt-0"},[_vm._v("Shipping Address")]),_c('div',[_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"First name","validator":_vm.$v.form.shipping_first_name,"show-error":_vm.$v.form.shipping_first_name.$error,"error-message":"First name is required"},on:{"blur":function($event){return _vm.updateCart('shipping_first_name')}},model:{value:(_vm.form.shipping_first_name),callback:function ($$v) {_vm.$set(_vm.form, "shipping_first_name", $$v)},expression:"form.shipping_first_name"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"Last name","validator":_vm.$v.form.shipping_last_name,"show-error":_vm.$v.form.shipping_last_name.$error,"error-message":"Last name is required"},on:{"blur":function($event){return _vm.updateCart('shipping_last_name')}},model:{value:(_vm.form.shipping_last_name),callback:function ($$v) {_vm.$set(_vm.form, "shipping_last_name", $$v)},expression:"form.shipping_last_name"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"Street","validator":_vm.$v.form.shipping_address_line1,"show-error":_vm.$v.form.shipping_address_line1.$error,"error-message":"Street address is required"},on:{"blur":function($event){return _vm.updateCart('shipping_address_line1')}},model:{value:(_vm.form.shipping_address_line1),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_line1", $$v)},expression:"form.shipping_address_line1"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"Apartment, suite, etc ...","validator":_vm.$v.form.shipping_address_line2,"show-error":_vm.$v.form.shipping_address_line2.$error,"error-message":"Appartment or suite is required"},on:{"blur":function($event){return _vm.updateCart('shipping_address_line2')}},model:{value:(_vm.form.shipping_address_line2),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_line2", $$v)},expression:"form.shipping_address_line2"}})],1),_c('div',{staticClass:"c-mt-6 c-flex"},[_c('div',{staticClass:"c-w-full"},[_c('R64FormInput',{attrs:{"label":"Zipcode","alert-class":"whitespace-no-wrap","validator":_vm.$v.form.shipping_address_zipcode,"show-error":_vm.$v.form.shipping_address_zipcode.$error,"error-message":"Zipcode is required"},on:{"blur":function($event){return _vm.updateCart('shipping_address_zipcode')}},model:{value:(_vm.form.shipping_address_zipcode),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_zipcode", $$v)},expression:"form.shipping_address_zipcode"}})],1),_c('div',{staticClass:"c-w-full c-ml-2"},[_c('R64FormInput',{attrs:{"label":"City","validator":_vm.$v.form.shipping_address_city,"show-error":_vm.$v.form.shipping_address_city.$error,"error-message":"City is required"},on:{"blur":function($event){return _vm.updateCart('shipping_address_city')}},model:{value:(_vm.form.shipping_address_city),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_city", $$v)},expression:"form.shipping_address_city"}})],1),_c('div',{staticClass:"c-w-full c-ml-2"},[_c('R64FormSelect',{attrs:{"label":"State","placeholder":"Select state","options":_vm.settings.states,"validator":_vm.$v.form.shipping_address_region,"show-error":_vm.$v.form.shipping_address_region.$error,"error-message":"State is required"},on:{"change":function($event){return _vm.updateCart('shipping_address_region')}},model:{value:(_vm.form.shipping_address_region),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_region", $$v)},expression:"form.shipping_address_region"}})],1)]),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"Phone","validator":_vm.$v.form.shipping_address_phone,"show-error":_vm.$v.form.shipping_address_phone.$error,"error-message":"Phone is required"},on:{"blur":function($event){return _vm.updateCart('shipping_address_phone')}},model:{value:(_vm.form.shipping_address_phone),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_phone", $$v)},expression:"form.shipping_address_phone"}})],1)]),_vm._t("shipping")],2)])]),(!_vm.isFree)?_c('R64CheckoutSection',{attrs:{"border":false}},[_c('div',{staticClass:"xl:c-flex c-mt-6"},[_c('span',{staticClass:"c-block c-text-xl c-font-bold xl:c-w-1/3"},[_vm._v("Payment")]),_c('div',{staticClass:"c-w-full lg:c-max-w-sm"},[_c('span',{staticClass:"c-mt-6 c-block c-text-xl xl:c-mt-0"},[_vm._v("Payment method")]),_c('R64StripePayment',{ref:"stripe",attrs:{"stripe-key":_vm.stripeKey,"show-card-error":_vm.stripeValidated.number,"show-expiry-error":_vm.stripeValidated.expiry,"show-cvc-error":_vm.stripeValidated.cvc},on:{"complete:number":function($event){_vm.stripeValidated.number = true},"error:number":function($event){_vm.stripeValidated.number = false},"complete:expiry":function($event){_vm.stripeValidated.expiry = true},"error:expiry":function($event){_vm.stripeValidated.expiry = false},"complete:cvc":function($event){_vm.stripeValidated.cvc = true},"error:cvc":function($event){_vm.stripeValidated.cvc = false},"change":function($event){_vm.paymentErrorVisible = false}}}),_c('R64Alert',{staticClass:"c-mt-2",attrs:{"visible":_vm.paymentErrorVisible,"message":"Correct payments details are required"}}),_c('div',{staticClass:"c-mt-6"},[_c('span',{staticClass:"c-block c-text-xl"},[_vm._v("Billing Address")]),_c('div',{staticClass:"c-mt-5 c-w-full c-flex"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.form.billing_same),expression:"form.billing_same"}],staticClass:"c-form-radio",attrs:{"type":"radio","id":"billing_address_same"},domProps:{"value":true,"checked":_vm._q(_vm.form.billing_same,true)},on:{"change":[function($event){return _vm.$set(_vm.form, "billing_same", true)},function($event){return _vm.updateCart('billing_same')}]}}),_c('label',{staticClass:"c-ml-3",attrs:{"for":"billing_address_same"}},[_vm._v("Same as shipping address")])]),_c('div',{staticClass:"c-mt-5 c-w-full c-flex"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.form.billing_same),expression:"form.billing_same"}],staticClass:"c-form-radio",attrs:{"name":"billing","type":"radio","id":"billing_address_different"},domProps:{"value":false,"checked":_vm._q(_vm.form.billing_same,false)},on:{"change":[function($event){return _vm.$set(_vm.form, "billing_same", false)},function($event){return _vm.updateCart('billing_same')}]}}),_c('label',{staticClass:"c-ml-3",attrs:{"for":"billing_address_different"}},[_vm._v("Use a different billing address")])])]),(!_vm.form.billing_same)?_c('div',[_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"First name","validator":_vm.$v.form.billing_first_name,"show-error":_vm.$v.form.billing_first_name.$error,"error-message":"First name is required"},on:{"blur":function($event){return _vm.updateCart('billing_first_name')}},model:{value:(_vm.form.billing_first_name),callback:function ($$v) {_vm.$set(_vm.form, "billing_first_name", $$v)},expression:"form.billing_first_name"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"Last name","validator":_vm.$v.form.billing_last_name,"show-error":_vm.$v.form.billing_last_name.$error,"error-message":"Last name is required"},on:{"blur":function($event){return _vm.updateCart('billing_last_name')}},model:{value:(_vm.form.billing_last_name),callback:function ($$v) {_vm.$set(_vm.form, "billing_last_name", $$v)},expression:"form.billing_last_name"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"Street","validator":_vm.$v.form.billing_address_line1,"show-error":_vm.$v.form.billing_address_line1.$error,"error-message":"Street address is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_line1')}},model:{value:(_vm.form.billing_address_line1),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_line1", $$v)},expression:"form.billing_address_line1"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"Apartment, suite, etc ...","validator":_vm.$v.form.billing_address_line2,"show-error":_vm.$v.form.billing_address_line2.$error,"error-message":"Appartment or suite is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_line2')}},model:{value:(_vm.form.billing_address_line2),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_line2", $$v)},expression:"form.billing_address_line2"}})],1),_c('div',{staticClass:"c-mt-6 c-flex"},[_c('div',{staticClass:"c-w-full"},[_c('R64FormInput',{attrs:{"label":"Zipcode","alert-class":"whitespace-no-wrap","validator":_vm.$v.form.billing_address_zipcode,"show-error":_vm.$v.form.billing_address_zipcode.$error,"error-message":"Zipcode is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_zipcode')}},model:{value:(_vm.form.billing_address_zipcode),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_zipcode", $$v)},expression:"form.billing_address_zipcode"}})],1),_c('div',{staticClass:"c-w-full c-ml-2"},[_c('R64FormInput',{attrs:{"label":"City","validator":_vm.$v.form.billing_address_city,"show-error":_vm.$v.form.billing_address_city.$error,"error-message":"City is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_city')}},model:{value:(_vm.form.billing_address_city),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_city", $$v)},expression:"form.billing_address_city"}})],1),_c('div',{staticClass:"c-w-full c-ml-2"},[_c('R64FormSelect',{attrs:{"label":"State","placeholder":"Select state","options":_vm.settings.states,"validator":_vm.$v.form.billing_address_region,"show-error":_vm.$v.form.billing_address_region.$error,"error-message":"State is required"},on:{"change":function($event){return _vm.updateCart('billing_address_region')}},model:{value:(_vm.form.billing_address_region),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_region", $$v)},expression:"form.billing_address_region"}})],1)]),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"Phone","validator":_vm.$v.form.billing_address_phone,"show-error":_vm.$v.form.billing_address_phone.$error,"error-message":"Phone is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_phone')}},model:{value:(_vm.form.billing_address_phone),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_phone", $$v)},expression:"form.billing_address_phone"}})],1)]):_vm._e(),(!_vm.hasCouponCode)?_c('div',{staticClass:"c-mt-6 lg:c-hidden"},[_c('span',{staticClass:"c-block c-text-xl"},[_vm._v("Have a promo code ?")]),_c('R64PromoCode',{staticClass:"c-mt-5",on:{"apply":_vm.applyPromoCode}}),_c('R64Alert',{staticClass:"c-mt-2",attrs:{"visible":_vm.promoCodeErrorVisible,"message":"Promo code is not valid"}})],1):_vm._e()],1)])]):_vm._e(),_c('div',{staticClass:"c-pt-12 c-pl-5 c-pr-6 c-pb-8 lg:c-hidden c-border-t c-border-c-gray"},[_c('div',{staticClass:"c-flex c-items-start"},[_c('input',{staticClass:"c-form-checkbox",attrs:{"type":"checkbox"}}),_c('span',{staticClass:"c-ml-3 c--mt-1 c-align-top"},[_vm._v("I have read and understood, and accept our "),_c('a',{staticClass:"c-text-c-blue c-hover:underline",attrs:{"href":_vm.tocUrl}},[_vm._v("Terms and Conditions, Return Policy, and Privacy Policy")]),_vm._v(".")])]),_c('R64Button',{staticClass:"c-mt-6 c-w-full",nativeOn:{"click":function($event){return _vm.createOrder($event)}}},[_vm._v("Place Order")])],1)],1),_c('div',{staticClass:"c-hidden c-w-full lg:c-block lg:c-px-8 lg:c-pt-12 xl:c-px-16"},[(_vm.cart)?_c('div',{staticClass:"lg:c-max-w-sm"},[_vm._l((_vm.cartItems),function(cartItem,index){return _c('R64CartItemPreview',{key:index,staticClass:"c-mt-4",attrs:{"cart-item":cartItem}})}),(!_vm.hasCouponCode)?_c('div',[_c('R64InlinePromoCode',{staticClass:"c-pt-6",class:{ 'c-pb-6': !_vm.promoCodeErrorVisible },on:{"apply":_vm.applyPromoCode}}),_c('R64Alert',{staticClass:"c-mt-2 c-mb-4",attrs:{"visible":_vm.promoCodeErrorVisible,"message":"Promo code is not valid"}}),_c('R64HorizontalLine')],1):_vm._e(),_c('div',{staticClass:"c-my-6"},[_c('div',{staticClass:"c-flex c-justify-between"},[_c('span',[_vm._v("Subtotal")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.cart.items_subtotal)))])]),(_vm.hasCouponCode)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Discount")]),_c('span',[_vm._v("- "+_vm._s(_vm.money(_vm.cart.discount)))])]):_vm._e(),(_vm.cart.tax > 0)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Taxes")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.cart.tax)))])]):_vm._e(),(_vm.cart.shipping > 0)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Shipping")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.cart.shipping)))])]):_vm._e()]),_c('R64HorizontalLine'),_c('div',{staticClass:"c-flex c-items-center c-justify-between c-my-6"},[_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v("Total to Pay")]),_c('span',{staticClass:"c-text-4xl"},[_vm._v(_vm._s(_vm.money(_vm.cart.total)))])]),_c('div',{staticClass:"c-flex c-items-start"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.consent),expression:"consent"}],staticClass:"c-form-checkbox",attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.consent)?_vm._i(_vm.consent,null)>-1:(_vm.consent)},on:{"change":function($event){var $$a=_vm.consent,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.consent=$$a.concat([$$v]))}else{$$i>-1&&(_vm.consent=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.consent=$$c}}}}),_c('span',{staticClass:"c-ml-3 c--mt-1 c-align-top"},[_vm._v("I have read and understood, and accept our "),_c('a',{staticClass:"c-text-c-blue c-hover:underline",attrs:{"href":_vm.tocUrl}},[_vm._v("Terms and Conditions, Return Policy, and Privacy Policy")]),_vm._v(".")])]),_c('R64Button',{staticClass:"c-mt-6",attrs:{"disabled":!_vm.consent},nativeOn:{"click":function($event){return _vm.createOrder($event)}}},[_vm._v("Place Order")])],2):_vm._e()])]):_vm._e()]):_vm._e()}
-var R64Checkoutvue_type_template_id_64aee572_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96b75d02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64Checkout.vue?vue&type=template&id=45e5aefa&
+var R64Checkoutvue_type_template_id_45e5aefa_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.cart)?_c('div',{staticClass:"c-font-sans c-antialiased c-text-c-black c-bg-c-light-gray",staticStyle:{"box-sizing":"border-box"}},[_c('div',{staticClass:"checkout-cart-items c-fixed c-p-5 c-top-0 c-left-0 c-right-0 c-z-10 c-bg-white lg:c-hidden"},[_c('div',{staticClass:"c-flex c-items-center c-justify-between"},[_c('span',{staticClass:"c-text-xl"},[_vm._v("Total to pay ("+_vm._s(_vm.cartItems.length)+" items)")]),_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v(_vm._s(_vm.money(_vm.cart.total)))])]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.itemSummaryVisible),expression:"itemSummaryVisible"}],staticClass:"c-mt-10"},_vm._l((_vm.cartItems),function(cartItem,index){return _c('R64CartItemPreview',{key:index,staticClass:"c-mt-4",attrs:{"cart-item":cartItem,"currency-symbol":_vm.currencySymbol,"border":index !== _vm.cartItems.length - 1}})}),1),_c('button',{staticClass:"c-flex c-items-center c-justify-between c-w-full c-mt-2",on:{"click":function($event){_vm.itemSummaryVisible = !_vm.itemSummaryVisible}}},[_c('span',{staticClass:"c-text-c-blue"},[_vm._v(_vm._s(_vm.itemSummaryText))]),_c('span',{class:{ 'c-rotate-1/2': _vm.itemSummaryVisible }},[_c('svg',{staticClass:"c-w-3 c-h-3 c-fill-current",attrs:{"viewBox":"0 0 12 7","fill":"none","xmlns":"http://www.w3.org/2000/svg"}},[_c('path',{attrs:{"d":"M1.41 0.0380859L6 3.86986L10.59 0.0380859L12 1.21774L6 6.23753L0 1.21774L1.41 0.0380859Z","fill":"#006ED4"}})])])])]),(_vm.settings)?_c('div',{staticClass:"lg:c-flex lg:c-mx-auto lg:c-max-w-7xl"},[_c('div',{staticClass:"checkout-form c-w-full c-mt-24 c-bg-white lg:c-flex-shrink-0 lg:c-max-w-2xl lg:c-mt-0 xl:c-max-w-4xl"},[_c('R64CheckoutSection',[_c('button',{staticClass:"c-text-c-blue c-flex c-items-center",attrs:{"type":"button"},on:{"click":function($event){return _vm.$emit('cart')}}},[_c('span',[_c('svg',{staticClass:"c-w-3 c-h-3",attrs:{"viewBox":"0 0 8 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}},[_c('path',{attrs:{"d":"M7.41 10.59L2.83 6l4.58-4.59L6 0 0 6l6 6 1.41-1.41z","fill":"#006ED4"}})])]),_c('span',{staticClass:"c-ml-3"},[_vm._v("Back to cart")])]),_c('h2',{staticClass:"c-mt-3 c-text-3xl"},[_vm._v("Check Out")]),_c('div',{staticClass:"xl:c-flex c-mt-6"},[_c('span',{staticClass:"c-block c-text-xl c-font-bold xl:c-w-1/3"},[_vm._v("Contact")]),_c('div',{staticClass:"c-w-full c-mt-6 lg:c-max-w-sm xl:c-mt-0"},[_c('R64FormInput',{attrs:{"label":"Email address","validator":_vm.$v.form.customer_email,"show-error":_vm.$v.form.customer_email.$error,"error-message":"Valid email address is required"},on:{"blur":function($event){return _vm.updateCart('customer_email')}},model:{value:(_vm.form.customer_email),callback:function ($$v) {_vm.$set(_vm.form, "customer_email", $$v)},expression:"form.customer_email"}})],1)])]),_c('R64CheckoutSection',[_c('div',{staticClass:"xl:c-flex c-mt-6"},[_c('span',{staticClass:"c-block c-text-xl c-font-bold xl:c-w-1/3"},[_vm._v("Shipping")]),_c('div',{staticClass:"c-w-full lg:c-max-w-sm"},[_c('span',{staticClass:"c-mt-6 c-block c-text-xl xl:c-mt-0"},[_vm._v("Shipping Address")]),_c('div',[_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"First name","validator":_vm.$v.form.shipping_first_name,"show-error":_vm.$v.form.shipping_first_name.$error,"error-message":"First name is required"},on:{"blur":function($event){return _vm.updateCart('shipping_first_name')}},model:{value:(_vm.form.shipping_first_name),callback:function ($$v) {_vm.$set(_vm.form, "shipping_first_name", $$v)},expression:"form.shipping_first_name"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"Last name","validator":_vm.$v.form.shipping_last_name,"show-error":_vm.$v.form.shipping_last_name.$error,"error-message":"Last name is required"},on:{"blur":function($event){return _vm.updateCart('shipping_last_name')}},model:{value:(_vm.form.shipping_last_name),callback:function ($$v) {_vm.$set(_vm.form, "shipping_last_name", $$v)},expression:"form.shipping_last_name"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"Street","validator":_vm.$v.form.shipping_address_line1,"show-error":_vm.$v.form.shipping_address_line1.$error,"error-message":"Street address is required"},on:{"blur":function($event){return _vm.updateCart('shipping_address_line1')}},model:{value:(_vm.form.shipping_address_line1),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_line1", $$v)},expression:"form.shipping_address_line1"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"Apartment, suite, etc ...","validator":_vm.$v.form.shipping_address_line2,"show-error":_vm.$v.form.shipping_address_line2.$error,"error-message":"Appartment or suite is required"},on:{"blur":function($event){return _vm.updateCart('shipping_address_line2')}},model:{value:(_vm.form.shipping_address_line2),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_line2", $$v)},expression:"form.shipping_address_line2"}})],1),_c('div',{staticClass:"c-mt-6 c-flex"},[_c('div',{staticClass:"c-w-full"},[_c('R64FormInput',{attrs:{"label":"Zipcode","alert-class":"whitespace-no-wrap","validator":_vm.$v.form.shipping_address_zipcode,"show-error":_vm.$v.form.shipping_address_zipcode.$error,"error-message":"Zipcode is required"},on:{"blur":function($event){return _vm.updateCart('shipping_address_zipcode')}},model:{value:(_vm.form.shipping_address_zipcode),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_zipcode", $$v)},expression:"form.shipping_address_zipcode"}})],1),_c('div',{staticClass:"c-w-full c-ml-2"},[_c('R64FormInput',{attrs:{"label":"City","validator":_vm.$v.form.shipping_address_city,"show-error":_vm.$v.form.shipping_address_city.$error,"error-message":"City is required"},on:{"blur":function($event){return _vm.updateCart('shipping_address_city')}},model:{value:(_vm.form.shipping_address_city),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_city", $$v)},expression:"form.shipping_address_city"}})],1),_c('div',{staticClass:"c-w-full c-ml-2"},[_c('R64FormSelect',{attrs:{"label":"State","placeholder":"Select state","options":_vm.settings.states,"validator":_vm.$v.form.shipping_address_region,"show-error":_vm.$v.form.shipping_address_region.$error,"error-message":"State is required"},on:{"change":function($event){return _vm.updateCart('shipping_address_region')}},model:{value:(_vm.form.shipping_address_region),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_region", $$v)},expression:"form.shipping_address_region"}})],1)]),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"Phone","validator":_vm.$v.form.shipping_address_phone,"show-error":_vm.$v.form.shipping_address_phone.$error,"error-message":"Phone is required"},on:{"blur":function($event){return _vm.updateCart('shipping_address_phone')}},model:{value:(_vm.form.shipping_address_phone),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_phone", $$v)},expression:"form.shipping_address_phone"}})],1)]),_vm._t("shipping")],2)])]),(!_vm.isFree)?_c('R64CheckoutSection',{attrs:{"border":false}},[_c('div',{staticClass:"xl:c-flex c-mt-6"},[_c('span',{staticClass:"c-block c-text-xl c-font-bold xl:c-w-1/3"},[_vm._v("Payment")]),_c('div',{staticClass:"c-w-full lg:c-max-w-sm"},[_c('span',{staticClass:"c-mt-6 c-block c-text-xl xl:c-mt-0"},[_vm._v("Payment method")]),_c('R64StripePayment',{ref:"stripe",attrs:{"stripe-key":_vm.stripeKey,"show-card-error":_vm.stripeValidated.number,"show-expiry-error":_vm.stripeValidated.expiry,"show-cvc-error":_vm.stripeValidated.cvc},on:{"complete:number":function($event){_vm.stripeValidated.number = true},"error:number":function($event){_vm.stripeValidated.number = false},"complete:expiry":function($event){_vm.stripeValidated.expiry = true},"error:expiry":function($event){_vm.stripeValidated.expiry = false},"complete:cvc":function($event){_vm.stripeValidated.cvc = true},"error:cvc":function($event){_vm.stripeValidated.cvc = false},"change":function($event){_vm.paymentErrorVisible = false}}}),_c('R64Alert',{staticClass:"c-mt-2",attrs:{"visible":_vm.paymentErrorVisible,"message":"Correct payments details are required"}}),_c('div',{staticClass:"c-mt-6"},[_c('span',{staticClass:"c-block c-text-xl"},[_vm._v("Billing Address")]),_c('div',{staticClass:"c-mt-5 c-w-full c-flex"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.form.billing_same),expression:"form.billing_same"}],staticClass:"c-form-radio",attrs:{"type":"radio","id":"billing_address_same"},domProps:{"value":true,"checked":_vm._q(_vm.form.billing_same,true)},on:{"change":[function($event){return _vm.$set(_vm.form, "billing_same", true)},function($event){return _vm.updateCart('billing_same')}]}}),_c('label',{staticClass:"c-ml-3",attrs:{"for":"billing_address_same"}},[_vm._v("Same as shipping address")])]),_c('div',{staticClass:"c-mt-5 c-w-full c-flex"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.form.billing_same),expression:"form.billing_same"}],staticClass:"c-form-radio",attrs:{"name":"billing","type":"radio","id":"billing_address_different"},domProps:{"value":false,"checked":_vm._q(_vm.form.billing_same,false)},on:{"change":[function($event){return _vm.$set(_vm.form, "billing_same", false)},function($event){return _vm.updateCart('billing_same')}]}}),_c('label',{staticClass:"c-ml-3",attrs:{"for":"billing_address_different"}},[_vm._v("Use a different billing address")])])]),(!_vm.form.billing_same)?_c('div',[_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"First name","validator":_vm.$v.form.billing_first_name,"show-error":_vm.$v.form.billing_first_name.$error,"error-message":"First name is required"},on:{"blur":function($event){return _vm.updateCart('billing_first_name')}},model:{value:(_vm.form.billing_first_name),callback:function ($$v) {_vm.$set(_vm.form, "billing_first_name", $$v)},expression:"form.billing_first_name"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"Last name","validator":_vm.$v.form.billing_last_name,"show-error":_vm.$v.form.billing_last_name.$error,"error-message":"Last name is required"},on:{"blur":function($event){return _vm.updateCart('billing_last_name')}},model:{value:(_vm.form.billing_last_name),callback:function ($$v) {_vm.$set(_vm.form, "billing_last_name", $$v)},expression:"form.billing_last_name"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"Street","validator":_vm.$v.form.billing_address_line1,"show-error":_vm.$v.form.billing_address_line1.$error,"error-message":"Street address is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_line1')}},model:{value:(_vm.form.billing_address_line1),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_line1", $$v)},expression:"form.billing_address_line1"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"Apartment, suite, etc ...","validator":_vm.$v.form.billing_address_line2,"show-error":_vm.$v.form.billing_address_line2.$error,"error-message":"Appartment or suite is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_line2')}},model:{value:(_vm.form.billing_address_line2),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_line2", $$v)},expression:"form.billing_address_line2"}})],1),_c('div',{staticClass:"c-mt-6 c-flex"},[_c('div',{staticClass:"c-w-full"},[_c('R64FormInput',{attrs:{"label":"Zipcode","alert-class":"whitespace-no-wrap","validator":_vm.$v.form.billing_address_zipcode,"show-error":_vm.$v.form.billing_address_zipcode.$error,"error-message":"Zipcode is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_zipcode')}},model:{value:(_vm.form.billing_address_zipcode),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_zipcode", $$v)},expression:"form.billing_address_zipcode"}})],1),_c('div',{staticClass:"c-w-full c-ml-2"},[_c('R64FormInput',{attrs:{"label":"City","validator":_vm.$v.form.billing_address_city,"show-error":_vm.$v.form.billing_address_city.$error,"error-message":"City is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_city')}},model:{value:(_vm.form.billing_address_city),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_city", $$v)},expression:"form.billing_address_city"}})],1),_c('div',{staticClass:"c-w-full c-ml-2"},[_c('R64FormSelect',{attrs:{"label":"State","placeholder":"Select state","options":_vm.settings.states,"validator":_vm.$v.form.billing_address_region,"show-error":_vm.$v.form.billing_address_region.$error,"error-message":"State is required"},on:{"change":function($event){return _vm.updateCart('billing_address_region')}},model:{value:(_vm.form.billing_address_region),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_region", $$v)},expression:"form.billing_address_region"}})],1)]),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"label":"Phone","validator":_vm.$v.form.billing_address_phone,"show-error":_vm.$v.form.billing_address_phone.$error,"error-message":"Phone is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_phone')}},model:{value:(_vm.form.billing_address_phone),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_phone", $$v)},expression:"form.billing_address_phone"}})],1)]):_vm._e(),(!_vm.hasCouponCode)?_c('div',{staticClass:"c-mt-6 lg:c-hidden"},[_c('span',{staticClass:"c-block c-text-xl"},[_vm._v("Have a promo code ?")]),_c('R64PromoCode',{staticClass:"c-mt-5",on:{"apply":_vm.applyPromoCode}}),_c('R64Alert',{staticClass:"c-mt-2",attrs:{"visible":_vm.promoCodeErrorVisible,"message":"Promo code is not valid"}})],1):_vm._e()],1)])]):_vm._e(),_c('div',{staticClass:"c-pt-12 c-pl-5 c-pr-6 c-pb-8 lg:c-hidden c-border-t c-border-c-gray"},[_c('div',{staticClass:"c-flex c-items-start"},[_c('input',{staticClass:"c-form-checkbox",attrs:{"type":"checkbox"}}),_c('span',{staticClass:"c-ml-3 c--mt-1 c-align-top"},[_vm._v("I have read and understood, and accept our "),_c('a',{staticClass:"c-text-c-blue c-hover:underline",attrs:{"href":_vm.tocUrl}},[_vm._v("Terms and Conditions, Return Policy, and Privacy Policy")]),_vm._v(".")])]),_c('R64Button',{staticClass:"c-mt-6 c-w-full",nativeOn:{"click":function($event){return _vm.createOrder($event)}}},[_vm._v("Place Order")])],1)],1),_c('div',{staticClass:"c-hidden c-w-full lg:c-block lg:c-px-8 lg:c-pt-12 xl:c-px-16"},[(_vm.cart)?_c('div',{staticClass:"lg:c-max-w-sm"},[_vm._l((_vm.cartItems),function(cartItem,index){return _c('R64CartItemPreview',{key:index,staticClass:"c-mt-4",attrs:{"cart-item":cartItem,"currency-symbol":_vm.currencySymbol}})}),(!_vm.hasCouponCode)?_c('div',[_c('R64InlinePromoCode',{staticClass:"c-pt-6",class:{ 'c-pb-6': !_vm.promoCodeErrorVisible },on:{"apply":_vm.applyPromoCode}}),_c('R64Alert',{staticClass:"c-mt-2 c-mb-4",attrs:{"visible":_vm.promoCodeErrorVisible,"message":"Promo code is not valid"}}),_c('R64HorizontalLine')],1):_vm._e(),_c('div',{staticClass:"c-my-6"},[_c('div',{staticClass:"c-flex c-justify-between"},[_c('span',[_vm._v("Subtotal")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.cart.items_subtotal)))])]),(_vm.hasCouponCode)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Discount")]),_c('span',[_vm._v("- "+_vm._s(_vm.money(_vm.cart.discount)))])]):_vm._e(),(_vm.cart.tax > 0)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Taxes")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.cart.tax)))])]):_vm._e(),(_vm.cart.shipping > 0)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Shipping")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.cart.shipping)))])]):_vm._e()]),_c('R64HorizontalLine'),_c('div',{staticClass:"c-flex c-items-center c-justify-between c-my-6"},[_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v("Total to Pay")]),_c('span',{staticClass:"c-text-4xl"},[_vm._v(_vm._s(_vm.money(_vm.cart.total)))])]),_c('div',{staticClass:"c-flex c-items-start"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.consent),expression:"consent"}],staticClass:"c-form-checkbox",attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.consent)?_vm._i(_vm.consent,null)>-1:(_vm.consent)},on:{"change":function($event){var $$a=_vm.consent,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.consent=$$a.concat([$$v]))}else{$$i>-1&&(_vm.consent=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.consent=$$c}}}}),_c('span',{staticClass:"c-ml-3 c--mt-1 c-align-top"},[_vm._v("I have read and understood, and accept our "),_c('a',{staticClass:"c-text-c-blue c-hover:underline",attrs:{"href":_vm.tocUrl}},[_vm._v("Terms and Conditions, Return Policy, and Privacy Policy")]),_vm._v(".")])]),_c('R64Button',{staticClass:"c-mt-6",attrs:{"disabled":!_vm.consent},nativeOn:{"click":function($event){return _vm.createOrder($event)}}},[_vm._v("Place Order")])],2):_vm._e()])]):_vm._e()]):_vm._e()}
+var R64Checkoutvue_type_template_id_45e5aefa_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/R64Checkout.vue?vue&type=template&id=64aee572&
+// CONCATENATED MODULE: ./src/components/R64Checkout.vue?vue&type=template&id=45e5aefa&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.js
 var es_symbol = __webpack_require__("a4d3");
@@ -9673,17 +9674,6 @@ var R64StripePayment_component = normalizeComponent(
 )
 
 /* harmony default export */ var R64StripePayment = (R64StripePayment_component.exports);
-// CONCATENATED MODULE: ./src/api/checkout.js
-
-
-/* harmony default export */ var checkout = ({
-  url: '/api/checkout',
-
-  settings () {
-    return http.get(this.url + '/settings')
-  }
-});
-
 // CONCATENATED MODULE: ./src/api/order.js
 
 
@@ -9694,8 +9684,8 @@ var R64StripePayment_component = normalizeComponent(
     return http.post(`${this.url}?token=${params.auth_token}`, params)
   },
 
-  get (id, authToken) {
-    return http.get(`/api/my/orders/${id}?token=${authToken}`)
+  get (orderToken, authToken) {
+    return http.get(`${this.url}/${orderToken}?token=${authToken}`)
   }
 });
 
@@ -10057,7 +10047,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 //
 //
 //
-
+//
+//
 
 
 
@@ -10083,6 +10074,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     },
     authToken: {
       type: String,
+      default: null
+    },
+    settings: {
+      type: Object,
       default: null
     }
   },
@@ -10129,7 +10124,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
       },
       paymentErrorVisible: false,
       promoCodeErrorVisible: false,
-      settings: null,
       consent: false
     };
   },
@@ -10183,13 +10177,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
             case 0:
               window.scrollTo(0, 0);
               _context.next = 3;
-              return this.fetchSettings();
-
-            case 3:
-              _context.next = 5;
               return this.fetchCart();
 
-            case 5:
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -10228,75 +10218,36 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     }
   },
   methods: {
-    fetchSettings: function () {
-      var _fetchSettings = _asyncToGenerator(
+    applyPromoCode: function () {
+      var _applyPromoCode = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee2() {
-        var _ref, data;
-
+      regeneratorRuntime.mark(function _callee2(couponCode) {
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return checkout.settings();
-
-              case 3:
-                _ref = _context2.sent;
-                data = _ref.data;
-                this.settings = data;
-                _context2.next = 10;
-                break;
-
-              case 8:
-                _context2.prev = 8;
-                _context2.t0 = _context2["catch"](0);
-
-              case 10:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, this, [[0, 8]]);
-      }));
-
-      function fetchSettings() {
-        return _fetchSettings.apply(this, arguments);
-      }
-
-      return fetchSettings;
-    }(),
-    applyPromoCode: function () {
-      var _applyPromoCode = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee3(couponCode) {
-        return regeneratorRuntime.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.prev = 0;
-                _context3.next = 3;
                 return cart.update(this.cartToken, {
                   coupon_code: couponCode
                 });
 
               case 3:
                 this.fetchCart();
-                _context3.next = 9;
+                _context2.next = 9;
                 break;
 
               case 6:
-                _context3.prev = 6;
-                _context3.t0 = _context3["catch"](0);
+                _context2.prev = 6;
+                _context2.t0 = _context2["catch"](0);
                 this.promoCodeErrorVisible = true;
 
               case 9:
               case "end":
-                return _context3.stop();
+                return _context2.stop();
             }
           }
-        }, _callee3, this, [[0, 6]]);
+        }, _callee2, this, [[0, 6]]);
       }));
 
       function applyPromoCode(_x) {
@@ -10326,19 +10277,19 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     createOrder: function () {
       var _createOrder = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee4() {
-        var orderParams, _ref2, token, _ref3, data;
+      regeneratorRuntime.mark(function _callee3() {
+        var orderParams, _ref, token, _ref2, data;
 
-        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
                 if (this.formValid()) {
-                  _context4.next = 2;
+                  _context3.next = 2;
                   break;
                 }
 
-                return _context4.abrupt("return");
+                return _context3.abrupt("return");
 
               case 2:
                 orderParams = {
@@ -10347,19 +10298,19 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
                   }, this.form),
                   auth_token: this.authToken
                 };
-                _context4.prev = 3;
+                _context3.prev = 3;
 
                 if (this.isFree) {
-                  _context4.next = 10;
+                  _context3.next = 10;
                   break;
                 }
 
-                _context4.next = 7;
+                _context3.next = 7;
                 return this.$refs.stripe.createToken();
 
               case 7:
-                _ref2 = _context4.sent;
-                token = _ref2.token;
+                _ref = _context3.sent;
+                token = _ref.token;
                 orderParams = _objectSpread({}, orderParams, {
                   stripe: {
                     token: token.id
@@ -10367,26 +10318,26 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
                 });
 
               case 10:
-                _context4.next = 12;
+                _context3.next = 12;
                 return order.create(orderParams);
 
               case 12:
-                _ref3 = _context4.sent;
-                data = _ref3.data;
+                _ref2 = _context3.sent;
+                data = _ref2.data;
                 this.$emit('order:create', data);
-                _context4.next = 19;
+                _context3.next = 19;
                 break;
 
               case 17:
-                _context4.prev = 17;
-                _context4.t0 = _context4["catch"](3);
+                _context3.prev = 17;
+                _context3.t0 = _context3["catch"](3);
 
               case 19:
               case "end":
-                return _context4.stop();
+                return _context3.stop();
             }
           }
-        }, _callee4, this, [[3, 17]]);
+        }, _callee3, this, [[3, 17]]);
       }));
 
       function createOrder() {
@@ -10398,45 +10349,45 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     updateCart: function () {
       var _updateCart = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee5(property) {
-        var _ref4, data;
+      regeneratorRuntime.mark(function _callee4(property) {
+        var _ref3, data;
 
-        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
                 if (!(this.$v.form[property].$invalid || !this.propertyDiff(property))) {
-                  _context5.next = 2;
+                  _context4.next = 2;
                   break;
                 }
 
-                return _context5.abrupt("return");
+                return _context4.abrupt("return");
 
               case 2:
-                _context5.prev = 2;
-                _context5.next = 5;
+                _context4.prev = 2;
+                _context4.next = 5;
                 return cart.update(this.cartToken, _defineProperty({}, property, this.form[property]));
 
               case 5:
-                _ref4 = _context5.sent;
-                data = _ref4.data;
+                _ref3 = _context4.sent;
+                data = _ref3.data;
                 this.cart = data;
-                _context5.next = 12;
+                _context4.next = 12;
                 break;
 
               case 10:
-                _context5.prev = 10;
-                _context5.t0 = _context5["catch"](2);
+                _context4.prev = 10;
+                _context4.t0 = _context4["catch"](2);
 
               case 12:
                 this.$emit('cart:update', this.cart);
 
               case 13:
               case "end":
-                return _context5.stop();
+                return _context4.stop();
             }
           }
-        }, _callee5, this, [[2, 10]]);
+        }, _callee4, this, [[2, 10]]);
       }));
 
       function updateCart(_x2) {
@@ -10492,8 +10443,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 var R64Checkout_component = normalizeComponent(
   components_R64Checkoutvue_type_script_lang_js_,
-  R64Checkoutvue_type_template_id_64aee572_render,
-  R64Checkoutvue_type_template_id_64aee572_staticRenderFns,
+  R64Checkoutvue_type_template_id_45e5aefa_render,
+  R64Checkoutvue_type_template_id_45e5aefa_staticRenderFns,
   false,
   null,
   null,
@@ -10502,12 +10453,12 @@ var R64Checkout_component = normalizeComponent(
 )
 
 /* harmony default export */ var R64Checkout = (R64Checkout_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96b75d02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64Order.vue?vue&type=template&id=7701eded&
-var R64Ordervue_type_template_id_7701eded_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.order)?_c('div',{staticClass:"c-font-sans c-antialiased c-text-c-black c-bg-c-light-gray"},[_c('div',{staticClass:"c-max-w-2xl c-mx-auto c-py-20"},[_c('R64OrderSection',[_c('span',{staticClass:"c-block c-text-center c-text-4xl c-font-bold c-text-c-blue"},[_vm._t("logo",[_vm._v("Logo")])],2),_c('span',{staticClass:"c-block c-mt-10 c-text-4xl c-font-bold"},[_vm._v("Thank you for your order!")]),_c('span',{staticClass:"c-block c-mt-4"},[_vm._v("Order Number: "+_vm._s(_vm.order.id))]),_c('span',{staticClass:"c-block c-mt-2"},[_vm._v("Order Date: "+_vm._s(_vm.order.created_at))]),_c('span',{staticClass:"c-block c-mt-2"},[_vm._v("Payment Method: "+_vm._s(_vm.order.order_purchase.card_type)+" ending in "+_vm._s(_vm.order.order_purchase.card_last4))]),_vm._t("delivery-date")],2),_c('R64OrderSection',{staticClass:"c-mt-2"},[_c('span',{staticClass:"c-font-bold c-text-xl"},[_vm._v(_vm._s(_vm.order.order_items.length)+" items")]),_c('div',{staticClass:"c-mt-8"},_vm._l((_vm.order.order_items),function(orderItem,index){return _c('R64CartItemPreview',{key:index,staticClass:"c-mt-4",attrs:{"cart-item":orderItem}})}),1),_c('div',{staticClass:"c-my-6"},[_c('div',{staticClass:"c-flex c-justify-between"},[_c('span',[_vm._v("Subtotal")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.order.items_total)))])]),_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Discount")]),_c('span',[_vm._v("-"+_vm._s(_vm.money(_vm.order.discount)))])]),_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Taxes")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.order.tax)))])]),_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Shipping")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.order.shipping)))])])]),_c('R64HorizontalLine'),_c('div',{staticClass:"c-flex c-items-center c-justify-between c-mt-6"},[_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v("Total")]),_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v(_vm._s(_vm.money(_vm.order.total)))])])],1),_c('R64OrderSection',{staticClass:"c-mt-2"},[_c('span',{staticClass:"c-font-bold c-text-xl"},[_vm._v("Shipping Details")]),_c('div',{staticClass:"c-flex c-mt-4"},[_c('div',{staticClass:"c-w-1/2"},[_c('span',{staticClass:"c-block c-font-bold"},[_vm._v("Shipping address")]),_c('span',{staticClass:"c-block c-mt-2"},[_vm._v(_vm._s(_vm.order.shipping_address_line1))]),_c('span',{staticClass:"c-block c-mt-1"},[_vm._v(_vm._s(_vm.order.shipping_address_line2))]),_c('span',{staticClass:"c-block c-mt-1"},[_vm._v(_vm._s(_vm.order.shipping_address_city)+", "+_vm._s(_vm.order.shipping_address_region))]),_c('span',{staticClass:"c-block c-mt-1"},[_vm._v(_vm._s(_vm.order.shipping_address_zipcode))])]),_c('div',{staticClass:"c-w-1/2"},[_vm._t("shipping-method")],2)])])],1)]):_vm._e()}
-var R64Ordervue_type_template_id_7701eded_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96b75d02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64Order.vue?vue&type=template&id=588b8c37&
+var R64Ordervue_type_template_id_588b8c37_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.order)?_c('div',{staticClass:"c-font-sans c-antialiased c-text-c-black c-bg-c-light-gray"},[_c('div',{staticClass:"c-max-w-2xl c-mx-auto c-py-20"},[_c('R64OrderSection',[_c('span',{staticClass:"c-block c-text-center c-text-4xl c-font-bold c-text-c-blue"},[_vm._t("logo",[_vm._v("Logo")])],2),_c('span',{staticClass:"c-block c-mt-10 c-text-4xl c-font-bold"},[_vm._v("Thank you for your order!")]),_c('span',{staticClass:"c-block c-mt-4"},[_vm._v("Order Number: "+_vm._s(_vm.order.order_number))]),_c('span',{staticClass:"c-block c-mt-2"},[_vm._v("Order Date: "+_vm._s(_vm.order.created_at))]),_c('span',{staticClass:"c-block c-mt-2"},[_vm._v("Payment Method: "+_vm._s(_vm.order.order_purchase.card_type)+" ending in "+_vm._s(_vm.order.order_purchase.card_last4))]),_vm._t("delivery-date")],2),_c('R64OrderSection',{staticClass:"c-mt-2"},[_c('span',{staticClass:"c-font-bold c-text-xl"},[_vm._v(_vm._s(_vm.order.order_items.length)+" items")]),_c('div',{staticClass:"c-mt-8"},_vm._l((_vm.order.order_items),function(orderItem,index){return _c('R64CartItemPreview',{key:index,staticClass:"c-mt-4",attrs:{"currency-symbol":_vm.currencySymbol,"cart-item":orderItem}})}),1),_c('div',{staticClass:"c-my-6"},[_c('div',{staticClass:"c-flex c-justify-between"},[_c('span',[_vm._v("Subtotal")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.order.items_total)))])]),(_vm.hasCouponCode)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Discount")]),_c('span',[_vm._v("-"+_vm._s(_vm.money(_vm.order.discount)))])]):_vm._e(),_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Taxes")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.order.tax)))])]),_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Shipping")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.order.shipping)))])])]),_c('R64HorizontalLine'),_c('div',{staticClass:"c-flex c-items-center c-justify-between c-mt-6"},[_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v("Total")]),_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v(_vm._s(_vm.money(_vm.order.total)))])])],1),_c('R64OrderSection',{staticClass:"c-mt-2"},[_c('span',{staticClass:"c-font-bold c-text-xl"},[_vm._v("Shipping Details")]),_c('div',{staticClass:"c-flex c-mt-4"},[_c('div',{staticClass:"c-w-1/2"},[_c('span',{staticClass:"c-block c-font-bold"},[_vm._v("Shipping address")]),_c('span',{staticClass:"c-block c-mt-2"},[_vm._v(_vm._s(_vm.order.shipping_address_line1))]),_c('span',{staticClass:"c-block c-mt-1"},[_vm._v(_vm._s(_vm.order.shipping_address_line2))]),_c('span',{staticClass:"c-block c-mt-1"},[_vm._v(_vm._s(_vm.order.shipping_address_city)+", "+_vm._s(_vm.order.shipping_address_region))]),_c('span',{staticClass:"c-block c-mt-1"},[_vm._v(_vm._s(_vm.order.shipping_address_zipcode))])]),_c('div',{staticClass:"c-w-1/2"},[_vm._t("shipping-method")],2)])])],1)]):_vm._e()}
+var R64Ordervue_type_template_id_588b8c37_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/R64Order.vue?vue&type=template&id=7701eded&
+// CONCATENATED MODULE: ./src/components/R64Order.vue?vue&type=template&id=588b8c37&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96b75d02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64OrderSection.vue?vue&type=template&id=f08904be&
 var R64OrderSectionvue_type_template_id_f08904be_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"c-px-12 c-pt-8 c-pb-12 c-bg-white"},[_vm._t("default")],2)}
@@ -10539,6 +10490,13 @@ var R64OrderSection_component = normalizeComponent(
 
 
 
+
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -10625,6 +10583,11 @@ var R64OrderSection_component = normalizeComponent(
       order: null
     };
   },
+  computed: {
+    hasCouponCode: function hasCouponCode() {
+      return parseFloat(this.order.discount) !== 0;
+    }
+  },
   mounted: function mounted() {
     window.scrollTo(0, 0);
     this.fetchOrder();
@@ -10683,8 +10646,8 @@ var R64OrderSection_component = normalizeComponent(
 
 var R64Order_component = normalizeComponent(
   components_R64Ordervue_type_script_lang_js_,
-  R64Ordervue_type_template_id_7701eded_render,
-  R64Ordervue_type_template_id_7701eded_staticRenderFns,
+  R64Ordervue_type_template_id_588b8c37_render,
+  R64Ordervue_type_template_id_588b8c37_staticRenderFns,
   false,
   null,
   null,
@@ -10824,7 +10787,19 @@ var R64AddToCart_component = normalizeComponent(
 )
 
 /* harmony default export */ var R64AddToCart = (R64AddToCart_component.exports);
+// CONCATENATED MODULE: ./src/api/checkout.js
+
+
+/* harmony default export */ var checkout = ({
+  url: '/api/checkout',
+
+  settings () {
+    return http.get(this.url + '/settings')
+  }
+});
+
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
@@ -10850,6 +10825,7 @@ function install(Vue) {
 /* concated harmony reexport R64AddToCart */__webpack_require__.d(__webpack_exports__, "R64AddToCart", function() { return R64AddToCart; });
 /* concated harmony reexport cartApi */__webpack_require__.d(__webpack_exports__, "cartApi", function() { return cart; });
 /* concated harmony reexport orderApi */__webpack_require__.d(__webpack_exports__, "orderApi", function() { return order; });
+/* concated harmony reexport checkoutApi */__webpack_require__.d(__webpack_exports__, "checkoutApi", function() { return checkout; });
 
 
 /* harmony default export */ var entry_lib = __webpack_exports__["default"] = (src);

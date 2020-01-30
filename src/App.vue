@@ -25,7 +25,7 @@
     />
     <R64Order 
       v-if="section === 'order' && order" 
-      :order-id="order.token"
+      :order-token="order.token"
       :currency-symbol="settings.currency_symbol"
     />
   </div>

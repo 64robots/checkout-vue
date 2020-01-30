@@ -74,8 +74,8 @@ export default {
   mixins: [money],
 
   props: {
-    orderId: {
-      type: Number,
+    orderToken: {
+      type: String,
       default: null
     },
     authToken: {
@@ -110,7 +110,7 @@ export default {
   methods: {
     async fetchOrder () {
       try {
-        const { data } = await order.get(this.orderId, this.authToken)
+        const { data } = await order.get(this.orderToken, this.authToken)
         this.order = data
       } catch (e) {
         //

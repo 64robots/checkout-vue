@@ -10807,6 +10807,7 @@ var R64AddToCart_component = normalizeComponent(
 
 
 
+
 function install(Vue) {
     Vue.component('R64Cart', R64Cart)
     Vue.component('R64Checkout', R64Checkout)
@@ -10823,6 +10824,7 @@ function install(Vue) {
 /* concated harmony reexport R64Order */__webpack_require__.d(__webpack_exports__, "R64Order", function() { return R64Order; });
 /* concated harmony reexport R64AddToCart */__webpack_require__.d(__webpack_exports__, "R64AddToCart", function() { return R64AddToCart; });
 /* concated harmony reexport cartApi */__webpack_require__.d(__webpack_exports__, "cartApi", function() { return cart; });
+/* concated harmony reexport cartItemApi */__webpack_require__.d(__webpack_exports__, "cartItemApi", function() { return api_cartItem; });
 /* concated harmony reexport orderApi */__webpack_require__.d(__webpack_exports__, "orderApi", function() { return order; });
 /* concated harmony reexport checkoutApi */__webpack_require__.d(__webpack_exports__, "checkoutApi", function() { return checkout; });
 

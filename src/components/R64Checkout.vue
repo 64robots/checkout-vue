@@ -610,11 +610,11 @@ export default {
       }
 
       if (this.zipcodeRequest && property === 'shipping_address_zipcode') {
-        this.updateCartZipCode(this.form[property])
+        await this.updateCartZipCode(this.form[property])
       }
 
       if (this.shippingRequest && property === 'shipping_address_zipcode') {
-        this.updateCartShipping(this.form[property])
+        await this.updateCartShipping(this.form[property])
       }
 
       this.$emit('cart:update', this.cart)

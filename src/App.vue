@@ -15,6 +15,8 @@
     />
     <R64Checkout
       v-if="section === 'checkout'"
+      zipcode-request
+      shipping-request
       :cart-token="cartToken"
       :settings="settings"
       :currency-symbol="settings.currency_symbol"

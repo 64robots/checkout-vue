@@ -321,15 +321,26 @@
               <span>Taxes</span>
               <span>{{ money(cart.tax) }}</span>
             </div>
-            <div v-if="cart.shipping > 0" class="c-flex c-justify-between c-mt-4">
+            <div class="c-flex c-justify-between c-mt-4">
               <span>Shipping</span>
-              <span>{{ money(cart.shipping) }}</span>
+              <span v-if="cart.shipping > 0">{{ money(cart.shipping) }}</span>
+              <span v-else>
+                <span v-if="busyShipping">
+                  <R64Spinner />
+                </span>
+                <span v-else>TBD</span>
+              </span>
             </div>
           </div>
           <R64HorizontalLine />
           <div class="c-flex c-items-center c-justify-between c-my-6">
             <span class="c-text-xl c-font-bold">Total to Pay</span>
-            <span class="c-text-4xl">{{ money(cart.total) }}</span>
+            <span class="c-text-4xl">
+              <span v-if="busyShipping || busyZipCode">
+                <R64Spinner />
+              </span>
+              <span v-else>{{ money(cart.total) }}</span>
+            </span>
           </div>
           <div class="c-flex c-items-start">
             <input v-model="consent" type="checkbox" class="c-form-checkbox">
@@ -353,6 +364,7 @@ import R64Button from "./R64Button"
 import R64InlinePromoCode from './R64InlinePromoCode'
 import R64HorizontalLine from './R64HorizontalLine'
 import R64StripePayment from './R64StripePayment'
+import R64Spinner from './R64Spinner'
 import cartMixin from '../mixins/cart'
 import money from '../mixins/money'
 import cart from '../api/cart'
@@ -375,7 +387,15 @@ export default {
     settings: {
       type: Object,
       default: null
-    }
+    },
+    shippingRequest: {
+      type: Boolean,
+      default: false
+    },
+    zipcodeRequest: {
+      type: Boolean,
+      default: false
+    },
   },
 
   components: {
@@ -388,7 +408,8 @@ export default {
     R64PromoCode,
     R64HorizontalLine,
     R64StripePayment,
-    R64Alert
+    R64Alert,
+    R64Spinner,
   },
 
   data () {
@@ -422,7 +443,9 @@ export default {
       },
       paymentErrorVisible: false,
       promoCodeErrorVisible: false,
-      consent: false
+      consent: false,
+      busyZipCode: false,
+      busyShipping: false,
     }
   },
 
@@ -585,6 +608,39 @@ export default {
       } catch (e) {
         //
       }
+
+      if (this.zipcodeRequest && property === 'shipping_address_zipcode') {
+        this.updateCartZipCode(this.form[property])
+      }
+
+      if (this.shippingRequest && property === 'shipping_address_zipcode') {
+        this.updateCartShipping(this.form[property])
+      }
+
+      this.$emit('cart:update', this.cart)
+    },
+
+    async updateCartZipCode (zipCode) {
+      this.busyZipCode = true
+      try {
+        const { data } = await cart.updateZipCode(this.cartToken, zipCode)
+        this.cart = data
+      } catch (e) {
+        //
+      }
+      this.busyZipCode = false
+      this.$emit('cart:update', this.cart)
+    },
+
+    async updateCartShipping (zipCode) {
+      this.busyShipping = true
+      try {
+        const { data } = await cart.updateShipping(this.cartToken, zipCode)
+        this.cart = data
+      } catch (e) {
+        //
+      }
+      this.busyShipping = false
       this.$emit('cart:update', this.cart)
     },
 

@@ -323,13 +323,13 @@
             </div>
             <div class="c-flex c-justify-between c-mt-4">
               <span>Shipping</span>
-              <span v-if="cart.shipping > 0">{{ money(cart.shipping) }}</span>
-              <span v-else>
-                <span v-if="busyShipping">
-                  <R64Spinner />
-                </span>
-                <span v-else>TBD</span>
+              <span v-if="busyShipping">
+                <R64Spinner />
               </span>
+              <span v-else-if="cart.shipping > 0">
+                {{ money(cart.shipping) }}
+              </span>
+              <span v-else>TBD</span>
             </div>
           </div>
           <R64HorizontalLine />

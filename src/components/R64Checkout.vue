@@ -27,7 +27,7 @@
       </button>
     </div>
 
-    <div v-if="settings" class="lg:c-flex lg:c-mx-auto lg:c-max-w-7xl">
+    <div v-if="settings" class="min-h-screen lg:c-flex lg:c-mx-auto lg:c-max-w-7xl">
       <div class="checkout-form c-w-full c-mt-24 c-bg-white lg:c-flex-shrink-0 lg:c-max-w-2xl lg:c-mt-0 xl:c-max-w-4xl">
         <R64CheckoutSection>
           <button type="button" @click="$emit('cart')" class="c-text-c-blue c-flex c-items-center">

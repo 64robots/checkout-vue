@@ -1,6 +1,7 @@
 <template>
   <div class="c-flex c-flex-col md:c-flex-row c-mt-10 c-pb-10 c-border-b c-border-c-gray">
-    <div v-if="hasImage" class="c-w-full c-h-40 md:c-w-40 md:c-h-40 c-bg-c-mid-gray c-flex-shrink-0">
+    <div v-if="hasImage" class="c-w-full c-flex c-items-center c-justify-center c-h-40 md:c-w-40 md:c-h-40 c-bg-c-mid-gray c-flex-shrink-0">
+      <img :src="imageSrc" alt="Product image">
     </div>
     <div class="c-mt-4 md:c-ml-6 md:c-mt-0 c-w-full c-flex c-flex-col">
       <div class="c-flex c-justify-between">

@@ -101,7 +101,7 @@ export default {
       return parseFloat(this.order.discount) !== 0
     },
     hasTax () {
-      return parseFloat(this.cart.tax > 0) !== 0
+      return parseFloat(this.order.tax > 0) !== 0
     },
   },
 

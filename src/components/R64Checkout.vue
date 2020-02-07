@@ -526,7 +526,7 @@ export default {
     },
 
     hasTax () {
-      return parseFloat(this.cart.tax > 0) !== 0
+      return parseFloat(this.cart.tax) !== 0
     },
 
     isFree () {

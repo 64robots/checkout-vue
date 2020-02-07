@@ -1,6 +1,6 @@
 <template>
   <div v-if="order" class="c-font-sans c-antialiased c-text-c-black c-bg-c-light-gray">
-    <div class="c-max-w-2xl c-mx-auto c-py-20">
+    <div class="c-max-w-2xl c-min-h-screen c-mx-auto c-py-20">
       <R64OrderSection>
         <span class="c-block c-text-center c-text-4xl c-font-bold c-text-c-blue"><slot name="logo">Logo</slot></span>
         <span class="c-block c-mt-10 c-text-4xl c-font-bold">Thank you for your order!</span>

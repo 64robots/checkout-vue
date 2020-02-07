@@ -97,7 +97,7 @@ export default {
       base: {
         fontSize: '16px',
         '::placeholder': {
-          color: '#737373'
+          color: '#CCCCCC'
         }
       }
     }

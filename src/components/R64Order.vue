@@ -29,7 +29,7 @@
             <span>Discount</span>
             <span>-{{ money(order.discount) }}</span>
           </div>
-          <div class="c-flex c-justify-between c-mt-4">
+          <div v-if="hasTax" class="c-flex c-justify-between c-mt-4">
             <span>Taxes</span>
             <span>{{ money(order.tax) }}</span>
           </div>
@@ -99,6 +99,9 @@ export default {
   computed: {
     hasCouponCode () {
       return parseFloat(this.order.discount) !== 0
+    },
+    hasTax () {
+      return parseFloat(this.cart.tax > 0) !== 0
     },
   },
 

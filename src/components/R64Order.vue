@@ -104,7 +104,7 @@ export default {
       return parseFloat(this.order.tax) !== 0
     },
     hasShipping () {
-      return parseFloat(this.order.shipping) === 0
+      return parseFloat(this.order.shipping) !== 0
     },
   },
 

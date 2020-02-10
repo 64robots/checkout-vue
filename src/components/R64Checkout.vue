@@ -534,7 +534,7 @@ export default {
     },
 
     hasShipping () {
-      return parseFloat(this.cart.shipping) === 0
+      return parseFloat(this.cart.shipping) !== 0
     },
   },
 

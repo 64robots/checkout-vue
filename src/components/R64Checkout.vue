@@ -326,7 +326,7 @@
               <span v-if="busyShipping">
                 <R64Spinner />
               </span>
-              <span v-else-if="cart.shipping > 0">
+              <span v-else-if="hasShipping">
                 {{ money(cart.shipping) }}
               </span>
               <span v-else>TBD</span>
@@ -531,7 +531,11 @@ export default {
 
     isFree () {
       return parseFloat(this.cart.total) === 0
-    }
+    },
+
+    hasShipping () {
+      return parseFloat(this.cart.shipping) === 0
+    },
   },
 
   methods: {

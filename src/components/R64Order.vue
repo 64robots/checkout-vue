@@ -33,7 +33,7 @@
             <span>Taxes</span>
             <span>{{ money(order.tax) }}</span>
           </div>
-          <div class="c-flex c-justify-between c-mt-4">
+          <div v-if="hasShipping" class="c-flex c-justify-between c-mt-4">
             <span>Shipping</span>
             <span>{{ money(order.shipping) }}</span>
           </div>
@@ -102,6 +102,9 @@ export default {
     },
     hasTax () {
       return parseFloat(this.order.tax) !== 0
+    },
+    hasShipping () {
+      return parseFloat(this.order.shipping) === 0
     },
   },
 

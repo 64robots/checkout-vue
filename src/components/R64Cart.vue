@@ -14,7 +14,8 @@
           :cart-item="cartItem"
           :currency-symbol="currencySymbol"
           @cart-item:update="fetchCart" 
-          @cart-item:delete="fetchCart" 
+          @cart-item:delete="fetchCart"
+          @cart-item:show="cartItem => $emit('cart-item:show', cartItem)"
         />
         <div class="c-mt-10 c-pb-10 c-border-b c-border-c-gray">
           <button @click="toggleNote" class="c-flex c-items-center">

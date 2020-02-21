@@ -612,7 +612,6 @@ export default {
         const { data } = await cart.update(this.cartToken, {
           [property]: this.form[property]
         })
-        this.cart = data
       } catch (e) {
         //
       }
@@ -625,7 +624,7 @@ export default {
         await this.updateCartShipping(this.form[property])
       }
 
-      this.$emit('cart:update', this.cart)
+      this.$emit('cart:update', data)
     },
 
     async updateCartZipCode (zipCode) {

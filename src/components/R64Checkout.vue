@@ -104,7 +104,7 @@
                       :validator="$v.form.shipping_address_zipcode"
                       :show-error="$v.form.shipping_address_zipcode.$error"
                       error-message="Zipcode is required"
-                      @blur="updateCart('shipping_address_zipcode')"
+                      @blur="updateCartZipCode"
                     />
                   </div>
                   <div class="c-w-full c-ml-2">
@@ -371,6 +371,7 @@ import cart from '../api/cart'
 import order from '../api/order'
 import { validationMixin } from 'vuelidate'
 import { required, email } from 'vuelidate/lib/validators'
+import debounce from 'lodash/debounce'
 
 export default {
   mixins: [cartMixin, money, validationMixin],
@@ -603,39 +604,35 @@ export default {
       }
     },
 
-    async updateCart (property) {
+    updateCart: debounce(async function (property) {
       if (this.$v.form[property].$invalid || !this.propertyDiff(property)) {
         return
       }
 
       try {
         const { data } = await cart.update(this.cartToken, {
-          [property]: this.form[property]
+          ...this.form
         })
+
+        this.cart = data
         this.$emit('cart:update', data)
       } catch (e) {
         //
       }
-
-      if (this.zipcodeRequest && property === 'shipping_address_zipcode') {
-        await this.updateCartZipCode(this.form[property])
-      }
-
-      if (this.shippingRequest && property === 'shipping_address_zipcode') {
-        await this.updateCartShipping(this.form[property])
-      }
-    },
+    }, 100),
 
     async updateCartZipCode (zipCode) {
       this.busyZipCode = true
       try {
         const { data } = await cart.updateZipCode(this.cartToken, zipCode)
         this.cart = data
+        this.$emit('cart:update', data)
       } catch (e) {
         //
       }
       this.busyZipCode = false
-      this.$emit('cart:update', this.cart)
+
+      await this.updateCartShipping(zipCode)
     },
 
     async updateCartShipping (zipCode) {

@@ -1,6 +1,6 @@
 {
   "name": "vue-checkout",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "private": true,
   "main": "dist/index.common.js",
   "scripts": {
@@ -11,6 +11,7 @@
   "dependencies": {
     "axios": "^0.19.1",
     "core-js": "^3.4.4",
+    "lodash": "^4.17.15",
     "tailwindcss": "^1.1.4",
     "vue": "^2.6.10",
     "vuelidate": "^0.7.5"

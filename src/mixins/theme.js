@@ -14,7 +14,15 @@ export default {
     },
     btnSecondaryTransparent: {
       type: String,
-      default: 'c-bg-transparent c-text-c-blue c-border c-border-c-blue'
+      default: 'c-bg-transparent c-text-c-blue c-border c-border-c-blue',
+    },
+    textPrimary: {
+      type: String,
+      default: 'c-text-c-blue',
+    },
+    iconColor: {
+      type: String,
+      default: 'c-text-c-blue',
     },
   },
 }

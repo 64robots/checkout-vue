@@ -18,10 +18,10 @@
       </div>
 
       <button @click="itemSummaryVisible = !itemSummaryVisible" class="c-flex c-items-center c-justify-between c-w-full c-mt-2">
-        <span class="c-text-c-blue">{{ itemSummaryText }}</span>
+        <span :class="textPrimary">{{ itemSummaryText }}</span>
         <span :class="{ 'c-rotate-1/2': itemSummaryVisible }">
-          <svg class="c-w-3 c-h-3 c-fill-current" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1.41 0.0380859L6 3.86986L10.59 0.0380859L12 1.21774L6 6.23753L0 1.21774L1.41 0.0380859Z" fill="#006ED4"/>
+          <svg :class="textPrimary" class="c-w-3 c-h-3 c-fill-current" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.41 0.0380859L6 3.86986L10.59 0.0380859L12 1.21774L6 6.23753L0 1.21774L1.41 0.0380859Z"/>
           </svg>
         </span>
       </button>
@@ -30,8 +30,8 @@
     <div v-if="settings" class="c-min-h-screen lg:c-flex lg:c-mx-auto lg:c-max-w-7xl">
       <div class="checkout-form c-w-full c-mt-24 c-bg-white lg:c-flex-shrink-0 lg:c-max-w-2xl lg:c-mt-0 xl:c-max-w-4xl">
         <R64CheckoutSection>
-          <button type="button" @click="$emit('cart')" class="c-text-c-blue c-flex c-items-center">
-            <span><svg class="c-w-3 c-h-3" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.41 10.59L2.83 6l4.58-4.59L6 0 0 6l6 6 1.41-1.41z" fill="#006ED4"/></svg></span>
+          <button type="button" @click="$emit('cart')" :class="textPrimary" class="c-flex c-items-center">
+            <span><svg :class="iconColor" class="c-w-3 c-h-3 c-fill-current" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.41 10.59L2.83 6l4.58-4.59L6 0 0 6l6 6 1.41-1.41z"/></svg></span>
             <span class="c-ml-3">Back to cart</span>
           </button>
           <h2 class="c-mt-3 c-text-3xl">Check Out</h2>
@@ -290,7 +290,7 @@
         <div class="c-pt-12 c-pl-5 c-pr-6 c-pb-8 lg:c-hidden c-border-t c-border-c-gray">
           <div class="c-flex c-items-start">
             <input type="checkbox" class="c-form-checkbox">
-            <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" class="c-text-c-blue c-hover:underline">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
+            <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" :class="textPrimary" class="c-hover:underline">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
           <R64Button
             :btn-primary="btnPrimary"
@@ -360,7 +360,7 @@
           </div>
           <div class="c-flex c-items-start">
             <input v-model="consent" type="checkbox" class="c-form-checkbox">
-            <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" class="c-text-c-blue c-hover:underline">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
+            <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" :class="textPrimary" class="c-hover:underline">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
           <R64Button
             :disabled="!consent"

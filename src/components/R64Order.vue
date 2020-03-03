@@ -1,9 +1,12 @@
 <template>
-  <div v-if="order" class="c-font-sans c-antialiased c-text-c-black c-bg-c-light-gray">
+  <div v-if="order" :class="font" class="c-antialiased c-text-c-black c-bg-c-light-gray">
     <div class="c-max-w-2xl c-min-h-screen c-mx-auto c-py-20">
-      <R64OrderSection>
+      <R64OrderSection class="c-relative">
+        <R64CloseButton class="c-absolute c-right-0 c-top-0 c-pt-8 c-pr-12" @click.native="$emit('close')"/>
+        <span class="c-block"></span>
         <span class="c-block c-text-center c-text-4xl c-font-bold c-text-c-blue"><slot name="logo">Logo</slot></span>
         <span class="c-block c-mt-10 c-text-4xl c-font-bold">Thank you for your order!</span>
+        <span class="c-block c-mt-4"><slot name="text"></slot></span>
         <span class="c-block c-mt-4">Order Number: {{ order.order_number }}</span>
         <span class="c-block c-mt-2">Order Date: {{ order.created_at }}</span>
         <span class="c-block c-mt-2">Payment Method: {{ order.order_purchase.card_type }} ending in {{ order.order_purchase.card_last4 }}</span>
@@ -66,12 +69,14 @@
 <script>
 import R64OrderSection from './R64OrderSection'
 import R64CartItemPreview from "./R64CartItemPreview";
+import R64CloseButton from './R64CloseButton'
 import R64HorizontalLine from './R64HorizontalLine'
 import order from '../api/order'
 import money from '../mixins/money'
+import theme from '../mixins/theme'
 
 export default {
-  mixins: [money],
+  mixins: [money, theme],
 
   props: {
     orderToken: {
@@ -87,7 +92,8 @@ export default {
   components: {
     R64CartItemPreview,
     R64OrderSection,
-    R64HorizontalLine
+    R64HorizontalLine,
+    R64CloseButton,
   },
 
   data () {

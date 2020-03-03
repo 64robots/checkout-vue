@@ -1,5 +1,5 @@
 <template>
-  <div class="c-font-sans c-antialiased c-z-50 c-text-c-black" style="box-sizing: border-box;">
+  <div :class="font" class="c-antialiased c-z-50 c-text-c-black" style="box-sizing: border-box;">
     <div class="c-fixed c-inset-0 c-bg-c-black c-opacity-40">
     </div>
     <div v-if="cart" class="c-absolute c-top-0 c-left-0 c-right-0 c-flex c-min-h-screen md:c-justify-end">
@@ -8,12 +8,12 @@
           <span class="c-text-4xl">Your Cart ({{ cartItems.length }})</span>
           <R64CloseButton @click.native="$emit('close')"/>
         </div>
-        <R64CartItem 
-          v-for="(cartItem, index) in cartItems" 
+        <R64CartItem
+          v-for="(cartItem, index) in cartItems"
           :key="index"
           :cart-item="cartItem"
           :currency-symbol="currencySymbol"
-          @cart-item:update="fetchCart" 
+          @cart-item:update="fetchCart"
           @cart-item:delete="fetchCart"
           @cart-item:show="cartItem => $emit('cart-item:show', cartItem)"
         />
@@ -39,7 +39,13 @@
             <span class="c-ml-10 c-text-4xl">{{ money(cart.items_subtotal) }}</span>
           </div>
           <div class="c-mt-6 c-w-full c-flex c-flex-col md:c-w-auto">
-            <R64Button :disabled="cart.cart_items.length === 0" @click.native="checkout">Checkout</R64Button>
+            <R64Button
+              :btn-primary="btnPrimary"
+              :disabled="cart.cart_items.length === 0"
+              @click.native="checkout"
+            >
+              Checkout
+            </R64Button>
             <span class="c-mt-4 c-text-sm">Have a promo code? Apply it at check out.</span>
           </div>
         </div>
@@ -56,9 +62,10 @@ import R64Button from './R64Button'
 import cart from '../api/cart'
 import cartMixin from '../mixins/cart'
 import money from '../mixins/money'
+import theme from '../mixins/theme'
 
 export default {
-  mixins: [cartMixin, money],
+  mixins: [cartMixin, money, theme],
 
   components: {
     R64CartItem,

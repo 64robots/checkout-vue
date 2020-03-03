@@ -1,5 +1,5 @@
 <template>
-  <div v-if="cart" class="c-font-sans c-antialiased c-text-c-black c-bg-c-light-gray" style="box-sizing: border-box;">
+  <div v-if="cart" :class="font" class="c-antialiased c-text-c-black c-bg-c-light-gray" style="box-sizing: border-box;">
     <div class="checkout-cart-items c-fixed c-p-5 c-top-0 c-left-0 c-right-0 c-z-10 c-bg-white lg:c-hidden">
       <div class="c-flex c-items-center c-justify-between">
         <span class="c-text-xl">Total to pay ({{ cartItems.length }} items)</span>
@@ -272,7 +272,12 @@
               </div>
               <div v-if="!hasCouponCode" class="c-mt-6 lg:c-hidden">
                 <span class="c-block c-text-xl">Have a promo code ?</span>
-                <R64PromoCode @apply="applyPromoCode" class="c-mt-5" />
+                <R64PromoCode
+                  :btn-primary="btnPrimary"
+                  :btn-secondary="btnSecondary"
+                  @apply="applyPromoCode"
+                  class="c-mt-5"
+                />
                 <R64Alert
                   :visible="promoCodeErrorVisible"
                   class="c-mt-2"
@@ -287,7 +292,13 @@
             <input type="checkbox" class="c-form-checkbox">
             <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" class="c-text-c-blue c-hover:underline">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
-          <R64Button @click.native="createOrder" class="c-mt-6 c-w-full">Place Order</R64Button>
+          <R64Button
+            :btn-primary="btnPrimary"
+            @click.native="createOrder" 
+            class="c-mt-6 c-w-full"
+          >
+            Place Order
+          </R64Button>
         </div>
       </div>
       <div class="c-hidden c-w-full lg:c-block lg:c-px-8 lg:c-pt-12 xl:c-px-16">
@@ -300,7 +311,12 @@
             class="c-mt-4"
           />
           <div v-if="!hasCouponCode">
-            <R64InlinePromoCode @apply="applyPromoCode" class="c-pt-6" :class="{ 'c-pb-6': !promoCodeErrorVisible }"/>
+            <R64InlinePromoCode
+              :btn-secondary-transparent="btnSecondaryTransparent"
+              :class="{ 'c-pb-6': !promoCodeErrorVisible }"
+              @apply="applyPromoCode"
+              class="c-pt-6"
+            />
             <R64Alert
               :visible="promoCodeErrorVisible"
               class="c-mt-2 c-mb-4"
@@ -346,7 +362,14 @@
             <input v-model="consent" type="checkbox" class="c-form-checkbox">
             <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" class="c-text-c-blue c-hover:underline">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
-          <R64Button @click.native="createOrder" class="c-mt-6" :disabled="!consent">Place Order</R64Button>
+          <R64Button
+            :disabled="!consent"
+            :btn-primary="btnPrimary"
+            @click.native="createOrder" 
+            class="c-mt-6" 
+          >
+            Place Order
+          </R64Button>
         </div>
       </div>
     </div>
@@ -367,6 +390,7 @@ import R64StripePayment from './R64StripePayment'
 import R64Spinner from './R64Spinner'
 import cartMixin from '../mixins/cart'
 import money from '../mixins/money'
+import theme from '../mixins/theme'
 import cart from '../api/cart'
 import order from '../api/order'
 import { validationMixin } from 'vuelidate'
@@ -374,7 +398,7 @@ import { required, email } from 'vuelidate/lib/validators'
 import debounce from 'lodash/debounce'
 
 export default {
-  mixins: [cartMixin, money, validationMixin],
+  mixins: [cartMixin, money, validationMixin, theme],
 
   props: {
     stripeKey: {

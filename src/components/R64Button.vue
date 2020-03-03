@@ -3,32 +3,37 @@
 </template>
 
 <script>
+import theme from '../mixins/theme'
+
 export default {
+    mixins: [theme],
+
     props: {
         variant: {
             type: String,
-            default: 'blue'
+            default: 'primary'
         },
         disabled: {
             type: Boolean,
             default: false
         }
     },
+
     computed: {
         classes () {
             if (this.disabled) {
                 return 'c-bg-c-mid-grayer c-text-c-grayer'
             }
 
-            if (this.variant === 'blue') {
-                return 'c-bg-c-blue c-text-white c-font-bold'
-            } else if (this.variant === 'white') {
-                return 'c-bg-white c-text-c-blue c-border c-border-c-blue'
-            } else if (this.variant === 'transparent') {
-                return 'c-bg-transparent c-text-c-blue c-border c-border-c-blue'
+            if (this.variant === 'primary') {
+                return `${this.btnPrimary}`
+            } else if (this.variant === 'secondary') {
+                return this.btnSecondary
+            } else if (this.variant === 'secondary-transparent') {
+                return this.btnSecondaryTransparent
             }
 
-            return 'c-bg-c-blue c-text-white c-font-bold'
+            return `${this.btnPrimary}`
         }
     }
 }

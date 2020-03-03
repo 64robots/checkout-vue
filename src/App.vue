@@ -5,12 +5,12 @@
       <R64AddtoCart :cart-token="cartToken" @cart:update="cartUpdate" :product-id="2" class="c-mt-20 c-max-w-xs c-mx-auto"/>
       <R64Button class="c-mt-20" @click.native="section = 'cart'">Cart</R64Button>
     </div>
-    <R64Cart 
+    <R64Cart
       v-if="section === 'cart'"
       :cart-token="cartToken"
       :currency-symbol="settings.currency_symbol"
-      @cart:update="cartUpdate"  
-      @close="section = null" 
+      @cart:update="cartUpdate"
+      @close="section = null"
       @checkout="section = 'checkout'"
     />
     <R64Checkout
@@ -20,13 +20,13 @@
       :cart-token="cartToken"
       :settings="settings"
       :currency-symbol="settings.currency_symbol"
-      stripe-key="pk_test_t9zUIgcNA0SwHCPuan3rYsew" 
+      stripe-key="pk_test_t9zUIgcNA0SwHCPuan3rYsew"
       @cart:update="cartUpdate"
-      @cart="section = 'cart'" 
+      @cart="section = 'cart'"
       @order:create="orderCreate"
     />
-    <R64Order 
-      v-if="section === 'order' && order" 
+    <R64Order
+      v-if="section === 'order' && order"
       :order-token="order.token"
       :currency-symbol="settings.currency_symbol"
     />

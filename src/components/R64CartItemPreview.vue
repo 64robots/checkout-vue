@@ -8,7 +8,10 @@
         <span class="c-font-bold">{{ cartItem.product.name }}</span>
         <span class="c-text-sm">Qty {{ cartItem.quantity }}</span>
       </div>
-      <span class="c-mt-auto c-font-bold c-text-xl">{{ money(cartItem.price) }}</span>
+      <div class="c-w-full c-flex c-justify-between">
+        <span class="c-text-sm">{{ cartItem.customer_note }}</span>
+        <span class="c-font-bold c-text-xl">{{ money(cartItem.price) }}</span>
+      </div>
     </div>
   </div>
 </template>

@@ -9613,14 +9613,17 @@ function _defineProperty(obj, key, value) {
 
   return obj;
 }
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96b75d02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64CartItemPreview.vue?vue&type=template&id=ae2966e0&
-var R64CartItemPreviewvue_type_template_id_ae2966e0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"c-flex c-pb-4",class:{ 'border-b border-c-gray': _vm.border }},[(_vm.hasImage)?_c('div',{staticClass:"c-flex c-items-center c-justify-center c-w-16 c-h-16 c-bg-c-mid-gray c-flex-shrink-0"},[_c('img',{attrs:{"src":_vm.imageSrc,"alt":"Product image"}})]):_vm._e(),_c('div',{staticClass:"c-w-full c-flex c-flex-col c-items-end",class:_vm.classes},[_c('div',{staticClass:"c-w-full c-flex c-justify-between"},[_c('span',{staticClass:"c-font-bold"},[_vm._v(_vm._s(_vm.cartItem.product.name))]),_c('span',{staticClass:"c-text-sm"},[_vm._v("Qty "+_vm._s(_vm.cartItem.quantity))])]),_c('span',{staticClass:"c-mt-auto c-font-bold c-text-xl"},[_vm._v(_vm._s(_vm.money(_vm.cartItem.price)))])])])}
-var R64CartItemPreviewvue_type_template_id_ae2966e0_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96b75d02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64CartItemPreview.vue?vue&type=template&id=30dadc52&
+var R64CartItemPreviewvue_type_template_id_30dadc52_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"c-flex c-pb-4",class:{ 'border-b border-c-gray': _vm.border }},[(_vm.hasImage)?_c('div',{staticClass:"c-flex c-items-center c-justify-center c-w-16 c-h-16 c-bg-c-mid-gray c-flex-shrink-0"},[_c('img',{attrs:{"src":_vm.imageSrc,"alt":"Product image"}})]):_vm._e(),_c('div',{staticClass:"c-w-full c-flex c-flex-col c-items-end",class:_vm.classes},[_c('div',{staticClass:"c-w-full c-flex c-justify-between"},[_c('span',{staticClass:"c-font-bold"},[_vm._v(_vm._s(_vm.cartItem.product.name))]),_c('span',{staticClass:"c-text-sm"},[_vm._v("Qty "+_vm._s(_vm.cartItem.quantity))])]),_c('div',{staticClass:"c-w-full c-flex c-justify-between"},[_c('span',{staticClass:"c-text-sm"},[_vm._v(_vm._s(_vm.cartItem.customer_note))]),_c('span',{staticClass:"c-font-bold c-text-xl"},[_vm._v(_vm._s(_vm.money(_vm.cartItem.price)))])])])])}
+var R64CartItemPreviewvue_type_template_id_30dadc52_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/R64CartItemPreview.vue?vue&type=template&id=ae2966e0&
+// CONCATENATED MODULE: ./src/components/R64CartItemPreview.vue?vue&type=template&id=30dadc52&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64CartItemPreview.vue?vue&type=script&lang=js&
+//
+//
+//
 //
 //
 //
@@ -9664,8 +9667,8 @@ var R64CartItemPreviewvue_type_template_id_ae2966e0_staticRenderFns = []
 
 var R64CartItemPreview_component = normalizeComponent(
   components_R64CartItemPreviewvue_type_script_lang_js_,
-  R64CartItemPreviewvue_type_template_id_ae2966e0_render,
-  R64CartItemPreviewvue_type_template_id_ae2966e0_staticRenderFns,
+  R64CartItemPreviewvue_type_template_id_30dadc52_render,
+  R64CartItemPreviewvue_type_template_id_30dadc52_staticRenderFns,
   false,
   null,
   null,
@@ -11245,12 +11248,12 @@ var R64Checkout_component = normalizeComponent(
 )
 
 /* harmony default export */ var R64Checkout = (R64Checkout_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96b75d02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64Order.vue?vue&type=template&id=0d3817b7&
-var R64Ordervue_type_template_id_0d3817b7_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.order)?_c('div',{staticClass:"c-antialiased c-text-c-black c-bg-c-light-gray",class:_vm.font},[_c('div',{staticClass:"c-max-w-2xl c-min-h-screen c-mx-auto c-py-20"},[_c('R64OrderSection',{staticClass:"c-relative"},[_c('R64CloseButton',{staticClass:"c-absolute c-right-0 c-top-0 c-pt-8 c-pr-12",nativeOn:{"click":function($event){return _vm.$emit('close')}}}),_c('span',{staticClass:"c-block"}),_c('span',{staticClass:"c-block c-text-center c-text-4xl c-font-bold c-text-c-blue"},[_vm._t("logo",[_vm._v("Logo")])],2),_c('span',{staticClass:"c-block c-mt-10 c-text-4xl c-font-bold"},[_vm._v("Thank you for your order!")]),_c('span',{staticClass:"c-block c-mt-4"},[_vm._t("text")],2),_c('span',{staticClass:"c-block c-mt-4"},[_vm._v("Order Number: "+_vm._s(_vm.order.order_number))]),_c('span',{staticClass:"c-block c-mt-2"},[_vm._v("Order Date: "+_vm._s(_vm.order.created_at))]),_c('span',{staticClass:"c-block c-mt-2"},[_vm._v("Payment Method: "+_vm._s(_vm.order.order_purchase.card_type)+" ending in "+_vm._s(_vm.order.order_purchase.card_last4))]),_vm._t("delivery-date")],2),_c('R64OrderSection',{staticClass:"c-mt-2"},[_c('span',{staticClass:"c-font-bold c-text-xl"},[_vm._v(_vm._s(_vm.order.order_items.length)+" items")]),_c('div',{staticClass:"c-mt-8"},_vm._l((_vm.order.order_items),function(orderItem,index){return _c('R64CartItemPreview',{key:index,staticClass:"c-mt-4",attrs:{"currency-symbol":_vm.currencySymbol,"cart-item":orderItem}})}),1),_c('div',{staticClass:"c-my-6"},[_c('div',{staticClass:"c-flex c-justify-between"},[_c('span',[_vm._v("Subtotal")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.order.items_total)))])]),(_vm.hasCouponCode)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Discount")]),_c('span',[_vm._v("-"+_vm._s(_vm.money(_vm.order.discount)))])]):_vm._e(),(_vm.hasTax)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Taxes")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.order.tax)))])]):_vm._e(),(_vm.hasShipping)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Shipping")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.order.shipping)))])]):_vm._e()]),_c('R64HorizontalLine'),_c('div',{staticClass:"c-flex c-items-center c-justify-between c-mt-6"},[_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v("Total")]),_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v(_vm._s(_vm.money(_vm.order.total)))])])],1),_c('R64OrderSection',{staticClass:"c-mt-2"},[_c('span',{staticClass:"c-font-bold c-text-xl"},[_vm._v("Shipping Details")]),_c('div',{staticClass:"c-flex c-mt-4"},[_c('div',{staticClass:"c-w-1/2"},[_c('span',{staticClass:"c-block c-font-bold"},[_vm._v("Shipping address")]),_c('span',{staticClass:"c-block c-mt-2"},[_vm._v(_vm._s(_vm.order.shipping_address_line1))]),_c('span',{staticClass:"c-block c-mt-1"},[_vm._v(_vm._s(_vm.order.shipping_address_line2))]),_c('span',{staticClass:"c-block c-mt-1"},[_vm._v(_vm._s(_vm.order.shipping_address_city)+", "+_vm._s(_vm.order.shipping_address_region))]),_c('span',{staticClass:"c-block c-mt-1"},[_vm._v(_vm._s(_vm.order.shipping_address_zipcode))])]),_c('div',{staticClass:"c-w-1/2"},[_vm._t("shipping-method")],2)])])],1)]):_vm._e()}
-var R64Ordervue_type_template_id_0d3817b7_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96b75d02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64Order.vue?vue&type=template&id=57277bd3&
+var R64Ordervue_type_template_id_57277bd3_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.order)?_c('div',{staticClass:"c-antialiased c-text-c-black c-bg-c-light-gray",class:_vm.font},[_c('div',{staticClass:"c-max-w-2xl c-min-h-screen c-mx-auto c-py-20"},[_c('R64OrderSection',{staticClass:"c-relative"},[_c('R64CloseButton',{staticClass:"c-absolute c-right-0 c-top-0 c-pt-8 c-pr-12",nativeOn:{"click":function($event){return _vm.$emit('close')}}}),_c('span',{staticClass:"c-block"}),_c('span',{staticClass:"c-block c-text-center c-text-4xl c-font-bold c-text-c-blue"},[_vm._t("logo",[_vm._v("Logo")])],2),_c('span',{staticClass:"c-block c-mt-10 c-text-4xl c-font-bold"},[_vm._v("Thank you for your order!")]),_c('span',{staticClass:"c-block c-mt-4"},[_vm._t("text")],2),_c('span',{staticClass:"c-block c-mt-4"},[_vm._v("Order Number: "+_vm._s(_vm.order.order_number))]),_c('span',{staticClass:"c-block c-mt-2"},[_vm._v("Order Date: "+_vm._s(_vm.order.created_at))]),_c('span',{staticClass:"c-block c-mt-2"},[_vm._v("Payment Method: "+_vm._s(_vm.order.order_purchase.card_type)+" ending in "+_vm._s(_vm.order.order_purchase.card_last4))]),(_vm.order.customer_notes)?_c('span',{staticClass:"c-block c-mt-2"},[_vm._v("Note: "+_vm._s(_vm.order.customer_notes))]):_vm._e(),_vm._t("delivery-date")],2),_c('R64OrderSection',{staticClass:"c-mt-2"},[_c('span',{staticClass:"c-font-bold c-text-xl"},[_vm._v(_vm._s(_vm.order.order_items.length)+" items")]),_c('div',{staticClass:"c-mt-8"},_vm._l((_vm.order.order_items),function(orderItem,index){return _c('R64CartItemPreview',{key:index,staticClass:"c-mt-4",attrs:{"currency-symbol":_vm.currencySymbol,"cart-item":orderItem}})}),1),_c('div',{staticClass:"c-my-6"},[_c('div',{staticClass:"c-flex c-justify-between"},[_c('span',[_vm._v("Subtotal")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.order.items_total)))])]),(_vm.hasCouponCode)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Discount")]),_c('span',[_vm._v("-"+_vm._s(_vm.money(_vm.order.discount)))])]):_vm._e(),(_vm.hasTax)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Taxes")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.order.tax)))])]):_vm._e(),(_vm.hasShipping)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Shipping")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.order.shipping)))])]):_vm._e()]),_c('R64HorizontalLine'),_c('div',{staticClass:"c-flex c-items-center c-justify-between c-mt-6"},[_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v("Total")]),_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v(_vm._s(_vm.money(_vm.order.total)))])])],1),_c('R64OrderSection',{staticClass:"c-mt-2"},[_c('span',{staticClass:"c-font-bold c-text-xl"},[_vm._v("Shipping Details")]),_c('div',{staticClass:"c-flex c-mt-4"},[_c('div',{staticClass:"c-w-1/2"},[_c('span',{staticClass:"c-block c-font-bold"},[_vm._v("Shipping address")]),_c('span',{staticClass:"c-block c-mt-2"},[_vm._v(_vm._s(_vm.order.shipping_address_line1))]),_c('span',{staticClass:"c-block c-mt-1"},[_vm._v(_vm._s(_vm.order.shipping_address_line2))]),_c('span',{staticClass:"c-block c-mt-1"},[_vm._v(_vm._s(_vm.order.shipping_address_city)+", "+_vm._s(_vm.order.shipping_address_region))]),_c('span',{staticClass:"c-block c-mt-1"},[_vm._v(_vm._s(_vm.order.shipping_address_zipcode))])]),_c('div',{staticClass:"c-w-1/2"},[_vm._t("shipping-method")],2)])])],1)]):_vm._e()}
+var R64Ordervue_type_template_id_57277bd3_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/R64Order.vue?vue&type=template&id=0d3817b7&
+// CONCATENATED MODULE: ./src/components/R64Order.vue?vue&type=template&id=57277bd3&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"96b75d02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64OrderSection.vue?vue&type=template&id=f08904be&
 var R64OrderSectionvue_type_template_id_f08904be_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"c-px-12 c-pt-8 c-pb-12 c-bg-white"},[_vm._t("default")],2)}
@@ -11282,6 +11285,7 @@ var R64OrderSection_component = normalizeComponent(
 
 
 
+//
 //
 //
 //
@@ -11449,8 +11453,8 @@ var R64OrderSection_component = normalizeComponent(
 
 var R64Order_component = normalizeComponent(
   components_R64Ordervue_type_script_lang_js_,
-  R64Ordervue_type_template_id_0d3817b7_render,
-  R64Ordervue_type_template_id_0d3817b7_staticRenderFns,
+  R64Ordervue_type_template_id_57277bd3_render,
+  R64Ordervue_type_template_id_57277bd3_staticRenderFns,
   false,
   null,
   null,

@@ -360,7 +360,7 @@
           </div>
           <div class="c-flex c-items-start">
             <input v-model="consent" type="checkbox" class="c-form-checkbox">
-            <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" :class="textPrimary" class="c-hover:underline">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
+            <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" :class="textPrimary" class="c-hover:underline" target="_blank">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
           <R64Button
             :disabled="!consent"

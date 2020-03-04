@@ -126,7 +126,7 @@ export default {
         const { data } = await order.get(this.orderToken, this.authToken)
         this.order = data
       } catch (e) {
-        //
+        this.$emit('close')
       }
     }
   }

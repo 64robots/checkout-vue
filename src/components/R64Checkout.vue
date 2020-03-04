@@ -290,7 +290,7 @@
         <div class="c-pt-12 c-pl-5 c-pr-6 c-pb-8 lg:c-hidden c-border-t c-border-c-gray">
           <div class="c-flex c-items-start">
             <input type="checkbox" class="c-form-checkbox">
-            <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" :class="textPrimary" class="c-hover:underline">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
+            <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" :class="textPrimary" class="c-hover:underline" target="_blank">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
           <R64Button
             :btn-primary="btnPrimary"

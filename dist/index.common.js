@@ -8820,7 +8820,7 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
 
 
 /* harmony default export */ var http = ({
-  get (...params) {
+  get (params) {
     return axios_default.a.get(params).then(response => response.data)
   },
   post (...params) {

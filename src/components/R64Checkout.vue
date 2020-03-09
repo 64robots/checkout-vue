@@ -300,10 +300,11 @@
             @click.native="createOrder" 
             class="c-mt-6 c-w-full"
           >
-            <span v-if="!busyOrder" class="inline-block w-full text-center">
-              <R64Spinner />
+            <span v-if="!busyOrder">Place Order</span>
+            <span v-else class="c-inline-block c-w-full c-text-center">
+              <span>Placing Order ... </span>
+              <R64Spinner class="c-inline-block"/>
             </span>
-            <span v-else>Place Order</span>
           </R64Button>
         </div>
       </div>

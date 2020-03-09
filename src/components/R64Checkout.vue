@@ -110,21 +110,23 @@
                   <div class="c-w-full c-ml-2">
                     <R64FormInput
                       v-model="form.shipping_address_city"
-                      label="City"
+                      :disabled="busyZipCode"
                       :validator="$v.form.shipping_address_city"
                       :show-error="$v.form.shipping_address_city.$error"
                       error-message="City is required"
+                      label="City"
                       @blur="updateCart('shipping_address_city')"
                     />
                   </div>
                   <div class="c-w-full c-ml-2">
                     <R64FormSelect
                       v-model="form.shipping_address_region"
-                      label="State"
-                      placeholder="Select state"
+                      :disabled="busyZipCode"
                       :options="settings.states"
                       :validator="$v.form.shipping_address_region"
                       :show-error="$v.form.shipping_address_region.$error"
+                      label="State"
+                      placeholder="Select state"
                       error-message="State is required"
                       @change="updateCart('shipping_address_region')"
                     />
@@ -175,11 +177,11 @@
               <div class="c-mt-6">
                 <span class="c-block c-text-xl">Billing Address</span>
                 <div class="c-mt-5 c-w-full c-flex">
-                  <input v-model="form.billing_same" type="radio" class="c-form-radio" id="billing_address_same" :value="true" @change="updateCart('billing_same')">
+                  <input v-model="form.billing_same" type="radio" class="c-form-radio" id="billing_address_same" :value="true" @change="updateBillingSame(true)">
                   <label class="c-ml-3" for="billing_address_same">Same as shipping address</label>
                 </div>
                 <div class="c-mt-5 c-w-full c-flex">
-                  <input v-model="form.billing_same" name="billing" type="radio" class="c-form-radio" id="billing_address_different" :value="false" @change="updateCart('billing_same')">
+                  <input v-model="form.billing_same" name="billing" type="radio" class="c-form-radio" id="billing_address_different" :value="false" @change="updateBillingSame(false)">
                   <label class="c-ml-3" for="billing_address_different">Use a different billing address</label>
                 </div>
               </div>
@@ -289,15 +291,19 @@
         </R64CheckoutSection>
         <div class="c-pt-12 c-pl-5 c-pr-6 c-pb-8 lg:c-hidden c-border-t c-border-c-gray">
           <div class="c-flex c-items-start">
-            <input type="checkbox" class="c-form-checkbox">
+            <input v-model="consent" type="checkbox" class="c-form-checkbox">
             <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" :class="textPrimary" class="c-hover:underline" target="_blank">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
           <R64Button
+            :disabled="!consent || busyOrder"
             :btn-primary="btnPrimary"
             @click.native="createOrder" 
             class="c-mt-6 c-w-full"
           >
-            Place Order
+            <span v-if="!busyOrder" class="inline-block w-full text-center">
+              <R64Spinner />
+            </span>
+            <span v-else>Place Order</span>
           </R64Button>
         </div>
       </div>
@@ -363,12 +369,16 @@
             <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" :class="textPrimary" class="c-hover:underline" target="_blank">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
           <R64Button
-            :disabled="!consent"
+            :disabled="!consent || busyOrder"
             :btn-primary="btnPrimary"
             @click.native="createOrder" 
             class="c-mt-6" 
           >
-            Place Order
+            <span v-if="!busyOrder">Place Order</span>
+            <span v-else class="c-inline-block c-w-full c-text-center">
+              <span>Placing Order ... </span>
+              <R64Spinner class="c-inline-block"/>
+            </span>
           </R64Button>
         </div>
       </div>
@@ -391,6 +401,7 @@ import R64Spinner from './R64Spinner'
 import cartMixin from '../mixins/cart'
 import money from '../mixins/money'
 import theme from '../mixins/theme'
+import error from '../mixins/error'
 import cart from '../api/cart'
 import order from '../api/order'
 import { validationMixin } from 'vuelidate'
@@ -398,7 +409,7 @@ import { required, email } from 'vuelidate/lib/validators'
 import debounce from 'lodash/debounce'
 
 export default {
-  mixins: [cartMixin, money, validationMixin, theme],
+  mixins: [cartMixin, money, validationMixin, theme, error],
 
   props: {
     stripeKey: {
@@ -471,6 +482,7 @@ export default {
       consent: false,
       busyZipCode: false,
       busyShipping: false,
+      busyOrder: false,
     }
   },
 
@@ -516,6 +528,7 @@ export default {
     window.scrollTo(0, 0)
 
     await this.fetchCart()
+    this.form = Object.assign({}, this.cart)
   },
 
   computed: {
@@ -597,9 +610,11 @@ export default {
 
     async createOrder () {
       if (!this.formValid()) {
+        this.$nextTick(() => this.focusError())
         return
       }
 
+      this.busyOrder = true
       let orderParams = {
         order: {
           cart_token: this.cartToken,
@@ -620,8 +635,13 @@ export default {
           }
         }
 
-        const { data } = await order.create(orderParams)
+        try {
+          const { data } = await order.create(orderParams)
+        } catch (e) {
+          //
+        }
 
+        this.busyOrder = false
         this.$emit('order:create', data)
       } catch (e) {
         //
@@ -639,6 +659,18 @@ export default {
         })
 
         this.cart = data
+
+        if (this.cart.billing_same) {
+          this.form.billing_first_name = this.cart.shipping_first_name
+          this.form.billing_last_name = this.cart.shipping_last_name
+          this.form.billing_address_line1 = this.cart.shipping_address_line1
+          this.form.billing_address_line2 = this.cart.shipping_address_line2
+          this.form.billing_address_zipcode = this.cart.shipping_address_zipcode
+          this.form.billing_address_city = this.cart.shipping_address_city
+          this.form.billing_address_region = this.cart.shipping_address_region
+          this.form.billing_address_phone = this.cart.shipping_address_phone
+        }
+
         this.$emit('cart:update', data)
       } catch (e) {
         //
@@ -650,12 +682,23 @@ export default {
       try {
         const { data } = await cart.updateZipCode(this.cartToken, zipCode)
         this.cart = data
+
+        if (data.shipping_address_city) {
+          this.form.shipping_address_city = data.shipping_address_city
+          this.form.billing_address_city = data.billing_address_city
+        }
+
+        if (data.shipping_address_region) {
+           this.form.shipping_address_region = data.shipping_address_region 
+           this.form.billing_address_region = data.billing_address_region
+        }
+
         this.$emit('cart:update', data)
       } catch (e) {
         //
       }
-      this.busyZipCode = false
 
+      this.busyZipCode = false
       await this.updateCartShipping(zipCode)
     },
 
@@ -671,6 +714,20 @@ export default {
       this.$emit('cart:update', this.cart)
     },
 
+    async updateBillingSame (billingSame) {
+      try {
+        const { data } = await cart.update(this.cartToken, {
+          billing_same: billingSame
+        })
+
+        this.cart = data
+        this.form = Object.assign({}, this.cart)
+        this.$emit('cart:update', data)
+      } catch (e) {
+        //
+      }
+    },
+
     propertyDiff (property) {
       const cartProperty = this.cart[property]
       const formProperty = this.form[property]
@@ -682,29 +739,5 @@ export default {
       return cartProperty !== formProperty
     },
   },
-
-  watch: {
-    cart (newCart) {
-      this.form.customer_email = this.cart.customer_email
-      this.form.customer_notes = this.cart.customer_notes
-      this.form.shipping_first_name = this.cart.shipping_first_name
-      this.form.shipping_last_name = this.cart.shipping_last_name
-      this.form.shipping_address_line1 = this.cart.shipping_address_line1
-      this.form.shipping_address_line2 = this.cart.shipping_address_line2
-      this.form.shipping_address_city = this.cart.shipping_address_city
-      this.form.shipping_address_region = this.cart.shipping_address_region
-      this.form.shipping_address_zipcode = this.cart.shipping_address_zipcode
-      this.form.shipping_address_phone = this.cart.shipping_address_phone
-      this.form.billing_same = this.cart.billing_same
-      this.form.billing_first_name = this.cart.billing_first_name
-      this.form.billing_last_name = this.cart.billing_last_name
-      this.form.billing_address_line1 = this.cart.billing_address_line1
-      this.form.billing_address_line2 = this.cart.billing_address_line2
-      this.form.billing_address_zipcode = this.cart.billing_address_zipcode
-      this.form.billing_address_city = this.cart.billing_address_city
-      this.form.billing_address_region = this.cart.billing_address_region
-      this.form.billing_address_phone = this.cart.billing_address_phone
-    },
-  }
 }
 </script>

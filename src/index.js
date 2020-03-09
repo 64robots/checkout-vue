@@ -12,7 +12,7 @@ function install(Vue) {
     Vue.component('R64Cart', R64Cart)
     Vue.component('R64Checkout', R64Checkout)
     Vue.component('R64Order', R64Order)
-    Vue.component('R64AddToCart', R64AddtoCart)
+    // Vue.component('R64AddToCart', R64AddToCart)
 }
 
 export { R64Cart, R64Checkout, R64Order, R64AddToCart, cartApi, cartItemApi, orderApi, checkoutApi }

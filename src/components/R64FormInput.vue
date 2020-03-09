@@ -8,12 +8,14 @@
     </div>
     <div class="c-relative">
       <input
-        :id="id"
         ref="input"
         v-model="localValue"
+        :disabled="disabled"
+        :id="id"
         :class="[ inputClass, {
           'c-border-red-500 c-focus:border-red-600': error,
-          'c-border-c-gray c-focus:border-c-grayer': !error
+          'c-border-c-gray c-focus:border-c-grayer': !error,
+          'c-bg-c-light-gray': disabled,
         } ]"
         :type="internalType"
         :placeholder="placeholder"
@@ -90,6 +92,11 @@ export default {
     value: {
       type: [String, Number, Object],
       default: '',
+    },
+
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
 

@@ -7,14 +7,16 @@
       {{ label }}
     </div>
     <div class="c-relative">
-      <select 
-        ref="input" 
+      <select
+        ref="input"
         v-model="localValue"
-        class="c-bg-white"
+        :disabled="disabled"
         :class="[ inputClass, {
           'c-border-red-500 c-focus:border-red-600': error,
-          'c-border-c-gray c-focus:border-c-grayer': !error
+          'c-border-c-gray c-focus:border-c-grayer': !error,
+          'c-bg-c-light-gray': disabled,
         } ]"
+        class="c-bg-white"
         @change="onChange"
       >
         <option :value="null">{{ placeholder }}</option>
@@ -40,7 +42,12 @@ export default {
     options: {
       type: Array,
       default: () => []
-    }
+    },
+
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   methods: {

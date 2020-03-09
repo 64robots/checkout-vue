@@ -637,12 +637,12 @@ export default {
 
         try {
           const { data } = await order.create(orderParams)
+
+          this.$emit('order:create', data)
         } catch (e) {
           //
         }
-
         this.busyOrder = false
-        this.$emit('order:create', data)
       } catch (e) {
         //
       }

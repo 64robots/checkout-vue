@@ -29,6 +29,12 @@ export default {
     })
   },
 
+  updateEmail (cartToken, email) {
+    return http.put(this.url + `/${cartToken}/email`, {
+      customer_email: email,
+    })
+  },
+
   delete (cartToken) {
     return http.delete(this.url + `/${cartToken}`)
   }

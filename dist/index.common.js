@@ -8875,6 +8875,12 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
     })
   },
 
+  updateEmail (cartToken, email) {
+    return http.put(this.url + `/${cartToken}/email`, {
+      customer_email: email,
+    })
+  },
+
   delete (cartToken) {
     return http.delete(this.url + `/${cartToken}`)
   }

@@ -30,7 +30,9 @@ export default {
   },
 
   addOptions (cartToken, options) {
-    return http.post(this.url + `/${cartToken}/options`, options)
+    return http.post(this.url + `/${cartToken}/options`, {
+      options: options,
+    })
   },
 
   updateEmail (cartToken, email) {

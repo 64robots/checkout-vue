@@ -290,11 +290,11 @@
           </div>
         </R64CheckoutSection>
         <div class="c-pt-12 c-pl-5 c-pr-6 c-pb-8 lg:c-hidden c-border-t c-border-c-gray">
+          <slot name="options"></slot>
           <div class="c-flex c-items-start">
             <input v-model="consent" type="checkbox" class="c-form-checkbox">
             <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" :class="textPrimary" class="c-hover:underline" target="_blank">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
-          <slot name="options"></slot>
           <R64Button
             :disabled="!consent || busyOrder"
             :btn-primary="btnPrimary"
@@ -366,11 +366,11 @@
               <span v-else>{{ money(cart.total) }}</span>
             </span>
           </div>
+          <slot name="lg:options"></slot>
           <div class="c-flex c-items-start">
             <input v-model="consent" type="checkbox" class="c-form-checkbox">
             <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" :class="textPrimary" class="c-hover:underline" target="_blank">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
-          <slot name="lg:options"></slot>
           <R64Button
             :disabled="!consent || busyOrder"
             :btn-primary="btnPrimary"

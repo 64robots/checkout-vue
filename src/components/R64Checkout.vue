@@ -697,12 +697,12 @@ export default {
         }
 
         this.$emit('cart:update', data)
+        await this.updateCartShipping(zipCode)
       } catch (e) {
-        //
+        this.form.shipping_address_zipcode = null
       }
 
       this.busyZipCode = false
-      await this.updateCartShipping(zipCode)
     },
 
     async updateCartShipping (zipCode) {

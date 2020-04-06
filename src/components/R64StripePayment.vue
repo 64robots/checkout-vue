@@ -1,5 +1,17 @@
 <template>
   <div>
+    <div v-if="withName" class="c-mt-6">
+      <div class="c-w-full c-mt-4">
+        <R64FormInput
+          v-model="cardholderName"
+          label="Cardholder Name"
+          :validator="$v.cardholderName"
+          :show-error="$v.cardholderName.$error"
+          error-message="Cardholder name is required"
+          @blur="updateCardholderName"
+        />
+      </div>
+    </div>
     <div class="c-mt-6">
       <label class="c-block">
         <span>Card Number</span>
@@ -62,24 +74,42 @@
 </template>
 
 <script>
-import R64Alert from './R64Alert'
 import { injectStripe, createStripe } from '../helpers/stripe'
+import { validationMixin } from 'vuelidate'
+import { required } from 'vuelidate/lib/validators'
+import R64Alert from './R64Alert'
+import R64FormInput from './R64FormInput'
 
 export default {
   props: {
+    withName: {
+      type: Boolean,
+      default: false,
+    },
+
     stripeKey: {
       type: String,
       default: null
     }
   },
 
+  mixins: [validationMixin],
+
+  validations: {
+    cardholderName: {
+      required,
+    },
+  },
+
   components: {
-    R64Alert
+    R64Alert,
+    R64FormInput,
   },
 
   data () {
     return {
       stripe: null,
+      cardholderName: null,
       cardNumber: null,
       cardExpiry: null,
       cardCvc: null,
@@ -152,8 +182,18 @@ export default {
 
   methods: {
     createToken () {
+      if (this.withName) {
+        return this.stripe.createToken(this.cardNumber, {
+          name: this.cardholderName,
+        })
+      }
+
       return this.stripe.createToken(this.cardNumber)
-    }
+    },
+
+    updateCardholderName() {
+      
+    },
   }
 }
 </script>

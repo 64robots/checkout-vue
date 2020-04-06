@@ -3,6 +3,9 @@
     <div v-if="section === null" class="c-mt-20 c-max-w-xs c-mx-auto">
       <R64AddtoCart :cart-token="cartToken" @cart:update="cartUpdate" :product-id="11" class="c-mt-20 c-max-w-xs c-mx-auto"/>
       <R64AddtoCart :cart-token="cartToken" @cart:update="cartUpdate" :product-id="2" class="c-mt-20 c-max-w-xs c-mx-auto"/>
+      <R64AddtoCart :cart-token="cartToken" @cart:update="showSingleCheckout" :product-id="2" class="c-mt-20 c-max-w-xs c-mx-auto">
+        Buy
+      </R64AddtoCart>
       <R64Button class="c-mt-20" @click.native="section = 'cart'">Cart</R64Button>
     </div>
     <R64Cart
@@ -25,6 +28,17 @@
       @cart="section = 'cart'"
       @order:create="orderCreate"
     />
+    <R64SingleItemCheckout
+      v-if="section === 'single_checkout'"
+      zipcode-request
+      shipping-request
+      :cart-token="cartToken"
+      :settings="settings"
+      :currency-symbol="settings.currency_symbol"
+      stripe-key="pk_test_t9zUIgcNA0SwHCPuan3rYsew"
+      @cart:update="cartUpdate"
+      @order:create="orderCreate"
+    />
     <R64Order
       v-if="section === 'order' && order"
       :order-token="order.token"
@@ -36,6 +50,7 @@
 <script>
 import R64Cart from './components/R64Cart'
 import R64Checkout from './components/R64Checkout'
+import R64SingleItemCheckout from './components/R64SingleItemCheckout'
 import R64Order from './components/R64Order'
 import R64Button from "./components/R64Button"
 import R64AddtoCart from "./components/R64AddtoCart"
@@ -48,13 +63,14 @@ export default {
     R64Button,
     R64Cart,
     R64Checkout,
+    R64SingleItemCheckout,
     R64Order,
     R64AddtoCart
   },
 
   data() {
     return {
-      section: null,
+      section: 'single_checkout',
       settings: null,
       authToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6ImhGTnBKRFRhYWpBSXJHbEEifQ.eyJpc3MiOiJodHRwOlwvXC9kcXMtYmFja2VuZC50ZXN0Iiwic3ViIjoiNTk3NyIsImp0aSI6ImhGTnBKRFRhYWpBSXJHbEEiLCJpYXQiOjE1ODAyMjUwMzMsIm5iZiI6MTU4MDIyNTAzMywiZXhwIjoxNTgwNjU3MDMzLCJybGkiOjE1ODEwODkwMzN9.65r7UuulmD2ZZOG3JoAqkyZtokSdkPBenuUJmvNfnhs',
       cart: null,
@@ -66,7 +82,7 @@ export default {
 
   computed: {
     cartToken () {
-      // return 'JsDq00H4HTRv1XNLkkoZiWNFPOt5bt'
+      return '3d1552bf-c126-4d97-83f1-3671cdc4cdb8'
       return this.cart && this.cart.cart_token
     }
   },
@@ -78,6 +94,11 @@ export default {
   methods: {
     cartUpdate (cart) {
       this.cart = cart
+    },
+
+    showSingleCheckout (cart) {
+      this.cart = cart
+      this.section = 'single_checkout'
     },
 
     orderCreate (order) {

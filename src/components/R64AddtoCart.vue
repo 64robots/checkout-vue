@@ -1,6 +1,6 @@
 <template>
     <R64AddToCart :cart-token="cartToken" v-slot="{ addToCart }" @cart:update="(cart) => $emit('cart:update', cart)">
-        <R64Button @click.native="addToCart(productId)">Add to cart</R64Button>
+        <R64Button @click.native="addToCart(productId)"><slot>Add to cart</slot></R64Button>
     </R64AddToCart>
 </template>
 

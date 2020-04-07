@@ -38,6 +38,7 @@
       :currency-symbol="settings.currency_symbol"
       :stripe-key="stripeKey"
       @cart:update="cartUpdate"
+      @close="section = null"
       @order:create="orderCreate"
     />
     <R64Order

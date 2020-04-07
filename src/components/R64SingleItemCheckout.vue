@@ -11,7 +11,7 @@
         <span class="c-text-2xl c-font-bold">Checkout</span>
         <button 
           type="button" 
-          @click="$emit('cart')" 
+          @click="$emit('close')" 
           class="c-flex c-items-center"
         >
           <span>

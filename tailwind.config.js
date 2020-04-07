@@ -43,7 +43,8 @@ module.exports = {
                 ...theme('colors'),
                 'c-black': '#202020',
                 'c-blue': '#006ED4',
-                'c-grayer': '#AFAFAF'
+                'c-grayer': '#AFAFAF',
+                'c-grayest': '#737373',
             }),
             borderColor: theme => ({
                 ...theme('colors'),

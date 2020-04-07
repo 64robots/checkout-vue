@@ -158,9 +158,6 @@
               <R64StripePayment
                 ref="stripe"
                 :stripe-key="stripeKey"
-                :show-card-error="stripeValidated.number"
-                :show-expiry-error="stripeValidated.expiry"
-                :show-cvc-error="stripeValidated.cvc"
                 @complete:number="stripeValidated.number = true"
                 @error:number="stripeValidated.number = false"
                 @complete:expiry="stripeValidated.expiry = true"

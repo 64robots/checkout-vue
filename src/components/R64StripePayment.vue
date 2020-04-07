@@ -62,19 +62,30 @@
 </template>
 
 <script>
-import R64Alert from './R64Alert'
 import { injectStripe, createStripe } from '../helpers/stripe'
+import { validationMixin } from 'vuelidate'
+import { required } from 'vuelidate/lib/validators'
+import R64Alert from './R64Alert'
+import R64FormInput from './R64FormInput'
 
 export default {
   props: {
+    cardholderName: {
+      type: String,
+      default: null,
+    },
+
     stripeKey: {
       type: String,
       default: null
     }
   },
 
+  mixins: [validationMixin],
+
   components: {
-    R64Alert
+    R64Alert,
+    R64FormInput,
   },
 
   data () {
@@ -152,8 +163,14 @@ export default {
 
   methods: {
     createToken () {
+      if (this.cardholderName) {
+        return this.stripe.createToken(this.cardNumber, {
+          name: this.cardholderName,
+        })
+      }
+
       return this.stripe.createToken(this.cardNumber)
-    }
+    },
   }
 }
 </script>

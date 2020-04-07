@@ -48,7 +48,10 @@
           <span class="c-text-xl c-font-bold">{{ money(order.total) }}</span>
         </div>
       </R64OrderSection>
-      <R64OrderSection class="c-mt-2">
+      <R64OrderSection
+        v-if="withShipping"
+        class="c-mt-2"
+      >
         <span class="c-font-bold c-text-xl">Shipping Details</span>
         <div class="c-flex c-mt-4">
           <div class="c-w-1/2">
@@ -60,6 +63,18 @@
           </div>
           <div class="c-w-1/2">
             <slot name="shipping-method"></slot>
+          </div>
+        </div>
+      </R64OrderSection>
+      <R64OrderSection
+        v-if="withBilling"
+        class="c-mt-2"
+      >
+        <span class="c-font-bold c-text-xl">Billing Details</span>
+        <div class="c-flex c-mt-4">
+          <div class="c-w-1/2">
+            <span class="c-block c-mt-2">{{ order.billing_first_name }}</span>
+            <span class="c-block c-mt-2">{{ order.billing_last_name }}</span>
           </div>
         </div>
       </R64OrderSection>
@@ -80,6 +95,14 @@ export default {
   mixins: [money, theme],
 
   props: {
+    withShipping: {
+      type: Boolean,
+      default: false,
+    },
+    withBilling: {
+      type: Boolean,
+      default: false,
+    },
     orderToken: {
       type: String,
       default: null

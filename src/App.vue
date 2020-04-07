@@ -23,23 +23,25 @@
       :cart-token="cartToken"
       :settings="settings"
       :currency-symbol="settings.currency_symbol"
-      stripe-key="pk_test_t9zUIgcNA0SwHCPuan3rYsew"
+      :stripe-key="stripeKey"
       @cart:update="cartUpdate"
       @cart="section = 'cart'"
       @order:create="orderCreate"
     />
     <R64SingleItemCheckout
       v-if="section === 'single_checkout'"
+      with-coupons
       zipcode-request
       shipping-request
       :cart-token="cartToken"
       :settings="settings"
       :currency-symbol="settings.currency_symbol"
-      stripe-key="pk_test_t9zUIgcNA0SwHCPuan3rYsew"
+      :stripe-key="stripeKey"
       @cart:update="cartUpdate"
       @order:create="orderCreate"
     />
     <R64Order
+      with-billing
       v-if="section === 'order' && order"
       :order-token="order.token"
       :currency-symbol="settings.currency_symbol"
@@ -70,7 +72,7 @@ export default {
 
   data() {
     return {
-      section: 'single_checkout',
+      section: null,
       settings: null,
       authToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6ImhGTnBKRFRhYWpBSXJHbEEifQ.eyJpc3MiOiJodHRwOlwvXC9kcXMtYmFja2VuZC50ZXN0Iiwic3ViIjoiNTk3NyIsImp0aSI6ImhGTnBKRFRhYWpBSXJHbEEiLCJpYXQiOjE1ODAyMjUwMzMsIm5iZiI6MTU4MDIyNTAzMywiZXhwIjoxNTgwNjU3MDMzLCJybGkiOjE1ODEwODkwMzN9.65r7UuulmD2ZZOG3JoAqkyZtokSdkPBenuUJmvNfnhs',
       cart: null,
@@ -82,9 +84,12 @@ export default {
 
   computed: {
     cartToken () {
-      return '3d1552bf-c126-4d97-83f1-3671cdc4cdb8'
       return this.cart && this.cart.cart_token
-    }
+    },
+
+    stripeKey() {
+      return process.env.VUE_APP_STRIPE_KEY
+    },
   },
 
   mounted () {

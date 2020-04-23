@@ -64,9 +64,7 @@
 <script>
 import { injectStripe, createStripe } from '../helpers/stripe'
 import { validationMixin } from 'vuelidate'
-import { required } from 'vuelidate/lib/validators'
 import R64Alert from './R64Alert'
-import R64FormInput from './R64FormInput'
 
 export default {
   props: {
@@ -85,7 +83,6 @@ export default {
 
   components: {
     R64Alert,
-    R64FormInput,
   },
 
   data () {

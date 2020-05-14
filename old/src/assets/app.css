@@ -1,0 +1,28 @@
+/* purgecss start ignore */
+@tailwind  base;
+@tailwind  components;
+/* purgecss end ignore */
+
+.checkout-cart-items {
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.13);
+}
+
+@screen lg {
+    .checkout-form {
+        box-shadow: -4px 4px 35px rgba(0, 0, 0, 0.13);
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1120px) {
+    .checkout-form {
+        max-width: 38rem !important;
+    }
+}
+
+@media (min-width: 1280px) and (max-width: 1400px) {
+    .checkout-form {
+        max-width: 50rem !important;
+    }
+}
+
+@tailwind utilities;

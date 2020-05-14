@@ -1,0 +1,11 @@
+.editorconfig
+.gitignore
+.npmignore
+.idea/
+docs/
+build/
+.git/
+.eslintrc.js
+.eslintignore
+.babelrc
+yarn.lock

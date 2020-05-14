@@ -1,4 +1,5 @@
 import "core-js/stable"
+import "regenerator-runtime/runtime"
 import components from './components/index'
 
 const install = function(Vue) {

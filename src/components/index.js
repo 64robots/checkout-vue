@@ -23,6 +23,10 @@ export {
   R64Checkout, 
   R64Order, 
   R64AddToCart,
+  cartApi,
+  cartItemApi,
+  orderApi,
+  checkoutApi,
 }
 
 export default components

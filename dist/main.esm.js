@@ -9126,4 +9126,4 @@ if (GlobalVue) {
 }
 
 export default plugin;
-export { R64AddToCart, R64Cart, R64Checkout, R64Order };
+export { R64AddToCart, R64Cart, R64Checkout, R64Order, cartApi, cartItemApi, checkoutApi, orderApi };

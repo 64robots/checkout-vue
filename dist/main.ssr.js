@@ -8752,4 +8752,4 @@ if (typeof window !== 'undefined') {
 
 if (GlobalVue) {
   GlobalVue.use(plugin);
-}exports.R64AddToCart=R64AddToCart;exports.R64Cart=R64Cart;exports.R64Checkout=R64Checkout;exports.R64Order=R64Order;exports.default=plugin;
+}exports.R64AddToCart=R64AddToCart;exports.R64Cart=R64Cart;exports.R64Checkout=R64Checkout;exports.R64Order=R64Order;exports.cartApi=cartApi;exports.cartItemApi=cartItemApi;exports.checkoutApi=checkoutApi;exports.default=plugin;exports.orderApi=orderApi;

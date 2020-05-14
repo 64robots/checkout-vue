@@ -3457,7 +3457,7 @@ axios_1.default = _default;var axios$1 = axios_1;var http = {
       return response.data;
     });
   }
-};var cart = {
+};var cartApi = {
   url: '/api/carts',
   create: function create(productId) {
     return http.post(this.url, {
@@ -3493,10 +3493,10 @@ axios_1.default = _default;var axios$1 = axios_1;var http = {
   delete: function _delete(cartToken) {
     return http.delete(this.url + "/".concat(cartToken));
   }
-};var cartItem = {
+};var cartItemApi = {
   url: '/api/cart-items',
   create: function create(cartToken, cartItem) {
-    return http.post(cart.url + "/".concat(cartToken, "/cart-items"), {
+    return http.post(cartApi.url + "/".concat(cartToken, "/cart-items"), {
       product_id: cartItem.product_id,
       quantity: cartItem.quantity
     });
@@ -3507,7 +3507,7 @@ axios_1.default = _default;var axios$1 = axios_1;var http = {
   delete: function _delete(cartItemToken) {
     return http.delete(this.url + "/".concat(cartItemToken));
   }
-};var cartItem$1 = {
+};var cartItem = {
   props: {
     cartItem: {
       type: Object,
@@ -5267,7 +5267,7 @@ var validators_19 = validators.maxValue;
 var validators_20 = validators.integer;
 var validators_21 = validators.decimal;
 var validators_22 = validators.helpers;var script$2 = {
-  mixins: [cartItem$1, money, lib_3],
+  mixins: [cartItem, money, lib_3],
   data: function data() {
     return {
       localCartItem: Object.assign({}, this.cartItem)
@@ -5312,7 +5312,7 @@ var validators_22 = validators.helpers;var script$2 = {
               case 2:
                 _context.prev = 2;
                 _context.next = 5;
-                return cartItem.update(_this.cartItem.cart_item_token, {
+                return cartItemApi.update(_this.cartItem.cart_item_token, {
                   quantity: newQuantity
                 });
 
@@ -5345,7 +5345,7 @@ var validators_22 = validators.helpers;var script$2 = {
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return cartItem.update(_this2.cartItem.cart_item_token, {
+                return cartItemApi.update(_this2.cartItem.cart_item_token, {
                   customer_note: newCustomerNote
                 });
 
@@ -5378,7 +5378,7 @@ var validators_22 = validators.helpers;var script$2 = {
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return cartItem.delete(_this3.cartItem.cart_item_token);
+                return cartItemApi.delete(_this3.cartItem.cart_item_token);
 
               case 3:
                 _context3.next = 7;
@@ -5755,7 +5755,7 @@ var R64Button = normalizeComponent_1({
                 }
 
                 _context.next = 4;
-                return cart.create();
+                return cartApi.create();
 
               case 4:
                 _yield$cart$create = _context.sent;
@@ -5766,7 +5766,7 @@ var R64Button = normalizeComponent_1({
 
               case 9:
                 _context.next = 11;
-                return cart.get(_this.cartToken);
+                return cartApi.get(_this.cartToken);
 
               case 11:
                 _yield$cart$get = _context.sent;
@@ -5839,7 +5839,7 @@ var R64Button = normalizeComponent_1({
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return cart.update(_this2.cartToken, {
+                return cartApi.update(_this2.cartToken, {
                   customer_notes: customerNote
                 });
 
@@ -5963,7 +5963,7 @@ var R64Cart = normalizeComponent_1({
   staticRenderFns: __vue_staticRenderFns__$6
 }, __vue_inject_styles__$6, __vue_script__$5, __vue_scope_id__$6, __vue_is_functional_template__$6, __vue_module_identifier__$6, undefined, undefined);//
 var script$6 = {
-  mixins: [cartItem$1, money],
+  mixins: [cartItem, money],
   props: {
     border: {
       type: Boolean,
@@ -6751,7 +6751,7 @@ var R64Spinner = normalizeComponent_1({
       return focused;
     }
   }
-};var order = {
+};var orderApi = {
   url: '/api/orders',
   create: function create(params) {
     return http.post("".concat(this.url, "?token=").concat(params.auth_token), params);
@@ -7387,7 +7387,7 @@ var debounce_1 = debounce;var script$d = {
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return cart.update(_this3.cartToken, {
+                return cartApi.update(_this3.cartToken, {
                   coupon_code: couponCode
                 });
 
@@ -7479,7 +7479,7 @@ var debounce_1 = debounce;var script$d = {
               case 12:
                 _context3.prev = 12;
                 _context3.next = 15;
-                return order.create(orderParams);
+                return orderApi.create(orderParams);
 
               case 15:
                 _yield$order$create = _context3.sent;
@@ -7529,7 +7529,7 @@ var debounce_1 = debounce;var script$d = {
               case 2:
                 _context4.prev = 2;
                 _context4.next = 5;
-                return cart.update(this.cartToken, _objectSpread2({}, this.form));
+                return cartApi.update(this.cartToken, _objectSpread2({}, this.form));
 
               case 5:
                 _yield$cart$update = _context4.sent;
@@ -7580,7 +7580,7 @@ var debounce_1 = debounce;var script$d = {
                 _this5.busyZipCode = true;
                 _context5.prev = 1;
                 _context5.next = 4;
-                return cart.updateZipCode(_this5.cartToken, zipCode);
+                return cartApi.updateZipCode(_this5.cartToken, zipCode);
 
               case 4:
                 _yield$cart$updateZip = _context5.sent;
@@ -7635,7 +7635,7 @@ var debounce_1 = debounce;var script$d = {
                 _this6.busyShipping = true;
                 _context6.prev = 1;
                 _context6.next = 4;
-                return cart.updateShipping(_this6.cartToken, zipCode);
+                return cartApi.updateShipping(_this6.cartToken, zipCode);
 
               case 4:
                 _yield$cart$updateShi = _context6.sent;
@@ -7673,7 +7673,7 @@ var debounce_1 = debounce;var script$d = {
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return cart.update(_this7.cartToken, {
+                return cartApi.update(_this7.cartToken, {
                   billing_same: billingSame
                 });
 
@@ -8451,7 +8451,7 @@ var R64OrderSection = normalizeComponent_1({
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return order.get(_this.orderToken, _this.authToken);
+                return orderApi.get(_this.orderToken, _this.authToken);
 
               case 3:
                 _yield$order$get = _context.sent;
@@ -8640,7 +8640,7 @@ var R64Order = normalizeComponent_1({
                 }
 
                 _context.next = 7;
-                return cart.create(productId);
+                return cartApi.create(productId);
 
               case 7:
                 _yield$cart$create = _context.sent;
@@ -8651,7 +8651,7 @@ var R64Order = normalizeComponent_1({
 
               case 12:
                 _context.next = 14;
-                return cartItem.create(_this.cartToken, {
+                return cartItemApi.create(_this.cartToken, {
                   product_id: productId,
                   quantity: quantity
                 });
@@ -8716,11 +8716,20 @@ var __vue_is_functional_template__$j = undefined;
 
 /* style inject SSR */
 
-var R64AddToCart = normalizeComponent_1({}, __vue_inject_styles__$j, __vue_script__$f, __vue_scope_id__$j, __vue_is_functional_template__$j, __vue_module_identifier__$j, undefined, undefined);var components = {
+var R64AddToCart = normalizeComponent_1({}, __vue_inject_styles__$j, __vue_script__$f, __vue_scope_id__$j, __vue_is_functional_template__$j, __vue_module_identifier__$j, undefined, undefined);var checkoutApi = {
+  url: '/api/checkout',
+  settings: function settings() {
+    return http.get(this.url + '/settings');
+  }
+};var components = {
   R64Cart: R64Cart,
   R64Checkout: R64Checkout,
   R64Order: R64Order,
-  R64AddToCart: R64AddToCart
+  R64AddToCart: R64AddToCart,
+  cartApi: cartApi,
+  cartItemApi: cartItemApi,
+  orderApi: orderApi,
+  checkoutApi: checkoutApi
 };var install = function install(Vue) {
   if (install.installed) return;
   install.installed = true;

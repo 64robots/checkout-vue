@@ -1,4 +1,8 @@
 import components from './components/index'
+import cartApi from './api/cart'
+import cartItemApi from './api/cartItem'
+import orderApi from './api/order'
+import checkoutApi from './api/checkout'
 
 const install = function(Vue) {
   if (install.installed) return

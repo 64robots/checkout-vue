@@ -3610,7 +3610,7 @@ var http = {
 
 };
 
-var cart = {
+var cartApi = {
   url: '/api/carts',
 
   create(productId) {
@@ -3657,11 +3657,11 @@ var cart = {
 
 };
 
-var cartItem = {
+var cartItemApi = {
   url: '/api/cart-items',
 
   create(cartToken, cartItem) {
-    return http.post(cart.url + `/${cartToken}/cart-items`, {
+    return http.post(cartApi.url + `/${cartToken}/cart-items`, {
       product_id: cartItem.product_id,
       quantity: cartItem.quantity
     });
@@ -3677,7 +3677,7 @@ var cartItem = {
 
 };
 
-var cartItem$1 = {
+var cartItem = {
   props: {
     cartItem: {
       type: Object,
@@ -5502,7 +5502,7 @@ var validators_22 = validators.helpers;
 
 //
 var script$2 = {
-  mixins: [cartItem$1, money, lib_3],
+  mixins: [cartItem, money, lib_3],
 
   data() {
     return {
@@ -5539,7 +5539,7 @@ var script$2 = {
       }
 
       try {
-        await cartItem.update(this.cartItem.cart_item_token, {
+        await cartItemApi.update(this.cartItem.cart_item_token, {
           quantity: newQuantity
         });
       } catch (e) {//
@@ -5550,7 +5550,7 @@ var script$2 = {
 
     async updateCustomerNote(newCustomerNote) {
       try {
-        await cartItem.update(this.cartItem.cart_item_token, {
+        await cartItemApi.update(this.cartItem.cart_item_token, {
           customer_note: newCustomerNote
         });
       } catch (e) {//
@@ -5561,7 +5561,7 @@ var script$2 = {
 
     async remove() {
       try {
-        await cartItem.delete(this.cartItem.cart_item_token);
+        await cartItemApi.delete(this.cartItem.cart_item_token);
       } catch (e) {//
       }
 
@@ -5996,12 +5996,12 @@ var cartMixin = {
         if (!this.cartToken) {
           const {
             data
-          } = await cart.create();
+          } = await cartApi.create();
           this.cart = data;
         } else {
           const {
             data
-          } = await cart.get(this.cartToken);
+          } = await cartApi.get(this.cartToken);
           this.cart = data;
         }
       } catch (e) {//
@@ -6039,7 +6039,7 @@ var script$5 = {
       try {
         const {
           data
-        } = await cart.update(this.cartToken, {
+        } = await cartApi.update(this.cartToken, {
           customer_notes: customerNote
         });
         this.cart = data;
@@ -6198,7 +6198,7 @@ var R64Cart = normalizeComponent_1({
 
 //
 var script$6 = {
-  mixins: [cartItem$1, money],
+  mixins: [cartItem, money],
   props: {
     border: {
       type: Boolean,
@@ -7141,7 +7141,7 @@ var error = {
   }
 };
 
-var order = {
+var orderApi = {
   url: '/api/orders',
 
   create(params) {
@@ -7793,7 +7793,7 @@ var script$d = {
   methods: {
     async applyPromoCode(couponCode) {
       try {
-        await cart.update(this.cartToken, {
+        await cartApi.update(this.cartToken, {
           coupon_code: couponCode
         });
         this.fetchCart();
@@ -7851,7 +7851,7 @@ var script$d = {
         try {
           const {
             data
-          } = await order.create(orderParams);
+          } = await orderApi.create(orderParams);
           this.$emit('order:create', data);
         } catch (e) {//
         }
@@ -7869,7 +7869,7 @@ var script$d = {
       try {
         const {
           data
-        } = await cart.update(this.cartToken, { ...this.form
+        } = await cartApi.update(this.cartToken, { ...this.form
         });
         this.cart = data;
 
@@ -7895,7 +7895,7 @@ var script$d = {
       try {
         const {
           data
-        } = await cart.updateZipCode(this.cartToken, zipCode);
+        } = await cartApi.updateZipCode(this.cartToken, zipCode);
         this.cart = data;
 
         if (data.shipping_address_city) {
@@ -7923,7 +7923,7 @@ var script$d = {
       try {
         const {
           data
-        } = await cart.updateShipping(this.cartToken, zipCode);
+        } = await cartApi.updateShipping(this.cartToken, zipCode);
         this.cart = data;
       } catch (e) {//
       }
@@ -7936,7 +7936,7 @@ var script$d = {
       try {
         const {
           data
-        } = await cart.update(this.cartToken, {
+        } = await cartApi.update(this.cartToken, {
           billing_same: billingSame
         });
         this.cart = data;
@@ -8857,7 +8857,7 @@ var script$e = {
       try {
         const {
           data
-        } = await order.get(this.orderToken, this.authToken);
+        } = await orderApi.get(this.orderToken, this.authToken);
         this.order = data;
         this.$emit('order:get', data);
       } catch (e) {
@@ -9022,12 +9022,12 @@ var script$f = {
         if (!this.cartToken) {
           const {
             data
-          } = await cart.create(productId);
+          } = await cartApi.create(productId);
           this.cart = data;
         } else {
           const {
             data
-          } = await cartItem.create(this.cartToken, {
+          } = await cartItemApi.create(this.cartToken, {
             product_id: productId,
             quantity: quantity
           });
@@ -9081,11 +9081,24 @@ const __vue_is_functional_template__$j = undefined;
 
 var R64AddToCart = normalizeComponent_1({}, __vue_inject_styles__$j, __vue_script__$f, __vue_scope_id__$j, __vue_is_functional_template__$j, __vue_module_identifier__$j, undefined, undefined);
 
+var checkoutApi = {
+  url: '/api/checkout',
+
+  settings() {
+    return http.get(this.url + '/settings');
+  }
+
+};
+
 const components = {
   R64Cart,
   R64Checkout,
   R64Order,
-  R64AddToCart
+  R64AddToCart,
+  cartApi,
+  cartItemApi,
+  orderApi,
+  checkoutApi
 };
 
 const install = function (Vue) {

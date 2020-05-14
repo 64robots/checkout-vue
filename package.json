@@ -4,7 +4,7 @@
   "license": "MIT",
   "version": "0.1.34",
   "description": "Set of customizable components made with Tailwindcss",
-  "main": "dist/vue-checkout.ssr.js",
+  "main": "dist/main.ssr.js",
   "browser": "dist/main.esm.js",
   "module": "dist/main.esm.js",
   "unpkg": "dist/main.min.js",

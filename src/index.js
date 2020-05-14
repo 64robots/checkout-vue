@@ -1,3 +1,4 @@
+import "core-js/stable"
 import components from './components/index'
 
 const install = function(Vue) {

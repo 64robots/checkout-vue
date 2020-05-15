@@ -664,6 +664,7 @@ export default {
         this.cart = data
       } catch (e) {
         this.promoCodeErrorVisible = true
+        setTimeout(() => (this.promoCodeErrorVisible = false), 3000)
       }
     },
 

@@ -41,6 +41,16 @@ export default {
     })
   },
 
+  addCoupon (cartToken, couponCode) {
+    return http.put(this.url + `/${cartToken}/coupon-code`, {
+      coupon_code: couponCode,
+    })
+  },
+
+  removeCoupon (cartToken) {
+    return http.delete(this.url + `/${cartToken}/coupon-code`)
+  },
+
   delete (cartToken) {
     return http.delete(this.url + `/${cartToken}`)
   }

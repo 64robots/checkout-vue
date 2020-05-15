@@ -8986,6 +8986,14 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
       customer_email: email
     });
   },
+  addCoupon: function addCoupon(cartToken, couponCode) {
+    return http.put(this.url + "/".concat(cartToken, "/coupon-code"), {
+      coupon_code: couponCode
+    });
+  },
+  removeCoupon: function removeCoupon(cartToken) {
+    return http.delete(this.url + "/".concat(cartToken, "/coupon-code"));
+  },
   delete: function _delete(cartToken) {
     return http.delete(this.url + "/".concat(cartToken));
   }
@@ -9734,12 +9742,12 @@ var R64Cart_component = normalizeComponent(
 )
 
 /* harmony default export */ var R64Cart = (R64Cart_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4bd090bd-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64Checkout.vue?vue&type=template&id=4ca1e4a1&
-var R64Checkoutvue_type_template_id_4ca1e4a1_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.cart)?_c('div',{staticClass:"c-antialiased c-text-c-black c-bg-c-light-gray",class:_vm.font,staticStyle:{"box-sizing":"border-box"}},[_c('div',{staticClass:"checkout-cart-items c-fixed c-p-5 c-top-0 c-left-0 c-right-0 c-z-10 c-bg-white lg:c-hidden"},[_c('div',{staticClass:"c-flex c-items-center c-justify-between"},[_c('span',{staticClass:"c-text-xl"},[_vm._v("Total to pay ("+_vm._s(_vm.cartItems.length)+" items)")]),_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v(_vm._s(_vm.money(_vm.cart.total)))])]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.itemSummaryVisible),expression:"itemSummaryVisible"}],staticClass:"c-mt-10"},_vm._l((_vm.cartItems),function(cartItem,index){return _c('R64CartItemPreview',{key:index,staticClass:"c-mt-4",attrs:{"cart-item":cartItem,"currency-symbol":_vm.currencySymbol,"border":index !== _vm.cartItems.length - 1}})}),1),_c('button',{staticClass:"c-flex c-items-center c-justify-between c-w-full c-mt-2",on:{"click":function($event){_vm.itemSummaryVisible = !_vm.itemSummaryVisible}}},[_c('span',{class:_vm.textPrimary},[_vm._v(_vm._s(_vm.itemSummaryText))]),_c('span',{class:{ 'c-rotate-1/2': _vm.itemSummaryVisible }},[_c('svg',{staticClass:"c-w-3 c-h-3 c-fill-current",class:_vm.textPrimary,attrs:{"viewBox":"0 0 12 7","fill":"none","xmlns":"http://www.w3.org/2000/svg"}},[_c('path',{attrs:{"d":"M1.41 0.0380859L6 3.86986L10.59 0.0380859L12 1.21774L6 6.23753L0 1.21774L1.41 0.0380859Z"}})])])])]),(_vm.settings)?_c('div',{staticClass:"c-min-h-screen lg:c-flex lg:c-mx-auto lg:c-max-w-7xl"},[_c('div',{staticClass:"checkout-form c-w-full c-mt-24 c-bg-white lg:c-flex-shrink-0 lg:c-max-w-2xl lg:c-mt-0 xl:c-max-w-4xl"},[_c('R64CheckoutSection',[_c('button',{staticClass:"c-flex c-items-center",class:_vm.textPrimary,attrs:{"type":"button"},on:{"click":function($event){return _vm.$emit('cart')}}},[_c('span',[_c('svg',{staticClass:"c-w-3 c-h-3 c-fill-current",class:_vm.iconColor,attrs:{"viewBox":"0 0 8 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}},[_c('path',{attrs:{"d":"M7.41 10.59L2.83 6l4.58-4.59L6 0 0 6l6 6 1.41-1.41z"}})])]),_c('span',{staticClass:"c-ml-3"},[_vm._v("Back to cart")])]),_c('h2',{staticClass:"c-mt-3 c-text-3xl"},[_vm._v("Check Out")]),_c('div',{staticClass:"xl:c-flex c-mt-6"},[_c('span',{staticClass:"c-block c-text-xl c-font-bold xl:c-w-1/3"},[_vm._v("Contact")]),_c('div',{staticClass:"c-w-full c-mt-6 lg:c-max-w-sm xl:c-mt-0"},[_c('R64FormInput',{attrs:{"autocomplete":"email","label":"Email address","validator":_vm.$v.form.customer_email,"show-error":_vm.$v.form.customer_email.$error,"error-message":"Valid email address is required"},on:{"blur":function($event){return _vm.updateCart('customer_email')}},model:{value:(_vm.form.customer_email),callback:function ($$v) {_vm.$set(_vm.form, "customer_email", $$v)},expression:"form.customer_email"}})],1)])]),_c('R64CheckoutSection',[_c('div',{staticClass:"xl:c-flex c-mt-6"},[_c('span',{staticClass:"c-block c-text-xl c-font-bold xl:c-w-1/3"},[_vm._v("Shipping")]),_c('div',{staticClass:"c-w-full lg:c-max-w-sm"},[_c('span',{staticClass:"c-mt-6 c-block c-text-xl xl:c-mt-0"},[_vm._v("Shipping Address")]),_c('div',[_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"given-name","label":"First name","validator":_vm.$v.form.shipping_first_name,"show-error":_vm.$v.form.shipping_first_name.$error,"error-message":"First name is required"},on:{"blur":function($event){return _vm.updateCart('shipping_first_name')}},model:{value:(_vm.form.shipping_first_name),callback:function ($$v) {_vm.$set(_vm.form, "shipping_first_name", $$v)},expression:"form.shipping_first_name"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"family-name","label":"Last name","validator":_vm.$v.form.shipping_last_name,"show-error":_vm.$v.form.shipping_last_name.$error,"error-message":"Last name is required"},on:{"blur":function($event){return _vm.updateCart('shipping_last_name')}},model:{value:(_vm.form.shipping_last_name),callback:function ($$v) {_vm.$set(_vm.form, "shipping_last_name", $$v)},expression:"form.shipping_last_name"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"shipping address-line1","label":"Street","validator":_vm.$v.form.shipping_address_line1,"show-error":_vm.$v.form.shipping_address_line1.$error,"error-message":"Street address is required"},on:{"blur":function($event){return _vm.updateCart('shipping_address_line1')}},model:{value:(_vm.form.shipping_address_line1),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_line1", $$v)},expression:"form.shipping_address_line1"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"shipping address-line2","label":"Apartment, suite, etc ...","validator":_vm.$v.form.shipping_address_line2,"show-error":_vm.$v.form.shipping_address_line2.$error,"error-message":"Appartment or suite is required"},on:{"blur":function($event){return _vm.updateCart('shipping_address_line2')}},model:{value:(_vm.form.shipping_address_line2),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_line2", $$v)},expression:"form.shipping_address_line2"}})],1),_c('div',{staticClass:"c-mt-6 c-flex"},[_c('div',{staticClass:"c-w-full"},[_c('R64FormInput',{attrs:{"autocomplete":"shipping postal-code","label":"Zipcode","alert-class":"whitespace-no-wrap","validator":_vm.$v.form.shipping_address_zipcode,"show-error":_vm.$v.form.shipping_address_zipcode.$error,"error-message":"Zipcode is required"},on:{"blur":_vm.updateCartZipCode},model:{value:(_vm.form.shipping_address_zipcode),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_zipcode", $$v)},expression:"form.shipping_address_zipcode"}})],1),_c('div',{staticClass:"c-w-full c-ml-2"},[_c('R64FormInput',{attrs:{"autocomplete":"shipping address-level2","disabled":_vm.busyZipCode,"validator":_vm.$v.form.shipping_address_city,"show-error":_vm.$v.form.shipping_address_city.$error,"error-message":"City is required","label":"City"},on:{"blur":function($event){return _vm.updateCart('shipping_address_city')}},model:{value:(_vm.form.shipping_address_city),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_city", $$v)},expression:"form.shipping_address_city"}})],1),_c('div',{staticClass:"c-w-full c-ml-2"},[_c('R64FormSelect',{attrs:{"autocomplete":"shipping address-level1","disabled":_vm.busyZipCode,"options":_vm.settings.states,"validator":_vm.$v.form.shipping_address_region,"show-error":_vm.$v.form.shipping_address_region.$error,"label":"State","placeholder":"Select state","error-message":"State is required"},on:{"change":function($event){return _vm.updateCart('shipping_address_region')}},model:{value:(_vm.form.shipping_address_region),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_region", $$v)},expression:"form.shipping_address_region"}})],1)]),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"tel","label":"Phone","validator":_vm.$v.form.shipping_address_phone,"show-error":_vm.$v.form.shipping_address_phone.$error,"error-message":"Phone is required"},on:{"blur":function($event){return _vm.updateCart('shipping_address_phone')}},model:{value:(_vm.form.shipping_address_phone),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_phone", $$v)},expression:"form.shipping_address_phone"}})],1)]),_vm._t("shipping")],2)])]),(!_vm.isFree)?_c('R64CheckoutSection',{attrs:{"border":false}},[_c('div',{staticClass:"xl:c-flex c-mt-6"},[_c('span',{staticClass:"c-block c-text-xl c-font-bold xl:c-w-1/3"},[_vm._v("Payment")]),_c('div',{staticClass:"c-w-full lg:c-max-w-sm"},[_c('span',{staticClass:"c-mt-6 c-block c-text-xl xl:c-mt-0"},[_vm._v("Payment method")]),_c('R64StripePayment',{ref:"stripe",attrs:{"stripe-key":_vm.stripeKey},on:{"complete:number":function($event){_vm.stripeValidated.number = true},"error:number":function($event){_vm.stripeValidated.number = false},"complete:expiry":function($event){_vm.stripeValidated.expiry = true},"error:expiry":function($event){_vm.stripeValidated.expiry = false},"complete:cvc":function($event){_vm.stripeValidated.cvc = true},"error:cvc":function($event){_vm.stripeValidated.cvc = false},"change":function($event){_vm.paymentErrorVisible = false}}}),_c('R64Alert',{staticClass:"c-mt-2",attrs:{"visible":_vm.paymentErrorVisible,"message":"Correct payments details are required"}}),_c('div',{staticClass:"c-mt-6"},[_c('span',{staticClass:"c-block c-text-xl"},[_vm._v("Billing Address")]),_c('div',{staticClass:"c-mt-5 c-w-full c-flex"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.form.billing_same),expression:"form.billing_same"}],staticClass:"c-form-radio",attrs:{"type":"radio","id":"billing_address_same"},domProps:{"value":true,"checked":_vm._q(_vm.form.billing_same,true)},on:{"change":[function($event){return _vm.$set(_vm.form, "billing_same", true)},function($event){return _vm.updateBillingSame(true)}]}}),_c('label',{staticClass:"c-ml-3",attrs:{"for":"billing_address_same"}},[_vm._v("Same as shipping address")])]),_c('div',{staticClass:"c-mt-5 c-w-full c-flex"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.form.billing_same),expression:"form.billing_same"}],staticClass:"c-form-radio",attrs:{"name":"billing","type":"radio","id":"billing_address_different"},domProps:{"value":false,"checked":_vm._q(_vm.form.billing_same,false)},on:{"change":[function($event){return _vm.$set(_vm.form, "billing_same", false)},function($event){return _vm.updateBillingSame(false)}]}}),_c('label',{staticClass:"c-ml-3",attrs:{"for":"billing_address_different"}},[_vm._v("Use a different billing address")])])]),(!_vm.form.billing_same)?_c('div',[_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"given-name","label":"First name","validator":_vm.$v.form.billing_first_name,"show-error":_vm.$v.form.billing_first_name.$error,"error-message":"First name is required"},on:{"blur":function($event){return _vm.updateCart('billing_first_name')}},model:{value:(_vm.form.billing_first_name),callback:function ($$v) {_vm.$set(_vm.form, "billing_first_name", $$v)},expression:"form.billing_first_name"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"family-name","label":"Last name","validator":_vm.$v.form.billing_last_name,"show-error":_vm.$v.form.billing_last_name.$error,"error-message":"Last name is required"},on:{"blur":function($event){return _vm.updateCart('billing_last_name')}},model:{value:(_vm.form.billing_last_name),callback:function ($$v) {_vm.$set(_vm.form, "billing_last_name", $$v)},expression:"form.billing_last_name"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"billing address-line1","label":"Street","validator":_vm.$v.form.billing_address_line1,"show-error":_vm.$v.form.billing_address_line1.$error,"error-message":"Street address is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_line1')}},model:{value:(_vm.form.billing_address_line1),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_line1", $$v)},expression:"form.billing_address_line1"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"billing address-line2","label":"Apartment, suite, etc ...","validator":_vm.$v.form.billing_address_line2,"show-error":_vm.$v.form.billing_address_line2.$error,"error-message":"Appartment or suite is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_line2')}},model:{value:(_vm.form.billing_address_line2),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_line2", $$v)},expression:"form.billing_address_line2"}})],1),_c('div',{staticClass:"c-mt-6 c-flex"},[_c('div',{staticClass:"c-w-full"},[_c('R64FormInput',{attrs:{"autocomplete":"billing postal-code","label":"Zipcode","alert-class":"whitespace-no-wrap","validator":_vm.$v.form.billing_address_zipcode,"show-error":_vm.$v.form.billing_address_zipcode.$error,"error-message":"Zipcode is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_zipcode')}},model:{value:(_vm.form.billing_address_zipcode),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_zipcode", $$v)},expression:"form.billing_address_zipcode"}})],1),_c('div',{staticClass:"c-w-full c-ml-2"},[_c('R64FormInput',{attrs:{"autocomplete":"billing address-level2","label":"City","validator":_vm.$v.form.billing_address_city,"show-error":_vm.$v.form.billing_address_city.$error,"error-message":"City is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_city')}},model:{value:(_vm.form.billing_address_city),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_city", $$v)},expression:"form.billing_address_city"}})],1),_c('div',{staticClass:"c-w-full c-ml-2"},[_c('R64FormSelect',{attrs:{"autocomplete":"billing address-level1","label":"State","placeholder":"Select state","options":_vm.settings.states,"validator":_vm.$v.form.billing_address_region,"show-error":_vm.$v.form.billing_address_region.$error,"error-message":"State is required"},on:{"change":function($event){return _vm.updateCart('billing_address_region')}},model:{value:(_vm.form.billing_address_region),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_region", $$v)},expression:"form.billing_address_region"}})],1)]),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"tel","label":"Phone","validator":_vm.$v.form.billing_address_phone,"show-error":_vm.$v.form.billing_address_phone.$error,"error-message":"Phone is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_phone')}},model:{value:(_vm.form.billing_address_phone),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_phone", $$v)},expression:"form.billing_address_phone"}})],1)]):_vm._e(),(!_vm.hasCouponCode)?_c('div',{staticClass:"c-mt-6 lg:c-hidden"},[_c('span',{staticClass:"c-block c-text-xl"},[_vm._v("Have a promo code ?")]),_c('R64PromoCode',{staticClass:"c-mt-5",attrs:{"btn-primary":_vm.btnPrimary,"btn-secondary":_vm.btnSecondary},on:{"apply":_vm.applyPromoCode}}),_c('R64Alert',{staticClass:"c-mt-2",attrs:{"visible":_vm.promoCodeErrorVisible,"message":"Promo code is not valid"}})],1):_vm._e()],1)])]):_vm._e(),_c('div',{staticClass:"c-pt-12 c-pl-5 c-pr-6 c-pb-8 lg:c-hidden c-border-t c-border-c-gray"},[_vm._t("options"),(_vm.tocUrl)?_c('div',{staticClass:"c-flex c-items-start"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.consent),expression:"consent"}],staticClass:"c-form-checkbox",attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.consent)?_vm._i(_vm.consent,null)>-1:(_vm.consent)},on:{"change":function($event){var $$a=_vm.consent,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.consent=$$a.concat([$$v]))}else{$$i>-1&&(_vm.consent=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.consent=$$c}}}}),_c('span',{staticClass:"c-ml-3 c--mt-1 c-align-top"},[_vm._v("I have read and understood, and accept our "),_c('a',{staticClass:"c-hover:underline",class:_vm.textPrimary,attrs:{"href":_vm.tocUrl,"target":"_blank"}},[_vm._v("Terms and Conditions, Return Policy, and Privacy Policy")]),_vm._v(".")])]):_vm._e(),_c('R64Button',{staticClass:"c-mt-6 c-w-full",attrs:{"disabled":!_vm.isConsent || _vm.busyOrder,"btn-primary":_vm.btnPrimary},nativeOn:{"click":function($event){return _vm.createOrder($event)}}},[(!_vm.busyOrder)?_c('span',[_vm._v("Place Order")]):_c('span',{staticClass:"c-inline-block c-w-full c-text-center"},[_c('span',[_vm._v("Placing Order ... ")]),_c('R64Spinner',{staticClass:"c-inline-block"})],1)])],2)],1),_c('div',{staticClass:"c-hidden c-w-full lg:c-block lg:c-px-8 lg:c-pt-12 xl:c-px-16"},[(_vm.cart)?_c('div',{staticClass:"lg:c-max-w-sm"},[_vm._l((_vm.cartItems),function(cartItem,index){return _c('R64CartItemPreview',{key:index,staticClass:"c-mt-4",attrs:{"cart-item":cartItem,"currency-symbol":_vm.currencySymbol}})}),(!_vm.hasCouponCode)?_c('div',[_c('R64InlinePromoCode',{staticClass:"c-pt-6",class:{ 'c-pb-6': !_vm.promoCodeErrorVisible },attrs:{"btn-secondary-transparent":_vm.btnSecondaryTransparent},on:{"apply":_vm.applyPromoCode}}),_c('R64Alert',{staticClass:"c-mt-2 c-mb-4",attrs:{"visible":_vm.promoCodeErrorVisible,"message":"Promo code is not valid"}}),_c('R64HorizontalLine')],1):_vm._e(),_c('div',{staticClass:"c-my-6"},[_c('div',{staticClass:"c-flex c-justify-between"},[_c('span',[_vm._v("Subtotal")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.cart.items_subtotal)))])]),(_vm.hasCouponCode)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Discount")]),_c('span',[_vm._v("- "+_vm._s(_vm.money(_vm.cart.discount)))])]):_vm._e(),(_vm.hasTax)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Taxes")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.cart.tax)))])]):_vm._e(),_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Shipping")]),(_vm.busyShipping)?_c('span',[_c('R64Spinner')],1):(_vm.hasShipping)?_c('span',[_vm._v(" "+_vm._s(_vm.money(_vm.cart.shipping))+" ")]):_c('span',[_vm._v("TBD")])])]),_c('R64HorizontalLine'),_c('div',{staticClass:"c-flex c-items-center c-justify-between c-my-6"},[_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v("Total to Pay")]),_c('span',{staticClass:"c-text-4xl"},[(_vm.busyShipping || _vm.busyZipCode)?_c('span',[_c('R64Spinner')],1):_c('span',[_vm._v(_vm._s(_vm.money(_vm.cart.total)))])])]),_vm._t("lg:options"),(_vm.tocUrl)?_c('div',{staticClass:"c-flex c-items-start"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.consent),expression:"consent"}],staticClass:"c-form-checkbox",attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.consent)?_vm._i(_vm.consent,null)>-1:(_vm.consent)},on:{"change":function($event){var $$a=_vm.consent,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.consent=$$a.concat([$$v]))}else{$$i>-1&&(_vm.consent=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.consent=$$c}}}}),_c('span',{staticClass:"c-ml-3 c--mt-1 c-align-top"},[_vm._v("I have read and understood, and accept our "),_c('a',{staticClass:"c-hover:underline",class:_vm.textPrimary,attrs:{"href":_vm.tocUrl,"target":"_blank"}},[_vm._v("Terms and Conditions, Return Policy, and Privacy Policy")]),_vm._v(".")])]):_vm._e(),_c('R64Button',{staticClass:"c-mt-6",attrs:{"disabled":!_vm.isConsent || _vm.busyOrder,"btn-primary":_vm.btnPrimary},nativeOn:{"click":function($event){return _vm.createOrder($event)}}},[(!_vm.busyOrder)?_c('span',[_vm._v("Place Order")]):_c('span',{staticClass:"c-inline-block c-w-full c-text-center"},[_c('span',[_vm._v("Placing Order ... ")]),_c('R64Spinner',{staticClass:"c-inline-block"})],1)])],2):_vm._e()])]):_vm._e()]):_vm._e()}
-var R64Checkoutvue_type_template_id_4ca1e4a1_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4bd090bd-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/R64Checkout.vue?vue&type=template&id=71715da2&
+var R64Checkoutvue_type_template_id_71715da2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.cart)?_c('div',{staticClass:"c-antialiased c-text-c-black c-bg-c-light-gray",class:_vm.font,staticStyle:{"box-sizing":"border-box"}},[_c('div',{staticClass:"checkout-cart-items c-fixed c-p-5 c-top-0 c-left-0 c-right-0 c-z-10 c-bg-white lg:c-hidden"},[_c('div',{staticClass:"c-flex c-items-center c-justify-between"},[_c('span',{staticClass:"c-text-xl"},[_vm._v("Total to pay ("+_vm._s(_vm.cartItems.length)+" items)")]),_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v(_vm._s(_vm.money(_vm.cart.total)))])]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.itemSummaryVisible),expression:"itemSummaryVisible"}],staticClass:"c-mt-10"},_vm._l((_vm.cartItems),function(cartItem,index){return _c('R64CartItemPreview',{key:index,staticClass:"c-mt-4",attrs:{"cart-item":cartItem,"currency-symbol":_vm.currencySymbol,"border":index !== _vm.cartItems.length - 1}})}),1),_c('button',{staticClass:"c-flex c-items-center c-justify-between c-w-full c-mt-2",on:{"click":function($event){_vm.itemSummaryVisible = !_vm.itemSummaryVisible}}},[_c('span',{class:_vm.textPrimary},[_vm._v(_vm._s(_vm.itemSummaryText))]),_c('span',{class:{ 'c-rotate-1/2': _vm.itemSummaryVisible }},[_c('svg',{staticClass:"c-w-3 c-h-3 c-fill-current",class:_vm.textPrimary,attrs:{"viewBox":"0 0 12 7","fill":"none","xmlns":"http://www.w3.org/2000/svg"}},[_c('path',{attrs:{"d":"M1.41 0.0380859L6 3.86986L10.59 0.0380859L12 1.21774L6 6.23753L0 1.21774L1.41 0.0380859Z"}})])])])]),(_vm.settings)?_c('div',{staticClass:"c-min-h-screen lg:c-flex lg:c-mx-auto lg:c-max-w-7xl"},[_c('div',{staticClass:"checkout-form c-w-full c-mt-24 c-bg-white lg:c-flex-shrink-0 lg:c-max-w-2xl lg:c-mt-0 xl:c-max-w-4xl"},[_c('R64CheckoutSection',[_c('button',{staticClass:"c-flex c-items-center",class:_vm.textPrimary,attrs:{"type":"button"},on:{"click":function($event){return _vm.$emit('cart')}}},[_c('span',[_c('svg',{staticClass:"c-w-3 c-h-3 c-fill-current",class:_vm.iconColor,attrs:{"viewBox":"0 0 8 12","fill":"none","xmlns":"http://www.w3.org/2000/svg"}},[_c('path',{attrs:{"d":"M7.41 10.59L2.83 6l4.58-4.59L6 0 0 6l6 6 1.41-1.41z"}})])]),_c('span',{staticClass:"c-ml-3"},[_vm._v("Back to cart")])]),_c('h2',{staticClass:"c-mt-3 c-text-3xl"},[_vm._v("Check Out")]),_c('div',{staticClass:"xl:c-flex c-mt-6"},[_c('span',{staticClass:"c-block c-text-xl c-font-bold xl:c-w-1/3"},[_vm._v("Contact")]),_c('div',{staticClass:"c-w-full c-mt-6 lg:c-max-w-sm xl:c-mt-0"},[_c('R64FormInput',{attrs:{"autocomplete":"email","label":"Email address","validator":_vm.$v.form.customer_email,"show-error":_vm.$v.form.customer_email.$error,"error-message":"Valid email address is required"},on:{"blur":function($event){return _vm.updateCart('customer_email')}},model:{value:(_vm.form.customer_email),callback:function ($$v) {_vm.$set(_vm.form, "customer_email", $$v)},expression:"form.customer_email"}})],1)])]),_c('R64CheckoutSection',[_c('div',{staticClass:"xl:c-flex c-mt-6"},[_c('span',{staticClass:"c-block c-text-xl c-font-bold xl:c-w-1/3"},[_vm._v("Shipping")]),_c('div',{staticClass:"c-w-full lg:c-max-w-sm"},[_c('span',{staticClass:"c-mt-6 c-block c-text-xl xl:c-mt-0"},[_vm._v("Shipping Address")]),_c('div',[_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"given-name","label":"First name","validator":_vm.$v.form.shipping_first_name,"show-error":_vm.$v.form.shipping_first_name.$error,"error-message":"First name is required"},on:{"blur":function($event){return _vm.updateCart('shipping_first_name')}},model:{value:(_vm.form.shipping_first_name),callback:function ($$v) {_vm.$set(_vm.form, "shipping_first_name", $$v)},expression:"form.shipping_first_name"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"family-name","label":"Last name","validator":_vm.$v.form.shipping_last_name,"show-error":_vm.$v.form.shipping_last_name.$error,"error-message":"Last name is required"},on:{"blur":function($event){return _vm.updateCart('shipping_last_name')}},model:{value:(_vm.form.shipping_last_name),callback:function ($$v) {_vm.$set(_vm.form, "shipping_last_name", $$v)},expression:"form.shipping_last_name"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"shipping address-line1","label":"Street","validator":_vm.$v.form.shipping_address_line1,"show-error":_vm.$v.form.shipping_address_line1.$error,"error-message":"Street address is required"},on:{"blur":function($event){return _vm.updateCart('shipping_address_line1')}},model:{value:(_vm.form.shipping_address_line1),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_line1", $$v)},expression:"form.shipping_address_line1"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"shipping address-line2","label":"Apartment, suite, etc ...","validator":_vm.$v.form.shipping_address_line2,"show-error":_vm.$v.form.shipping_address_line2.$error,"error-message":"Appartment or suite is required"},on:{"blur":function($event){return _vm.updateCart('shipping_address_line2')}},model:{value:(_vm.form.shipping_address_line2),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_line2", $$v)},expression:"form.shipping_address_line2"}})],1),_c('div',{staticClass:"c-mt-6 c-flex"},[_c('div',{staticClass:"c-w-full"},[_c('R64FormInput',{attrs:{"autocomplete":"shipping postal-code","label":"Zipcode","alert-class":"whitespace-no-wrap","validator":_vm.$v.form.shipping_address_zipcode,"show-error":_vm.$v.form.shipping_address_zipcode.$error,"error-message":"Zipcode is required"},on:{"blur":_vm.updateCartZipCode},model:{value:(_vm.form.shipping_address_zipcode),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_zipcode", $$v)},expression:"form.shipping_address_zipcode"}})],1),_c('div',{staticClass:"c-w-full c-ml-2"},[_c('R64FormInput',{attrs:{"autocomplete":"shipping address-level2","disabled":_vm.busyZipCode,"validator":_vm.$v.form.shipping_address_city,"show-error":_vm.$v.form.shipping_address_city.$error,"error-message":"City is required","label":"City"},on:{"blur":function($event){return _vm.updateCart('shipping_address_city')}},model:{value:(_vm.form.shipping_address_city),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_city", $$v)},expression:"form.shipping_address_city"}})],1),_c('div',{staticClass:"c-w-full c-ml-2"},[_c('R64FormSelect',{attrs:{"autocomplete":"shipping address-level1","disabled":_vm.busyZipCode,"options":_vm.settings.states,"validator":_vm.$v.form.shipping_address_region,"show-error":_vm.$v.form.shipping_address_region.$error,"label":"State","placeholder":"Select state","error-message":"State is required"},on:{"change":function($event){return _vm.updateCart('shipping_address_region')}},model:{value:(_vm.form.shipping_address_region),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_region", $$v)},expression:"form.shipping_address_region"}})],1)]),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"tel","label":"Phone","validator":_vm.$v.form.shipping_address_phone,"show-error":_vm.$v.form.shipping_address_phone.$error,"error-message":"Phone is required"},on:{"blur":function($event){return _vm.updateCart('shipping_address_phone')}},model:{value:(_vm.form.shipping_address_phone),callback:function ($$v) {_vm.$set(_vm.form, "shipping_address_phone", $$v)},expression:"form.shipping_address_phone"}})],1)]),_vm._t("shipping")],2)])]),(!_vm.isFree)?_c('R64CheckoutSection',{attrs:{"border":false}},[_c('div',{staticClass:"xl:c-flex c-mt-6"},[_c('span',{staticClass:"c-block c-text-xl c-font-bold xl:c-w-1/3"},[_vm._v("Payment")]),_c('div',{staticClass:"c-w-full lg:c-max-w-sm"},[_c('span',{staticClass:"c-mt-6 c-block c-text-xl xl:c-mt-0"},[_vm._v("Payment method")]),_c('R64StripePayment',{ref:"stripe",attrs:{"stripe-key":_vm.stripeKey},on:{"complete:number":function($event){_vm.stripeValidated.number = true},"error:number":function($event){_vm.stripeValidated.number = false},"complete:expiry":function($event){_vm.stripeValidated.expiry = true},"error:expiry":function($event){_vm.stripeValidated.expiry = false},"complete:cvc":function($event){_vm.stripeValidated.cvc = true},"error:cvc":function($event){_vm.stripeValidated.cvc = false},"change":function($event){_vm.paymentErrorVisible = false}}}),_c('R64Alert',{staticClass:"c-mt-2",attrs:{"visible":_vm.paymentErrorVisible,"message":"Correct payments details are required"}}),_c('div',{staticClass:"c-mt-6"},[_c('span',{staticClass:"c-block c-text-xl"},[_vm._v("Billing Address")]),_c('div',{staticClass:"c-mt-5 c-w-full c-flex"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.form.billing_same),expression:"form.billing_same"}],staticClass:"c-form-radio",attrs:{"type":"radio","id":"billing_address_same"},domProps:{"value":true,"checked":_vm._q(_vm.form.billing_same,true)},on:{"change":[function($event){return _vm.$set(_vm.form, "billing_same", true)},function($event){return _vm.updateBillingSame(true)}]}}),_c('label',{staticClass:"c-ml-3",attrs:{"for":"billing_address_same"}},[_vm._v("Same as shipping address")])]),_c('div',{staticClass:"c-mt-5 c-w-full c-flex"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.form.billing_same),expression:"form.billing_same"}],staticClass:"c-form-radio",attrs:{"name":"billing","type":"radio","id":"billing_address_different"},domProps:{"value":false,"checked":_vm._q(_vm.form.billing_same,false)},on:{"change":[function($event){return _vm.$set(_vm.form, "billing_same", false)},function($event){return _vm.updateBillingSame(false)}]}}),_c('label',{staticClass:"c-ml-3",attrs:{"for":"billing_address_different"}},[_vm._v("Use a different billing address")])])]),(!_vm.form.billing_same)?_c('div',[_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"given-name","label":"First name","validator":_vm.$v.form.billing_first_name,"show-error":_vm.$v.form.billing_first_name.$error,"error-message":"First name is required"},on:{"blur":function($event){return _vm.updateCart('billing_first_name')}},model:{value:(_vm.form.billing_first_name),callback:function ($$v) {_vm.$set(_vm.form, "billing_first_name", $$v)},expression:"form.billing_first_name"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"family-name","label":"Last name","validator":_vm.$v.form.billing_last_name,"show-error":_vm.$v.form.billing_last_name.$error,"error-message":"Last name is required"},on:{"blur":function($event){return _vm.updateCart('billing_last_name')}},model:{value:(_vm.form.billing_last_name),callback:function ($$v) {_vm.$set(_vm.form, "billing_last_name", $$v)},expression:"form.billing_last_name"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"billing address-line1","label":"Street","validator":_vm.$v.form.billing_address_line1,"show-error":_vm.$v.form.billing_address_line1.$error,"error-message":"Street address is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_line1')}},model:{value:(_vm.form.billing_address_line1),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_line1", $$v)},expression:"form.billing_address_line1"}})],1),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"billing address-line2","label":"Apartment, suite, etc ...","validator":_vm.$v.form.billing_address_line2,"show-error":_vm.$v.form.billing_address_line2.$error,"error-message":"Appartment or suite is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_line2')}},model:{value:(_vm.form.billing_address_line2),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_line2", $$v)},expression:"form.billing_address_line2"}})],1),_c('div',{staticClass:"c-mt-6 c-flex"},[_c('div',{staticClass:"c-w-full"},[_c('R64FormInput',{attrs:{"autocomplete":"billing postal-code","label":"Zipcode","alert-class":"whitespace-no-wrap","validator":_vm.$v.form.billing_address_zipcode,"show-error":_vm.$v.form.billing_address_zipcode.$error,"error-message":"Zipcode is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_zipcode')}},model:{value:(_vm.form.billing_address_zipcode),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_zipcode", $$v)},expression:"form.billing_address_zipcode"}})],1),_c('div',{staticClass:"c-w-full c-ml-2"},[_c('R64FormInput',{attrs:{"autocomplete":"billing address-level2","label":"City","validator":_vm.$v.form.billing_address_city,"show-error":_vm.$v.form.billing_address_city.$error,"error-message":"City is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_city')}},model:{value:(_vm.form.billing_address_city),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_city", $$v)},expression:"form.billing_address_city"}})],1),_c('div',{staticClass:"c-w-full c-ml-2"},[_c('R64FormSelect',{attrs:{"autocomplete":"billing address-level1","label":"State","placeholder":"Select state","options":_vm.settings.states,"validator":_vm.$v.form.billing_address_region,"show-error":_vm.$v.form.billing_address_region.$error,"error-message":"State is required"},on:{"change":function($event){return _vm.updateCart('billing_address_region')}},model:{value:(_vm.form.billing_address_region),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_region", $$v)},expression:"form.billing_address_region"}})],1)]),_c('div',{staticClass:"c-mt-6"},[_c('R64FormInput',{attrs:{"autocomplete":"tel","label":"Phone","validator":_vm.$v.form.billing_address_phone,"show-error":_vm.$v.form.billing_address_phone.$error,"error-message":"Phone is required"},on:{"blur":function($event){return _vm.updateCart('billing_address_phone')}},model:{value:(_vm.form.billing_address_phone),callback:function ($$v) {_vm.$set(_vm.form, "billing_address_phone", $$v)},expression:"form.billing_address_phone"}})],1)]):_vm._e()],1)])]):_vm._e(),_c('div',{staticClass:"c-pt-6 c-pl-5 c-pr-6 c-pb-8 c-border-t c-border-c-gray lg:c-hidden"},[(!_vm.hasCouponCode)?_c('div',{staticClass:"c-mt-6 lg:c-hidden"},[_c('span',{staticClass:"c-block c-text-xl"},[_vm._v("Have a promo code ?")]),_c('R64PromoCode',{staticClass:"c-mt-5",attrs:{"btn-primary":_vm.btnPrimary,"btn-secondary":_vm.btnSecondary},on:{"apply":_vm.addCoupon}}),_c('R64Alert',{staticClass:"c-mt-2",attrs:{"visible":_vm.promoCodeErrorVisible,"message":"Promo code is not valid"}})],1):_vm._e(),_c('div',{staticClass:"c-my-6"},[_c('div',{staticClass:"c-flex c-justify-between"},[_c('span',[_vm._v("Subtotal")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.cart.items_subtotal)))])]),(_vm.hasCouponCode)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v(" Discount "),_c('button',{staticClass:"c-text-xs c-text-c-grayest hover:c-text-black",on:{"click":_vm.removeCoupon}},[_vm._v(" Remove ")])]),_c('span',[_vm._v("- "+_vm._s(_vm.money(_vm.cart.discount)))])]):_vm._e(),(_vm.hasTax)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Taxes")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.cart.tax)))])]):_vm._e(),_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Shipping")]),(_vm.busyShipping)?_c('span',[_c('R64Spinner')],1):(_vm.hasShipping)?_c('span',[_vm._v(" "+_vm._s(_vm.money(_vm.cart.shipping))+" ")]):_c('span',[_vm._v("TBD")])])]),_c('R64HorizontalLine'),_c('div',{staticClass:"c-flex c-items-center c-justify-between c-my-6"},[_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v("Total to Pay")]),_c('span',{staticClass:"c-text-4xl"},[(_vm.busyShipping || _vm.busyZipCode)?_c('span',[_c('R64Spinner')],1):_c('span',[_vm._v(_vm._s(_vm.money(_vm.cart.total)))])])]),_vm._t("options"),(_vm.tocUrl)?_c('div',{staticClass:"c-flex c-items-start"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.consent),expression:"consent"}],staticClass:"c-form-checkbox",attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.consent)?_vm._i(_vm.consent,null)>-1:(_vm.consent)},on:{"change":function($event){var $$a=_vm.consent,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.consent=$$a.concat([$$v]))}else{$$i>-1&&(_vm.consent=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.consent=$$c}}}}),_c('span',{staticClass:"c-ml-3 c--mt-1 c-align-top"},[_vm._v("I have read and understood, and accept our "),_c('a',{staticClass:"c-hover:underline",class:_vm.textPrimary,attrs:{"href":_vm.tocUrl,"target":"_blank"}},[_vm._v("Terms and Conditions, Return Policy, and Privacy Policy")]),_vm._v(".")])]):_vm._e(),_c('R64Button',{staticClass:"c-mt-6 c-w-full",attrs:{"disabled":!_vm.isConsent || _vm.busyOrder,"btn-primary":_vm.btnPrimary},nativeOn:{"click":function($event){return _vm.createOrder($event)}}},[(!_vm.busyOrder)?_c('span',[_vm._v("Place Order")]):_c('span',{staticClass:"c-inline-block c-w-full c-text-center"},[_c('span',[_vm._v("Placing Order ... ")]),_c('R64Spinner',{staticClass:"c-inline-block"})],1)])],2)],1),_c('div',{staticClass:"c-hidden c-w-full lg:c-block lg:c-px-8 lg:c-pt-12 xl:c-px-16"},[(_vm.cart)?_c('div',{staticClass:"lg:c-max-w-sm"},[_vm._l((_vm.cartItems),function(cartItem,index){return _c('R64CartItemPreview',{key:index,staticClass:"c-mt-4",attrs:{"cart-item":cartItem,"currency-symbol":_vm.currencySymbol}})}),(!_vm.hasCouponCode)?_c('div',[_c('R64InlinePromoCode',{staticClass:"c-pt-6",class:{ 'c-pb-6': !_vm.promoCodeErrorVisible },attrs:{"btn-secondary-transparent":_vm.btnSecondaryTransparent},on:{"apply":_vm.addCoupon}}),_c('R64Alert',{staticClass:"c-mt-2 c-mb-4",attrs:{"visible":_vm.promoCodeErrorVisible,"message":"Promo code is not valid"}}),_c('R64HorizontalLine')],1):_vm._e(),_c('div',{staticClass:"c-my-6"},[_c('div',{staticClass:"c-flex c-justify-between"},[_c('span',[_vm._v("Subtotal")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.cart.items_subtotal)))])]),(_vm.hasCouponCode)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v(" Discount "),_c('button',{staticClass:"c-text-xs c-text-c-grayest hover:c-text-black",on:{"click":_vm.removeCoupon}},[_vm._v(" Remove ")])]),_c('span',[_vm._v("- "+_vm._s(_vm.money(_vm.cart.discount)))])]):_vm._e(),(_vm.hasTax)?_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Taxes")]),_c('span',[_vm._v(_vm._s(_vm.money(_vm.cart.tax)))])]):_vm._e(),_c('div',{staticClass:"c-flex c-justify-between c-mt-4"},[_c('span',[_vm._v("Shipping")]),(_vm.busyShipping)?_c('span',[_c('R64Spinner')],1):(_vm.hasShipping)?_c('span',[_vm._v(" "+_vm._s(_vm.money(_vm.cart.shipping))+" ")]):_c('span',[_vm._v("TBD")])])]),_c('R64HorizontalLine'),_c('div',{staticClass:"c-flex c-items-center c-justify-between c-my-6"},[_c('span',{staticClass:"c-text-xl c-font-bold"},[_vm._v("Total to Pay")]),_c('span',{staticClass:"c-text-4xl"},[(_vm.busyShipping || _vm.busyZipCode)?_c('span',[_c('R64Spinner')],1):_c('span',[_vm._v(_vm._s(_vm.money(_vm.cart.total)))])])]),_vm._t("lg:options"),(_vm.tocUrl)?_c('div',{staticClass:"c-flex c-items-start"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.consent),expression:"consent"}],staticClass:"c-form-checkbox",attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.consent)?_vm._i(_vm.consent,null)>-1:(_vm.consent)},on:{"change":function($event){var $$a=_vm.consent,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.consent=$$a.concat([$$v]))}else{$$i>-1&&(_vm.consent=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.consent=$$c}}}}),_c('span',{staticClass:"c-ml-3 c--mt-1 c-align-top"},[_vm._v("I have read and understood, and accept our "),_c('a',{staticClass:"c-hover:underline",class:_vm.textPrimary,attrs:{"href":_vm.tocUrl,"target":"_blank"}},[_vm._v("Terms and Conditions, Return Policy, and Privacy Policy")]),_vm._v(".")])]):_vm._e(),_c('R64Button',{staticClass:"c-mt-6",attrs:{"disabled":!_vm.isConsent || _vm.busyOrder,"btn-primary":_vm.btnPrimary},nativeOn:{"click":function($event){return _vm.createOrder($event)}}},[(!_vm.busyOrder)?_c('span',[_vm._v("Place Order")]):_c('span',{staticClass:"c-inline-block c-w-full c-text-center"},[_c('span',[_vm._v("Placing Order ... ")]),_c('R64Spinner',{staticClass:"c-inline-block"})],1)])],2):_vm._e()])]):_vm._e()]):_vm._e()}
+var R64Checkoutvue_type_template_id_71715da2_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/R64Checkout.vue?vue&type=template&id=4ca1e4a1&
+// CONCATENATED MODULE: ./src/components/R64Checkout.vue?vue&type=template&id=71715da2&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.js
 var es_symbol = __webpack_require__("a4d3");
@@ -10978,6 +10986,56 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -11179,43 +11237,84 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     }
   },
   methods: {
-    applyPromoCode: function () {
-      var _applyPromoCode = _asyncToGenerator(
+    addCoupon: function () {
+      var _addCoupon = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee2(couponCode) {
+        var _ref, data;
+
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return cart.update(this.cartToken, {
-                  coupon_code: couponCode
-                });
+                return cart.addCoupon(this.cartToken, couponCode);
 
               case 3:
-                this.fetchCart();
-                _context2.next = 9;
+                _ref = _context2.sent;
+                data = _ref.data;
+                this.cart = data;
+                _context2.next = 11;
                 break;
 
-              case 6:
-                _context2.prev = 6;
+              case 8:
+                _context2.prev = 8;
                 _context2.t0 = _context2["catch"](0);
                 this.promoCodeErrorVisible = true;
 
-              case 9:
+              case 11:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 6]]);
+        }, _callee2, this, [[0, 8]]);
       }));
 
-      function applyPromoCode(_x) {
-        return _applyPromoCode.apply(this, arguments);
+      function addCoupon(_x) {
+        return _addCoupon.apply(this, arguments);
       }
 
-      return applyPromoCode;
+      return addCoupon;
+    }(),
+    removeCoupon: function () {
+      var _removeCoupon = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee3() {
+        var _ref2, data;
+
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return cart.removeCoupon(this.cartToken);
+
+              case 3:
+                _ref2 = _context3.sent;
+                data = _ref2.data;
+                this.cart = data;
+                _context3.next = 10;
+                break;
+
+              case 8:
+                _context3.prev = 8;
+                _context3.t0 = _context3["catch"](0);
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 8]]);
+      }));
+
+      function removeCoupon() {
+        return _removeCoupon.apply(this, arguments);
+      }
+
+      return removeCoupon;
     }(),
     formValid: function formValid() {
       this.$v.$touch();
@@ -11238,24 +11337,24 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     createOrder: function () {
       var _createOrder = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee3() {
+      regeneratorRuntime.mark(function _callee4() {
         var _this2 = this;
 
-        var orderParams, _ref, token, _ref2, data;
+        var orderParams, _ref3, token, _ref4, data;
 
-        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
                 if (this.formValid()) {
-                  _context3.next = 3;
+                  _context4.next = 3;
                   break;
                 }
 
                 this.$nextTick(function () {
                   return _this2.focusError();
                 });
-                return _context3.abrupt("return");
+                return _context4.abrupt("return");
 
               case 3:
                 this.busyOrder = true;
@@ -11265,19 +11364,19 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
                   }, this.form),
                   auth_token: this.authToken
                 };
-                _context3.prev = 5;
+                _context4.prev = 5;
 
                 if (this.isFree) {
-                  _context3.next = 12;
+                  _context4.next = 12;
                   break;
                 }
 
-                _context3.next = 9;
+                _context4.next = 9;
                 return this.$refs.stripe.createToken();
 
               case 9:
-                _ref = _context3.sent;
-                token = _ref.token;
+                _ref3 = _context4.sent;
+                token = _ref3.token;
                 orderParams = _objectSpread({}, orderParams, {
                   stripe: {
                     token: token.id
@@ -11285,36 +11384,36 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
                 });
 
               case 12:
-                _context3.prev = 12;
-                _context3.next = 15;
+                _context4.prev = 12;
+                _context4.next = 15;
                 return order.create(orderParams);
 
               case 15:
-                _ref2 = _context3.sent;
-                data = _ref2.data;
+                _ref4 = _context4.sent;
+                data = _ref4.data;
                 this.$emit('order:create', data);
-                _context3.next = 22;
+                _context4.next = 22;
                 break;
 
               case 20:
-                _context3.prev = 20;
-                _context3.t0 = _context3["catch"](12);
+                _context4.prev = 20;
+                _context4.t0 = _context4["catch"](12);
 
               case 22:
                 this.busyOrder = false;
-                _context3.next = 27;
+                _context4.next = 27;
                 break;
 
               case 25:
-                _context3.prev = 25;
-                _context3.t1 = _context3["catch"](5);
+                _context4.prev = 25;
+                _context4.t1 = _context4["catch"](5);
 
               case 27:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
           }
-        }, _callee3, this, [[5, 25], [12, 20]]);
+        }, _callee4, this, [[5, 25], [12, 20]]);
       }));
 
       function createOrder() {
@@ -11326,30 +11425,30 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     updateCart: debounce_default()(
     /*#__PURE__*/
     function () {
-      var _ref3 = _asyncToGenerator(
+      var _ref5 = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee4(property) {
-        var _ref4, data;
+      regeneratorRuntime.mark(function _callee5(property) {
+        var _ref6, data;
 
-        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+        return regeneratorRuntime.wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
                 if (!(this.$v.form[property].$invalid || !this.propertyDiff(property))) {
-                  _context4.next = 2;
+                  _context5.next = 2;
                   break;
                 }
 
-                return _context4.abrupt("return");
+                return _context5.abrupt("return");
 
               case 2:
-                _context4.prev = 2;
-                _context4.next = 5;
+                _context5.prev = 2;
+                _context5.next = 5;
                 return cart.update(this.cartToken, _objectSpread({}, this.form));
 
               case 5:
-                _ref4 = _context4.sent;
-                data = _ref4.data;
+                _ref6 = _context5.sent;
+                data = _ref6.data;
                 this.cart = data;
 
                 if (this.cart.billing_same) {
@@ -11364,43 +11463,43 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
                 }
 
                 this.$emit('cart:update', data);
-                _context4.next = 14;
+                _context5.next = 14;
                 break;
 
               case 12:
-                _context4.prev = 12;
-                _context4.t0 = _context4["catch"](2);
+                _context5.prev = 12;
+                _context5.t0 = _context5["catch"](2);
 
               case 14:
               case "end":
-                return _context4.stop();
+                return _context5.stop();
             }
           }
-        }, _callee4, this, [[2, 12]]);
+        }, _callee5, this, [[2, 12]]);
       }));
 
       return function (_x2) {
-        return _ref3.apply(this, arguments);
+        return _ref5.apply(this, arguments);
       };
     }(), 200),
     updateCartZipCode: function () {
       var _updateCartZipCode = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee5(zipCode) {
-        var _ref5, data;
+      regeneratorRuntime.mark(function _callee6(zipCode) {
+        var _ref7, data;
 
-        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context6.prev = _context6.next) {
               case 0:
                 this.busyZipCode = true;
-                _context5.prev = 1;
-                _context5.next = 4;
+                _context6.prev = 1;
+                _context6.next = 4;
                 return cart.updateZipCode(this.cartToken, zipCode);
 
               case 4:
-                _ref5 = _context5.sent;
-                data = _ref5.data;
+                _ref7 = _context6.sent;
+                data = _ref7.data;
                 this.cart = data;
                 this.form.billing_address_zipcode = this.cart.billing_address_zipcode;
 
@@ -11415,16 +11514,16 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
                 }
 
                 this.$emit('cart:update', data);
-                _context5.next = 13;
+                _context6.next = 13;
                 return this.updateCartShipping(zipCode);
 
               case 13:
-                _context5.next = 18;
+                _context6.next = 18;
                 break;
 
               case 15:
-                _context5.prev = 15;
-                _context5.t0 = _context5["catch"](1);
+                _context6.prev = 15;
+                _context6.t0 = _context6["catch"](1);
                 this.form.shipping_address_zipcode = null;
 
               case 18:
@@ -11432,10 +11531,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
               case 19:
               case "end":
-                return _context5.stop();
+                return _context6.stop();
             }
           }
-        }, _callee5, this, [[1, 15]]);
+        }, _callee6, this, [[1, 15]]);
       }));
 
       function updateCartZipCode(_x3) {
@@ -11447,28 +11546,28 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     updateCartShipping: function () {
       var _updateCartShipping = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee6(zipCode) {
-        var _ref6, data;
+      regeneratorRuntime.mark(function _callee7(zipCode) {
+        var _ref8, data;
 
-        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+        return regeneratorRuntime.wrap(function _callee7$(_context7) {
           while (1) {
-            switch (_context6.prev = _context6.next) {
+            switch (_context7.prev = _context7.next) {
               case 0:
                 this.busyShipping = true;
-                _context6.prev = 1;
-                _context6.next = 4;
+                _context7.prev = 1;
+                _context7.next = 4;
                 return cart.updateShipping(this.cartToken, zipCode);
 
               case 4:
-                _ref6 = _context6.sent;
-                data = _ref6.data;
+                _ref8 = _context7.sent;
+                data = _ref8.data;
                 this.cart = data;
-                _context6.next = 11;
+                _context7.next = 11;
                 break;
 
               case 9:
-                _context6.prev = 9;
-                _context6.t0 = _context6["catch"](1);
+                _context7.prev = 9;
+                _context7.t0 = _context7["catch"](1);
 
               case 11:
                 this.busyShipping = false;
@@ -11476,10 +11575,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
               case 13:
               case "end":
-                return _context6.stop();
+                return _context7.stop();
             }
           }
-        }, _callee6, this, [[1, 9]]);
+        }, _callee7, this, [[1, 9]]);
       }));
 
       function updateCartShipping(_x4) {
@@ -11491,38 +11590,38 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     updateBillingSame: function () {
       var _updateBillingSame = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee7(billingSame) {
-        var _ref7, data;
+      regeneratorRuntime.mark(function _callee8(billingSame) {
+        var _ref9, data;
 
-        return regeneratorRuntime.wrap(function _callee7$(_context7) {
+        return regeneratorRuntime.wrap(function _callee8$(_context8) {
           while (1) {
-            switch (_context7.prev = _context7.next) {
+            switch (_context8.prev = _context8.next) {
               case 0:
-                _context7.prev = 0;
-                _context7.next = 3;
+                _context8.prev = 0;
+                _context8.next = 3;
                 return cart.update(this.cartToken, {
                   billing_same: billingSame
                 });
 
               case 3:
-                _ref7 = _context7.sent;
-                data = _ref7.data;
+                _ref9 = _context8.sent;
+                data = _ref9.data;
                 this.cart = data;
                 this.form = Object.assign({}, this.cart);
                 this.$emit('cart:update', data);
-                _context7.next = 12;
+                _context8.next = 12;
                 break;
 
               case 10:
-                _context7.prev = 10;
-                _context7.t0 = _context7["catch"](0);
+                _context8.prev = 10;
+                _context8.t0 = _context8["catch"](0);
 
               case 12:
               case "end":
-                return _context7.stop();
+                return _context8.stop();
             }
           }
-        }, _callee7, this, [[0, 10]]);
+        }, _callee8, this, [[0, 10]]);
       }));
 
       function updateBillingSame(_x5) {
@@ -11555,8 +11654,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 var R64Checkout_component = normalizeComponent(
   components_R64Checkoutvue_type_script_lang_js_,
-  R64Checkoutvue_type_template_id_4ca1e4a1_render,
-  R64Checkoutvue_type_template_id_4ca1e4a1_staticRenderFns,
+  R64Checkoutvue_type_template_id_71715da2_render,
+  R64Checkoutvue_type_template_id_71715da2_staticRenderFns,
   false,
   null,
   null,

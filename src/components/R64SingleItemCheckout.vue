@@ -92,7 +92,7 @@
           <R64PromoCode
             :btn-primary="btnPrimary"
             :btn-secondary="btnSecondary"
-            @apply="applyPromoCode"
+            @apply="addCoupon"
             class="c-mt-6"
           />
           <R64Alert
@@ -108,7 +108,15 @@
             <span>{{ money(cart.items_subtotal) }}</span>
           </div>
           <div v-if="hasCouponCode" class="c-flex c-justify-between c-mt-6">
-            <span class="c-text-c-grayest">Discount</span>
+            <span class="c-text-c-grayest">
+              Discount
+              <button
+                class="c-text-xs c-text-c-grayer hover:c-text-black"
+                @click="removeCoupon"
+              >
+                Remove
+              </button>
+            </span>
             <span>- {{ money(cart.discount) }}</span>
           </div>
           <div class="c-flex c-justify-between c-mt-6 c-text-xl c-font-bold">

@@ -286,24 +286,66 @@
                   />
                 </div>
               </div>
-              <div v-if="!hasCouponCode" class="c-mt-6 lg:c-hidden">
-                <span class="c-block c-text-xl">Have a promo code ?</span>
-                <R64PromoCode
-                  :btn-primary="btnPrimary"
-                  :btn-secondary="btnSecondary"
-                  @apply="applyPromoCode"
-                  class="c-mt-5"
-                />
-                <R64Alert
-                  :visible="promoCodeErrorVisible"
-                  class="c-mt-2"
-                  message="Promo code is not valid"
-                />
-              </div>
             </div>
           </div>
         </R64CheckoutSection>
-        <div class="c-pt-12 c-pl-5 c-pr-6 c-pb-8 lg:c-hidden c-border-t c-border-c-gray">
+        <div class="c-pt-6 c-pl-5 c-pr-6 c-pb-8 c-border-t c-border-c-gray lg:c-hidden">
+          <div v-if="!hasCouponCode" class="c-mt-6 lg:c-hidden">
+            <span class="c-block c-text-xl">Have a promo code ?</span>
+            <R64PromoCode
+              :btn-primary="btnPrimary"
+              :btn-secondary="btnSecondary"
+              @apply="addCoupon"
+              class="c-mt-5"
+            />
+            <R64Alert
+              :visible="promoCodeErrorVisible"
+              class="c-mt-2"
+              message="Promo code is not valid"
+            />
+          </div>
+          <div class="c-my-6">
+            <div class="c-flex c-justify-between">
+              <span>Subtotal</span>
+              <span>{{ money(cart.items_subtotal) }}</span>
+            </div>
+            <div v-if="hasCouponCode" class="c-flex c-justify-between c-mt-4">
+              <span>
+                Discount
+                <button
+                  class="c-text-xs c-text-c-grayest hover:c-text-black"
+                  @click="removeCoupon"
+                >
+                  Remove
+                </button>
+              </span>
+              <span>- {{ money(cart.discount) }}</span>
+            </div>
+            <div v-if="hasTax" class="c-flex c-justify-between c-mt-4">
+              <span>Taxes</span>
+              <span>{{ money(cart.tax) }}</span>
+            </div>
+            <div class="c-flex c-justify-between c-mt-4">
+              <span>Shipping</span>
+              <span v-if="busyShipping">
+                <R64Spinner />
+              </span>
+              <span v-else-if="hasShipping">
+                {{ money(cart.shipping) }}
+              </span>
+              <span v-else>TBD</span>
+            </div>
+          </div>
+          <R64HorizontalLine />
+          <div class="c-flex c-items-center c-justify-between c-my-6">
+            <span class="c-text-xl c-font-bold">Total to Pay</span>
+            <span class="c-text-4xl">
+              <span v-if="busyShipping || busyZipCode">
+                <R64Spinner />
+              </span>
+              <span v-else>{{ money(cart.total) }}</span>
+            </span>
+          </div>
           <slot name="options"></slot>
           <div
             v-if="tocUrl"
@@ -339,7 +381,7 @@
             <R64InlinePromoCode
               :btn-secondary-transparent="btnSecondaryTransparent"
               :class="{ 'c-pb-6': !promoCodeErrorVisible }"
-              @apply="applyPromoCode"
+              @apply="addCoupon"
               class="c-pt-6"
             />
             <R64Alert
@@ -355,7 +397,15 @@
               <span>{{ money(cart.items_subtotal) }}</span>
             </div>
             <div v-if="hasCouponCode" class="c-flex c-justify-between c-mt-4">
-              <span>Discount</span>
+              <span>
+                Discount
+                <button
+                  class="c-text-xs c-text-c-grayest hover:c-text-black"
+                  @click="removeCoupon"
+                >
+                  Remove
+                </button>
+              </span>
               <span>- {{ money(cart.discount) }}</span>
             </div>
             <div v-if="hasTax" class="c-flex c-justify-between c-mt-4">
@@ -608,14 +658,21 @@ export default {
   },
 
   methods: {
-    async applyPromoCode (couponCode) {
+    async addCoupon (couponCode) {
       try {
-        await cart.update(this.cartToken, {
-          coupon_code: couponCode
-        })
-        this.fetchCart()
+        const { data } = await cart.addCoupon(this.cartToken, couponCode)
+        this.cart = data
       } catch (e) {
         this.promoCodeErrorVisible = true
+      }
+    },
+
+    async removeCoupon () {
+      try {
+        const { data } = await cart.removeCoupon(this.cartToken)
+        this.cart = data
+      } catch (e) {
+        //
       }
     },
 

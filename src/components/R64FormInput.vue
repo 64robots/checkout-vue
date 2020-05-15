@@ -10,6 +10,7 @@
       <input
         ref="input"
         v-model="localValue"
+        :autocomplete="autocomplete"
         :disabled="disabled"
         :id="id"
         :class="[ inputClass, {
@@ -97,6 +98,11 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
+    },
+
+    autocomplete: {
+      type: String,
+      default: '',
     },
   },
 

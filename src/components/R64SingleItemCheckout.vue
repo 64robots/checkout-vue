@@ -43,6 +43,7 @@
         <div class="c-w-full c-mt-4">
           <R64FormInput
             v-model="form.customer_email"
+            autocomplete="email"
             label="Email address"
             :validator="$v.form.customer_email"
             :show-error="$v.form.customer_email.$error"
@@ -57,6 +58,7 @@
         <div class="c-w-full c-mt-4">
           <R64FormInput
             v-model="form.billing_first_name"
+            autocomplete="given-name"
             label="Cardholder Name"
             :validator="$v.form.billing_first_name"
             :show-error="$v.form.billing_first_name.$error"
@@ -139,7 +141,6 @@
 </template>
 
 <script>
-import cartItem from '../mixins/cartItem'
 import money from '../mixins/money'
 import R64Checkout from './R64Checkout'
 

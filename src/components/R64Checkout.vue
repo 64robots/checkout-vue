@@ -40,6 +40,7 @@
             <div class="c-w-full c-mt-6 lg:c-max-w-sm xl:c-mt-0">
               <R64FormInput
                 v-model="form.customer_email"
+                autocomplete="email"
                 label="Email address"
                 :validator="$v.form.customer_email"
                 :show-error="$v.form.customer_email.$error"
@@ -58,6 +59,7 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.shipping_first_name"
+                    autocomplete="given-name"
                     label="First name"
                     :validator="$v.form.shipping_first_name"
                     :show-error="$v.form.shipping_first_name.$error"
@@ -68,6 +70,7 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.shipping_last_name"
+                    autocomplete="family-name"
                     label="Last name"
                     :validator="$v.form.shipping_last_name"
                     :show-error="$v.form.shipping_last_name.$error"
@@ -78,6 +81,7 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.shipping_address_line1"
+                    autocomplete="shipping address-line1"
                     label="Street"
                     :validator="$v.form.shipping_address_line1"
                     :show-error="$v.form.shipping_address_line1.$error"
@@ -88,6 +92,7 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.shipping_address_line2"
+                    autocomplete="shipping address-line2"
                     label="Apartment, suite, etc ..."
                     :validator="$v.form.shipping_address_line2"
                     :show-error="$v.form.shipping_address_line2.$error"
@@ -99,6 +104,7 @@
                   <div class="c-w-full">
                     <R64FormInput
                       v-model="form.shipping_address_zipcode"
+                      autocomplete="shipping postal-code"
                       label="Zipcode"
                       alert-class="whitespace-no-wrap"
                       :validator="$v.form.shipping_address_zipcode"
@@ -110,6 +116,7 @@
                   <div class="c-w-full c-ml-2">
                     <R64FormInput
                       v-model="form.shipping_address_city"
+                      autocomplete="shipping address-level2"
                       :disabled="busyZipCode"
                       :validator="$v.form.shipping_address_city"
                       :show-error="$v.form.shipping_address_city.$error"
@@ -121,6 +128,7 @@
                   <div class="c-w-full c-ml-2">
                     <R64FormSelect
                       v-model="form.shipping_address_region"
+                      autocomplete="shipping address-level1"
                       :disabled="busyZipCode"
                       :options="settings.states"
                       :validator="$v.form.shipping_address_region"
@@ -135,6 +143,7 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.shipping_address_phone"
+                    autocomplete="tel"
                     label="Phone"
                     :validator="$v.form.shipping_address_phone"
                     :show-error="$v.form.shipping_address_phone.$error"
@@ -186,6 +195,7 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.billing_first_name"
+                    autocomplete="given-name"
                     label="First name"
                     :validator="$v.form.billing_first_name"
                     :show-error="$v.form.billing_first_name.$error"
@@ -196,6 +206,7 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.billing_last_name"
+                    autocomplete="family-name"
                     label="Last name"
                     :validator="$v.form.billing_last_name"
                     :show-error="$v.form.billing_last_name.$error"
@@ -206,6 +217,7 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.billing_address_line1"
+                    autocomplete="billing address-line1"
                     label="Street"
                     :validator="$v.form.billing_address_line1"
                     :show-error="$v.form.billing_address_line1.$error"
@@ -216,6 +228,7 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.billing_address_line2"
+                    autocomplete="billing address-line2"
                     label="Apartment, suite, etc ..."
                     :validator="$v.form.billing_address_line2"
                     :show-error="$v.form.billing_address_line2.$error"
@@ -227,6 +240,7 @@
                   <div class="c-w-full">
                     <R64FormInput
                       v-model="form.billing_address_zipcode"
+                      autocomplete="billing postal-code"
                       label="Zipcode"
                       alert-class="whitespace-no-wrap"
                       :validator="$v.form.billing_address_zipcode"
@@ -238,6 +252,7 @@
                   <div class="c-w-full c-ml-2">
                     <R64FormInput
                       v-model="form.billing_address_city"
+                      autocomplete="billing address-level2"
                       label="City"
                       :validator="$v.form.billing_address_city"
                       :show-error="$v.form.billing_address_city.$error"
@@ -248,6 +263,7 @@
                   <div class="c-w-full c-ml-2">
                     <R64FormSelect
                       v-model="form.billing_address_region"
+                      autocomplete="billing address-level1"
                       label="State"
                       placeholder="Select state"
                       :options="settings.states"
@@ -261,6 +277,7 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.billing_address_phone"
+                    autocomplete="tel"
                     label="Phone"
                     :validator="$v.form.billing_address_phone"
                     :show-error="$v.form.billing_address_phone.$error"
@@ -288,12 +305,15 @@
         </R64CheckoutSection>
         <div class="c-pt-12 c-pl-5 c-pr-6 c-pb-8 lg:c-hidden c-border-t c-border-c-gray">
           <slot name="options"></slot>
-          <div class="c-flex c-items-start">
+          <div
+            v-if="tocUrl"
+            class="c-flex c-items-start"
+          >
             <input v-model="consent" type="checkbox" class="c-form-checkbox">
             <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" :class="textPrimary" class="c-hover:underline" target="_blank">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
           <R64Button
-            :disabled="!consent || busyOrder"
+            :disabled="!isConsent || busyOrder"
             :btn-primary="btnPrimary"
             @click.native="createOrder" 
             class="c-mt-6 c-w-full"
@@ -364,12 +384,15 @@
             </span>
           </div>
           <slot name="lg:options"></slot>
-          <div class="c-flex c-items-start">
+          <div
+            v-if="tocUrl"
+            class="c-flex c-items-start"
+          >
             <input v-model="consent" type="checkbox" class="c-form-checkbox">
             <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" :class="textPrimary" class="c-hover:underline" target="_blank">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
           <R64Button
-            :disabled="!consent || busyOrder"
+            :disabled="!isConsent || busyOrder"
             :btn-primary="btnPrimary"
             @click.native="createOrder" 
             class="c-mt-6" 
@@ -537,7 +560,7 @@ export default {
     },
 
     tocUrl () {
-      return this.settings ? this.settings.toc_url : '#'
+      return this.settings ? this.settings.toc_url : null
     },
 
     stripeAllValidated () {
@@ -573,6 +596,14 @@ export default {
 
     hasShipping () {
       return parseFloat(this.cart.shipping) !== 0
+    },
+
+    isConsent () {
+      if (!this.tocUrl) {
+        return true
+      }
+
+      return this.consent
     },
   },
 
@@ -675,14 +706,16 @@ export default {
       } catch (e) {
         //
       }
-    }, 100),
+    }, 200),
 
     async updateCartZipCode (zipCode) {
       this.busyZipCode = true
       try {
         const { data } = await cart.updateZipCode(this.cartToken, zipCode)
         this.cart = data
-
+        
+        this.form.billing_address_zipcode = this.cart.billing_address_zipcode
+        
         if (data.shipping_address_city) {
           this.form.shipping_address_city = data.shipping_address_city
           this.form.billing_address_city = data.billing_address_city

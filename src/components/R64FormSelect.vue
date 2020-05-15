@@ -9,6 +9,7 @@
     <div class="c-relative">
       <select
         ref="input"
+        :autocomplete="autocomplete"
         v-model="localValue"
         :disabled="disabled"
         :class="[ inputClass, {

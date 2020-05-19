@@ -1,6 +1,6 @@
 <template>
-  <div :class="font" class="c-antialiased c-z-50 c-text-c-black" style="box-sizing: border-box;">
-    <div class="c-fixed c-inset-0 c-bg-c-black c-opacity-40">
+  <div :class="font" class="c-antialiased c-z-50 c-text-c-gray-700" style="box-sizing: border-box;">
+    <div class="c-fixed c-inset-0 c-bg-c-gray-700 c-opacity-40">
     </div>
     <div v-if="cart" class="c-absolute c-top-0 c-left-0 c-right-0 c-flex c-min-h-screen md:c-justify-end">
       <div class="c-bg-white c-w-full c-max-w-4xl c-p-5 md:c-p-12">
@@ -17,7 +17,7 @@
           @cart-item:delete="fetchCart"
           @cart-item:show="cartItem => $emit('cart-item:show', cartItem)"
         />
-        <div class="c-mt-10 c-pb-10 c-border-b c-border-c-gray">
+        <div class="c-mt-10 c-pb-10 c-border-b c-border-c-gray-400">
           <button @click="toggleNote" class="c-flex c-items-center">
             <svg :class="iconColor" class="c-w-5 c-h-5 c-fill-current" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 15.2501V19.0001H3.75L14.81 7.94006L11.06 4.19006L0 15.2501ZM17.71 5.04006C18.1 4.65006 18.1 4.02006 17.71 3.63006L15.37 1.29006C14.98 0.900059 14.35 0.900059 13.96 1.29006L12.13 3.12006L15.88 6.87006L17.71 5.04006Z"/>

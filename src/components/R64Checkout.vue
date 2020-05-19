@@ -1,5 +1,5 @@
 <template>
-  <div v-if="cart" :class="font" class="c-antialiased c-text-c-black c-bg-c-light-gray" style="box-sizing: border-box;">
+  <div v-if="cart" :class="font" class="c-antialiased c-text-c-gray-700 c-bg-c-gray-100" style="box-sizing: border-box;">
     <div class="checkout-cart-items c-fixed c-p-5 c-top-0 c-left-0 c-right-0 c-z-10 c-bg-white lg:c-hidden">
       <div class="c-flex c-items-center c-justify-between">
         <span class="c-text-xl">Total to pay ({{ cartItems.length }} items)</span>
@@ -289,7 +289,7 @@
             </div>
           </div>
         </R64CheckoutSection>
-        <div class="c-pt-6 c-pl-5 c-pr-6 c-pb-8 c-border-t c-border-c-gray lg:c-hidden">
+        <div class="c-pt-6 c-pl-5 c-pr-6 c-pb-8 c-border-t c-border-c-gray-400 lg:c-hidden">
           <div v-if="!hasCouponCode" class="c-mt-6 lg:c-hidden">
             <span class="c-block c-text-xl">Have a promo code ?</span>
             <R64PromoCode
@@ -313,7 +313,7 @@
               <span>
                 Discount
                 <button
-                  class="c-text-xs c-text-c-grayest hover:c-text-black"
+                  class="c-text-xs c-text-c-gray-600 hover:c-text-black"
                   @click="removeCoupon"
                 >
                   Remove
@@ -400,7 +400,7 @@
               <span>
                 Discount
                 <button
-                  class="c-text-xs c-text-c-grayest hover:c-text-black"
+                  class="c-text-xs c-text-c-gray-600 hover:c-text-black"
                   @click="removeCoupon"
                 >
                   Remove

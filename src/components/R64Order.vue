@@ -1,5 +1,5 @@
 <template>
-  <div v-if="order" :class="font" class="c-antialiased c-text-c-black c-bg-c-light-gray">
+  <div v-if="order" :class="font" class="c-antialiased c-text-c-gray-700 c-bg-c-gray-100">
     <div class="c-max-w-2xl c-min-h-screen c-mx-auto c-py-20">
       <R64OrderSection class="c-relative">
         <R64CloseButton class="c-absolute c-right-0 c-top-0 c-pt-8 c-pr-12" @click.native="$emit('close')"/>

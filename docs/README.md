@@ -1,8 +1,15 @@
-## 💳 Checkout Vue
+# Gettings started
 
 Checkout Vue is a complementary package for [Checkout Api](https://github.com/64robots/checkout). It provides UI components for Cart, Checkout, Order and Single Item Checkout.
 
-### Installation
+### Available components:
+
+- [x] R64Cart
+- [x] R64Checkout
+- [x] R64SingleItemCheckout
+- [x] R64Order
+
+## Installation
 
 You can install this package using yarn:
 ```bash
@@ -13,7 +20,7 @@ or if you use npm
 npm install --save @64robots/checkout-vue
 ```
 
-### Usage
+## Usage
 
 You can use the package as a plugin
 ```javascript
@@ -28,7 +35,3 @@ or import components independently
 // your-components.js
 import { R64Cart } from '@64robots/checkout-vue'
 ```
-
-### Examples
-
-You can read more about usage and examples in [documentation](https://checkout-vue.netlify.app)

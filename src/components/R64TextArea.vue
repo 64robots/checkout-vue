@@ -1,7 +1,7 @@
 <template>
     <textarea 
       :value="value"
-      class="c-p-3 c-rounded c-border c-border-c-gray c-text-base c-focus:outline-none c-focus:border-c-grayer"
+      class="c-p-3 c-rounded c-border c-border-c-gray-400 c-text-base c-focus:outline-none c-focus:border-c-grayer"
       @blur="(e) => $emit('blur', e.target.value)"
       @input="(e) => $emit('input', e.target.value)"
     >

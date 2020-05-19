@@ -15,8 +15,8 @@
         :id="id"
         :class="[ inputClass, {
           'c-border-red-500 c-focus:border-red-600': error,
-          'c-border-c-gray c-focus:border-c-grayer': !error,
-          'c-bg-c-light-gray': disabled,
+          'c-border-c-gray-400 c-focus:border-c-grayer': !error,
+          'c-bg-c-gray-100': disabled,
         } ]"
         :type="internalType"
         :placeholder="placeholder"

@@ -1,6 +1,6 @@
 <template>
   <div class="c-flex c-pb-4" :class="{ 'border-b border-c-gray': border }">
-    <div v-if="hasImage" class="c-flex c-items-center c-justify-center c-w-16 c-h-16 c-bg-c-mid-gray c-flex-shrink-0">
+    <div v-if="hasImage" class="c-flex c-items-center c-justify-center c-w-16 c-h-16 c-bg-c-gray-200 c-flex-shrink-0">
       <img :src="imageSrc" alt="Product image">
     </div>
     <div :class="classes" class="c-w-full c-flex c-flex-col c-items-end">

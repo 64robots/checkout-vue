@@ -15,7 +15,7 @@ export default {
 
     computed: {
         classes () {
-            return this.border ? 'c-border-b c-border-c-gray' : ''
+            return this.border ? 'c-border-b c-border-c-gray-400' : ''
         }
     }
 }

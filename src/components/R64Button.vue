@@ -22,7 +22,7 @@ export default {
     computed: {
         classes () {
             if (this.disabled) {
-                return 'c-bg-c-mid-grayer c-text-c-grayer'
+                return 'c-bg-c-gray-300 c-text-c-gray-500'
             }
 
             if (this.variant === 'primary') {

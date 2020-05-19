@@ -2,9 +2,9 @@
   <div 
     v-if="cart" 
     :class="font"
-    class="c-text-c-black"
+    class="c-text-c-gray-700"
   >
-    <div class="c-fixed c-inset-0 c-bg-c-black c-opacity-40">
+    <div class="c-fixed c-inset-0 c-bg-c-gray-700 c-opacity-40">
     </div>
     <div class="c-relative c-w-full c-max-w-lg c-mx-auto c-bg-white c-pt-6 c-mt-0 md:c-mt-10 z-10">
       <div class="c-flex c-justify-between c-px-8">
@@ -22,7 +22,7 @@
         </button>
       </div>
       
-      <div class="c-flex c-mt-6 c-px-8 c-py-6 c-bg-c-light-gray">
+      <div class="c-flex c-mt-6 c-px-8 c-py-6 c-bg-c-gray-100">
         <div>
           <img
             class="c-w-16 c-h-auto"
@@ -38,7 +38,7 @@
         </div>
       </div>
 
-      <div class="c-mt-6 c-px-8 c-pb-8 c-border-b c-border-c-gray">
+      <div class="c-mt-6 c-px-8 c-pb-8 c-border-b c-border-c-gray-400">
         <span class="c-block c-font-bold">Account Information</span>
         <div class="c-w-full c-mt-4">
           <R64FormInput
@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <div class="c-mt-6 c-px-8 c-pb-8 c-border-b c-border-c-gray">
+      <div class="c-mt-6 c-px-8 c-pb-8 c-border-b c-border-c-gray-400">
         <span class="c-block c-font-bold">Payment</span>
         <div class="c-w-full c-mt-4">
           <R64FormInput
@@ -104,14 +104,14 @@
         
         <div>
           <div class="c-flex c-justify-between c-mt-6">
-            <span class="c-text-c-grayest">Subtotal</span>
+            <span class="c-text-c-gray-600">Subtotal</span>
             <span>{{ money(cart.items_subtotal) }}</span>
           </div>
           <div v-if="hasCouponCode" class="c-flex c-justify-between c-mt-6">
-            <span class="c-text-c-grayest">
+            <span class="c-text-c-gray-600">
               Discount
               <button
-                class="c-text-xs c-text-c-grayer hover:c-text-black"
+                class="c-text-xs c-text-c-gray-500 hover:c-text-black"
                 @click="removeCoupon"
               >
                 Remove

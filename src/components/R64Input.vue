@@ -17,7 +17,7 @@ export default {
 
   computed: {
     classes () {
-      return this.error ? 'c-border-red-400 c-focus:border-red-600' : 'c-border-c-gray c-focus:border-c-grayer'
+      return this.error ? 'c-border-red-400 c-focus:border-red-600' : 'c-border-c-gray-400 c-focus:border-c-grayer'
     }
   }
 }

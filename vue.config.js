@@ -1,6 +1,6 @@
 // vue.config.js
 module.exports = {
   devServer: {
-    proxy: 'http://dqs-backend.test'
+    proxy: 'https://dqs-backend.test'
   }
 }

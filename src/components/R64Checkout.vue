@@ -152,10 +152,6 @@
                   />
                 </div>
               </div>
-
-              <slot name="shipping">
-              </slot>
-
             </div>
           </div>
         </R64CheckoutSection>

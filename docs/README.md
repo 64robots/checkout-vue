@@ -4,10 +4,10 @@ Checkout Vue is a complementary package for [Checkout Api](https://github.com/64
 
 ### Available components:
 
-- [x] R64Cart
-- [x] R64Checkout
-- [x] R64SingleItemCheckout
-- [x] R64Order
+- [R64Cart](/components.html#r64cart)
+- [R64Checkout](/components.html#r64checkout)
+- [R64Order](/components.html#r64order)
+- [R64SingleItemCheckout](/components.html#r64singleitemcheckout)
 
 ## Installation
 

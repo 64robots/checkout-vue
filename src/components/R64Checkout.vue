@@ -160,8 +160,14 @@
             <span class="c-block c-text-xl c-font-bold xl:c-w-1/3">Payment</span>
             <div class="c-w-full lg:c-max-w-sm">
               <span class="c-mt-6 c-block c-text-xl xl:c-mt-0">Payment method</span>
-              <R64PaymentPicker />
+              <R64PaymentPicker
+                :method="paymentMethod"
+                class="c-mt-2"
+                @select="method => paymentMethod = method"
+              />
+
               <R64StripePayment
+                v-if="paymentMethod === 'card'"
                 ref="stripe"
                 :stripe-key="stripeKey"
                 @complete:number="stripeValidated.number = true"
@@ -351,18 +357,17 @@
             <input v-model="consent" type="checkbox" class="c-form-checkbox">
             <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" :class="textPrimary" class="c-hover:underline" target="_blank">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
-          <R64Button
+          <R64PlaceOrderButton
             :disabled="!isConsent || busyOrder"
+            :busy="busyOrder"
             :btn-primary="btnPrimary"
-            @click.native="createOrder" 
+            :method="paymentMethod"
+            :total="cart.total"
+            :is-free="isFree"
+            :validator="$v"
             class="c-mt-6 c-w-full"
-          >
-            <span v-if="!busyOrder">Place Order</span>
-            <span v-else class="c-inline-block c-w-full c-text-center">
-              <span>Placing Order ... </span>
-              <R64Spinner class="c-inline-block"/>
-            </span>
-          </R64Button>
+            @order:place="createOrder"
+          />
         </div>
       </div>
       <div class="c-hidden c-w-full lg:c-block lg:c-px-8 lg:c-pt-12 xl:c-px-16">
@@ -438,18 +443,17 @@
             <input v-model="consent" type="checkbox" class="c-form-checkbox">
             <span class="c-ml-3 c--mt-1 c-align-top">I have read and understood, and accept our <a :href="tocUrl" :class="textPrimary" class="c-hover:underline" target="_blank">Terms and Conditions, Return Policy, and Privacy Policy</a>.</span>
           </div>
-          <R64Button
+          <R64PlaceOrderButton
             :disabled="!isConsent || busyOrder"
+            :busy="busyOrder"
             :btn-primary="btnPrimary"
-            @click.native="createOrder" 
-            class="c-mt-6" 
-          >
-            <span v-if="!busyOrder">Place Order</span>
-            <span v-else class="c-inline-block c-w-full c-text-center">
-              <span>Placing Order ... </span>
-              <R64Spinner class="c-inline-block"/>
-            </span>
-          </R64Button>
+            :method="paymentMethod"
+            :total="cart.total"
+            :is-free="isFree"
+            :validator="$v"
+            class="c-mt-6"
+            @order:place="createOrder"
+          />
         </div>
       </div>
     </div>
@@ -463,12 +467,12 @@ import R64FormSelect from './R64FormSelect'
 import R64CheckoutSection from './R64CheckoutSection'
 import R64Alert from './R64Alert'
 import R64PromoCode from "./R64PromoCode"
-import R64Button from "./R64Button"
 import R64InlinePromoCode from './R64InlinePromoCode'
 import R64HorizontalLine from './R64HorizontalLine'
 import R64StripePayment from './R64StripePayment'
 import R64Spinner from './R64Spinner'
 import R64PaymentPicker from './R64PaymentPicker'
+import R64PlaceOrderButton from './R64PlaceOrderButton'
 import cartMixin from '../mixins/cart'
 import money from '../mixins/money'
 import theme from '../mixins/theme'
@@ -506,7 +510,6 @@ export default {
   },
 
   components: {
-    R64Button,
     R64CartItemPreview,
     R64FormInput,
     R64FormSelect,
@@ -518,6 +521,7 @@ export default {
     R64Alert,
     R64Spinner,
     R64PaymentPicker,
+    R64PlaceOrderButton,
   },
 
   data () {
@@ -550,6 +554,7 @@ export default {
         cvc: false
       },
       paymentErrorVisible: false,
+      paymentMethod: 'paypal',
       promoCodeErrorVisible: false,
       consent: false,
       busyZipCode: false,
@@ -654,6 +659,14 @@ export default {
 
       return this.consent
     },
+
+    isCardPayment () {
+      return this.paymentMethod === 'card'
+    },
+
+    isPaypalPayment () {
+      return this.paymentMethod === 'paypal'
+    },
   },
 
   methods: {
@@ -679,12 +692,16 @@ export default {
     formValid () {
       this.$v.$touch()
 
-      if (!this.stripeAllValidated) {
-        this.paymentErrorVisible = true
-      }
-
       if (!this.billingAllValidated) {
         this.form.billing_same = true
+      }
+
+      if (!this.$v.$invalid && this.isPaypalPayment) {
+        return true
+      }
+
+      if (!this.stripeAllValidated) {
+        this.paymentErrorVisible = true
       }
 
       if (!this.$v.$invalid && this.stripeAllValidated) {
@@ -696,11 +713,15 @@ export default {
       return false
     },
 
-    async createOrder () {
+    async createOrder (authorization) {
+      // eslint-disable-next-line no-console
+      console.log('createOrder')
       if (!this.formValid()) {
         this.$nextTick(() => this.focusError())
         return
       }
+      // eslint-disable-next-line no-console
+      console.log('validCreateOrder')
 
       this.busyOrder = true
       let orderParams = {
@@ -715,10 +736,20 @@ export default {
         if (!this.isFree) {
           const { token } = await this.$refs.stripe.createToken()
 
-          orderParams = {
-            ...orderParams,
-            stripe: {
-              token: token.id
+          if (this.isCardPayment) {
+            orderParams = {
+              ...orderParams,
+              stripe: {
+                token: token.id
+              }
+            }
+          } else if (this.isPaypalPayment) {
+            orderParams = {
+              ...orderParams,
+              paypal: {
+                order_id: authorization,
+                authorization_id: authorization
+              },
             }
           }
         }

@@ -160,6 +160,7 @@
             <span class="c-block c-text-xl c-font-bold xl:c-w-1/3">Payment</span>
             <div class="c-w-full lg:c-max-w-sm">
               <span class="c-mt-6 c-block c-text-xl xl:c-mt-0">Payment method</span>
+              <R64PaymentPicker />
               <R64StripePayment
                 ref="stripe"
                 :stripe-key="stripeKey"
@@ -467,6 +468,7 @@ import R64InlinePromoCode from './R64InlinePromoCode'
 import R64HorizontalLine from './R64HorizontalLine'
 import R64StripePayment from './R64StripePayment'
 import R64Spinner from './R64Spinner'
+import R64PaymentPicker from './R64PaymentPicker'
 import cartMixin from '../mixins/cart'
 import money from '../mixins/money'
 import theme from '../mixins/theme'
@@ -515,6 +517,7 @@ export default {
     R64StripePayment,
     R64Alert,
     R64Spinner,
+    R64PaymentPicker,
   },
 
   data () {

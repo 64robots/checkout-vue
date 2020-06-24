@@ -365,6 +365,7 @@
             :total="cart.total"
             :is-free="isFree"
             :validator="$v"
+            :paypal-client-id="paypalClientId"
             class="c-mt-6 c-w-full"
             @order:place="createOrder"
           />
@@ -451,7 +452,10 @@
             :total="cart.total"
             :is-free="isFree"
             :validator="$v"
+            :paypal-client-id="paypalClientId"
             class="c-mt-6"
+            @paypal:open="busyOrder = true"
+            @paypal:cancel="busyOrder = false"
             @order:place="createOrder"
           />
         </div>
@@ -490,6 +494,10 @@ export default {
     stripeKey: {
       type: String,
       default: null
+    },
+    paypalClientId: {
+      type: String,
+      default: null,
     },
     authToken: {
       type: String,
@@ -554,7 +562,7 @@ export default {
         cvc: false
       },
       paymentErrorVisible: false,
-      paymentMethod: 'paypal',
+      paymentMethod: 'card',
       promoCodeErrorVisible: false,
       consent: false,
       busyZipCode: false,
@@ -714,14 +722,10 @@ export default {
     },
 
     async createOrder (authorization) {
-      // eslint-disable-next-line no-console
-      console.log('createOrder')
       if (!this.formValid()) {
         this.$nextTick(() => this.focusError())
         return
       }
-      // eslint-disable-next-line no-console
-      console.log('validCreateOrder')
 
       this.busyOrder = true
       let orderParams = {
@@ -751,8 +755,6 @@ export default {
                 authorization_id: authorization.purchase_units[0].payments.authorizations[0].id
               },
             }
-            // eslint-disable-next-line no-console
-            console.log(orderParams)
           }
         }
 

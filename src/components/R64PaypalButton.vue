@@ -23,6 +23,11 @@ export default {
       type: Object,
       default: () => {},
     },
+
+    paypalClientId: {
+      type: String,
+      default: null,
+    },
   },
 
   data() {
@@ -38,7 +43,7 @@ export default {
   },
 
   async mounted() {
-    await injectPaypal('AcA7Oe9gOCeIKCIdrQMNnO8yqdG6k9H9DRsx5NgvtwXR0IY5B5lq0gc2ch75fH3d_2EoZgN7UEGXDDyl')
+    await injectPaypal(this.paypalClientId)
     createPaypal(`#${this.containerId}`, {
       // Set up the transaction
       createOrder: (data, actions) => {
@@ -51,26 +56,25 @@ export default {
         });
       },
 
-      onError: (error) => {
-        // eslint-disable-next-line no-console
-        console.log(error)
+      onCancel: () => {
+        this.$emit('payment:cancel');
       },
 
-      onClick: () => {
+      onClick: (data, actions) => {
         this.validator.$touch()
 
         if (this.validator.$error) {
           this.$nextTick(() => this.focusError(this.$parent.$parent.$parent.$parent))
-          return false
+          return actions.reject()
         }
+
+        this.$emit('payment:open');
+        return actions.resolve();
       },
 
       onApprove: async (data, actions) => {
         // Authorize the transaction
         const authorization = await actions.order.authorize()
-
-        // eslint-disable-next-line no-console
-        console.log("##### Authorization ####: ", authorization)
 
         this.$emit('payment:authorized', authorization)
       }

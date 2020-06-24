@@ -1,8 +1,6 @@
 const injectPaypal = (clientId) => {
   return new Promise((resolve) => {
     if (document.getElementById('paypal_script')) {
-      // eslint-disable-next-line no-console
-      console.log('paypal is already here')
       resolve()
       return 
     }
@@ -19,11 +17,7 @@ const injectPaypal = (clientId) => {
 }
 
 const createPaypal = (elementId, options = {}) => {
-  // eslint-disable-next-line no-console
-  console.log('createPaypal')
   if (!window.paypal) {
-    // eslint-disable-next-line no-console
-    console.log('agaaain')
     return setTimeout(() => (createPaypal(elementId, options)), 300)
   }
 

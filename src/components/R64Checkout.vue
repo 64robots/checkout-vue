@@ -734,9 +734,9 @@ export default {
 
       try {
         if (!this.isFree) {
-          const { token } = await this.$refs.stripe.createToken()
-
           if (this.isCardPayment) {
+            const { token } = await this.$refs.stripe.createToken()
+
             orderParams = {
               ...orderParams,
               stripe: {
@@ -747,10 +747,12 @@ export default {
             orderParams = {
               ...orderParams,
               paypal: {
-                order_id: authorization,
-                authorization_id: authorization
+                order_id: authorization.id,
+                authorization_id: authorization.purchase_units[0].payments.authorizations[0].id
               },
             }
+            // eslint-disable-next-line no-console
+            console.log(orderParams)
           }
         }
 

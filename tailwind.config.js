@@ -1,8 +1,5 @@
 module.exports = {
-  purge: [
-    './src/**/*.vue',
-    './src/**/*.js'
-  ],
+  purge: false,
   prefix: 'c-',
   theme: {
     customForms: theme => ({

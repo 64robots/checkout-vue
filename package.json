@@ -2,7 +2,7 @@
   "name": "@64robots/checkout-vue",
   "license": "MIT",
   "description": "Checkout Vue is a complementary package for https://github.com/64robots/checkout. It provides UI components from Cart, Checkout, Order and Single Item Checkout.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "dist/index.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",

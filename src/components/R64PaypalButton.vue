@@ -15,7 +15,7 @@ export default {
 
   props: {
     total: {
-      type: String,
+      type: Number,
       default: null,
     },
 
@@ -53,7 +53,13 @@ export default {
                     value: this.total
                 }
             }]
-        });
+        }).catch(() => {
+          this.$emit('payment:error')  
+        })
+      },
+
+      onError: () => {
+        this.$emit('payment:error')
       },
 
       onCancel: () => {
@@ -73,10 +79,12 @@ export default {
       },
 
       onApprove: async (data, actions) => {
-        // Authorize the transaction
-        const authorization = await actions.order.authorize()
-
-        this.$emit('payment:authorized', authorization)
+        try {
+          const authorization = await actions.order.authorize()
+          this.$emit('payment:authorized', authorization)
+        } catch (e) {
+          this.$emit('payment:error')  
+        }
       }
     })
   },

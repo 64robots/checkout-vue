@@ -45,6 +45,7 @@
         @payment:open="$emit('paypal:open')"
         @payment:authorized="$emit('order:place', $event)"
         @payment:cancel="$emit('paypal:cancel')"
+        @payment:error="$emit('paypal:error')"
         class="c-relative c-z-10"
       />
     </div>
@@ -78,7 +79,7 @@ export default {
     },
 
     totalCents: {
-      type: String,
+      type: Number,
       default: null,
     },
 

@@ -368,6 +368,9 @@
             :paypal-client-id="paypalClientId"
             :error="paymentProcessingError"
             class="c-mt-6 c-w-full"
+            @paypal:open="busyOrder = true"
+            @paypal:cancel="busyOrder = false"
+            @paypal:error="paypalError"
             @order:place="createOrder"
           />
         </div>
@@ -458,6 +461,7 @@
             class="c-mt-6"
             @paypal:open="busyOrder = true"
             @paypal:cancel="busyOrder = false"
+            @paypal:error="paypalError"
             @order:place="createOrder"
           />
         </div>
@@ -867,6 +871,11 @@ export default {
       }
 
       return cartProperty !== formProperty
+    },
+
+    paypalError () {
+      this.busyOrder = false
+      this.paymentProcessingError = true
     },
   },
 }

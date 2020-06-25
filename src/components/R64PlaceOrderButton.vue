@@ -39,7 +39,7 @@
 
       <R64PaypalButton
         v-if="method === 'paypal' && !isFree"
-        :total="total"
+        :total="totalCents / 100"
         :validator="validator"
         :paypal-client-id="paypalClientId"
         @payment:open="$emit('paypal:open')"
@@ -77,7 +77,7 @@ export default {
       default: null,
     },
 
-    total: {
+    totalCents: {
       type: String,
       default: null,
     },

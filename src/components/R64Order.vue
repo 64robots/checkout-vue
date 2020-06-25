@@ -9,7 +9,8 @@
         <span class="c-block c-mt-4"><slot name="text"></slot></span>
         <span class="c-block c-mt-4">Order Number: {{ order.order_number }}</span>
         <span class="c-block c-mt-2">Order Date: {{ order.created_at }}</span>
-        <span class="c-block c-mt-2">Payment Method: {{ order.order_purchase.card_type }} ending in {{ order.order_purchase.card_last4 }}</span>
+        <span v-if="isStripe" class="c-block c-mt-2">Payment Method: {{ order.order_purchase.card_type }} ending in {{ order.order_purchase.card_last4 }}</span>
+        <span v-if="isPaypal" class="c-block c-mt-2">Payment Method: Paypal</span>
         <span v-if="order.customer_notes" class="c-block c-mt-2">Note: {{ order.customer_notes }}</span>
         <slot name="delivery-date"></slot>
       </R64OrderSection>
@@ -135,6 +136,12 @@ export default {
     },
     hasShipping () {
       return parseFloat(this.order.shipping) !== 0
+    },
+    isStripe () {
+      return this.order.order_purchase.payment_method === 'stripe'
+    },
+    isPaypal () {
+      return this.order.order_purchase.payment_method === 'paypal'
     },
   },
 

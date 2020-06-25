@@ -22,7 +22,7 @@
       />
 
       <div
-        v-if="busy"
+        v-if="busy && method === 'paypal'"
         class="c-absolute c-inset-0 c-z-50 c-rounded" 
         style="margin-bottom: 6px;"
       >
@@ -48,6 +48,12 @@
         class="c-relative c-z-10"
       />
     </div>
+
+    <R64Alert
+      v-if="error"
+      class="c-mt-2"
+      message="There was a problem with your payment. Please try again."
+    />
   </div>
 </template>
 
@@ -55,6 +61,7 @@
 import R64Button from './R64Button'
 import R64Spinner from './R64Spinner'
 import R64PaypalButton from './R64PaypalButton'
+import R64Alert from './R64Alert'
 
 export default {
   name: 'R64PlaceOrderButton',
@@ -94,12 +101,18 @@ export default {
       type: String,
       default: null,
     },
+
+    error: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   components: {
     R64Button,
     R64Spinner,
     R64PaypalButton,
+    R64Alert,
   },
 }
 </script>

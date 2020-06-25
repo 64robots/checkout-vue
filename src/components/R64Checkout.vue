@@ -176,11 +176,11 @@
                 @error:expiry="stripeValidated.expiry = false"
                 @complete:cvc="stripeValidated.cvc = true"
                 @error:cvc="stripeValidated.cvc = false"
-                @change="paymentErrorVisible = false"
+                @change="paymentValidationError = false"
               />
               <R64Alert
                 class="c-mt-2"
-                :visible="paymentErrorVisible"
+                :visible="paymentValidationError"
                 message="Correct payments details are required"
               />
               <div class="c-mt-6">
@@ -302,7 +302,7 @@
               class="c-mt-5"
             />
             <R64Alert
-              :visible="promoCodeErrorVisible"
+              :visible="promoCodeError"
               class="c-mt-2"
               message="Promo code is not valid"
             />
@@ -366,6 +366,7 @@
             :is-free="isFree"
             :validator="$v"
             :paypal-client-id="paypalClientId"
+            :error="paymentProcessingError"
             class="c-mt-6 c-w-full"
             @order:place="createOrder"
           />
@@ -383,12 +384,12 @@
           <div v-if="!hasCouponCode">
             <R64InlinePromoCode
               :btn-secondary-transparent="btnSecondaryTransparent"
-              :class="{ 'c-pb-6': !promoCodeErrorVisible }"
+              :class="{ 'c-pb-6': !promoCodeError }"
               @apply="addCoupon"
               class="c-pt-6"
             />
             <R64Alert
-              :visible="promoCodeErrorVisible"
+              :visible="promoCodeError"
               class="c-mt-2 c-mb-4"
               message="Promo code is not valid"
             />
@@ -453,6 +454,7 @@
             :is-free="isFree"
             :validator="$v"
             :paypal-client-id="paypalClientId"
+            :error="paymentProcessingError"
             class="c-mt-6"
             @paypal:open="busyOrder = true"
             @paypal:cancel="busyOrder = false"
@@ -561,9 +563,10 @@ export default {
         expiry: false,
         cvc: false
       },
-      paymentErrorVisible: false,
+      paymentValidationError: false,
       paymentMethod: 'card',
-      promoCodeErrorVisible: false,
+      paymentProcessingError: false,
+      promoCodeError: false,
       consent: false,
       busyZipCode: false,
       busyShipping: false,
@@ -683,8 +686,8 @@ export default {
         const { data } = await cart.addCoupon(this.cartToken, couponCode)
         this.cart = data
       } catch (e) {
-        this.promoCodeErrorVisible = true
-        setTimeout(() => (this.promoCodeErrorVisible = false), 3000)
+        this.promoCodeError = true
+        setTimeout(() => (this.promoCodeError = false), 3000)
       }
     },
 
@@ -709,11 +712,11 @@ export default {
       }
 
       if (!this.stripeAllValidated) {
-        this.paymentErrorVisible = true
+        this.paymentValidationError = true
       }
 
       if (!this.$v.$invalid && this.stripeAllValidated) {
-        this.paymentErrorVisible = false
+        this.paymentValidationError = false
 
         return true
       }
@@ -728,6 +731,8 @@ export default {
       }
 
       this.busyOrder = true
+      this.paymentProcessingError = false
+
       let orderParams = {
         order: {
           cart_token: this.cartToken,
@@ -763,11 +768,11 @@ export default {
 
           this.$emit('order:create', data)
         } catch (e) {
-          //
+          this.paymentProcessingError = true
         }
         this.busyOrder = false
       } catch (e) {
-        //
+        this.paymentProcessingError = true
       }
     },
 

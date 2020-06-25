@@ -24,6 +24,7 @@
       :settings="settings"
       :currency-symbol="settings.currency_symbol"
       :stripe-key="stripeKey"
+      :paypal-client-id="paypalClientId"
       @cart:update="cartUpdate"
       @cart="section = 'cart'"
       @order:create="orderCreate"
@@ -90,6 +91,10 @@ export default {
 
     stripeKey() {
       return process.env.VUE_APP_STRIPE_KEY
+    },
+
+    paypalClientId() {
+      return process.env.VUE_APP_PAYPAL_CLIENT_ID
     },
   },
 

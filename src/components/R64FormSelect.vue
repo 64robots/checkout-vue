@@ -9,8 +9,9 @@
     <div class="c-relative">
       <select
         ref="input"
-        :autocomplete="autocomplete"
         v-model="localValue"
+        :name="name ? name : false"
+        :autocomplete="autocomplete"
         :disabled="disabled"
         :class="[ inputClass, {
           'c-border-red-500 c-focus:border-red-600': error,
@@ -48,6 +49,11 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
+    },
+
+    name: {
+      type: String,
+      default: '',
     },
   },
 

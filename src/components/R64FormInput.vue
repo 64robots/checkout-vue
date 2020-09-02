@@ -10,6 +10,7 @@
       <input
         ref="input"
         v-model="localValue"
+        :name="name ? name : false"
         :autocomplete="autocomplete"
         :disabled="disabled"
         :id="id"
@@ -101,6 +102,11 @@ export default {
     },
 
     autocomplete: {
+      type: String,
+      default: '',
+    },
+
+    name: {
       type: String,
       default: '',
     },

@@ -59,6 +59,7 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.shipping_first_name"
+                    name="fname"
                     autocomplete="given-name"
                     label="First name"
                     :validator="$v.form.shipping_first_name"
@@ -70,6 +71,7 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.shipping_last_name"
+                    name="lname"
                     autocomplete="family-name"
                     label="Last name"
                     :validator="$v.form.shipping_last_name"
@@ -81,7 +83,8 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.shipping_address_line1"
-                    autocomplete="shipping address-line1"
+                    name="address"
+                    autocomplete="address-line1"
                     label="Street"
                     :validator="$v.form.shipping_address_line1"
                     :show-error="$v.form.shipping_address_line1.$error"
@@ -92,7 +95,8 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.shipping_address_line2"
-                    autocomplete="shipping address-line2"
+                    name="address2"
+                    autocomplete="address-line2"
                     label="Apartment, suite, etc ..."
                     :validator="$v.form.shipping_address_line2"
                     :show-error="$v.form.shipping_address_line2.$error"
@@ -104,7 +108,8 @@
                   <div class="c-w-full">
                     <R64FormInput
                       v-model="form.shipping_address_zipcode"
-                      autocomplete="shipping postal-code"
+                      name="zip"
+                      autocomplete="postal-code"
                       label="Zipcode"
                       alert-class="whitespace-no-wrap"
                       :validator="$v.form.shipping_address_zipcode"
@@ -116,7 +121,8 @@
                   <div class="c-w-full c-ml-2">
                     <R64FormInput
                       v-model="form.shipping_address_city"
-                      autocomplete="shipping address-level2"
+                      name="city"
+                      autocomplete="address-level2"
                       :disabled="busyZipCode"
                       :validator="$v.form.shipping_address_city"
                       :show-error="$v.form.shipping_address_city.$error"
@@ -128,7 +134,8 @@
                   <div class="c-w-full c-ml-2">
                     <R64FormSelect
                       v-model="form.shipping_address_region"
-                      autocomplete="shipping address-level1"
+                      name="state"
+                      autocomplete="address-level1"
                       :disabled="busyZipCode"
                       :options="settings.states"
                       :validator="$v.form.shipping_address_region"
@@ -143,6 +150,7 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.shipping_address_phone"
+                    name="phone"
                     autocomplete="tel"
                     label="Phone"
                     :validator="$v.form.shipping_address_phone"
@@ -198,6 +206,7 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.billing_first_name"
+                    name="fname"
                     autocomplete="given-name"
                     label="First name"
                     :validator="$v.form.billing_first_name"
@@ -209,6 +218,7 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.billing_last_name"
+                    name="lname"
                     autocomplete="family-name"
                     label="Last name"
                     :validator="$v.form.billing_last_name"
@@ -220,7 +230,8 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.billing_address_line1"
-                    autocomplete="billing address-line1"
+                    name="address"
+                    autocomplete="address-line1"
                     label="Street"
                     :validator="$v.form.billing_address_line1"
                     :show-error="$v.form.billing_address_line1.$error"
@@ -231,7 +242,8 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.billing_address_line2"
-                    autocomplete="billing address-line2"
+                    name="address2"
+                    autocomplete="address-line2"
                     label="Apartment, suite, etc ..."
                     :validator="$v.form.billing_address_line2"
                     :show-error="$v.form.billing_address_line2.$error"
@@ -243,7 +255,8 @@
                   <div class="c-w-full">
                     <R64FormInput
                       v-model="form.billing_address_zipcode"
-                      autocomplete="billing postal-code"
+                      name="zip"
+                      autocomplete="postal-code"
                       label="Zipcode"
                       alert-class="whitespace-no-wrap"
                       :validator="$v.form.billing_address_zipcode"
@@ -255,7 +268,8 @@
                   <div class="c-w-full c-ml-2">
                     <R64FormInput
                       v-model="form.billing_address_city"
-                      autocomplete="billing address-level2"
+                      name="city"
+                      autocomplete="address-level2"
                       label="City"
                       :validator="$v.form.billing_address_city"
                       :show-error="$v.form.billing_address_city.$error"
@@ -266,7 +280,8 @@
                   <div class="c-w-full c-ml-2">
                     <R64FormSelect
                       v-model="form.billing_address_region"
-                      autocomplete="billing address-level1"
+                      name="state"
+                      autocomplete="address-level1"
                       label="State"
                       placeholder="Select state"
                       :options="settings.states"
@@ -280,6 +295,7 @@
                 <div class="c-mt-6">
                   <R64FormInput
                     v-model="form.billing_address_phone"
+                    name="phone"
                     autocomplete="tel"
                     label="Phone"
                     :validator="$v.form.billing_address_phone"

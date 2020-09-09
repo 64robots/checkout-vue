@@ -383,12 +383,13 @@
             :validator="$v"
             :paypal-client-id="paypalClientId"
             :error="paymentProcessingError"
-            class="c-mt-6 c-w-full"
+            class="c-mt-6 c-mb-6 c-w-full"
             @paypal:open="busyOrder = true"
             @paypal:cancel="busyOrder = false"
             @paypal:error="paypalError"
             @order:place="createOrder"
           />
+          <slot name="below-place-order"></slot>
         </div>
       </div>
       <div class="c-hidden c-w-full lg:c-block lg:c-px-8 lg:c-pt-12 xl:c-px-16">

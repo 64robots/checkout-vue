@@ -32,11 +32,11 @@
             @blur="setCustomerNote"
           />
         </div>
-        <div class="c-mt-10 c-flex c-flex-col lg:c-flex-row">
+        <div class="c-mt-10 c-flex c-flex-col">
           <div>
-            <slot name="bottom-left"></slot>
+            <slot name="below-note"></slot>
           </div>
-          <div class="lg:c-ml-auto c-flex c-flex-col c-items-end">
+          <div class="c-ml-auto c-flex c-flex-col c-items-end">
             <span>Shipping and taxes will be calculated at check out</span>
             <div class="c-mt-6 c-w-full c-justify-between c-flex c-items-center md:c-w-auto">
               <span class="c-text-xl">Subtotal</span>

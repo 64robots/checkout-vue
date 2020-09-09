@@ -28,9 +28,7 @@
       @cart:update="cartUpdate"
       @cart="section = 'cart'"
       @order:create="orderCreate"
-    >
-      <template v-slot:below-place-order>Okaay</template>
-    </R64Checkout>
+    />
     <R64SingleItemCheckout
       v-if="section === 'single_checkout'"
       with-coupons

@@ -32,21 +32,26 @@
             @blur="setCustomerNote"
           />
         </div>
-        <div class="c-mt-10 c-flex c-flex-col c-items-end">
-          <span>Shipping and taxes will be calculated at check out</span>
-          <div class="c-mt-6 c-w-full c-justify-between c-flex c-items-center md:c-w-auto">
-            <span class="c-text-xl">Subtotal</span>
-            <span class="c-ml-10 c-text-4xl">{{ money(cart.items_subtotal) }}</span>
+        <div class="c-mt-10 c-flex">
+          <div>
+            <slot name="bottom-left"></slot>
           </div>
-          <div class="c-mt-6 c-w-full c-flex c-flex-col md:c-w-auto">
-            <R64Button
-              :btn-primary="btnPrimary"
-              :disabled="cart.cart_items.length === 0"
-              @click.native="checkout"
-            >
-              Checkout
-            </R64Button>
-            <span class="c-mt-4 c-text-sm">Have a promo code? Apply it at check out.</span>
+          <div class="c-ml-auto c-flex c-flex-col c-items-end">
+            <span>Shipping and taxes will be calculated at check out</span>
+            <div class="c-mt-6 c-w-full c-justify-between c-flex c-items-center md:c-w-auto">
+              <span class="c-text-xl">Subtotal</span>
+              <span class="c-ml-10 c-text-4xl">{{ money(cart.items_subtotal) }}</span>
+            </div>
+            <div class="c-mt-6 c-w-full c-flex c-flex-col md:c-w-auto">
+              <R64Button
+                :btn-primary="btnPrimary"
+                :disabled="cart.cart_items.length === 0"
+                @click.native="checkout"
+              >
+                Checkout
+              </R64Button>
+              <span class="c-mt-4 c-text-sm">Have a promo code? Apply it at check out.</span>
+            </div>
           </div>
         </div>
       </div>

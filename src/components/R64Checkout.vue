@@ -475,12 +475,13 @@
             :validator="$v"
             :paypal-client-id="paypalClientId"
             :error="paymentProcessingError"
-            class="c-mt-6"
+            class="c-mt-6 c-mb-6"
             @paypal:open="busyOrder = true"
             @paypal:cancel="busyOrder = false"
             @paypal:error="paypalError"
             @order:place="createOrder"
           />
+          <slot name="lg:below-place-order"></slot>
         </div>
       </div>
     </div>

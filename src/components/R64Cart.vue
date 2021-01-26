@@ -50,6 +50,7 @@
               >
                 Checkout
               </R64Button>
+              <slot name="extra-buttons" />
               <span class="c-mt-4 c-text-sm">Have a promo code? Apply it at check out.</span>
             </div>
           </div>
